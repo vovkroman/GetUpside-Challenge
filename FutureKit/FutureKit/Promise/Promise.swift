@@ -1,6 +1,6 @@
 import Foundation
 
-open class Promise<Value>: Future<Value> {
+public final class Promise<Value>: Future<Value> {
     
     @inlinable
     public init(value: Value? = nil) {

@@ -1,6 +1,6 @@
 import Foundation
 
-open class Future<Value> {
+public class Future<Value> {
     
     public typealias Result = Swift.Result<Value, Error>
     
