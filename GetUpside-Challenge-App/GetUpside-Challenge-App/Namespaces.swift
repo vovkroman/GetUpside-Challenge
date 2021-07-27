@@ -1,0 +1,2 @@
+enum Splash {}
+enum Main {}

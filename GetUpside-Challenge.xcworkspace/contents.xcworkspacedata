@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:GetUpside-Challenge-App/GetUpside-Challenge-App.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Logger/Logger.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:FutureKit/FutureKit.xcodeproj">
    </FileRef>
 </Workspace>
