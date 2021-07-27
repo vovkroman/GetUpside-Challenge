@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D245BBD3A173D1978103490 /* Pods_GetUpside_Challenge_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32CA5C690104760946C269FE /* Pods_GetUpside_Challenge_App.framework */; };
 		6F0B3DF126AF1DC600A01ABF /* ArcGISProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0B3DEA26AF1DC600A01ABF /* ArcGISProvider.swift */; };
 		6F0B3DF226AF1DC600A01ABF /* FetchType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0B3DEC26AF1DC600A01ABF /* FetchType.swift */; };
 		6F0B3DF426AF1DC600A01ABF /* FoodApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0B3DEE26AF1DC600A01ABF /* FoodApi.swift */; };
@@ -79,6 +80,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0065E089ADAB56AD97A6DAF7 /* Pods-GetUpside-Challenge-App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GetUpside-Challenge-App.release.xcconfig"; path = "Target Support Files/Pods-GetUpside-Challenge-App/Pods-GetUpside-Challenge-App.release.xcconfig"; sourceTree = "<group>"; };
+		32CA5C690104760946C269FE /* Pods_GetUpside_Challenge_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GetUpside_Challenge_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F0B3DEA26AF1DC600A01ABF /* ArcGISProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArcGISProvider.swift; sourceTree = "<group>"; };
 		6F0B3DEC26AF1DC600A01ABF /* FetchType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchType.swift; sourceTree = "<group>"; };
 		6F0B3DEE26AF1DC600A01ABF /* FoodApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodApi.swift; sourceTree = "<group>"; };
@@ -122,6 +125,7 @@
 		6F3EEA4526A04FF600821E41 /* NibLoadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibLoadable.swift; sourceTree = "<group>"; };
 		6F3EEA4A26A0510600821E41 /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		6F3EEA4D26A05E9D00821E41 /* ViewModelable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModelable.swift; sourceTree = "<group>"; };
+		C0FC476D691215081D5BF116 /* Pods-GetUpside-Challenge-App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GetUpside-Challenge-App.debug.xcconfig"; path = "Target Support Files/Pods-GetUpside-Challenge-App/Pods-GetUpside-Challenge-App.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +135,7 @@
 			files = (
 				6F3EEA0F26A0488C00821E41 /* Logger.framework in Frameworks */,
 				6F3EEA0B26A0488800821E41 /* FutureKit.framework in Frameworks */,
+				2D245BBD3A173D1978103490 /* Pods_GetUpside_Challenge_App.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,6 +156,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		536753AC0FBFC32BEF8F42F2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C0FC476D691215081D5BF116 /* Pods-GetUpside-Challenge-App.debug.xcconfig */,
+				0065E089ADAB56AD97A6DAF7 /* Pods-GetUpside-Challenge-App.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../Pods;
+			sourceTree = "<group>";
+		};
 		6F0B3DE826AF1DB200A01ABF /* Repository */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,6 +209,7 @@
 				6F3EE9D126A0459A00821E41 /* GetUpside-Challenge-AppUITests */,
 				6F3EE9AE26A0459800821E41 /* Products */,
 				6F3EEA0926A0488800821E41 /* Frameworks */,
+				536753AC0FBFC32BEF8F42F2 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -259,6 +275,7 @@
 			children = (
 				6F3EEA0E26A0488C00821E41 /* Logger.framework */,
 				6F3EEA0A26A0488800821E41 /* FutureKit.framework */,
+				32CA5C690104760946C269FE /* Pods_GetUpside_Challenge_App.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -407,10 +424,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6F3EE9D726A0459A00821E41 /* Build configuration list for PBXNativeTarget "GetUpside-Challenge-App" */;
 			buildPhases = (
+				0F071F42779E9905E83EC27E /* [CP] Check Pods Manifest.lock */,
 				6F3EE9A926A0459800821E41 /* Sources */,
 				6F3EE9AA26A0459800821E41 /* Frameworks */,
 				6F3EE9AB26A0459800821E41 /* Resources */,
 				6F3EEA0D26A0488800821E41 /* Embed Frameworks */,
+				DF435ABD2DD3ABB08DE52A3D /* [CP] Embed Pods Frameworks */,
+				9D23AFCA8F7935AC6A984FA7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -525,6 +545,65 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0F071F42779E9905E83EC27E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GetUpside-Challenge-App-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9D23AFCA8F7935AC6A984FA7 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GetUpside-Challenge-App/Pods-GetUpside-Challenge-App-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GetUpside-Challenge-App/Pods-GetUpside-Challenge-App-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GetUpside-Challenge-App/Pods-GetUpside-Challenge-App-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DF435ABD2DD3ABB08DE52A3D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GetUpside-Challenge-App/Pods-GetUpside-Challenge-App-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GetUpside-Challenge-App/Pods-GetUpside-Challenge-App-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GetUpside-Challenge-App/Pods-GetUpside-Challenge-App-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6F3EE9A926A0459800821E41 /* Sources */ = {
@@ -723,6 +802,7 @@
 		};
 		6F3EE9D826A0459A00821E41 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C0FC476D691215081D5BF116 /* Pods-GetUpside-Challenge-App.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -742,6 +822,7 @@
 		};
 		6F3EE9D926A0459A00821E41 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0065E089ADAB56AD97A6DAF7 /* Pods-GetUpside-Challenge-App.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

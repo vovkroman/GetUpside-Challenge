@@ -10,4 +10,7 @@
    <FileRef
       location = "group:FutureKit/FutureKit.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:Pods/Pods.xcodeproj">
+   </FileRef>
 </Workspace>
