@@ -3,11 +3,11 @@ import Logger
 
 typealias Viewable = UIView & NibReusable
 
-class BaseViewController<View: Viewable, ViewModel>: UIViewController, ViewModelable {
+class BaseViewController<View: Viewable, InteractorImpl>: UIViewController, Interactorable {
     
-    typealias T = ViewModel
+    typealias T = InteractorImpl
     
-    let viewModel: T
+    let interactor: T
     
     var contentView: View {
         return view as! View
@@ -17,8 +17,8 @@ class BaseViewController<View: Viewable, ViewModel>: UIViewController, ViewModel
         view = View.loadFromNib()
     }
     
-    required init(viewModel: T) {
-        self.viewModel = viewModel
+    required init(interactor: T) {
+        self.interactor = interactor
         super.init(nibName: nil, bundle: nil)
     }
     

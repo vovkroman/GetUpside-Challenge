@@ -14,8 +14,6 @@ extension FoodApi: FetchType {
         switch self {
         case .getFood:
             return ""
-        default:
-            return ""
         }
     }
     
@@ -23,8 +21,6 @@ extension FoodApi: FetchType {
         switch self {
         case .getFood:
             return ["food"]
-        default:
-            return []
         }
     }
     
@@ -32,8 +28,6 @@ extension FoodApi: FetchType {
         switch self {
         case .getFood(let location):
             return location
-        default:
-            return nil
         }
     }
     

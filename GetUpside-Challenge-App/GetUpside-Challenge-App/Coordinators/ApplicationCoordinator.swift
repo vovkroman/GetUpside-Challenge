@@ -3,6 +3,7 @@ import UIKit
 class ApplicationCoordinator: BaseCoordinator {
     
     private let _window: UIWindow
+    private let _appDependencies: AppDependencies
     
     override func start(animated: Bool = true) {
         let navigationController = UINavigationController()
@@ -12,7 +13,7 @@ class ApplicationCoordinator: BaseCoordinator {
         _window.makeKeyAndVisible()
     
         // to coordinate to splash if we need to fetch some data (such as intial service requests)
-        let splashCoordinator = Splash.Coordinator(navigationController)
+        let splashCoordinator = Splash.Coordinator(navigationController, factory: _appDependencies)
         splashCoordinator.parentCoordinator = self
 
         addDependency(splashCoordinator)
@@ -27,7 +28,8 @@ class ApplicationCoordinator: BaseCoordinator {
         // to coordinate to main screen if we need to pass to main flow
     }
     
-    init(window: UIWindow) {
+    init(window: UIWindow, appDependencies: AppDependencies) {
         _window = window
+        _appDependencies = appDependencies
     }
 }

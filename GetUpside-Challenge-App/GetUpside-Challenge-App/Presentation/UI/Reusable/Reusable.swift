@@ -1,6 +1,6 @@
 import Foundation
 
-protocol Reusable: class {
+protocol Reusable: AnyObject {
     static var reuseIdentifier: String { get }
 }
 
