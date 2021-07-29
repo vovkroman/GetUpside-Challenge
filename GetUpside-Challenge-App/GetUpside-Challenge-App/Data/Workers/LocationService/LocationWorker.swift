@@ -1,26 +1,29 @@
 import Foundation
 import CoreLocation
 
+
+typealias Coordinate = CLLocationCoordinate2D
+typealias LocationStatus = CLAuthorizationStatus
+
+// Interface for location worker
+protocol LocationWorkerable: AnyObject {
+    func requestForAutorization()
+    func requestLocation()
+    func startUpdatingLocation()
+}
+
+protocol LocationUpdating: AnyObject {
+    func location(_ worker: LocationWorkerable, authStatusDidUpdated status: LocationStatus)
+    func location(_ worker: LocationWorkerable, locationDidUpdated locationCoordinate: Coordinate)
+    func location(_ worker: LocationWorkerable, catch error: Error)
+}
+
 extension Location {
-    
-    typealias Coordinate = CLLocationCoordinate2D
     
     final class Worker: NSObject {
     
         private let _manager: CLLocationManager
-        
-        // MARK: - Public method
-        func requestForAutorization() {
-            _manager.requestWhenInUseAuthorization()
-        }
-        
-        func requestLocation() {
-            _manager.requestLocation()
-        }
-        
-        func startUpdatingLocation() {
-            _manager.startUpdatingLocation()
-        }
+        weak var delegate: LocationUpdating?
         
         func checkCurrentStatus() {
             let authorizationStatus: CLAuthorizationStatus
@@ -29,10 +32,9 @@ extension Location {
             } else {
                 authorizationStatus = CLLocationManager.authorizationStatus()
             }
-            //stateMachine.transition(with: .authorizationChanged(status: authorizationStatus))
         }
         
-        init(_ manager: CLLocationManager = .init()) {
+        init(_ manager: CLLocationManager) {
             _manager = manager
             super.init()
             manager.delegate = self
@@ -44,24 +46,39 @@ extension Location {
     }
 }
 
+extension Location.Worker: LocationWorkerable {
+    // MARK: - Public method
+    func requestForAutorization() {
+        _manager.requestWhenInUseAuthorization()
+    }
+    
+    func requestLocation() {
+        _manager.requestLocation()
+    }
+    
+    func startUpdatingLocation() {
+        _manager.startUpdatingLocation()
+    }
+}
+
 extension Location.Worker: CLLocationManagerDelegate {
     func locationManager(
         _ manager: CLLocationManager,
         didChangeAuthorization status: CLAuthorizationStatus) {
-        //stateMachine.transition(with: .authorizationChanged(status: status))
+        delegate?.location(self, authStatusDidUpdated: status)
     }
     
     func locationManager(
         _ manager: CLLocationManager,
         didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else { return }
-        //stateMachine.transition(with: .locationDidChanged(location: location))
+        delegate?.location(self, locationDidUpdated: location.coordinate)
     }
     
     func locationManager(
         _ manager: CLLocationManager,
         didFailWithError error: Error) {
-        //stateMachine.transition(with: .faiedWithError(error: error))
+        delegate?.location(self, catch: error)
     }
 }
 

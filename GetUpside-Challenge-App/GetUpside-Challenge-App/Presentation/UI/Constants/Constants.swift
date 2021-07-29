@@ -15,7 +15,7 @@ extension UIFont {
 }
 
 enum Constant {
-    enum LetteringView {
+    enum SplashLogo {
         static let title: UIFont = UIFont.getUpsideTitle
         static let header: UIFont = UIFont.getUpsideTitleHeader
         static let body: UIFont = UIFont.getUpsideTitleBody
@@ -27,5 +27,9 @@ enum Constant {
     
     enum Animator {
         static let duration: TimeInterval = 1.72
+    }
+    
+    enum Location {
+        static let kCLDistanceHundredMeters: Double = 100.0
     }
 }

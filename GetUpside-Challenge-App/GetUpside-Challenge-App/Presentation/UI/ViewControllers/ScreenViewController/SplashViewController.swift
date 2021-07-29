@@ -2,10 +2,8 @@ import UIKit
 
 extension Splash {
     
-    class ViewController: BaseViewController<SplashView, Intercator> {
-                
-        weak var coordinator: SplashFlowCoordinatable?
-        
+    class ViewController: BaseViewController<SplashView, InteractorImpl> {
+                        
         private var _testView: LetteringView {
             return contentView._testView
         }
@@ -33,7 +31,7 @@ extension Splash {
         }
         
         private func _setupLogo() {
-            let type = Constant.LetteringView.self
+            let type = Constant.SplashLogo.self
             
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.alignment = .center

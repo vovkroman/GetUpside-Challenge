@@ -7,15 +7,17 @@ protocol CoordinatableProtocol: AnyObject {
     func catchTheError(_ error: Error)
 }
 
-protocol SplashViewControllerFactory {
-    func makeController(_ coordinator: BaseCoordinator) -> Splash.ViewController
+protocol SplashViewControllerFactory: AnyObject {
+    func makeController(_ coordinator: Splash.Coordinator) -> UIViewController
 }
 
 extension Splash {
     
+    enum Event {}
+    
     class Coordinator: BaseCoordinator {
         typealias Factory = SplashViewControllerFactory
-                
+
         private let _navigationController: UINavigationController
         private let _factory: Factory
         
@@ -23,10 +25,7 @@ extension Splash {
         
         // MARK: - Public methods
         override func start(animated: Bool) {
-//            let viewModel = Intercator()//ViewModel(coordinator: self)
-//            let viewController = ViewController(interactor: viewModel)
             let viewController = _factory.makeController(self)
-            viewController.coordinator = self
             _navigationController.setViewControllers([viewController], animated: animated)
         }
         
@@ -50,13 +49,11 @@ extension Splash {
 }
 
 extension Splash.Coordinator: CoordinatableProtocol {
-    typealias Event = 
+    typealias Event = Splash.Event
     
-//    func itemsBeenHasLoaded(_ viewModel: Main.ViewModel) {
-//        DispatchQueue.main.async {
-//            //self._navigateToMainFlow(viewModel: viewModel)
-//        }
-//    }
+    func cacthTheEvent(_ event: Splash.Event) {
+        // handle event
+    }
     
     func catchTheError(_ error: Error) {
         //handle error
@@ -69,8 +66,8 @@ extension Splash.Coordinator: UINavigationControllerDelegate {
       animationControllerFor
       operation: UINavigationController.Operation,
       from fromVC: UIViewController,
-      to toVC: UIViewController) ->
-      UIViewControllerAnimatedTransitioning? {
+      to toVC: UIViewController
+    ) -> UIViewControllerAnimatedTransitioning? {
         let durationType = Constant.Animator.self
         return RevealAnimator(durationType.duration, operation: operation)
     }

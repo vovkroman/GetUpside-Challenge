@@ -2,7 +2,8 @@ import Foundation
 import CoreLocation
 
 // Impl of DI conatiner
-struct AppDependencies {
+class AppDependencies {
+    
     lazy private var _locationManager: CLLocationManager = {
 /*  Though the code above is fine, it can be optimised to reduce power usage in the following ways:
 // **desiredAccuracy** - This is documented in Core Location Constants,
@@ -21,15 +22,21 @@ struct AppDependencies {
  */
         let locationManager = CLLocationManager()
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
-        locationManager.distanceFilter = 100
+        locationManager.distanceFilter = Constant.Location.kCLDistanceHundredMeters
         
         return locationManager
     }()
 }
 
 extension AppDependencies: SplashViewControllerFactory {
-    func makeController(_ coordinator: BaseCoordinator) -> Splash.ViewController {
-        let intercator = Splash.InteractorImpl()
-        let viewController = Splash.ViewController
+    func makeController(_ coordinator: Splash.Coordinator) -> UIViewController {
+        let locationWorker = Location.Worker(_locationManager)
+        
+        let intercator = Splash.InteractorImpl(locationWorker)
+        intercator.delegate = AnyCoordinator(coordinator)
+        locationWorker.delegate = intercator
+        
+        let viewController = Splash.ViewController(interactor: intercator)
+        return viewController
     }
 }

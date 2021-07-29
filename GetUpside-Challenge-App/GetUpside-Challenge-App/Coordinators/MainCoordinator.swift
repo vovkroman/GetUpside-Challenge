@@ -1,9 +1,5 @@
 import UIKit
 
-protocol MainFactoriable {
-    
-}
-
 extension Main {
     
     class Coordinator: BaseCoordinator {

@@ -6,7 +6,7 @@ extension ArcGis {
         
         private let _router: AnyFetchRouter<FoodApi>
         
-        func fetch(by coordinate: Location.Coordinate) -> Future<[AGSGeocodeResult]> {
+        func fetch(by coordinate: Coordinate) -> Future<[AGSGeocodeResult]> {
             return _router.performFetch(.getFood(location: coordinate))
         }
         
