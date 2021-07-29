@@ -5,7 +5,9 @@ class ApplicationCoordinator: BaseCoordinator {
     private let _window: UIWindow
     private let _appDependencies: AppDependencies
     
-    override func start(animated: Bool = true) {
+    override func start(
+        animated: Bool = true
+    ) {
         let navigationController = UINavigationController()
         navigationController.isNavigationBarHidden = true
         
@@ -13,11 +15,18 @@ class ApplicationCoordinator: BaseCoordinator {
         _window.makeKeyAndVisible()
     
         // to coordinate to splash if we need to fetch some data (such as intial service requests)
-        let splashCoordinator = Splash.Coordinator(navigationController, factory: _appDependencies)
+        let splashCoordinator = Splash.Coordinator(
+            navigationController,
+            factory: _appDependencies
+        )
+        
         splashCoordinator.parentCoordinator = self
 
         addDependency(splashCoordinator)
-        coordinate(to: splashCoordinator, animated: animated)
+        coordinate(
+            to: splashCoordinator,
+            animated: animated
+        )
         
 //        let mainCoordinator = Main.Coordinator(navigationController)
 //        mainCoordinator.parentCoordinator = self
@@ -28,7 +37,9 @@ class ApplicationCoordinator: BaseCoordinator {
         // to coordinate to main screen if we need to pass to main flow
     }
     
-    init(window: UIWindow, appDependencies: AppDependencies) {
+    init(
+        window window: UIWindow,
+        appDependencies: AppDependencies) {
         _window = window
         _appDependencies = appDependencies
     }

@@ -29,11 +29,11 @@ class AppDependencies {
 }
 
 extension AppDependencies: SplashViewControllerFactory {
-    func makeController(_ coordinator: Splash.Coordinator) -> UIViewController {
+    func makeController(_ coordinator: SplashCoordinatable) -> UIViewController {
         let locationWorker = Location.Worker(_locationManager)
         
         let intercator = Splash.InteractorImpl(locationWorker)
-        intercator.delegate = AnyCoordinator(coordinator)
+        intercator.coordinator = coordinator
         locationWorker.delegate = intercator
         
         let viewController = Splash.ViewController(interactor: intercator)

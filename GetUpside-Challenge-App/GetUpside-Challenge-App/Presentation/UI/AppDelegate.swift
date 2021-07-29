@@ -16,8 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let window = UIWindow(frame: UIScreen.main.bounds)
         self.window = window
         
-        let applicationCoordinator = ApplicationCoordinator(window: window,
-                                                            appDependencies: _appDependencies)
+        let applicationCoordinator = ApplicationCoordinator(
+            window: window,
+            appDependencies: _appDependencies
+        )
         applicationCoordinator.start()
         
         self._appCoordinator = applicationCoordinator

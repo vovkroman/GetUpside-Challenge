@@ -1,14 +1,13 @@
 import UIKit
 import Logger
 
-protocol CoordinatableProtocol: AnyObject {
-    associatedtype Event
-    func cacthTheEvent(_ event: Event)
+protocol SplashCoordinatable: AnyObject {
+    func cacthTheEvent(_ event: Splash.Event)
     func catchTheError(_ error: Error)
 }
 
 protocol SplashViewControllerFactory: AnyObject {
-    func makeController(_ coordinator: Splash.Coordinator) -> UIViewController
+    func makeController(_ coordinator: SplashCoordinatable) -> UIViewController
 }
 
 extension Splash {
@@ -48,15 +47,14 @@ extension Splash {
     }
 }
 
-extension Splash.Coordinator: CoordinatableProtocol {
-    typealias Event = Splash.Event
+extension Splash.Coordinator: SplashCoordinatable {
     
     func cacthTheEvent(_ event: Splash.Event) {
-        // handle event
+        
     }
     
     func catchTheError(_ error: Error) {
-        //handle error
+        
     }
 }
 
