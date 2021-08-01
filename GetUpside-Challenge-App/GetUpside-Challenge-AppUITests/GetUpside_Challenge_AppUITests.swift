@@ -1,10 +1,3 @@
-//
-//  GetUpside_Challenge_AppUITests.swift
-//  GetUpside-Challenge-AppUITests
-//
-//  Created by Roman Vovk on 15.07.2021.
-//
-
 import XCTest
 
 class GetUpside_Challenge_AppUITests: XCTestCase {

@@ -1,10 +1,3 @@
-//
-//  FutureKit.h
-//  FutureKit
-//
-//  Created by Roman Vovk on 15.07.2021.
-//
-
 #import <Foundation/Foundation.h>
 
 //! Project version number for FutureKit.

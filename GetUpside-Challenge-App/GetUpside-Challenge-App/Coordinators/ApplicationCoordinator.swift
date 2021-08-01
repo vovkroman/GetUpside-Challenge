@@ -38,7 +38,7 @@ class ApplicationCoordinator: BaseCoordinator {
     }
     
     init(
-        window window: UIWindow,
+        window: UIWindow,
         appDependencies: AppDependencies) {
         _window = window
         _appDependencies = appDependencies

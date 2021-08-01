@@ -4,9 +4,27 @@ extension Splash {
     class InteractorImpl {
         
         private let _locationWorker: LocationWorkerable
-        weak var coordinator: SplashCoordinatable?
+        private weak var _coordinator: SplashCoordinatable?
         
-        init(_ location: LocationWorkerable) {
+        func fetchTheData() {
+            if _locationWorker.isUserAuthorized {
+                _locationWorker.requestLocation()
+            } else {
+                _locationWorker.requestForAutorization()
+            }
+        }
+        
+        func setCoorindator(
+            _ coordinator: SplashCoordinatable?
+        ) {
+            // check for instance
+            if coordinator === _coordinator { return }
+            _coordinator = coordinator
+        }
+        
+        init(
+            _ location: LocationWorkerable
+        ) {
             _locationWorker = location
         }
     }

@@ -50,6 +50,9 @@
 		6F8C9D1F26B02BA6000D5DA0 /* LocationWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8C9D1E26B02BA6000D5DA0 /* LocationWorker.swift */; };
 		6F8C9D2326B0341A000D5DA0 /* Location+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8C9D2226B0341A000D5DA0 /* Location+Extensions.swift */; };
 		6F8C9D2826B05CE7000D5DA0 /* Floating+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8C9D2726B05CE7000D5DA0 /* Floating+Extensions.swift */; };
+		6FA1016826B324C80052D939 /* Optional+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA1016726B324C80052D939 /* Optional+Extensions.swift */; };
+		6FA1016A26B327340052D939 /* AnyOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA1016926B327340052D939 /* AnyOf.swift */; };
+		6FA1016D26B32F4F0052D939 /* SplashStateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA1016C26B32F4F0052D939 /* SplashStateMachine.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -136,6 +139,9 @@
 		6F8C9D2226B0341A000D5DA0 /* Location+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Location+Extensions.swift"; sourceTree = "<group>"; };
 		6F8C9D2626B03640000D5DA0 /* GetUpside-Challenge-App-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GetUpside-Challenge-App-Bridging-Header.h"; sourceTree = "<group>"; };
 		6F8C9D2726B05CE7000D5DA0 /* Floating+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Floating+Extensions.swift"; sourceTree = "<group>"; };
+		6FA1016726B324C80052D939 /* Optional+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Extensions.swift"; sourceTree = "<group>"; };
+		6FA1016926B327340052D939 /* AnyOf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyOf.swift; sourceTree = "<group>"; };
+		6FA1016C26B32F4F0052D939 /* SplashStateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashStateMachine.swift; sourceTree = "<group>"; };
 		C0FC476D691215081D5BF116 /* Pods-GetUpside-Challenge-App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GetUpside-Challenge-App.debug.xcconfig"; path = "Target Support Files/Pods-GetUpside-Challenge-App/Pods-GetUpside-Challenge-App.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -416,8 +422,8 @@
 		6F3EEA4C26A05E7B00821E41 /* Interactors */ = {
 			isa = PBXGroup;
 			children = (
+				6FA1016B26B32F370052D939 /* SplashInteractorImpl */,
 				6F3EEA4D26A05E9D00821E41 /* Interactorable.swift */,
-				6F56108D26B17B6D002182BA /* SplashInteractorImpl.swift */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -425,10 +431,11 @@
 		6F56108726B15FDC002182BA /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				6FA1016626B324A10052D939 /* Extensions */,
 				6F3EEA4A26A0510600821E41 /* Globals.swift */,
 				6F3EEA1126A04A7A00821E41 /* Namespaces.swift */,
-				6F8C9D2726B05CE7000D5DA0 /* Floating+Extensions.swift */,
 				6F56108826B16236002182BA /* NSAttributedStringBuilder.swift */,
+				6FA1016926B327340052D939 /* AnyOf.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -464,6 +471,24 @@
 				6F8C9D2226B0341A000D5DA0 /* Location+Extensions.swift */,
 			);
 			path = LocationService;
+			sourceTree = "<group>";
+		};
+		6FA1016626B324A10052D939 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				6F8C9D2726B05CE7000D5DA0 /* Floating+Extensions.swift */,
+				6FA1016726B324C80052D939 /* Optional+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		6FA1016B26B32F370052D939 /* SplashInteractorImpl */ = {
+			isa = PBXGroup;
+			children = (
+				6F56108D26B17B6D002182BA /* SplashInteractorImpl.swift */,
+				6FA1016C26B32F4F0052D939 /* SplashStateMachine.swift */,
+			);
+			path = SplashInteractorImpl;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -666,12 +691,14 @@
 				6F3EE9EF26A047B800821E41 /* SplashCoordinator.swift in Sources */,
 				6F3EEA4726A04FF600821E41 /* ReusableTableView.swift in Sources */,
 				6F56108926B16236002182BA /* NSAttributedStringBuilder.swift in Sources */,
+				6FA1016A26B327340052D939 /* AnyOf.swift in Sources */,
 				6F3EEA4626A04FF600821E41 /* Reusable.swift in Sources */,
 				6F8C9D1F26B02BA6000D5DA0 /* LocationWorker.swift in Sources */,
 				6F3EEA4E26A05E9D00821E41 /* Interactorable.swift in Sources */,
 				6F56108E26B17B6D002182BA /* SplashInteractorImpl.swift in Sources */,
 				6F3EEA1826A04DDA00821E41 /* RevealAnimator.swift in Sources */,
 				6F3EEA3C26A04EEC00821E41 /* AnimationTypes.swift in Sources */,
+				6FA1016826B324C80052D939 /* Optional+Extensions.swift in Sources */,
 				6F3EEA4926A04FF600821E41 /* NibLoadable.swift in Sources */,
 				6F3EEA2626A04E0400821E41 /* SplashViewController.swift in Sources */,
 				6F8C9D2326B0341A000D5DA0 /* Location+Extensions.swift in Sources */,
@@ -689,6 +716,7 @@
 				6F3EE9F126A047B800821E41 /* MainCoordinator.swift in Sources */,
 				6F0B3DF526AF1DC600A01ABF /* FetchRouter.swift in Sources */,
 				6F3EE9EE26A047B800821E41 /* ApplicationCoordinator.swift in Sources */,
+				6FA1016D26B32F4F0052D939 /* SplashStateMachine.swift in Sources */,
 				6F3EEA1B26A04DE500821E41 /* Constants.swift in Sources */,
 				6F0B3DF426AF1DC600A01ABF /* FoodApi.swift in Sources */,
 				6F0B3DF126AF1DC600A01ABF /* ArcGisWorker.swift in Sources */,
@@ -862,7 +890,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "GetUpside-Challenge-App/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -883,7 +911,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "GetUpside-Challenge-App/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

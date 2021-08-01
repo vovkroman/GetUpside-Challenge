@@ -1,10 +1,11 @@
-platform :ios, '11.0'
+platform :ios, '12.0'
 use_frameworks!
 
 workspace 'GetUpside-Challenge'
 
 def pods
   pod 'ArcGIS-Runtime-SDK-iOS'
+  pod 'RealmSwift', '4.4.1'
   pod 'GoogleMaps'
 end
 

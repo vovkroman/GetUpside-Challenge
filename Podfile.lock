@@ -5,20 +5,30 @@ PODS:
   - GoogleMaps/Base (5.0.0)
   - GoogleMaps/Maps (5.0.0):
     - GoogleMaps/Base
+  - Realm (4.4.1):
+    - Realm/Headers (= 4.4.1)
+  - Realm/Headers (4.4.1)
+  - RealmSwift (4.4.1):
+    - Realm (= 4.4.1)
 
 DEPENDENCIES:
   - ArcGIS-Runtime-SDK-iOS
   - GoogleMaps
+  - RealmSwift (= 4.4.1)
 
 SPEC REPOS:
   trunk:
     - ArcGIS-Runtime-SDK-iOS
     - GoogleMaps
+    - Realm
+    - RealmSwift
 
 SPEC CHECKSUMS:
   ArcGIS-Runtime-SDK-iOS: bf5fc35fefb5e753a676f33b5e3701ee6a135829
   GoogleMaps: 600e5e69bdf7f4ed7cac4d6aa96c7ec08a5aa254
+  Realm: 4eb04d7487bd43c0581256f40b424eafb711deff
+  RealmSwift: 3eb8924ff7100df5928c7602f71d0fec51e7c9c5
 
-PODFILE CHECKSUM: b88fcc7f603850a7ada51ae541c0662586c081a6
+PODFILE CHECKSUM: 5bdd7d736436f17f454944d5066bc44cb1fd08e5
 
 COCOAPODS: 1.10.1

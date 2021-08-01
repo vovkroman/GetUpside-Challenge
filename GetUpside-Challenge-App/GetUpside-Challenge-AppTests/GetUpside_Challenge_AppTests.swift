@@ -1,10 +1,3 @@
-//
-//  GetUpside_Challenge_AppTests.swift
-//  GetUpside-Challenge-AppTests
-//
-//  Created by Roman Vovk on 15.07.2021.
-//
-
 import XCTest
 @testable import GetUpside_Challenge_App
 

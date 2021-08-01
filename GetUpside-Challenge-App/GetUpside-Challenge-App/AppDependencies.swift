@@ -33,7 +33,7 @@ extension AppDependencies: SplashViewControllerFactory {
         let locationWorker = Location.Worker(_locationManager)
         
         let intercator = Splash.InteractorImpl(locationWorker)
-        intercator.coordinator = coordinator
+        intercator.setCoorindator(coordinator)
         locationWorker.delegate = intercator
         
         let viewController = Splash.ViewController(interactor: intercator)

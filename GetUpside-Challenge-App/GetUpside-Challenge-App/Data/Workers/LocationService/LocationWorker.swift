@@ -7,8 +7,12 @@ typealias LocationStatus = CLAuthorizationStatus
 
 // Interface for location worker
 protocol LocationWorkerable: AnyObject {
+    var isUserAuthorized: Bool { get }
     func requestForAutorization()
+    
     func requestLocation()
+    
+    func stopUpdatingLocation()
     func startUpdatingLocation()
 }
 
@@ -25,13 +29,14 @@ extension Location {
         private let _manager: CLLocationManager
         weak var delegate: LocationUpdating?
         
-        func checkCurrentStatus() {
+        private var _authorizationStatus: CLAuthorizationStatus {
             let authorizationStatus: CLAuthorizationStatus
             if #available(iOS 14.0, *) {
                 authorizationStatus = _manager.authorizationStatus
             } else {
                 authorizationStatus = CLLocationManager.authorizationStatus()
             }
+            return authorizationStatus
         }
         
         init(_ manager: CLLocationManager) {
@@ -47,6 +52,13 @@ extension Location {
 }
 
 extension Location.Worker: LocationWorkerable {
+    var isUserAuthorized: Bool {
+        return any(
+            lhs: _authorizationStatus,
+            rhs: .authorizedAlways, .authorizedWhenInUse
+        )
+    }
+    
     // MARK: - Public method
     func requestForAutorization() {
         _manager.requestWhenInUseAuthorization()
@@ -58,6 +70,10 @@ extension Location.Worker: LocationWorkerable {
     
     func startUpdatingLocation() {
         _manager.startUpdatingLocation()
+    }
+    
+    func stopUpdatingLocation() {
+        _manager.stopUpdatingLocation()
     }
 }
 

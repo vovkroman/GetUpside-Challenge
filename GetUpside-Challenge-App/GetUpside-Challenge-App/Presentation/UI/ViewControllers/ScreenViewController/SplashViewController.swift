@@ -27,7 +27,7 @@ extension Splash {
         // MARK: - Configurations
         
         private func _initialSetup() {
-            //viewModel.load()
+            interactor.fetchTheData()
         }
         
         private func _setupLogo() {
@@ -36,17 +36,17 @@ extension Splash {
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.alignment = .center
             
-            let attrString = NSAttributedStringBuilder.buildBlock(
+            let attrString = NSAttributedString.composing {
                 NSAttributedString(string: "Get\n",
                                    attributes: [NSAttributedString.Key.font: type.title,
-                                                NSAttributedString.Key.paragraphStyle: paragraphStyle]),
+                                                NSAttributedString.Key.paragraphStyle: paragraphStyle])
                 NSAttributedString(string: "Upside\n",
                                    attributes: [NSAttributedString.Key.font: type.header,
-                                               NSAttributedString.Key.paragraphStyle: paragraphStyle]),
+                                               NSAttributedString.Key.paragraphStyle: paragraphStyle])
                 NSAttributedString(string: "Challenge",
                                    attributes: [NSAttributedString.Key.font: type.body,
                                                 NSAttributedString.Key.paragraphStyle: paragraphStyle])
-            )
+            }
             
             _testView.attributedString = attrString
         }
