@@ -30,7 +30,7 @@
 		6F3EEA1826A04DDA00821E41 /* RevealAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3EEA1726A04DDA00821E41 /* RevealAnimator.swift */; };
 		6F3EEA1B26A04DE500821E41 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3EEA1A26A04DE500821E41 /* Constants.swift */; };
 		6F3EEA2626A04E0400821E41 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3EEA2026A04E0400821E41 /* SplashViewController.swift */; };
-		6F3EEA2726A04E0400821E41 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3EEA2226A04E0400821E41 /* BaseViewController.swift */; };
+		6F3EEA2726A04E0400821E41 /* BaseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3EEA2226A04E0400821E41 /* BaseScene.swift */; };
 		6F3EEA2D26A04EB000821E41 /* SplashView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F3EEA2B26A04EB000821E41 /* SplashView.xib */; };
 		6F3EEA2E26A04EB000821E41 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3EEA2C26A04EB000821E41 /* SplashView.swift */; };
 		6F3EEA3B26A04EEC00821E41 /* LetteringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3EEA3126A04EEC00821E41 /* LetteringView.swift */; };
@@ -116,7 +116,7 @@
 		6F3EEA1726A04DDA00821E41 /* RevealAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RevealAnimator.swift; sourceTree = "<group>"; };
 		6F3EEA1A26A04DE500821E41 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		6F3EEA2026A04E0400821E41 /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
-		6F3EEA2226A04E0400821E41 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		6F3EEA2226A04E0400821E41 /* BaseScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseScene.swift; sourceTree = "<group>"; };
 		6F3EEA2B26A04EB000821E41 /* SplashView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SplashView.xib; sourceTree = "<group>"; };
 		6F3EEA2C26A04EB000821E41 /* SplashView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
 		6F3EEA3126A04EEC00821E41 /* LetteringView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LetteringView.swift; sourceTree = "<group>"; };
@@ -346,7 +346,7 @@
 		6F3EEA2126A04E0400821E41 /* BaseViewController */ = {
 			isa = PBXGroup;
 			children = (
-				6F3EEA2226A04E0400821E41 /* BaseViewController.swift */,
+				6F3EEA2226A04E0400821E41 /* BaseScene.swift */,
 			);
 			path = BaseViewController;
 			sourceTree = "<group>";
@@ -693,7 +693,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F3EEA3E26A04EEC00821E41 /* UIBezierPath+Extensions.swift in Sources */,
-				6F3EEA2726A04E0400821E41 /* BaseViewController.swift in Sources */,
+				6F3EEA2726A04E0400821E41 /* BaseScene.swift in Sources */,
 				6F3EEA3B26A04EEC00821E41 /* LetteringView.swift in Sources */,
 				6F8C9D2826B05CE7000D5DA0 /* Floating+Extensions.swift in Sources */,
 				6F3EE9EF26A047B800821E41 /* SplashCoordinator.swift in Sources */,

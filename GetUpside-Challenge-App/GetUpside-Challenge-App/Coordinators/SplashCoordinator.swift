@@ -6,8 +6,8 @@ protocol SplashCoordinatable: AnyObject {
     func catchTheError(_ error: Error)
 }
 
-protocol SplashViewControllerFactory: AnyObject {
-    func makeController(_ coordinator: SplashCoordinatable) -> UIViewController
+protocol SplashSceneFactory: AnyObject {
+    func makeScene(_ coordinator: SplashCoordinatable) -> UIViewController
 }
 
 extension Splash {
@@ -15,7 +15,7 @@ extension Splash {
     enum Event {}
     
     class Coordinator: BaseCoordinator {
-        typealias Factory = SplashViewControllerFactory
+        typealias Factory = SplashSceneFactory
 
         private let _navigationController: UINavigationController
         private let _factory: Factory
@@ -24,8 +24,8 @@ extension Splash {
         
         // MARK: - Public methods
         override func start(animated: Bool) {
-            let viewController = _factory.makeController(self)
-            _navigationController.setViewControllers([viewController], animated: animated)
+            let scene = _factory.makeScene(self)
+            _navigationController.setViewControllers([scene], animated: animated)
         }
         
         init(_ navigationController: UINavigationController, factory: Factory) {
@@ -67,6 +67,9 @@ extension Splash.Coordinator: UINavigationControllerDelegate {
       to toVC: UIViewController
     ) -> UIViewControllerAnimatedTransitioning? {
         let durationType = Constant.Animator.self
-        return RevealAnimator(durationType.duration, operation: operation)
+        return RevealAnimator(
+            durationType.duration,
+            operation: operation
+        )
     }
 }

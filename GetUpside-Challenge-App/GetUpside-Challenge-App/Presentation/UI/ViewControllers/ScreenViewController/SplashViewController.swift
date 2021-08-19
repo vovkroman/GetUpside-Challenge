@@ -2,7 +2,7 @@ import UIKit
 
 extension Splash {
     
-    class ViewController: BaseViewController<SplashView, InteractorImpl> {
+    class Scene: BaseScene<SplashView, InteractorImpl> {
                         
         private var _testView: LetteringView {
             return contentView._testView

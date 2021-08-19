@@ -3,7 +3,7 @@ import Logger
 
 typealias Viewable = UIView & NibReusable
 
-class BaseViewController<View: Viewable, InteractorImpl>: UIViewController, Interactorable {
+class BaseScene<View: Viewable, InteractorImpl>: UIViewController, Interactorable {
     
     typealias T = InteractorImpl
     
