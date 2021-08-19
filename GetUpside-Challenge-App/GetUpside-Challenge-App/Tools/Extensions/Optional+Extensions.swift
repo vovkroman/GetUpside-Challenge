@@ -18,7 +18,9 @@ extension Optional where Wrapped == String {
  */
 
 extension Optional {
-    func orThrow(_ errorExpression: @autoclosure () -> Error) throws -> Wrapped {
+    func orThrow(
+        _ errorExpression: @autoclosure () -> Error
+    ) throws -> Wrapped {
         switch self {
         case .some(let value):
             return value

@@ -53,10 +53,7 @@ extension Location {
 
 extension Location.Worker: LocationWorkerable {
     var isUserAuthorized: Bool {
-        return any(
-            lhs: _authorizationStatus,
-            rhs: .authorizedAlways, .authorizedWhenInUse
-        )
+        return any(value: _authorizationStatus, items: .authorizedAlways, .authorizedWhenInUse)
     }
     
     // MARK: - Public method

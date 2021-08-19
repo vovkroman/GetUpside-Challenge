@@ -1,5 +1,7 @@
 import Foundation
 
-func any<T: Equatable>(lhs: T, rhs: T...) -> Bool {
-  return rhs.contains(lhs)
+func any<T: Equatable>(
+    value: T, items: T...
+) -> Bool {
+  return items.contains(value)
 }

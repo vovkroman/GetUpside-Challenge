@@ -12,7 +12,9 @@ class RevealAnimator: NSObject {
     
     private let _duartion: TimeInterval
         
-    init?(_ duration: TimeInterval, operation: UINavigationController.Operation) {
+    init?(
+        _ duration: TimeInterval,
+        operation: UINavigationController.Operation) {
         // only push operation
         guard operation == .push else {
             return nil
@@ -20,7 +22,10 @@ class RevealAnimator: NSObject {
         _duartion = duration
     }
     
-    private func onTransitionComplete(with context: UIViewControllerContextTransitioning, toView: UIView, fromView: UIView) {
+    private func onTransitionComplete(
+        with context: UIViewControllerContextTransitioning,
+        toView: UIView,
+        fromView: UIView) {
         context.completeTransition(!context.transitionWasCancelled)
         toView.layer.mask = nil
     }
@@ -28,11 +33,15 @@ class RevealAnimator: NSObject {
 
 extension RevealAnimator: UIViewControllerAnimatedTransitioning {
     
-    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+    func transitionDuration(
+        using transitionContext: UIViewControllerContextTransitioning?
+    ) -> TimeInterval {
         return _duartion
     }
     
-    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+    func animateTransition(
+        using transitionContext: UIViewControllerContextTransitioning
+    ) {
         guard let fromView = transitionContext.view(forKey: .from) as? Revealable,
             let toView = transitionContext.view(forKey: .to) else {
                 transitionContext.completeTransition(false)
@@ -41,12 +50,13 @@ extension RevealAnimator: UIViewControllerAnimatedTransitioning {
         
         transitionContext.containerView.addSubview(toView)
         
-        let animParams = Animation.Params(from: CATransform3DIdentity,
-                                          to: CATransform3DConcat(CATransform3DMakeTranslation(0.0, -10.0, 0.0),
+        let animParams = Animation.Params(
+            from: CATransform3DIdentity,
+            to: CATransform3DConcat(CATransform3DMakeTranslation(0.0, -10.0, 0.0),
                                                                   CATransform3DMakeScale(100.0, 100.0, 1.0)),
-                                          duration: _duartion,
-                                          timingFunc: CAMediaTimingFunction(name: .easeIn),
-                                          isRemovedOnCompletion: false)
+            duration: _duartion,
+            timingFunc: CAMediaTimingFunction(name: .easeIn),
+            isRemovedOnCompletion: false)
         let _animation = CABasicAnimation(type: .transform(params: animParams))
         _animation.fillMode = .forwards
         

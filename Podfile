@@ -5,8 +5,12 @@ workspace 'GetUpside-Challenge'
 
 def pods
   pod 'ArcGIS-Runtime-SDK-iOS'
-  pod 'RealmSwift', '4.4.1'
+  
+  # Google Maps routines
   pod 'GoogleMaps'
+
+  #Realm DB
+  pod 'RealmSwift', '4.4.1'
 end
 
 target 'GetUpside-Challenge-App' do

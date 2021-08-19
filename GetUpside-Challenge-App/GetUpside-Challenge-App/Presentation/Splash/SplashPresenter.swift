@@ -1,7 +1,7 @@
 import Foundation
 
 extension Splash {
-    class StateMachine {
+    class Presenter {
         
     }
 }

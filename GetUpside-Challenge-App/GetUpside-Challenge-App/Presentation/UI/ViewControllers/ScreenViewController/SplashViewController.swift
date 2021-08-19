@@ -36,6 +36,7 @@ extension Splash {
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.alignment = .center
             
+            // creating attributes is very resource consumed,makes sense to crate static attributes
             let attrString = NSAttributedString.composing {
                 NSAttributedString(string: "Get\n",
                                    attributes: [NSAttributedString.Key.font: type.title,

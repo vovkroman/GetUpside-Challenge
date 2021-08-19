@@ -18,7 +18,9 @@ class AnyFetchRouter<Fetch: FetchType>: FetchRouter {
     private var _fetchTask: AGSCancelable?
     private var _locatorTask: AGSLocatorTask?
     
-    func performFetch(_ route: Fetch) -> Future<[AGSGeocodeResult]> {
+    func performFetch(
+        _ route: Fetch
+    ) -> Future<[AGSGeocodeResult]> {
         let promise: Promise<[AGSGeocodeResult]> = .init()
         do {
             let fecthdata = try _buildFetch(from: route)
@@ -26,7 +28,10 @@ class AnyFetchRouter<Fetch: FetchType>: FetchRouter {
             _locatorTask = fecthdata.locator
             let params = fecthdata.params
             
-            _fetchTask = _locatorTask?.geocode(withSearchText: route.searchResult, parameters: params) { (result, error) in
+            _fetchTask = _locatorTask?.geocode(
+                withSearchText: route.searchResult,
+                parameters: params
+            ) { (result, error) in
                 if let error = error {
                     promise.reject(with: error)
                     return
@@ -44,7 +49,9 @@ class AnyFetchRouter<Fetch: FetchType>: FetchRouter {
         return promise
     }
     
-    private func _buildFetch(from route: Fetch) throws -> FetchData {
+    private func _buildFetch(
+        from route: Fetch
+    ) throws -> FetchData {
         guard let url = URL(string: route.urlString) else {
             throw FetchError.error(description: "Failed to create URL from \(route.urlString)")
         }
