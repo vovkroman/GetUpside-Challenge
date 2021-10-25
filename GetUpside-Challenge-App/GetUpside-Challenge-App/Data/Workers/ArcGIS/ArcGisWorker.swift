@@ -1,7 +1,7 @@
 import ArcGIS
 import FutureKit
 
-class ArcGisWorker {
+final class ArcGisWorker {
     
     private let _router: AnyFetchRouter<FoodApi>
     

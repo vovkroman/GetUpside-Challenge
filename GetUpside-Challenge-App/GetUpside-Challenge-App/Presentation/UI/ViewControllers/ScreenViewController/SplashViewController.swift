@@ -53,3 +53,19 @@ extension Splash {
         }
     }
 }
+
+
+extension Splash.Scene: StateMachineObserver {
+    func stateDidChanched(_ stateMachine: Splash.StateMachine, to: Splash.StateMachine.State) {
+        switch to {
+        case .idle,.loading:
+            // show animation
+            break
+        case .error:
+            break
+        case .items:
+            //interactor.fetchTheData()
+            break
+        }
+    }
+}

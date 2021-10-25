@@ -24,6 +24,13 @@ protocol LocationUpdating: AnyObject {
 
 extension Location {
     
+    enum Error {
+        case unknown
+        case denied
+        case restricted
+        case other(CLError)
+    }
+    
     final class Worker: NSObject {
     
         private let _manager: CLLocationManager
@@ -92,6 +99,28 @@ extension Location.Worker: CLLocationManagerDelegate {
         _ manager: CLLocationManager,
         didFailWithError error: Error) {
         delegate?.location(self, catch: error)
+    }
+}
+
+extension Location.Error: Error, CustomStringConvertible {
+    var description: String {
+        switch self {
+        case .denied:
+            return """
+                User has explicitly denied authorization for this application, or
+                location services are disabled in Settings.
+                """
+        case .restricted:
+            return """
+                  This application is not authorized to use location services. Due
+                  to active restrictions on location services, You cannot change
+                  this status, and may not have personally denied authorization.
+                  """
+        case .other(let error):
+            return error.localizedDescription
+        case .unknown:
+            return "Location is currently unknown, but Location service will keep trying"
+        }
     }
 }
 

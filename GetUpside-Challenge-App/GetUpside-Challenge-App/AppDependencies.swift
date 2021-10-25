@@ -26,17 +26,33 @@ class AppDependencies {
         
         return locationManager
     }()
+    
+    
+    lazy private var _queue: DispatchQueue = {
+        let queue = DispatchQueue(label: "com.getUpside-challenge-global")
+        return queue
+    }()
 }
 
-extension AppDependencies: SplashSceneFactory {
+extension AppDependencies: SplashSceneFactoring {
+    
+    // build dependenacies
     func makeScene(_ coordinator: SplashCoordinatable) -> UIViewController {
         let locationWorker = Location.Worker(_locationManager)
         
-        let intercator = Splash.InteractorImpl(locationWorker)
-        intercator.setCoorindator(coordinator)
+        let queue = DispatchQueue(
+            label: "com.getUpside-challenge-splash",
+            target: _queue
+        )
+        
+        let presenter = Splash.Presenter(queue)
+        let intercator = Splash.InteractorImpl(locationWorker, presenter: presenter)
+        intercator.coordinator = coordinator
         locationWorker.delegate = intercator
         
         let viewController = Splash.Scene(interactor: intercator)
+        presenter.observer = viewController
+        
         return viewController
     }
 }

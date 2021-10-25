@@ -21,9 +21,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>This request has popped up due to a ArcGIS framework used by the app in a context that does NOT need you to reveal you location</string>
+	<string>This request has popped up due to a ArcGIS framework used by the app in a context that does need you to reveal you location</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>You will get zero benefit allowing this app accessing your location. You should never see this alert. If you do alert technical support at foo@bar.baz</string>
+	<string>This request has popped up due to a ArcGIS framework used by the app in a context that does need you to reveal you location</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

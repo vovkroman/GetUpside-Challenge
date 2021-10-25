@@ -12,6 +12,7 @@
 		6F0B3DF226AF1DC600A01ABF /* FetchType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0B3DEC26AF1DC600A01ABF /* FetchType.swift */; };
 		6F0B3DF426AF1DC600A01ABF /* FoodApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0B3DEE26AF1DC600A01ABF /* FoodApi.swift */; };
 		6F0B3DF526AF1DC600A01ABF /* FetchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0B3DF026AF1DC600A01ABF /* FetchRouter.swift */; };
+		6F33AA4426CFB54600A469FC /* StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F33AA4326CFB54600A469FC /* StateMachine.swift */; };
 		6F3EE9B126A0459800821E41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3EE9B026A0459800821E41 /* AppDelegate.swift */; };
 		6F3EE9B826A0459800821E41 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F3EE9B626A0459800821E41 /* Main.storyboard */; };
 		6F3EE9BA26A0459900821E41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6F3EE9B926A0459900821E41 /* Assets.xcassets */; };
@@ -94,6 +95,7 @@
 		6F0B3DEC26AF1DC600A01ABF /* FetchType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchType.swift; sourceTree = "<group>"; };
 		6F0B3DEE26AF1DC600A01ABF /* FoodApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodApi.swift; sourceTree = "<group>"; };
 		6F0B3DF026AF1DC600A01ABF /* FetchRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchRouter.swift; sourceTree = "<group>"; };
+		6F33AA4326CFB54600A469FC /* StateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateMachine.swift; sourceTree = "<group>"; };
 		6F3EE9AD26A0459800821E41 /* GetUpside-Challenge-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GetUpside-Challenge-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F3EE9B026A0459800821E41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6F3EE9B726A0459800821E41 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -494,6 +496,7 @@
 		6FA32B6926B6F01D00275B48 /* Splash */ = {
 			isa = PBXGroup;
 			children = (
+				6F33AA4326CFB54600A469FC /* StateMachine.swift */,
 				6FA32B6A26B6F03600275B48 /* SplashPresenter.swift */,
 			);
 			path = Splash;
@@ -701,6 +704,7 @@
 				6F56108926B16236002182BA /* NSAttributedStringBuilder.swift in Sources */,
 				6FA1016A26B327340052D939 /* AnyOf.swift in Sources */,
 				6F3EEA4626A04FF600821E41 /* Reusable.swift in Sources */,
+				6F33AA4426CFB54600A469FC /* StateMachine.swift in Sources */,
 				6F8C9D1F26B02BA6000D5DA0 /* LocationWorker.swift in Sources */,
 				6F3EEA4E26A05E9D00821E41 /* Interactorable.swift in Sources */,
 				6F56108E26B17B6D002182BA /* SplashInteractorImpl.swift in Sources */,

@@ -6,7 +6,7 @@ protocol SplashCoordinatable: AnyObject {
     func catchTheError(_ error: Error)
 }
 
-protocol SplashSceneFactory: AnyObject {
+protocol SplashSceneFactoring: AnyObject {
     func makeScene(_ coordinator: SplashCoordinatable) -> UIViewController
 }
 
@@ -15,7 +15,7 @@ extension Splash {
     enum Event {}
     
     class Coordinator: BaseCoordinator {
-        typealias Factory = SplashSceneFactory
+        typealias Factory = SplashSceneFactoring
 
         private let _navigationController: UINavigationController
         private let _factory: Factory

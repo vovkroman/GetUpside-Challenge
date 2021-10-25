@@ -10,12 +10,14 @@ enum Animation {
         let timingFunc: CAMediaTimingFunction
         let isRemovedOnCompletion: Bool
         
-        init(beginTime: CFTimeInterval = 0.0,
+        init(
+            beginTime: CFTimeInterval = 0.0,
              from: Value,
              to: Value,
              duration: CFTimeInterval,
              timingFunc: CAMediaTimingFunction,
-             isRemovedOnCompletion: Bool = true) {
+             isRemovedOnCompletion: Bool = true
+        ) {
             self.beginTime = beginTime
             self.from = from
             self.to = to
@@ -52,7 +54,9 @@ enum Animation {
 }
 
 extension CABasicAnimation {
-    convenience init(type: Animation.KeyPath) {
+    convenience init(
+        type: Animation.KeyPath
+    ) {
         self.init(keyPath: "\(type)")
         switch type {
         case .strokeEnd(let params),
