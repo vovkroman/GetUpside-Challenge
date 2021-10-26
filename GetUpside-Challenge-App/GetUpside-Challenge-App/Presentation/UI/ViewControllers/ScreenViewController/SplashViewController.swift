@@ -27,7 +27,11 @@ extension Splash {
         // MARK: - Configurations
         
         private func _initialSetup() {
-            interactor.fetchTheData()
+            interactor.requestLocation()
+        }
+        
+        private func _fetchData(by coordinate: Coordinate) {
+            interactor.fetachData(Splash.Request(coordinates: coordinate))
         }
         
         private func _setupLogo() {
@@ -58,13 +62,14 @@ extension Splash {
 extension Splash.Scene: StateMachineObserver {
     func stateDidChanched(_ stateMachine: Splash.StateMachine, to: Splash.StateMachine.State) {
         switch to {
-        case .idle,.loading:
-            // show animation
+        case .idle, .loading:
+            print("Loading....")
+        case .error(let error):
+            print("Got an error: \(error)")
             break
-        case .error:
-            break
-        case .items:
-            //interactor.fetchTheData()
+        case .operating(let coordinate):
+            print("Got new coordinate: \(coordinate)")
+            _fetchData(by: coordinate)
             break
         }
     }

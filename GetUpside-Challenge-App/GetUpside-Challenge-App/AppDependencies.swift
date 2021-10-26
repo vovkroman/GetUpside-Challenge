@@ -39,14 +39,18 @@ extension AppDependencies: SplashSceneFactoring {
     // build dependenacies
     func makeScene(_ coordinator: SplashCoordinatable) -> UIViewController {
         let locationWorker = Location.Worker(_locationManager)
-        
+        let itemsWorker = ArcGis.Worker(AnyFetchRouter())
         let queue = DispatchQueue(
             label: "com.getUpside-challenge-splash",
             target: _queue
         )
         
         let presenter = Splash.Presenter(queue)
-        let intercator = Splash.InteractorImpl(locationWorker, presenter: presenter)
+        let intercator = Splash.InteractorImpl(
+            locationWorker,
+            itemsWorker,
+            presenter: presenter
+        )
         intercator.coordinator = coordinator
         locationWorker.delegate = intercator
         

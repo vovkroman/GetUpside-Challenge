@@ -1,35 +1,68 @@
 import Foundation
 
+protocol SplashUseCase: AnyObject {
+    associatedtype Request
+    func requestLocation()
+    func fetachData(_ request: Request)
+}
+
 extension Splash {
+    
+    struct Request {
+        let coordinates: Coordinate
+    }
+    
     final class InteractorImpl {
         
-        private let _locationWorker: LocationWorkerable
+        // workers
+        private let _locationWorker: LocationUseCase
+        private let _apiWorker: GetEateriesUseCase
+        
         private var _presenter: SplashPresentable
         
         weak var coordinator: SplashCoordinatable?
         
-        func fetchTheData() {
-            if _locationWorker.isUserAuthorized {
-                _locationWorker.startUpdatingLocation()
-            } else {
-                _locationWorker.requestForAutorization()
-                _presenter.locationDidRequestForAuthorization()
-            }
-        }
-        
         init(
-            _ location: LocationWorkerable,
+            _ location: LocationUseCase,
+            _ apiWorker: GetEateriesUseCase,
             presenter: SplashPresentable
         ) {
+            _apiWorker = apiWorker
             _locationWorker = location
             _presenter = presenter
         }
     }
 }
 
+extension Splash.InteractorImpl: SplashUseCase {
+    
+    typealias Request = Splash.Request
+    
+    func requestLocation() {
+        if _locationWorker.isUserAuthorized {
+            _locationWorker.startUpdatingLocation()
+        } else {
+            _locationWorker.requestForAutorization()
+            _presenter.locationDidRequestForAuthorization()
+        }
+    }
+    
+    func fetachData(_ request: Request) {
+        _apiWorker.fetchData(request.coordinates).observe { [weak self] result in
+            switch result {
+            case .success(let items):
+                print(items)
+                //coordinator?.cacthTheEvent()
+            case .failure(let error):
+                self?._presenter.locationCatch(the: .other(error))
+            }
+        }
+    }
+}
+
 extension Splash.InteractorImpl: LocationUpdating {
     func location(
-        _ worker: LocationWorkerable,
+        _ worker: LocationUseCase,
         authStatusDidUpdated status: LocationStatus
     ) {
         switch status {
@@ -39,23 +72,22 @@ extension Splash.InteractorImpl: LocationUpdating {
             _presenter.locationCatch(the: Location.Error.denied)
         case .restricted:
             _presenter.locationCatch(the: Location.Error.restricted)
-        case .notDetermined:
-            // nothing to do
+        default: // including not defined
             break
         }
     }
     
     func location(
-        _ worker: LocationWorkerable,
+        _ worker: LocationUseCase,
         locationDidUpdated locationCoordinate: Coordinate
     ) {
         _presenter.locationDidUpdated(with: locationCoordinate)
     }
     
     func location(
-        _ worker: LocationWorkerable,
+        _ worker: LocationUseCase,
         catch error: Error
     ) {
-        _presenter.locationCatch(the: error)
+        _presenter.locationCatch(the: .other(error))
     }
 }

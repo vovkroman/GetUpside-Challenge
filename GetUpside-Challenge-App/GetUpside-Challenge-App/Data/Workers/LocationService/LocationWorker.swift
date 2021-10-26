@@ -4,9 +4,10 @@ import CoreLocation
 
 typealias Coordinate = CLLocationCoordinate2D
 typealias LocationStatus = CLAuthorizationStatus
+typealias OtherError = Error
 
 // Interface for location worker
-protocol LocationWorkerable: AnyObject {
+protocol LocationUseCase: AnyObject {
     var isUserAuthorized: Bool { get }
     func requestForAutorization()
     
@@ -17,9 +18,9 @@ protocol LocationWorkerable: AnyObject {
 }
 
 protocol LocationUpdating: AnyObject {
-    func location(_ worker: LocationWorkerable, authStatusDidUpdated status: LocationStatus)
-    func location(_ worker: LocationWorkerable, locationDidUpdated locationCoordinate: Coordinate)
-    func location(_ worker: LocationWorkerable, catch error: Error)
+    func location(_ worker: LocationUseCase, authStatusDidUpdated status: LocationStatus)
+    func location(_ worker: LocationUseCase, locationDidUpdated locationCoordinate: Coordinate)
+    func location(_ worker: LocationUseCase, catch error: Error)
 }
 
 extension Location {
@@ -28,7 +29,7 @@ extension Location {
         case unknown
         case denied
         case restricted
-        case other(CLError)
+        case other(OtherError)
     }
     
     final class Worker: NSObject {
@@ -58,7 +59,7 @@ extension Location {
     }
 }
 
-extension Location.Worker: LocationWorkerable {
+extension Location.Worker: LocationUseCase {
     var isUserAuthorized: Bool {
         return any(value: _authorizationStatus, items: .authorizedAlways, .authorizedWhenInUse)
     }
@@ -120,6 +121,24 @@ extension Location.Error: Error, CustomStringConvertible {
             return error.localizedDescription
         case .unknown:
             return "Location is currently unknown, but Location service will keep trying"
+        }
+    }
+}
+
+extension Location.Error: Equatable {
+    static func == (
+        lhs: Location.Error,
+        rhs: Location.Error
+    ) -> Bool {
+        switch (lhs, rhs) {
+        case (.unknown, .unknown),
+             (.denied, .denied),
+             (.restricted, .restricted):
+            return true
+        case (.other(let lhs), .other(let rhs)):
+            return lhs.localizedDescription == rhs.localizedDescription
+        default:
+            return false
         }
     }
 }

@@ -6,12 +6,14 @@ extension Splash {
         enum State {
             case idle
             case loading
-            case items
-            case error
+            case operating(coordinate: Coordinate)
+            case error(error: Location.Error)
         }
         
         enum Event {
-            
+            case authDidStarted
+            case coordinateDidUpdated(Coordinate)
+            case catchError(Location.Error)
         }
         
         private var _state: State = .idle {
@@ -28,9 +30,23 @@ extension Splash {
         
         func transition(with event: Event) {
             switch (_state, event) {
-            case (_, _):
+            case (.idle, .authDidStarted), (.operating, .authDidStarted), (.error, .authDidStarted):
+                _state = .loading
+            case (.idle, .coordinateDidUpdated(let coordinate)), (.error, .coordinateDidUpdated(let coordinate)):
+                _state = .operating(coordinate: coordinate)
+            case (.idle, .catchError(let error)), (.loading, .catchError(let error)), (.operating, .catchError(let error)):
+                _state = .error(error: error)
+            case (.loading, .authDidStarted):
                 break
-            default:
+            case (.loading, .coordinateDidUpdated(let coordinate)):
+                _state = .operating(coordinate: coordinate)
+            case (.operating(let old), .coordinateDidUpdated(let new)) where old != new:
+                _state = .operating(coordinate: new)
+            case (.operating, .coordinateDidUpdated):
+                break
+            case (.error(let old), .catchError(let new)) where old != new:
+                _state = .error(error: new)
+            case (.error, .catchError):
                 break
             }
         }
@@ -45,10 +61,12 @@ extension Splash.StateMachine.State: Equatable {
     ) -> Bool {
         switch (lhs, rhs) {
         case (.idle, .idle),
-             (.loading, .loading),
-             (.items, .items),
-             (.error, .error):
+             (.loading, .loading):
             return true
+        case (.operating(let lhs), .operating(let rhs)):
+            return lhs == rhs
+        case (.error(let lhs), .error(let rhs)):
+            return lhs == rhs
         default:
             return false
         }
