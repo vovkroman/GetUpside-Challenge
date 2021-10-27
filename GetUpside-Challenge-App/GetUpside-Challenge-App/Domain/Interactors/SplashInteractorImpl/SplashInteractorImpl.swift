@@ -20,7 +20,7 @@ extension Splash {
         
         private var _presenter: SplashPresentable
         
-        weak var coordinator: AnyCoordinating<Splash.Event>?
+        var coordinator: AnyCoordinating<Splash.Event>?
         
         init(
             _ location: LocationUseCase,
@@ -52,9 +52,9 @@ extension Splash.InteractorImpl: SplashUseCase {
             switch result {
             case .success(let items):
                 print(items)
-                //coordinator?.cacthTheEvent()
+                self?.coordinator?.cacthTheEvent(.items(items))
             case .failure(let error):
-                self?._presenter.locationCatch(the: .other(error))
+                self?.coordinator?.catchTheError(error)
             }
         }
     }

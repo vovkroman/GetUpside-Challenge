@@ -27,33 +27,14 @@ class AnyCoordinating<T>: Coordinating {
     }
 }
 
-protocol SceneFactoring: AnyObject {
-    associatedtype Event
-    func makeScene(_ coordinator: AnyCoordinating<Event>) -> UIViewController
-}
-
-class AnyScreenFactoring<T>: SceneFactoring {
-    
-    typealias Event = T
-    
-    private let _makeScreen: (AnyCoordinating<T>) -> UIViewController
-    
-    func makeScene(_ coordinator: AnyCoordinating<T>) -> UIViewController {
-        return _makeScreen(coordinator)
-    }
-    
-    init<ScreenFactory: SceneFactoring>(_ factory: ScreenFactory) where ScreenFactory.Event == T {
-        _makeScreen = factory.makeScene
-    }
+protocol SceneBuilder: AnyObject {
+    func makeScene() -> UIViewController
 }
 
 // Specific Screen factories
-final class SplashScreenFactory: SceneFactoring {
-    typealias Event = Splash.Event
-    
-    private let _appDependecies: AppDependencies
-    
-    func makeScene(_ coordinator: AnyCoordinating<Splash.Event>) -> UIViewController {
+final class SplashScreenBuilder: SceneBuilder {
+        
+    func makeScene() -> UIViewController {
         let locationWorker = Location.Worker(_appDependecies.locationManager)
         let itemsWorker = ArcGis.Worker(AnyFetchRouter())
         let queue = DispatchQueue(
@@ -67,7 +48,7 @@ final class SplashScreenFactory: SceneFactoring {
             itemsWorker,
             presenter: presenter
         )
-        intercator.coordinator = coordinator
+        intercator.coordinator = coordinator.flatMap(AnyCoordinating.init)
         locationWorker.delegate = intercator
         
         let viewController = Splash.Scene(interactor: intercator)
@@ -75,6 +56,9 @@ final class SplashScreenFactory: SceneFactoring {
         
         return viewController
     }
+    
+    weak var coordinator: Splash.Coordinator?
+    private let _appDependecies: AppDependencies
     
     init(_ appDependencies: AppDependencies) {
         _appDependecies = appDependencies

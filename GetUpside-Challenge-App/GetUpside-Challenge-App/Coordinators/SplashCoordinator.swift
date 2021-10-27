@@ -2,30 +2,33 @@ import UIKit
 import Logger
 
 extension Splash {
-    
     typealias Entity = Eatery
-
     enum Event {
         case items([Entity])
     }
     
     class Coordinator: BaseCoordinator {
-        typealias Factory = AnyScreenFactoring<Splash.Event>
-
         private let _navigationController: UINavigationController
-        private let _factory: Factory
+        private let _appDependecies: AppDependencies
         
         weak var parentCoordinator: ApplicationCoordinator?
         
         // MARK: - Public methods
         override func start(animated: Bool) {
-            let scene = _factory.makeScene(AnyCoordinating(self))
+            
+            let builder = SplashScreenBuilder(_appDependecies)
+            builder.coordinator = self
+            
+            let scene = builder.makeScene()
             _navigationController.setViewControllers([scene], animated: animated)
         }
         
-        init(_ navigationController: UINavigationController, factory: Factory) {
+        init(
+            _ navigationController: UINavigationController,
+             appDependecies: AppDependencies
+        ) {
             _navigationController = navigationController
-            _factory = factory
+            _appDependecies = appDependecies
             super.init()
             _navigationController.delegate = self
         }
@@ -49,7 +52,9 @@ extension Splash.Coordinator: Coordinating {
         print(event)
     }
     
-    func catchTheError(_ error: Error) {}
+    func catchTheError(_ error: Error) {
+        print(error.localizedDescription)
+    }
 }
 
 extension Splash.Coordinator: UINavigationControllerDelegate {
