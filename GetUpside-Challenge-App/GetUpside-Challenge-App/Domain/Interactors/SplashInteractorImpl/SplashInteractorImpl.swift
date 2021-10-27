@@ -20,7 +20,7 @@ extension Splash {
         
         private var _presenter: SplashPresentable
         
-        weak var coordinator: SplashCoordinatable?
+        weak var coordinator: AnyCoordinating<Splash.Event>?
         
         init(
             _ location: LocationUseCase,

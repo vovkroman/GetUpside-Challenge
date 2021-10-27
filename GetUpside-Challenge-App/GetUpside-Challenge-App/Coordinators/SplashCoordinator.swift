@@ -1,21 +1,16 @@
 import UIKit
 import Logger
 
-protocol SplashCoordinatable: AnyObject {
-    func cacthTheEvent(_ event: Splash.Event)
-    func catchTheError(_ error: Error)
-}
-
-protocol SplashSceneFactoring: AnyObject {
-    func makeScene(_ coordinator: SplashCoordinatable) -> UIViewController
-}
-
 extension Splash {
     
-    enum Event {}
+    typealias Entity = Eatery
+
+    enum Event {
+        case items([Entity])
+    }
     
     class Coordinator: BaseCoordinator {
-        typealias Factory = SplashSceneFactoring
+        typealias Factory = AnyScreenFactoring<Splash.Event>
 
         private let _navigationController: UINavigationController
         private let _factory: Factory
@@ -24,7 +19,7 @@ extension Splash {
         
         // MARK: - Public methods
         override func start(animated: Bool) {
-            let scene = _factory.makeScene(self)
+            let scene = _factory.makeScene(AnyCoordinating(self))
             _navigationController.setViewControllers([scene], animated: animated)
         }
         
@@ -47,15 +42,14 @@ extension Splash {
     }
 }
 
-extension Splash.Coordinator: SplashCoordinatable {
+extension Splash.Coordinator: Coordinating {
+    typealias Event = Splash.Event
     
-    func cacthTheEvent(_ event: Splash.Event) {
-        
+    func cacthTheEvent(_ event: Event) {
+        print(event)
     }
     
-    func catchTheError(_ error: Error) {
-        
-    }
+    func catchTheError(_ error: Error) {}
 }
 
 extension Splash.Coordinator: UINavigationControllerDelegate {

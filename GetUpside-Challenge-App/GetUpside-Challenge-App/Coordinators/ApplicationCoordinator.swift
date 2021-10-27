@@ -17,7 +17,7 @@ class ApplicationCoordinator: BaseCoordinator {
         // to coordinate to splash if we need to fetch some data (such as intial service requests)
         let splashCoordinator = Splash.Coordinator(
             navigationController,
-            factory: _appDependencies
+            factory: AnyScreenFactoring(SplashScreenFactory(_appDependencies))
         )
         
         splashCoordinator.parentCoordinator = self
