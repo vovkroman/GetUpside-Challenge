@@ -4,7 +4,7 @@ import CoreLocation
 // Impl of DI conatiner
 class AppDependencies {
     
-    lazy private(set) var locationManager: CLLocationManager = {
+    lazy private var _locationManager: CLLocationManager = {
 /*  Though the code above is fine, it can be optimised to reduce power usage in the following ways:
 // **desiredAccuracy** - This is documented in Core Location Constants,
          and the trick is that the more accurate the desired accuracy, the more antennas are turned on (which uses more power).
@@ -27,9 +27,35 @@ class AppDependencies {
         return locationManager
     }()
     
-    
-    lazy private(set) var queue: DispatchQueue = {
+    lazy private var _queue: DispatchQueue = {
         let queue = DispatchQueue(label: "com.getUpside-challenge-global")
         return queue
     }()
+}
+
+extension AppDependencies: SceneFactoriable {
+    func makeScene<Coordinator>(_ coordinator: Coordinator) -> UIViewController where Coordinator: Coordinating {
+        return UIViewController()
+    }
+    
+    func makeScene<Coordinator: Coordinating>(_ coordinator: Coordinator) -> UIViewController where Coordinator.Event == Splash.Event {
+        let locationWorker = Location.Worker(_locationManager)
+        let itemsWorker = ArcGis.Worker(AnyFetchRouter())
+        let queue = DispatchQueue(
+            label: "com.getUpside-challenge-splash",
+            target: _queue
+        )
+        
+        let presenter = Splash.Presenter(queue)
+        let intercator = Splash.InteractorImpl(
+            locationWorker,
+            itemsWorker,
+            presenter: presenter
+        )
+        intercator.coordinator = AnyCoordinating(coordinator)
+        locationWorker.delegate = intercator
+        let viewController = Splash.Scene(interactor: intercator)
+        presenter.observer = viewController
+        return viewController
+    }
 }

@@ -27,40 +27,7 @@ class AnyCoordinating<T>: Coordinating {
     }
 }
 
-protocol SceneBuilder: AnyObject {
-    func makeScene() -> UIViewController
-}
-
-// Specific Screen factories
-final class SplashScreenBuilder: SceneBuilder {
-        
-    func makeScene() -> UIViewController {
-        let locationWorker = Location.Worker(_appDependecies.locationManager)
-        let itemsWorker = ArcGis.Worker(AnyFetchRouter())
-        let queue = DispatchQueue(
-            label: "com.getUpside-challenge-splash",
-            target: _appDependecies.queue
-        )
-        
-        let presenter = Splash.Presenter(queue)
-        let intercator = Splash.InteractorImpl(
-            locationWorker,
-            itemsWorker,
-            presenter: presenter
-        )
-        intercator.coordinator = coordinator.flatMap(AnyCoordinating.init)
-        locationWorker.delegate = intercator
-        
-        let viewController = Splash.Scene(interactor: intercator)
-        presenter.observer = viewController
-        
-        return viewController
-    }
-    
-    weak var coordinator: Splash.Coordinator?
-    private let _appDependecies: AppDependencies
-    
-    init(_ appDependencies: AppDependencies) {
-        _appDependecies = appDependencies
-    }
+// Specific Factory Interface
+protocol SceneFactoriable {
+    func makeScene<Coordinator: Coordinating>(_ coordinator: Coordinator) -> UIViewController
 }

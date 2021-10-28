@@ -12,7 +12,8 @@ extension Main {
         override func start(animated: Bool) {
             //let viewController = Main.ViewController(viewModel: )
             _navigationController.isNavigationBarHidden = false
-            //_navigationController.setViewControllers([viewController], animated: animated)
+            // let viewController = UIViewController()
+            // _navigationController.setViewControllers([viewController], animated: animated)
         }
         
         init(_ navigationController: UINavigationController) {

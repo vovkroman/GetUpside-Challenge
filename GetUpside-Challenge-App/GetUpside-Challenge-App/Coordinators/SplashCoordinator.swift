@@ -15,11 +15,7 @@ extension Splash {
         
         // MARK: - Public methods
         override func start(animated: Bool) {
-            
-            let builder = SplashScreenBuilder(_appDependecies)
-            builder.coordinator = self
-            
-            let scene = builder.makeScene()
+            let scene = _appDependecies.makeScene(self)
             _navigationController.setViewControllers([scene], animated: animated)
         }
         
@@ -35,13 +31,13 @@ extension Splash {
         
         // MARK: - Private methods
         
-//        private func _navigateToMainFlow(animated: Bool = true, viewModel: Main.ViewModel) {
-////            let mainCoordintaor = Main.Coordinator(_navigationController, viewModel: viewModel)
-////            mainCoordintaor.parentCoordinator = parentCoordinator
-////            parentCoordinator?.removeDependency(self)
-////            parentCoordinator?.addDependency(mainCoordintaor)
-////            coordinate(to: mainCoordintaor, animated: animated)
-//        }
+        private func _navigateToMainFlow(animated: Bool = true) {
+            let mainCoordintaor = Main.Coordinator(_navigationController)
+            mainCoordintaor.parentCoordinator = parentCoordinator
+            parentCoordinator?.removeDependency(self)
+            parentCoordinator?.addDependency(mainCoordintaor)
+            coordinate(to: mainCoordintaor, animated: animated)
+        }
     }
 }
 
@@ -53,7 +49,7 @@ extension Splash.Coordinator: Coordinating {
     }
     
     func catchTheError(_ error: Error) {
-        print(error.localizedDescription)
+        DispatchQueue.main.async(execute: combine(true, with: _navigateToMainFlow))
     }
 }
 
