@@ -49,7 +49,7 @@ extension Splash.Coordinator: Coordinating {
     }
     
     func catchTheError(_ error: Error) {
-        DispatchQueue.main.async(execute: combine(true, with: _navigateToMainFlow))
+        //DispatchQueue.main.async(execute: combine(true, with: _navigateToMainFlow))
     }
 }
 

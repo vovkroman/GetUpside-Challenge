@@ -5,6 +5,7 @@ final class SplashContainerView: UIView, NibReusable {
     private(set) weak var child: SplashableView?
     
     override func addSubview(_ view: UIView) {
+        _removePrevious()
         super.addSubview(view)
         view.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -16,8 +17,8 @@ final class SplashContainerView: UIView, NibReusable {
         child = view as? SplashableView
     }
     
-    
-    func removePrevious() {
+    // MARK: - Utils
+    private func _removePrevious() {
         child?.removeFromSuperview()
         child = nil
     }

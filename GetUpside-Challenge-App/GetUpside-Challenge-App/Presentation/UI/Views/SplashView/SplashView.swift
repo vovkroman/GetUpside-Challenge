@@ -10,7 +10,7 @@ final class SplashView: UIView, NibReusable {
     }
     
     func showError(_ error: Error) {
-        let view = ErrorView(frame: .zero)
+        let view = ErrorView("\(error)")
         _containerView.addSubview(view)
     }
 }

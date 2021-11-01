@@ -18,7 +18,7 @@
                     <rect key="frame" x="16" y="204.5" width="299" height="0.0"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" priority="999" id="tee-Ci-7Tg"/>
+                        <constraint firstAttribute="height" priority="750" id="wB8-Zm-bk9"/>
                     </constraints>
                 </view>
             </subviews>
@@ -33,7 +33,7 @@
             <connections>
                 <outlet property="_containerView" destination="AjJ-T7-wEY" id="tig-n7-lJu"/>
             </connections>
-            <point key="canvasLocation" x="-109.42028985507247" y="-13.727678571428571"/>
+            <point key="canvasLocation" x="-93" y="-23"/>
         </view>
     </objects>
 </document>

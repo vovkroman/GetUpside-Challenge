@@ -12,7 +12,8 @@ extension Splash {
         
         override func viewDidLoad() {
             super.viewDidLoad()
-            contentView.showError(Location.Error.restricted)
+            _initialSetup()
+            contentView.showLoading()
             contentView.setup()
         }
         
@@ -30,21 +31,26 @@ extension Splash {
         private func _fetchData(by coordinate: Coordinate) {
             interactor.fetachData(Splash.Request(coordinates: coordinate))
         }
+        
+        // MARK: - Operating
+        
+        private func _handleState(_ state: Splash.StateMachine.State) {
+            switch state {
+            case .idle, .loading:
+                contentView.showLoading()
+            case .error(let error):
+                contentView.showError(error)
+            case .operating(let coordinate):
+                print("Got new coordinate: \(coordinate)")
+                _fetchData(by: coordinate)
+                break
+            }
+        }
     }
 }
 
 extension Splash.Scene: StateMachineObserver {
     func stateDidChanched(_ stateMachine: Splash.StateMachine, to: Splash.StateMachine.State) {
-        switch to {
-        case .idle, .loading:
-            print("Loading....")
-        case .error(let error):
-            print("Got an error: \(error)")
-            break
-        case .operating(let coordinate):
-            print("Got new coordinate: \(coordinate)")
-            _fetchData(by: coordinate)
-            break
-        }
+        DispatchQueue.main.async(execute: combine(to, with: _handleState))
     }
 }

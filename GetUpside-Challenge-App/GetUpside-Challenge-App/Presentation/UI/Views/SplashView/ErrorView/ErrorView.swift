@@ -1,26 +1,30 @@
 import Foundation
 
-final class ErrorView: UIView, NibReusable {
+final class ErrorView: UIView, NibOwnerLoadable {
     
-    @IBOutlet weak var _descriptionLabel: UILabel!
+    @IBOutlet private var _descriptionLabel: UILabel!
+    
+    convenience
+    init(_ errorDescription: String) {
+        self.init(frame: CGRect(x: 0.0, y: 0.0, width: 200.0, height: 200.0))
+        _descriptionLabel.text = errorDescription
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupFromNib()
+        loadNibContent()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        setupFromNib()
+        loadNibContent()
     }
     
-    override var intrinsicContentSize: CGSize {
-        
-    }
+    // MARK: Create view from xib
     
-    // Actions
+    // MARK: - Actions
     @IBAction private func didTapButton(_ sender: UIButton) {
-        
+        print("Tap the action")
     }
 }
 
