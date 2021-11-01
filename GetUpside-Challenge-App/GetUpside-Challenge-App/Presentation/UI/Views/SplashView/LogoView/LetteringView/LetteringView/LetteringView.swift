@@ -1,6 +1,6 @@
 import UIKit
 
-final class LetteringView: UIView {
+class LetteringView: UIView {
     
     // MARK: - Public methods
     
@@ -11,14 +11,16 @@ final class LetteringView: UIView {
         }
     }
     
-    /// **updateView** - calculates proper position of *bezierPath*
-    func updateView() {
-        layer.updateLayer()
+    /// **start** - method should be call on start animation (make sure, **updateView**'s been invoked before)
+    func startAnimating() {
+        layer.start()
     }
     
-    /// **start** - method should be call on start animation (make sure, **updateView**'s been invoked before)
-    func start() {
-        layer.start()
+    override var bounds: CGRect {
+        didSet {
+            /// **updateLayer** - calculates proper position of *bezierPath*
+            layer.updateLayer()
+        }
     }
     
     override class var layerClass: AnyClass {
