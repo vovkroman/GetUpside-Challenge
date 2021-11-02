@@ -1,6 +1,6 @@
 import UIKit
 
-class ApplicationCoordinator: BaseCoordinator {
+final class ApplicationCoordinator: BaseCoordinator {
     
     private let _window: UIWindow
     private let _appDependencies: AppDependencies

@@ -1,25 +1,13 @@
 import UIKit
 
-protocol SplashableView: UIView {
-    func setup()
-    func start()
-    func tapAction()
-}
-
 extension Splash {
     
-    class Scene: BaseScene<SplashView, InteractorImpl> {
+    final class Scene: BaseScene<SplashView, InteractorImpl> {
         
         override func viewDidLoad() {
             super.viewDidLoad()
             _initialSetup()
             contentView.showLoading()
-            contentView.setup()
-        }
-        
-        override func viewDidAppear(_ animated: Bool) {
-            super.viewDidAppear(animated)
-            contentView.start()
         }
         
         // MARK: - Configurations

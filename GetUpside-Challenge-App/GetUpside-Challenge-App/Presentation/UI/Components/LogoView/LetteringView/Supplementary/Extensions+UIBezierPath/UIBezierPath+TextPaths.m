@@ -11,8 +11,7 @@
 #pragma mark - NSString
 
 
-+ (UIBezierPath *)pathForString:(NSString *)string withFont:(UIFont *)font
-{
++ (UIBezierPath *)pathForString:(NSString *)string withFont:(UIFont *)font {
     // if there is no string or font then just return nil.
     if (!string || !font) return [UIBezierPath bezierPath];
     

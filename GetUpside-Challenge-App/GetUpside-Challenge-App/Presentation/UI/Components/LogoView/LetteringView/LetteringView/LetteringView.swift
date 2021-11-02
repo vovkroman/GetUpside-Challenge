@@ -11,15 +11,13 @@ class LetteringView: UIView {
         }
     }
     
-    /// **start** - method should be call on start animation (make sure, **updateView**'s been invoked before)
-    func startAnimating() {
-        layer.start()
-    }
-    
     override var bounds: CGRect {
         didSet {
             /// **updateLayer** - calculates proper position of *bezierPath*
             layer.updateLayer()
+            
+            /// **start** - method should be call on start animation (make sure, **updateView**'s been invoked before)
+            layer.start()
         }
     }
     

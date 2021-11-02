@@ -1,12 +1,12 @@
-import Foundation
+import ReusableKit
 
-final class SplashContainerView: UIView, NibReusable {
+final class ContainerView: UIView, NibReusable {
     
-    private(set) weak var child: SplashableView?
+    private(set) weak var child: UIView?
     
-    override func addSubview(_ view: UIView) {
-        _removePrevious()
-        super.addSubview(view)
+    func insertSubview(_ view: UIView) {
+        _removePreviousView()
+        addSubview(view)
         view.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             view.centerXAnchor.constraint(equalTo: centerXAnchor),
@@ -14,11 +14,11 @@ final class SplashContainerView: UIView, NibReusable {
             view.widthAnchor.constraint(equalTo: widthAnchor),
             view.heightAnchor.constraint(equalTo: heightAnchor)
         ])
-        child = view as? SplashableView
+        child = view
     }
     
     // MARK: - Utils
-    private func _removePrevious() {
+    private func _removePreviousView() {
         child?.removeFromSuperview()
         child = nil
     }

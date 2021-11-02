@@ -5,6 +5,9 @@
       location = "group:GetUpside-Challenge-App/GetUpside-Challenge-App.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:ReusableKit/ReusableKit.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Logger/Logger.xcodeproj">
    </FileRef>
    <FileRef

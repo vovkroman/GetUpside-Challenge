@@ -7,7 +7,7 @@ extension Splash {
         case items([Entity])
     }
     
-    class Coordinator: BaseCoordinator {
+    final class Coordinator: BaseCoordinator {
         private let _navigationController: UINavigationController
         private let _appDependecies: AppDependencies
         

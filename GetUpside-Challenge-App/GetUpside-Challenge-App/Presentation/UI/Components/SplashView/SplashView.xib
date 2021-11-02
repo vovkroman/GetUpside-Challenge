@@ -14,7 +14,7 @@
             <rect key="frame" x="0.0" y="0.0" width="331" height="365"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AjJ-T7-wEY" customClass="SplashContainerView" customModule="GetUpside_Challenge_App" customModuleProvider="target">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AjJ-T7-wEY" customClass="ContainerView" customModule="GetUpside_Challenge_App" customModuleProvider="target">
                     <rect key="frame" x="16" y="204.5" width="299" height="0.0"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>

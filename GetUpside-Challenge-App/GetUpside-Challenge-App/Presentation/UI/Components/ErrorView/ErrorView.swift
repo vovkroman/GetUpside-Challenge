@@ -1,8 +1,9 @@
-import Foundation
+import ReusableKit
 
 final class ErrorView: UIView, NibOwnerLoadable {
     
-    @IBOutlet private var _descriptionLabel: UILabel!
+    @IBOutlet private weak var _descriptionLabel: UILabel!
+    @IBOutlet private weak var _actionButton: BorderedButton!
     
     convenience
     init(_ errorDescription: String) {
@@ -25,15 +26,5 @@ final class ErrorView: UIView, NibOwnerLoadable {
     // MARK: - Actions
     @IBAction private func didTapButton(_ sender: UIButton) {
         print("Tap the action")
-    }
-}
-
-extension ErrorView: SplashableView {
-    func setup() {}
-    
-    func start() {}
-    
-    func tapAction() {
-        ////
     }
 }

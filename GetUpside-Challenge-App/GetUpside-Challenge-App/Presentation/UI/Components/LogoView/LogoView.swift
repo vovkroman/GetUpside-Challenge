@@ -2,7 +2,7 @@ import Foundation
 
 final class LogoView: LetteringView {
     
-    private func _setupLogo() {
+    func setupLogo() {
         let type = Constant.SplashLogo.self
         
         let paragraphStyle = NSMutableParagraphStyle()
@@ -22,19 +22,5 @@ final class LogoView: LetteringView {
         }
         
         attributedString = attrString
-    }
-}
-
-extension LogoView: SplashableView {
-    func tapAction() {
-        /* Nothing to do */
-    }
-    
-    func setup() {
-        _setupLogo()
-    }
-    
-    func start() {
-        startAnimating()
     }
 }

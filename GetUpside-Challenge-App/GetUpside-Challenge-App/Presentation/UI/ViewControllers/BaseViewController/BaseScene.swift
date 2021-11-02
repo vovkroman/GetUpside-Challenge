@@ -1,5 +1,6 @@
 import UIKit
 import Logger
+import ReusableKit
 
 typealias Viewable = UIView & NibReusable
 
