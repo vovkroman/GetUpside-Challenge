@@ -5,7 +5,6 @@ final class ContainerView: UIView, NibReusable {
     private(set) weak var child: UIView?
     
     func insertSubview(_ view: UIView) {
-        _removePreviousView()
         addSubview(view)
         view.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -18,7 +17,7 @@ final class ContainerView: UIView, NibReusable {
     }
     
     // MARK: - Utils
-    private func _removePreviousView() {
+    func removePreviousView() {
         child?.removeFromSuperview()
         child = nil
     }
