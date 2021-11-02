@@ -54,6 +54,8 @@
 		6FB6CE5B27314F230011EB5B /* BorderedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB6CE5A27314F230011EB5B /* BorderedButton.swift */; };
 		6FB6CE7E2731535C0011EB5B /* ReusableKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FB6CE7D2731535C0011EB5B /* ReusableKit.framework */; };
 		6FB6CE7F2731535C0011EB5B /* ReusableKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6FB6CE7D2731535C0011EB5B /* ReusableKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6FB6CE962731C0EE0011EB5B /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB6CE952731C0EE0011EB5B /* Configuration.swift */; };
+		6FB6CE992731C1AF0011EB5B /* ApplicationConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB6CE982731C1AF0011EB5B /* ApplicationConfig.swift */; };
 		6FC096EE272940AD0044C1D5 /* Future+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC096ED272940AD0044C1D5 /* Future+Extensions.swift */; };
 		6FC096F027294FAD0044C1D5 /* ScreenFactoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC096EF27294FAD0044C1D5 /* ScreenFactoring.swift */; };
 		6FC44117272FFEBF00C54028 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC44116272FFEBF00C54028 /* ErrorView.swift */; };
@@ -151,6 +153,9 @@
 		6FB003B627281AA90078EF14 /* Eatery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Eatery.swift; sourceTree = "<group>"; };
 		6FB6CE5A27314F230011EB5B /* BorderedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedButton.swift; sourceTree = "<group>"; };
 		6FB6CE7D2731535C0011EB5B /* ReusableKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ReusableKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6FB6CE942731BD070011EB5B /* Configuration.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Configuration.xcconfig; sourceTree = "<group>"; };
+		6FB6CE952731C0EE0011EB5B /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		6FB6CE982731C1AF0011EB5B /* ApplicationConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationConfig.swift; sourceTree = "<group>"; };
 		6FC096ED272940AD0044C1D5 /* Future+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Future+Extensions.swift"; sourceTree = "<group>"; };
 		6FC096EF27294FAD0044C1D5 /* ScreenFactoring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenFactoring.swift; sourceTree = "<group>"; };
 		6FC44116272FFEBF00C54028 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
@@ -261,6 +266,7 @@
 		6F3EE9AF26A0459800821E41 /* GetUpside-Challenge-App */ = {
 			isa = PBXGroup;
 			children = (
+				6FB6CE932731BCA90011EB5B /* Configuration */,
 				6F56108C26B16B23002182BA /* Data */,
 				6F56108B26B16B12002182BA /* Domain */,
 				6F56108A26B16AFD002182BA /* Presentation */,
@@ -466,6 +472,7 @@
 		6F56108C26B16B23002182BA /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				6FB6CE972731C17C0011EB5B /* ApplicationConfig */,
 				6FB003B42728189E0078EF14 /* Entities */,
 				6F0B3DE826AF1DB200A01ABF /* Workers */,
 			);
@@ -534,6 +541,23 @@
 				6FB6CE5A27314F230011EB5B /* BorderedButton.swift */,
 			);
 			path = BorderedButton;
+			sourceTree = "<group>";
+		};
+		6FB6CE932731BCA90011EB5B /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				6FB6CE942731BD070011EB5B /* Configuration.xcconfig */,
+				6FB6CE952731C0EE0011EB5B /* Configuration.swift */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		6FB6CE972731C17C0011EB5B /* ApplicationConfig */ = {
+			isa = PBXGroup;
+			children = (
+				6FB6CE982731C1AF0011EB5B /* ApplicationConfig.swift */,
+			);
+			path = ApplicationConfig;
 			sourceTree = "<group>";
 		};
 		6FC44115272FFEA200C54028 /* ErrorView */ = {
@@ -778,6 +802,7 @@
 				6F3EEA2626A04E0400821E41 /* SplashViewController.swift in Sources */,
 				6F8C9D2326B0341A000D5DA0 /* Location+Extensions.swift in Sources */,
 				6F3EEA3F26A04EEC00821E41 /* UIBezierPath+TextPaths.m in Sources */,
+				6FB6CE992731C1AF0011EB5B /* ApplicationConfig.swift in Sources */,
 				6F3EEA1226A04A7A00821E41 /* Namespaces.swift in Sources */,
 				6FC44117272FFEBF00C54028 /* ErrorView.swift in Sources */,
 				6FC096F027294FAD0044C1D5 /* ScreenFactoring.swift in Sources */,
@@ -798,6 +823,7 @@
 				6F0B3DF426AF1DC600A01ABF /* FoodApi.swift in Sources */,
 				6F0B3DF126AF1DC600A01ABF /* ArcGisWorker.swift in Sources */,
 				6FA32B6B26B6F03600275B48 /* SplashPresenter.swift in Sources */,
+				6FB6CE962731C0EE0011EB5B /* Configuration.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -846,6 +872,7 @@
 /* Begin XCBuildConfiguration section */
 		6F3EE9D526A0459A00821E41 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6FB6CE942731BD070011EB5B /* Configuration.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -907,6 +934,7 @@
 		};
 		6F3EE9D626A0459A00821E41 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6FB6CE942731BD070011EB5B /* Configuration.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;

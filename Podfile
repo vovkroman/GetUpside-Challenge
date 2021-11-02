@@ -4,7 +4,7 @@ use_frameworks!
 workspace 'GetUpside-Challenge'
 
 def pods
-  pod 'ArcGIS-Runtime-SDK-iOS'
+  pod 'ArcGIS-Runtime-SDK-iOS', '100.10'
   
   # Google Maps routines
   pod 'GoogleMaps'

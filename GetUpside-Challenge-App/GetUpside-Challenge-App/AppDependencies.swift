@@ -1,8 +1,11 @@
 import Foundation
 import CoreLocation
+import ArcGIS
 
 // Impl of DI conatiner
 class AppDependencies {
+    
+    lazy private var _appConfig: ApplicationConfig = ApplicationConfig()
     
     lazy private var _locationManager: CLLocationManager = {
 /*  Though the code above is fine, it can be optimised to reduce power usage in the following ways:
@@ -31,6 +34,11 @@ class AppDependencies {
         let queue = DispatchQueue(label: "com.getUpside-challenge-global")
         return queue
     }()
+    
+    
+    func setupServices() {
+        AGSArcGISRuntimeEnvironment.apiKey = _appConfig.argisKey
+    }
 }
 
 extension AppDependencies: SceneFactoriable {
