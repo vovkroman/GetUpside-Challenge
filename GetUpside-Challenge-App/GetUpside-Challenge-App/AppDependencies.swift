@@ -1,6 +1,5 @@
 import Foundation
 import CoreLocation
-import ArcGIS
 
 // Impl of DI conatiner
 class AppDependencies {
@@ -35,9 +34,9 @@ class AppDependencies {
         return queue
     }()
     
-    
     func setupServices() {
-        AGSArcGISRuntimeEnvironment.apiKey = _appConfig.argisKey
+        let services: [Serviceable] = [ArcGISSetuper(_appConfig), GoogleMapsSetuper(_appConfig)]
+        services.forEach{ $0.setup() }
     }
 }
 
