@@ -28,6 +28,6 @@ class AnyCoordinating<T>: Coordinating {
 }
 
 // Specific Factory Interface
-protocol SceneFactoriable {
-    func makeScene<Coordinator: Coordinating>(_ coordinator: Coordinator) -> UIViewController
+protocol SplashSceneFactoriable {
+    func buildSplashScene(_ coordinator: AnyCoordinating<Splash.Event>) -> UIViewController
 }

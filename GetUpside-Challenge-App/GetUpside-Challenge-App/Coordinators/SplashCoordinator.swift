@@ -15,7 +15,7 @@ extension Splash {
         
         // MARK: - Public methods
         override func start(animated: Bool) {
-            let scene = _appDependecies.makeScene(self)
+            let scene = _appDependecies.buildSplashScene(AnyCoordinating(self))
             _navigationController.setViewControllers([scene], animated: animated)
         }
         
@@ -38,6 +38,10 @@ extension Splash {
             parentCoordinator?.addDependency(mainCoordintaor)
             coordinate(to: mainCoordintaor, animated: animated)
         }
+        
+        deinit {
+            print("\(self) has been deinit")
+        }
     }
 }
 
@@ -45,12 +49,10 @@ extension Splash.Coordinator: Coordinating {
     typealias Event = Splash.Event
     
     func cacthTheEvent(_ event: Event) {
-        print(event)
+        DispatchQueue.main.async(execute: combine(true, with: _navigateToMainFlow))
     }
     
-    func catchTheError(_ error: Error) {
-        //DispatchQueue.main.async(execute: combine(true, with: _navigateToMainFlow))
-    }
+    func catchTheError(_ error: Error) {}
 }
 
 extension Splash.Coordinator: UINavigationControllerDelegate {

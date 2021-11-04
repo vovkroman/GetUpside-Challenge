@@ -41,12 +41,9 @@ class AppDependencies {
     }
 }
 
-extension AppDependencies: SceneFactoriable {
-    func makeScene<Coordinator>(_ coordinator: Coordinator) -> UIViewController where Coordinator: Coordinating {
-        return UIViewController()
-    }
+extension AppDependencies: SplashSceneFactoriable {
     
-    func makeScene<Coordinator: Coordinating>(_ coordinator: Coordinator) -> UIViewController where Coordinator.Event == Splash.Event {
+    func buildSplashScene(_ coordinator: AnyCoordinating<Splash.Event>) -> UIViewController {
         let locationWorker = Location.Worker(_locationManager)
         let itemsWorker = ArcGis.Worker(AnyFetchRouter())
         let queue = DispatchQueue(
@@ -60,7 +57,7 @@ extension AppDependencies: SceneFactoriable {
             itemsWorker,
             presenter: presenter
         )
-        intercator.coordinator = AnyCoordinating(coordinator)
+        intercator.coordinator = coordinator
         locationWorker.delegate = intercator
         let viewController = Splash.Scene(interactor: intercator)
         presenter.observer = viewController
