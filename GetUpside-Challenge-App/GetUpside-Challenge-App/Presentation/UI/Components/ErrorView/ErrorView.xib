@@ -8,14 +8,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ErrorView" customModule="GetUpside_Challenge_App" customModuleProvider="target">
-            <connections>
-                <outlet property="_actionButton" destination="3pg-fT-6nw" id="HSW-zW-dan"/>
-                <outlet property="_descriptionLabel" destination="Xz2-yK-V20" id="8x0-sy-jqA"/>
-            </connections>
-        </placeholder>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ErrorView" customModule="GetUpside_Challenge_App" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="295" height="98"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -50,7 +45,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <action selector="didTapButton:" destination="-1" eventType="touchUpInside" id="Ky1-F9-Q3O"/>
+                        <action selector="didTapButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="cWI-q5-qEz"/>
                     </connections>
                 </button>
             </subviews>
@@ -66,6 +61,10 @@
                 <constraint firstItem="Xz2-yK-V20" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="pEY-ZL-OtR"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="actionButton" destination="3pg-fT-6nw" id="gjX-Ug-MvF"/>
+                <outlet property="descriptionLabel" destination="Xz2-yK-V20" id="GDf-oq-H9K"/>
+            </connections>
             <point key="canvasLocation" x="-547.10144927536237" y="-70.982142857142847"/>
         </view>
     </objects>

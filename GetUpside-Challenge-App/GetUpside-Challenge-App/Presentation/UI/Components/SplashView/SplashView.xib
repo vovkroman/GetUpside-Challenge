@@ -31,7 +31,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="_containerView" destination="AjJ-T7-wEY" id="tig-n7-lJu"/>
+                <outlet property="containerView" destination="AjJ-T7-wEY" id="sFt-yd-gFB"/>
             </connections>
             <point key="canvasLocation" x="-93" y="-23"/>
         </view>

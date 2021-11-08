@@ -2,23 +2,26 @@ import ReusableKit
 
 final class ContainerView: UIView, NibReusable {
     
-    private(set) weak var child: UIView?
-    
-    func insertSubview(_ view: UIView) {
-        addSubview(view)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            view.centerXAnchor.constraint(equalTo: centerXAnchor),
-            view.centerYAnchor.constraint(equalTo: centerYAnchor),
-            view.widthAnchor.constraint(equalTo: widthAnchor),
-            view.heightAnchor.constraint(equalTo: heightAnchor)
-        ])
-        child = view
-    }
-    
-    // MARK: - Utils
-    func removePreviousView() {
-        child?.removeFromSuperview()
-        child = nil
+    weak var parentViewController: UIViewController?
+    var childViewController: UIViewController? {
+        willSet {
+            childViewController?.willMove(toParent: nil)
+            childViewController?.view.removeFromSuperview()
+            childViewController?.removeFromParent()
+        }
+        
+        didSet {
+            guard let childViewController = childViewController else { return }
+            childViewController.view.translatesAutoresizingMaskIntoConstraints = false
+            addSubview(childViewController.view)
+            NSLayoutConstraint.activate([
+                childViewController.view.centerXAnchor.constraint(equalTo: centerXAnchor),
+                childViewController.view.centerYAnchor.constraint(equalTo: centerYAnchor),
+                childViewController.view.widthAnchor.constraint(equalTo: widthAnchor),
+                childViewController.view.heightAnchor.constraint(equalTo: heightAnchor)
+            ])
+            parentViewController?.addChild(childViewController)
+            childViewController.didMove(toParent: parentViewController)
+        }
     }
 }

@@ -4,11 +4,7 @@ import ReusableKit
 
 typealias Viewable = UIView & NibReusable
 
-class BaseScene<View: Viewable, InteractorImpl>: UIViewController, Interactorable {
-    
-    typealias T = InteractorImpl
-    
-    let interactor: T
+class BaseViewController<View: Viewable>: UIViewController {
     
     var contentView: View {
         return view as! View
@@ -18,13 +14,32 @@ class BaseScene<View: Viewable, InteractorImpl>: UIViewController, Interactorabl
         view = View.loadFromNib()
     }
     
-    required init(interactor: T) {
-        self.interactor = interactor
+    required init() {
         super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+}
+
+class BaseScene<View: Viewable, InteractorImpl>: BaseViewController<View>, Interactorable {
+    
+    typealias T = InteractorImpl
+    
+    let interactor: T
+    
+    required init(interactor: T) {
+        self.interactor = interactor
+        super.init()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    required init() {
+        fatalError("init() has not been implemented")
     }
     
     deinit {

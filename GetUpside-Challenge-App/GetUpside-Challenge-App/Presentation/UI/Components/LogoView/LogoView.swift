@@ -1,6 +1,6 @@
-import Foundation
+import ReusableKit
 
-final class LogoView: LetteringView {
+final class LogoView: LetteringView, NibReusable {
     
     func setupLogo() {
         let type = Constant.SplashLogo.self

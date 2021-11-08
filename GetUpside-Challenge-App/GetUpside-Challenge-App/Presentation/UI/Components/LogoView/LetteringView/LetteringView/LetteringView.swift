@@ -15,9 +15,6 @@ class LetteringView: UIView {
         didSet {
             /// **updateLayer** - calculates proper position of *bezierPath*
             layer.updateLayer()
-            
-            /// **start** - method should be call on start animation (make sure, **updateView**'s been invoked before)
-            layer.start()
         }
     }
     
@@ -27,5 +24,10 @@ class LetteringView: UIView {
 
     override var layer: LetteringLayer {
         return super.layer as! LetteringLayer
+    }
+    
+    /// **start** - method should be call on start animation;
+    func startAnimating() {
+        layer.start()
     }
 }
