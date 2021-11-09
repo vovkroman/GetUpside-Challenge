@@ -12,3 +12,24 @@ final class LogoViewController: BaseViewController<LogoView> {
         contentView.startAnimating()
     }
 }
+
+extension LogoViewController: LogoTransitionable {
+    var maskLayer: CAShapeLayer? {
+        let shapelayer = CAShapeLayer()
+        shapelayer.isGeometryFlipped = true
+        shapelayer.frame = contentView.frame
+        shapelayer.path = contentView.layer.path
+        return shapelayer
+    }
+    
+    func transitionWillStart(_ transition: UIViewControllerAnimatedTransitioning) {
+        contentView.layer.removeAllAnimations()
+        
+        // to remove border path (should be done after toView set the path)
+        contentView.layer.path = nil
+    }
+    
+    func transitionDidEnd(_ transition: UIViewControllerAnimatedTransitioning) {
+        //contentView.removeFromSuperview()
+    }
+}

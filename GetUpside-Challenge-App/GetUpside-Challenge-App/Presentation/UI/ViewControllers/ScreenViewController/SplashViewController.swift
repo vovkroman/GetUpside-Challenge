@@ -25,6 +25,10 @@ extension Splash {
             interactor.fetachData(Splash.Request(coordinates: coordinate))
         }
         
+        private func _cancelFetching() {
+            interactor.cancelFetching()
+        }
+        
         // MARK: - State handling
         private func _handleState(_ state: Splash.StateMachine.State) {
             switch state {
@@ -32,8 +36,9 @@ extension Splash {
                 _showLogo()
             case .error(let error):
                 _showError(error)
+                _cancelFetching()
             case .operating(let coordinate):
-                print("Got new coordinate: \(coordinate)")
+                _showLogo()
                 _fetchData(by: coordinate)
                 break
             }

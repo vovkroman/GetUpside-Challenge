@@ -26,19 +26,12 @@ final class ApplicationCoordinator: BaseCoordinator {
             to: splashCoordinator,
             animated: animated
         )
-        
-//        let mainCoordinator = Main.Coordinator(navigationController)
-//        mainCoordinator.parentCoordinator = self
-//
-//
-//        addDependency(mainCoordinator)
-//        coordinate(to: mainCoordinator)
-        // to coordinate to main screen if we need to pass to main flow
     }
     
     init(
         window: UIWindow,
-        appDependencies: AppDependencies) {
+        appDependencies: AppDependencies
+    ) {
         _window = window
         _appDependencies = appDependencies
     }

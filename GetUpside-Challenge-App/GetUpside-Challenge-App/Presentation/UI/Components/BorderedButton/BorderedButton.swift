@@ -22,7 +22,7 @@ final class BorderedButton: UIButton {
     @IBInspectable
     var cornerRadius: CGFloat = 4.0
     
-    private weak var _borderLayer: CAShapeLayer?
+    private unowned var _borderLayer: CAShapeLayer!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -49,7 +49,6 @@ final class BorderedButton: UIButton {
         let rectCorners: UIRectCorner = .allCorners
         
         let borderPath = UIBezierPath(roundedRect: bounds, byRoundingCorners: rectCorners, cornerRadii: CGSize(width: cornerRadius, height: cornerRadius))
-        _borderLayer?.path = borderPath.cgPath
+        _borderLayer.path = borderPath.cgPath
     }
-
 }

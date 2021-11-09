@@ -38,10 +38,6 @@ extension Splash {
             parentCoordinator?.addDependency(mainCoordintaor)
             coordinate(to: mainCoordintaor, animated: animated)
         }
-        
-        deinit {
-            print("\(self) has been deinit")
-        }
     }
 }
 

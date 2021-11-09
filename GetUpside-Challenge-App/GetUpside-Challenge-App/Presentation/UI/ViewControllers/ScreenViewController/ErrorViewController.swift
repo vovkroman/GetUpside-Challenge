@@ -22,3 +22,17 @@ final class ErrorViewController: BaseViewController<ErrorView> {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+extension ErrorViewController: LogoTransitionable {
+    var maskLayer: CAShapeLayer? {
+        return nil
+    }
+    
+    func transitionWillStart(_ transition: UIViewControllerAnimatedTransitioning) {
+        // Nothing to do
+    }
+    
+    func transitionDidEnd(_ transition: UIViewControllerAnimatedTransitioning) {
+        contentView.removeFromSuperview()
+    }
+}

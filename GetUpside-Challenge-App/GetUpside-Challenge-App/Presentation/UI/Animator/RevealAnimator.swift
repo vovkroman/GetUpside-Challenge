@@ -1,7 +1,7 @@
 import UIKit
 
 protocol LogoTransitionable {
-    var maskLayer: CAShapeLayer { get }
+    var maskLayer: CAShapeLayer? { get }
     func transitionWillStart(_ transition: UIViewControllerAnimatedTransitioning)
     func transitionDidEnd(_ transition: UIViewControllerAnimatedTransitioning)
 }
@@ -43,7 +43,8 @@ extension RevealAnimator: UIViewControllerAnimatedTransitioning {
         using transitionContext: UIViewControllerContextTransitioning
     ) {
         guard let fromView = transitionContext.view(forKey: .from) as? Revealable,
-            let toView = transitionContext.view(forKey: .to) else {
+            let toView = transitionContext.view(forKey: .to),
+            let maskLayer = fromView.maskLayer else {
                 transitionContext.completeTransition(false)
                 return
         }
@@ -60,7 +61,6 @@ extension RevealAnimator: UIViewControllerAnimatedTransitioning {
         let _animation = CABasicAnimation(type: .transform(params: animParams))
         _animation.fillMode = .forwards
         
-        let maskLayer = fromView.maskLayer
         toView.layer.mask = maskLayer
         fromView.transitionWillStart(self)
         CATransaction.setCompletionBlock(combine(transitionContext, toView, fromView,  with: onTransitionComplete))

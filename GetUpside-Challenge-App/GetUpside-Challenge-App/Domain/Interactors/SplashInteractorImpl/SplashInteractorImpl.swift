@@ -59,6 +59,10 @@ extension Splash.InteractorImpl: SplashUseCase {
             }
         }
     }
+    
+    func cancelFetching() {
+        _apiWorker.cancelFetching()
+    }
 }
 
 extension Splash.InteractorImpl: LocationUpdating {
