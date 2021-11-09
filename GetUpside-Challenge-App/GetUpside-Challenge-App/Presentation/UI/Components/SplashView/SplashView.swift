@@ -1,4 +1,3 @@
-import UIKit
 import ReusableKit
 
 final class SplashView: UIView, NibReusable {

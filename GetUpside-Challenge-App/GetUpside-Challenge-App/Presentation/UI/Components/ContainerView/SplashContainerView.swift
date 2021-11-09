@@ -3,7 +3,7 @@ import ReusableKit
 final class ContainerView: UIView, NibReusable {
     
     weak var parentViewController: UIViewController?
-    var childViewController: UIViewController? {
+    weak var childViewController: UIViewController? {
         willSet {
             childViewController?.willMove(toParent: nil)
             childViewController?.view.removeFromSuperview()
