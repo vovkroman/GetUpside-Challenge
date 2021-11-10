@@ -52,7 +52,6 @@ extension Splash.InteractorImpl: SplashUseCase {
             switch result {
             case .success(let items):
                 print(items)
-                print(self?.coordinator)
                 self?.coordinator?.cacthTheEvent(.items(items))
             case .failure(let error):
                 self?._presenter.locationCatch(the: .other(error))

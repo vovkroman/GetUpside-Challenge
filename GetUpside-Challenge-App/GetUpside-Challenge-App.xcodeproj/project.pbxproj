@@ -42,6 +42,8 @@
 		6F3EEA4026A04EEC00821E41 /* ARCGPathFromString.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F3EEA3926A04EEC00821E41 /* ARCGPathFromString.m */; };
 		6F3EEA4B26A0510600821E41 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3EEA4A26A0510600821E41 /* Globals.swift */; };
 		6F3EEA4E26A05E9D00821E41 /* Interactorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3EEA4D26A05E9D00821E41 /* Interactorable.swift */; };
+		6F51D1E9273C582B00BDDF6C /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F51D1E8273C582B00BDDF6C /* MapView.swift */; };
+		6F51D1EB273C587500BDDF6C /* MapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F51D1EA273C587500BDDF6C /* MapView.xib */; };
 		6F56108926B16236002182BA /* NSAttributedStringBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F56108826B16236002182BA /* NSAttributedStringBuilder.swift */; };
 		6F56108E26B17B6D002182BA /* SplashInteractorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F56108D26B17B6D002182BA /* SplashInteractorImpl.swift */; };
 		6F6B7A142734567A00B46087 /* ServiceSetupers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6B7A132734567A00B46087 /* ServiceSetupers.swift */; };
@@ -145,6 +147,8 @@
 		6F3EEA3A26A04EEC00821E41 /* UIBezierPath+TextPaths.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIBezierPath+TextPaths.h"; sourceTree = "<group>"; };
 		6F3EEA4A26A0510600821E41 /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		6F3EEA4D26A05E9D00821E41 /* Interactorable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interactorable.swift; sourceTree = "<group>"; };
+		6F51D1E8273C582B00BDDF6C /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		6F51D1EA273C587500BDDF6C /* MapView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapView.xib; sourceTree = "<group>"; };
 		6F56108826B16236002182BA /* NSAttributedStringBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSAttributedStringBuilder.swift; sourceTree = "<group>"; };
 		6F56108D26B17B6D002182BA /* SplashInteractorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashInteractorImpl.swift; sourceTree = "<group>"; };
 		6F6B7A132734567A00B46087 /* ServiceSetupers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceSetupers.swift; sourceTree = "<group>"; };
@@ -450,6 +454,15 @@
 			path = Interactors;
 			sourceTree = "<group>";
 		};
+		6F51D1E7273C580400BDDF6C /* MapView */ = {
+			isa = PBXGroup;
+			children = (
+				6F51D1E8273C582B00BDDF6C /* MapView.swift */,
+				6F51D1EA273C587500BDDF6C /* MapView.xib */,
+			);
+			path = MapView;
+			sourceTree = "<group>";
+		};
 		6F56108726B15FDC002182BA /* Tools */ = {
 			isa = PBXGroup;
 			children = (
@@ -544,6 +557,7 @@
 		6FB6CE5927314EF80011EB5B /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				6F51D1E7273C580400BDDF6C /* MapView */,
 				6FC4411F2730097700C54028 /* ContainerView */,
 				6F3EEA2A26A04EB000821E41 /* SplashView */,
 				6FC4411A273005CF00C54028 /* LogoView */,
@@ -720,6 +734,7 @@
 				6F3EE9B826A0459800821E41 /* Main.storyboard in Resources */,
 				6FC44119272FFF4400C54028 /* ErrorView.xib in Resources */,
 				6FB7C1652739C56D00F0D8AE /* LogoView.xib in Resources */,
+				6F51D1EB273C587500BDDF6C /* MapView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -812,6 +827,7 @@
 				6FA1016A26B327340052D939 /* AnyOf.swift in Sources */,
 				6FB7C1672739CBFD00F0D8AE /* ErrorViewController.swift in Sources */,
 				6F33AA4426CFB54600A469FC /* StateMachine.swift in Sources */,
+				6F51D1E9273C582B00BDDF6C /* MapView.swift in Sources */,
 				6F8C9D1F26B02BA6000D5DA0 /* LocationWorker.swift in Sources */,
 				6F3EEA4E26A05E9D00821E41 /* Interactorable.swift in Sources */,
 				6F56108E26B17B6D002182BA /* SplashInteractorImpl.swift in Sources */,
@@ -946,7 +962,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1002,7 +1018,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

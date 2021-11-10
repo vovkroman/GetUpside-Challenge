@@ -53,8 +53,8 @@ extension RevealAnimator: UIViewControllerAnimatedTransitioning {
         
         let animParams = Animation.Params(
             from: CATransform3DIdentity,
-            to: CATransform3DConcat(CATransform3DMakeTranslation(0.0, -10.0, 0.0),
-                                                                  CATransform3DMakeScale(100.0, 100.0, 1.0)),
+            to: CATransform3DConcat(CATransform3DMakeTranslation(10.0, 0.0, 0.0),
+                                                                  CATransform3DMakeScale(150.0, 150.0, 1.0)),
             duration: _duartion,
             timingFunc: CAMediaTimingFunction(name: .easeIn),
             isRemovedOnCompletion: false)
