@@ -1,5 +1,6 @@
 import ArcGIS
 import FutureKit
+import Logger
 
 enum FetchError: Error {
     case error(description: String)
@@ -28,6 +29,8 @@ class AnyFetchRouter<Fetch: FetchType>: FetchRouter {
             _locatorTask = fecthdata.locator
             let params = fecthdata.params
             
+            Logger.debug("\(String(describing: _locatorTask)) has been perfromed", category: .api)
+            
             _fetchTask = _locatorTask?.geocode(
                 withSearchText: route.searchResult,
                 parameters: params
@@ -43,6 +46,7 @@ class AnyFetchRouter<Fetch: FetchType>: FetchRouter {
                 promise.resolve(with: [])
             }
         } catch let error {
+            Logger.error("\(String(describing: _locatorTask?.url)) failed with error \(error)", category: .api)
             promise.reject(with: error)
         }
         
@@ -81,6 +85,9 @@ class AnyFetchRouter<Fetch: FetchType>: FetchRouter {
     }
     
     func cancel() {
+        
+        Logger.debug("\(String(describing: _locatorTask?.url)) has been canceled", category: .api)
+        
         _fetchTask?.cancel()
     }
 }
