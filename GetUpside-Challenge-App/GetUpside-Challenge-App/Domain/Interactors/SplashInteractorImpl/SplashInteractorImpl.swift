@@ -51,7 +51,6 @@ extension Splash.InteractorImpl: SplashUseCase {
         _apiWorker.fetchData(request.coordinates).observe { [weak self] result in
             switch result {
             case .success(let items):
-                print(items)
                 self?.coordinator?.cacthTheEvent(.items(items))
             case .failure(let error):
                 self?._presenter.locationCatch(the: .other(error))

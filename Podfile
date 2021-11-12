@@ -12,6 +12,9 @@ def pods
   #Realm DB
   pod 'Realm'
   pod 'RealmSwift'
+  
+  #Custom UI
+  pod 'SwipeMenuViewController'
 end
 
 target 'GetUpside-Challenge-App' do

@@ -2,23 +2,36 @@ import UIKit
 
 extension Main {
     
+    enum Event {
+        
+    }
+    
     class Coordinator: BaseCoordinator {
         
         private let _navigationController: UINavigationController
+        private let _appDependecies: AppDependencies
         weak var parentCoordinator: ApplicationCoordinator?
         
         // MARK: - Public methods
         
         override func start(animated: Bool) {
-            //let viewController = Main.ViewController(viewModel: )
             _navigationController.isNavigationBarHidden = true
-            let viewController = UITableViewController()
-            viewController.view.backgroundColor = .white
-            _navigationController.setViewControllers([viewController], animated: animated)
+            let scene = _appDependecies.buildMainScene(AnyCoordinating(self))
+            _navigationController.setViewControllers([scene], animated: animated)
         }
         
-        init(_ navigationController: UINavigationController) {
+        init(_ navigationController: UINavigationController, _ appDependecies: AppDependencies) {
             _navigationController = navigationController
+            _appDependecies = appDependecies
         }
     }
+}
+
+extension Main.Coordinator: Coordinating {
+    
+    typealias Event = Main.Event
+    
+    func cacthTheEvent(_ event: Event) {}
+    
+    func catchTheError(_ error: Error) {}
 }

@@ -63,3 +63,11 @@ extension AppDependencies: SplashSceneFactoriable {
         return viewController
     }
 }
+
+extension AppDependencies: MainSceneFactoriable {
+    func buildMainScene(_ coordinator: AnyCoordinating<Main.Event>) -> UIViewController {
+        let intercator = Main.InteractorImpl()
+        let viewController = Main.Scene(interactor: intercator)
+        return viewController
+    }
+}

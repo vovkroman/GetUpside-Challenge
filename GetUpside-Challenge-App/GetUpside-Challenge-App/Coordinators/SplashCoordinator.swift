@@ -3,6 +3,7 @@ import Logger
 
 extension Splash {
     typealias Entity = Eatery
+    
     enum Event {
         case items([Entity])
     }
@@ -32,7 +33,7 @@ extension Splash {
         // MARK: - Private methods
         
         private func _navigateToMainFlow(animated: Bool = true) {
-            let mainCoordintaor = Main.Coordinator(_navigationController)
+            let mainCoordintaor = Main.Coordinator(_navigationController, _appDependecies)
             mainCoordintaor.parentCoordinator = parentCoordinator
             parentCoordinator?.removeDependency(self)
             parentCoordinator?.addDependency(mainCoordintaor)
