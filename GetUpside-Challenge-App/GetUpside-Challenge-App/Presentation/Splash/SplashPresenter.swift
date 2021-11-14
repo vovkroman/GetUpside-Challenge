@@ -4,7 +4,7 @@ protocol StateMachineObserver: AnyObject {
     func stateDidChanched(_ stateMachine: Splash.StateMachine, to: Splash.StateMachine.State)
 }
 
-protocol SplashPresentable: AnyObject {
+protocol CoordinatePresentable: AnyObject {
     func locationDidRequestForAuthorization()
     func locationDidUpdated(with coordinate: Coordinate)
     func locationCatch(the error: Location.Error)
@@ -28,7 +28,7 @@ extension Splash {
     }
 }
 
-extension Splash.Presenter: SplashPresentable {
+extension Splash.Presenter: CoordinatePresentable {
     func locationCatch(the error: Location.Error) {
         _queue.async(execute: combine(.catchError(error), with: _stateMachine.transition))
     }

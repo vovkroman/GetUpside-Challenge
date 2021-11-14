@@ -29,6 +29,10 @@ class AnyCoordinating<T>: Coordinating {
 
 // MARK: - Specific Factory Interface
 
+protocol AppNavigationable {
+    func buildNavigationScene() -> UINavigationController
+}
+
 protocol SplashSceneFactoriable: AnyObject {
     func buildSplashScene(_ coordinator: AnyCoordinating<Splash.Event>) -> UIViewController
 }

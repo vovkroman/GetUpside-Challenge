@@ -1,16 +1,11 @@
 import Foundation
 
 protocol SplashUseCase: AnyObject {
-    associatedtype Request
     func requestLocation()
-    func fetachData(_ request: Request)
+    func fetachData(_ coordinate: Coordinate)
 }
 
 extension Splash {
-    
-    struct Request {
-        let coordinates: Coordinate
-    }
     
     final class InteractorImpl {
         
@@ -18,14 +13,14 @@ extension Splash {
         private let _locationWorker: LocationUseCase
         private let _apiWorker: GetEateriesUseCase
         
-        private var _presenter: SplashPresentable
+        private var _presenter: CoordinatePresentable
         
         var coordinator: AnyCoordinating<Splash.Event>?
         
         init(
             _ location: LocationUseCase,
             _ apiWorker: GetEateriesUseCase,
-            presenter: SplashPresentable
+            presenter: CoordinatePresentable
         ) {
             _apiWorker = apiWorker
             _locationWorker = location
@@ -36,8 +31,6 @@ extension Splash {
 
 extension Splash.InteractorImpl: SplashUseCase {
     
-    typealias Request = Splash.Request
-    
     func requestLocation() {
         if _locationWorker.isUserAuthorized {
             _locationWorker.startUpdatingLocation()
@@ -47,8 +40,8 @@ extension Splash.InteractorImpl: SplashUseCase {
         }
     }
     
-    func fetachData(_ request: Request) {
-        _apiWorker.fetchData(request.coordinates).observe { [weak self] result in
+    func fetachData(_ coordinate: Coordinate) {
+        _apiWorker.fetchData(coordinate).observe { [weak self] result in
             switch result {
             case .success(let items):
                 self?.coordinator?.cacthTheEvent(.items(items))

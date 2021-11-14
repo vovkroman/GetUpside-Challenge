@@ -8,7 +8,7 @@ final class ApplicationCoordinator: BaseCoordinator {
     override func start(
         animated: Bool = true
     ) {
-        let navigationController = UINavigationController()
+        let navigationController = _appDependencies.buildNavigationScene()
         navigationController.isNavigationBarHidden = true
         
         _window.rootViewController = navigationController

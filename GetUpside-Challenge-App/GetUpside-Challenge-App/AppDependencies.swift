@@ -40,25 +40,31 @@ class AppDependencies {
     }
 }
 
+extension AppDependencies: AppNavigationable {
+    func buildNavigationScene() -> UINavigationController {
+        return AppNavigationController()
+    }
+}
+
 extension AppDependencies: SplashSceneFactoriable {
     
     func buildSplashScene(_ coordinator: AnyCoordinating<Splash.Event>) -> UIViewController {
         let locationWorker = Location.Worker(_locationManager)
-        let itemsWorker = ArcGis.Worker(AnyFetchRouter())
+        let argisWorker = ArcGis.Worker(AnyFetchRouter())
         let queue = DispatchQueue(
             label: "com.getUpside-challenge-splash",
             target: _queue
         )
         
         let presenter = Splash.Presenter(queue)
-        let intercator = Splash.InteractorImpl(
+        let interactor = Splash.InteractorImpl(
             locationWorker,
-            itemsWorker,
+            argisWorker,
             presenter: presenter
         )
-        intercator.coordinator = coordinator
-        locationWorker.delegate = intercator
-        let viewController = Splash.Scene(interactor: intercator)
+        interactor.coordinator = coordinator
+        locationWorker.delegate = interactor
+        let viewController = Splash.Scene(interactor: interactor)
         presenter.observer = viewController
         return viewController
     }
@@ -66,8 +72,22 @@ extension AppDependencies: SplashSceneFactoriable {
 
 extension AppDependencies: MainSceneFactoriable {
     func buildMainScene(_ coordinator: AnyCoordinating<Main.Event>) -> UIViewController {
-        let intercator = Main.InteractorImpl()
-        let viewController = Main.Scene(interactor: intercator)
+        let locationWorker = Location.Worker(_locationManager)
+        let argisWorker = ArcGis.Worker(AnyFetchRouter())
+        let queue = DispatchQueue(
+            label: "com.getUpside-challenge-main",
+            target: _queue
+        )
+        
+        let presenter = Main.Presenter(queue)
+        let interactor = Main.InteractorImpl(
+            locationWorker,
+            argisWorker,
+            presenter
+        )
+        
+        locationWorker.delegate = interactor
+        let viewController = Main.Scene(interactor: interactor)
         return viewController
     }
 }

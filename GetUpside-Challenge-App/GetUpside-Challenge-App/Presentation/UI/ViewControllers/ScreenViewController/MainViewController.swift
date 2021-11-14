@@ -5,6 +5,8 @@ extension Main {
         override func viewDidLoad() {
             super.viewDidLoad()
             
+            interactor.requestLocation()
+            
             contentView.tabBarMenu.delegate = self
             
             let mapVC = MapViewController()

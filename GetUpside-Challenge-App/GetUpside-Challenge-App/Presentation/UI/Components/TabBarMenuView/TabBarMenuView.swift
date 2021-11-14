@@ -62,6 +62,7 @@ final class TabBarMenuView: UIView, NibOwnerLoadable {
     private func _setupSelector() {
         let selectorView = UIView()
         selectorView.backgroundColor = options.selectorColor
+        
         selectorView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(selectorView)
         NSLayoutConstraint.activate([
