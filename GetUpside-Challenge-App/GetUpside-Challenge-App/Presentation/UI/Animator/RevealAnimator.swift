@@ -22,7 +22,7 @@ class RevealAnimator: NSObject {
         _duartion = duration
     }
     
-    private func onTransitionComplete(
+    private func _onTransitionComplete(
         with context: UIViewControllerContextTransitioning,
         toView: UIView,
         fromView: UIView) {
@@ -63,7 +63,11 @@ extension RevealAnimator: UIViewControllerAnimatedTransitioning {
         
         toView.layer.mask = maskLayer
         fromView.transitionWillStart(self)
-        CATransaction.setCompletionBlock(combine(transitionContext, toView, fromView,  with: onTransitionComplete))
+        let completionBlock: () -> Void = { [weak self] in
+            guard let self = self else { return }
+            self._onTransitionComplete(with: transitionContext, toView: toView, fromView: fromView)
+        }
+        CATransaction.setCompletionBlock(completionBlock)
         CATransaction.begin()
         let id = Animation.KeyPath.self
         maskLayer.add(_animation, forKey: "\(id.revalAnimation)")

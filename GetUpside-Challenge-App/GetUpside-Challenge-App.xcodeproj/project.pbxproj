@@ -75,6 +75,7 @@
 		6FB7C1672739CBFD00F0D8AE /* ErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB7C1662739CBFD00F0D8AE /* ErrorViewController.swift */; };
 		6FB971FF273D05D900E99E57 /* MonochromeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB971FE273D05D900E99E57 /* MonochromeLabel.swift */; };
 		6FB97202273D0B9200E99E57 /* MultichromeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB97201273D0B9200E99E57 /* MultichromeLabel.swift */; };
+		6FBF957E274E7855003B1142 /* silver_GM_style.json in Resources */ = {isa = PBXBuildFile; fileRef = 6FBF957D274E7855003B1142 /* silver_GM_style.json */; };
 		6FC096EE272940AD0044C1D5 /* Future+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC096ED272940AD0044C1D5 /* Future+Extensions.swift */; };
 		6FC096F027294FAD0044C1D5 /* ScreenFactoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC096EF27294FAD0044C1D5 /* ScreenFactoring.swift */; };
 		6FC44117272FFEBF00C54028 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC44116272FFEBF00C54028 /* ErrorView.swift */; };
@@ -194,6 +195,7 @@
 		6FB7C1662739CBFD00F0D8AE /* ErrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorViewController.swift; sourceTree = "<group>"; };
 		6FB971FE273D05D900E99E57 /* MonochromeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonochromeLabel.swift; sourceTree = "<group>"; };
 		6FB97201273D0B9200E99E57 /* MultichromeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultichromeLabel.swift; sourceTree = "<group>"; };
+		6FBF957D274E7855003B1142 /* silver_GM_style.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = silver_GM_style.json; sourceTree = "<group>"; };
 		6FC096ED272940AD0044C1D5 /* Future+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Future+Extensions.swift"; sourceTree = "<group>"; };
 		6FC096EF27294FAD0044C1D5 /* ScreenFactoring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenFactoring.swift; sourceTree = "<group>"; };
 		6FC44116272FFEBF00C54028 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
@@ -312,6 +314,7 @@
 				6F3EE9E926A047B800821E41 /* Coordinators */,
 				6F3EE9B926A0459900821E41 /* Assets.xcassets */,
 				6F3EE9BE26A0459900821E41 /* Info.plist */,
+				6FBF957D274E7855003B1142 /* silver_GM_style.json */,
 				6F3EEA1326A04D9500821E41 /* AppDependencies.swift */,
 				6FC096EF27294FAD0044C1D5 /* ScreenFactoring.swift */,
 				6F8C9D2626B03640000D5DA0 /* GetUpside-Challenge-App-Bridging-Header.h */,
@@ -833,6 +836,7 @@
 			files = (
 				6F3EE9BA26A0459900821E41 /* Assets.xcassets in Resources */,
 				6FC441212730098F00C54028 /* ContainerView.xib in Resources */,
+				6FBF957E274E7855003B1142 /* silver_GM_style.json in Resources */,
 				6F3EEA2D26A04EB000821E41 /* SplashView.xib in Resources */,
 				6F3EE9B826A0459800821E41 /* Main.storyboard in Resources */,
 				6FC44119272FFF4400C54028 /* ErrorView.xib in Resources */,

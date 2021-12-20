@@ -1,4 +1,4 @@
-import Foundation
+import UIKit
 import CoreLocation
 
 // Impl of DI conatiner

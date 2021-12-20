@@ -13,14 +13,14 @@ extension Splash {
         private let _locationWorker: LocationUseCase
         private let _apiWorker: GetEateriesUseCase
         
-        private var _presenter: CoordinatePresentable
+        private var _presenter: LocationPresenting
         
         var coordinator: AnyCoordinating<Splash.Event>?
         
         init(
             _ location: LocationUseCase,
             _ apiWorker: GetEateriesUseCase,
-            presenter: CoordinatePresentable
+            presenter: LocationPresenting
         ) {
             _apiWorker = apiWorker
             _locationWorker = location
@@ -63,6 +63,7 @@ extension Splash.InteractorImpl: LocationUpdating {
     ) {
         switch status {
         case .authorizedAlways, .authorizedWhenInUse:
+            // user's been authorized, but not got the current location
             _locationWorker.startUpdatingLocation()
         case .denied:
             _presenter.locationCatch(the: Location.Error.denied)

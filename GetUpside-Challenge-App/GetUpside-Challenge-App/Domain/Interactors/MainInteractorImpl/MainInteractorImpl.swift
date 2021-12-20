@@ -10,14 +10,14 @@ extension Main {
         private let _locationWorker: LocationUseCase
         private let _apiWorker: GetEateriesUseCase
         
-        private let _presenter: CoordinatePresentable
+        private let _presenter: LocationPresenting
         
         var coordinator: AnyCoordinating<Splash.Event>?
         
         init(
             _ location: LocationUseCase,
             _ apiWorker: GetEateriesUseCase,
-            _ presenter: CoordinatePresentable
+            _ presenter: LocationPresenting
         ) {
             _apiWorker = apiWorker
             _locationWorker = location

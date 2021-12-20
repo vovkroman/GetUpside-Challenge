@@ -10,9 +10,9 @@ extension Main {
     }
 }
 
-extension Main.Presenter: CoordinatePresentable {
+extension Main.Presenter: LocationPresenting {
     func locationDidRequestForAuthorization() {
-        
+        // prepare data for display
     }
     
     func locationDidUpdated(with coordinate: Coordinate) {

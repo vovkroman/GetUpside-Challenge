@@ -1,4 +1,5 @@
 import ReusableKit
+import UIKit
 
 protocol TabBarMenuDelegate: AnyObject {
     func tabBarMenu(_ menu: TabBarMenuView, didSelected index: Int)
@@ -12,7 +13,10 @@ final class TabBarMenuView: UIView, NibOwnerLoadable {
             case normal
         }
         
-        let titleAttributes: [State: [NSAttributedString.Key : Any]] = [.normal: [:], .selected: [:]]
+        let titleAttributes: [State: [NSAttributedString.Key : Any]] = [.normal: [.font : UIFont.systemFont(ofSize: 14.0),
+                                                                                  .foregroundColor: UIColor.black],
+                                                                            .selected: [.font : UIFont.systemFont(ofSize: 15.0),
+                                                                                        .foregroundColor: UIColor.black]]
         let selectorColor: UIColor = .black
         let backgroundColor: UIColor = .white
     }
