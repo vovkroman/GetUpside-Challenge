@@ -1,16 +1,41 @@
 import ReusableKit
+import UIKit
 
 final class ErrorViewController: BaseViewController<ErrorView> {
     
-    private let _description: String
+    typealias ViewModelable = ButtonTitlable & ActionaSupporting & Descriptionable
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        contentView.descriptionLabel.text = _description
+    private let _viewModel: ViewModelable
+    
+    // MARK: Life Cycle
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let actionButton: UIButton = contentView.actionButton
+        
+        if _viewModel.isEnabled {
+            actionButton.addTarget(self, action: #selector(_onTapped(_:)), for: .touchUpInside)
+            actionButton.setTitle(_viewModel.title, for: .normal)
+        } else {
+            actionButton.isHidden = true
+        }
+        contentView.descriptionLabel.text = _viewModel.description
     }
     
-    init(_ description: String) {
-        _description = description
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        let actionButton: UIButton = contentView.actionButton
+        
+        actionButton.removeTarget(self, action: #selector(_onTapped(_:)), for: .touchUpInside)
+        actionButton.setTitle(nil, for: .normal)
+        
+        contentView.descriptionLabel.text = nil
+    }
+    
+    // MARK: - Initialization methods
+    
+    init<ViewModel: ButtonTitlable & ActionaSupporting & Descriptionable>(_ viewModel: ViewModel) {
+        _viewModel = viewModel
         super.init()
     }
     
@@ -20,6 +45,12 @@ final class ErrorViewController: BaseViewController<ErrorView> {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: Actions
+    
+    @objc private func _onTapped(_ sender: UIButton) {
+        _viewModel.action?()
     }
 }
 

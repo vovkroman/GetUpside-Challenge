@@ -34,8 +34,8 @@ extension Splash {
             switch state {
             case .idle, .loading:
                 _showLogo()
-            case .error(let error):
-                _showError(error)
+            case .error(let viewModel):
+                _showError(viewModel)
                 _cancelFetching()
             case .operating(let coordinate):
                 _showLogo()
@@ -62,8 +62,8 @@ private extension Splash.Scene {
         _containerView.childViewController = logoViewController
     }
     
-    func _showError(_ error: Error) {
-        let errorViewController = ErrorViewController(error.localizedDescription)
+    func _showError<ViewModel: ButtonTitlable & ActionaSupporting & Descriptionable>(_ viewModel: ViewModel) {
+        let errorViewController = ErrorViewController(viewModel)
         _containerView.childViewController = errorViewController
     }
 }

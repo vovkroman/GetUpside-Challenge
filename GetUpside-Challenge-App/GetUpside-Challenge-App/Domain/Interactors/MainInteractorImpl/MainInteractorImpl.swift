@@ -59,11 +59,9 @@ extension Main.InteractorImpl: LocationUpdating {
         case .authorizedAlways, .authorizedWhenInUse:
             _locationWorker.startUpdatingLocation()
         case .denied:
-            break
-            //_presenter.locationCatch(the: Location.Error.denied)
+            _presenter.locationCatch(the: Location.Error.denied)
         case .restricted:
-            break
-            //_presenter.locationCatch(the: Location.Error.restricted)
+            _presenter.locationCatch(the: Location.Error.restricted)
         default: // including not defined
             break
         }

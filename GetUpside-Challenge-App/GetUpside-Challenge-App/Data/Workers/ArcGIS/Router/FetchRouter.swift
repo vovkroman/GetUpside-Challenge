@@ -85,9 +85,9 @@ class AnyFetchRouter<Fetch: FetchType>: FetchRouter {
     }
     
     func cancel() {
-        
+        guard let fetchTask = _fetchTask else { return }
         Logger.debug("\(String(describing: _locatorTask?.url)) has been canceled", category: .api)
-        
-        _fetchTask?.cancel()
+        fetchTask.cancel()
+        _locatorTask = nil
     }
 }

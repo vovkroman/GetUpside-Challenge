@@ -44,9 +44,6 @@
                             <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
-                    <connections>
-                        <action selector="didTapButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="cWI-q5-qEz"/>
-                    </connections>
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

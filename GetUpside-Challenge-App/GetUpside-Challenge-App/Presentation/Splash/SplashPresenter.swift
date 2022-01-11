@@ -30,7 +30,8 @@ extension Splash {
 
 extension Splash.Presenter: LocationPresenting {
     func locationCatch(the error: Location.Error) {
-        _queue.async(execute: combine(.catchError(error), with: _stateMachine.transition))
+        let viewModel = Splash.ViewModel(error)
+        _queue.async(execute: combine(.catchError(viewModel), with: _stateMachine.transition))
     }
     
     func locationDidUpdated(with coordinate: Coordinate) {
