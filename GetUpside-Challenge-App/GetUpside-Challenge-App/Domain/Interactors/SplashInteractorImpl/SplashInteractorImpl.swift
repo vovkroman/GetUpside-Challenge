@@ -47,6 +47,9 @@ extension Splash.InteractorImpl: SplashUseCase {
                 self?.coordinator?.cacthTheEvent(.items(items))
             case .failure(let error):
                 self?._presenter.locationCatch(the: .other(error))
+            case .failure(let error as NSError) where any(value: error.code, items: NSURLErrorNetworkConnectionLost, NSURLErrorNotConnectedToInternet):
+                print("Internet connection issue")
+                break
             }
         }
     }

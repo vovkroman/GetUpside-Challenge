@@ -40,11 +40,9 @@ extension Main.InteractorImpl: MainUseCase {
         _apiWorker.fetchData(coordinate).observe { [weak self] result in
             switch result {
             case .success(let items):
-                print(items)
-                //self?.coordinator?.cacthTheEvent(.items(items))
+                self?.coordinator?.cacthTheEvent(.items(items))
             case .failure(let error):
-                print(error)
-                //self?._presenter.locationCatch(the: .other(error))
+                self?._presenter.locationCatch(the: .other(error))
             }
         }
     }
