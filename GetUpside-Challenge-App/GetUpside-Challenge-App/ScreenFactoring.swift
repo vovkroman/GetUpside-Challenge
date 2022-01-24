@@ -38,5 +38,5 @@ protocol SplashSceneFactoriable: AnyObject {
 }
 
 protocol MainSceneFactoriable {
-    func buildMainScene(_ coordinator: AnyCoordinating<Main.Event>) -> UIViewController
+    func buildMainScene(_ coordinator: AnyCoordinating<Main.Event>, _ entities: [Eatery]) -> UIViewController
 }

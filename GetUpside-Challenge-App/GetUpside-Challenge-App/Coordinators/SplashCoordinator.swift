@@ -2,11 +2,7 @@ import UIKit
 import Logger
 
 extension Splash {
-    typealias Entity = Eatery
-    
-    enum Event {
-        case items([Entity])
-    }
+    typealias Event = [Eatery]
     
     final class Coordinator: BaseCoordinator {
         private let _navigationController: UINavigationController
@@ -32,8 +28,8 @@ extension Splash {
         
         // MARK: - Private methods
         
-        private func _navigateToMainFlow(animated: Bool = true) {
-            let mainCoordintaor = Main.Coordinator(_navigationController, _appDependecies)
+        private func _navigateToMainFlow(animated: Bool = true, _entities: [Eatery]) {
+            let mainCoordintaor = Main.Coordinator(_navigationController, _appDependecies, _entities)
             mainCoordintaor.parentCoordinator = parentCoordinator
             parentCoordinator?.removeDependency(self)
             parentCoordinator?.addDependency(mainCoordintaor)
@@ -43,10 +39,10 @@ extension Splash {
 }
 
 extension Splash.Coordinator: Coordinating {
-    typealias Event = Splash.Event
+    typealias Event = [Eatery]
     
     func cacthTheEvent(_ event: Event) {
-        DispatchQueue.main.async(execute: combine(true, with: _navigateToMainFlow))
+        DispatchQueue.main.async(execute: combine(true, event, with: _navigateToMainFlow))
     }
     
     func catchTheError(_ error: Error) {}

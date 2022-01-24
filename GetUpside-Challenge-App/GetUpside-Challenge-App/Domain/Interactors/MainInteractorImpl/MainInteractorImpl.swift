@@ -12,16 +12,20 @@ extension Main {
         
         private let _presenter: LocationPresenting
         
-        var coordinator: AnyCoordinating<Splash.Event>?
+        private var _entities: Set<Eatery>
+        
+        var coordinator: AnyCoordinating<Main.Event>?
         
         init(
             _ location: LocationUseCase,
             _ apiWorker: GetEateriesUseCase,
-            _ presenter: LocationPresenting
+            _ presenter: LocationPresenting,
+            _ entities: [Eatery]
         ) {
             _apiWorker = apiWorker
             _locationWorker = location
             _presenter = presenter
+            _entities = Set(entities)
         }
     }
 }
@@ -39,10 +43,10 @@ extension Main.InteractorImpl: MainUseCase {
     func fetachData(_ coordinate: Coordinate) {
         _apiWorker.fetchData(coordinate).observe { [weak self] result in
             switch result {
-            case .success(let items):
-                self?.coordinator?.cacthTheEvent(.items(items))
-            case .failure(let error):
-                self?._presenter.locationCatch(the: .other(error))
+            case .success(let items): break
+                //self?.coordinator?.cacthTheEvent(items)
+            case .failure(let error): break
+                //self?._presenter.locationCatch(the: .other(error))
             }
         }
     }

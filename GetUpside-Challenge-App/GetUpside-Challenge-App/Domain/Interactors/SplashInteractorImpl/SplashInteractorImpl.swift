@@ -44,11 +44,11 @@ extension Splash.InteractorImpl: SplashUseCase {
         _apiWorker.fetchData(coordinate).observe { [weak self] result in
             switch result {
             case .success(let items):
-                self?.coordinator?.cacthTheEvent(.items(items))
+                self?.coordinator?.cacthTheEvent(items)
             case .failure(let error):
                 self?._presenter.locationCatch(the: .other(error))
             case .failure(let error as NSError) where any(value: error.code, items: NSURLErrorNetworkConnectionLost, NSURLErrorNotConnectedToInternet):
-                print("Internet connection issue")
+                
                 break
             }
         }

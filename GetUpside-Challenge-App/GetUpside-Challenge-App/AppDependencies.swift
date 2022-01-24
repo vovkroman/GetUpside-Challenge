@@ -71,7 +71,7 @@ extension AppDependencies: SplashSceneFactoriable {
 }
 
 extension AppDependencies: MainSceneFactoriable {
-    func buildMainScene(_ coordinator: AnyCoordinating<Main.Event>) -> UIViewController {
+    func buildMainScene(_ coordinator: AnyCoordinating<Main.Event>, _ entities: [Eatery]) -> UIViewController {
         let locationWorker = Location.Worker(_locationManager)
         let argisWorker = ArcGis.Worker(AnyFetchRouter())
         let queue = DispatchQueue(
@@ -83,7 +83,8 @@ extension AppDependencies: MainSceneFactoriable {
         let interactor = Main.InteractorImpl(
             locationWorker,
             argisWorker,
-            presenter
+            presenter,
+            entities
         )
         
         locationWorker.delegate = interactor
