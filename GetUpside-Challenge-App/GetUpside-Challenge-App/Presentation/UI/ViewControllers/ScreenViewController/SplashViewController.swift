@@ -37,7 +37,7 @@ extension Splash {
             case .error(let viewModel):
                 _showError(viewModel)
                 _cancelFetching()
-            case .operating(let coordinate):
+            case .locating(let coordinate):
                 _showLogo()
                 _fetchData(by: coordinate)
                 break

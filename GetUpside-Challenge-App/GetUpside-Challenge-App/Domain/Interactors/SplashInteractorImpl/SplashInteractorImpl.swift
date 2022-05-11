@@ -1,9 +1,14 @@
 import Foundation
 
-protocol SplashUseCase: AnyObject {
+protocol LocationSupporting: AnyObject {
     func requestLocation()
+}
+
+protocol DataFetching: AnyObject {
     func fetachData(_ coordinate: Coordinate)
 }
+
+protocol SplashUseCase: LocationSupporting, DataFetching {}
 
 extension Splash {
     

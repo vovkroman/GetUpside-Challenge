@@ -1,15 +1,14 @@
 import Foundation
 
-protocol MainUseCase: SplashUseCase {
-    
-}
+protocol MainUseCase: DataFetching, LocationSupporting {}
 
 extension Main {
     final class InteractorImpl {
-        // workers
+        // Workers
         private let _locationWorker: LocationUseCase
         private let _apiWorker: GetEateriesUseCase
         
+        // Presenters
         private let _presenter: LocationPresenting
         
         private var _entities: Set<Eatery>

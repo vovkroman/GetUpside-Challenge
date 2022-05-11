@@ -6,7 +6,7 @@ extension Splash {
         enum State {
             case idle
             case loading
-            case operating(coordinate: Coordinate)
+            case locating(coordinate: Coordinate)
             case error(viewModel: Splash.ViewModel)
         }
         
@@ -30,19 +30,19 @@ extension Splash {
         
         func transition(with event: Event) {
             switch (_state, event) {
-            case (.idle, .authDidStarted), (.operating, .authDidStarted), (.error, .authDidStarted):
+            case (.idle, .authDidStarted), (.locating, .authDidStarted), (.error, .authDidStarted):
                 _state = .loading
             case (.idle, .coordinateDidUpdated(let coordinate)), (.error, .coordinateDidUpdated(let coordinate)):
-                _state = .operating(coordinate: coordinate)
-            case (.idle, .catchError(let viewModel)), (.loading, .catchError(let viewModel)), (.operating, .catchError(let viewModel)):
+                _state = .locating(coordinate: coordinate)
+            case (.idle, .catchError(let viewModel)), (.loading, .catchError(let viewModel)), (.locating, .catchError(let viewModel)):
                 _state = .error(viewModel: viewModel)
             case (.loading, .authDidStarted):
                 break
             case (.loading, .coordinateDidUpdated(let coordinate)):
-                _state = .operating(coordinate: coordinate)
-            case (.operating(let old), .coordinateDidUpdated(let new)) where old != new:
-                _state = .operating(coordinate: new)
-            case (.operating, .coordinateDidUpdated):
+                _state = .locating(coordinate: coordinate)
+            case (.locating(let old), .coordinateDidUpdated(let new)) where old != new:
+                _state = .locating(coordinate: new)
+            case (.locating, .coordinateDidUpdated):
                 break
             case (.error(let old), .catchError(let new)) where old != new:
                 _state = .error(viewModel: new)
@@ -63,7 +63,7 @@ extension Splash.StateMachine.State: Equatable {
         case (.idle, .idle),
              (.loading, .loading):
             return true
-        case (.operating(let lhs), .operating(let rhs)):
+        case (.locating(let lhs), .locating(let rhs)):
             return lhs == rhs
         case (.error(let lhs), .error(let rhs)):
             return lhs == rhs
