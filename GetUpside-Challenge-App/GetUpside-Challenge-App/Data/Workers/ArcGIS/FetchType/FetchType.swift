@@ -5,6 +5,6 @@ protocol FetchType {
     var searchResult: String { get }
     var categories: [String] { get }
     var span: Double { get }
-    var location: Coordinate? { get }
+    var location: Coordinates? { get }
     var maxResults: Int { get }
 }

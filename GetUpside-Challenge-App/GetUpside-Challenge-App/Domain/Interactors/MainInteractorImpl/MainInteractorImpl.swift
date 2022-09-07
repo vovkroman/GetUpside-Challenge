@@ -1,6 +1,7 @@
 import Foundation
 
 protocol MainUseCase: DataFetching, LocationSupporting {}
+protocol MainPresentable: LocationPresenting & MainDataLoadable {}
 
 extension Main {
     final class InteractorImpl {
@@ -9,16 +10,34 @@ extension Main {
         private let _apiWorker: GetEateriesUseCase
         
         // Presenters
-        private let _presenter: LocationPresenting
-        
+        private let _presenter: MainPresentable
         private var _entities: Set<Eatery>
         
         var coordinator: AnyCoordinating<Main.Event>?
         
+        // MARK: - Private methods
+        
+        private func _fetchNewEntities(_ entities: [Eatery]) {
+            var new: Set<Eatery> = Set()
+            for entity in entities {
+                if _entities.contains(entity) { continue }
+                _entities.insert(entity)
+                new.insert(entity)
+            }
+            _presenter.dataDidLoaded(new)
+        }
+        
+        // MARK: - Public methods
+        
+        func initialSetup() {
+            if _entities.isEmpty { return }
+            _presenter.dataDidLoaded(_entities)
+        }
+        
         init(
             _ location: LocationUseCase,
             _ apiWorker: GetEateriesUseCase,
-            _ presenter: LocationPresenting,
+            _ presenter: MainPresentable,
             _ entities: [Eatery]
         ) {
             _apiWorker = apiWorker
@@ -39,13 +58,14 @@ extension Main.InteractorImpl: MainUseCase {
         }
     }
     
-    func fetachData(_ coordinate: Coordinate) {
+    func fetachData(_ coordinate: Coordinates) {
         _apiWorker.fetchData(coordinate).observe { [weak self] result in
             switch result {
-            case .success(let items): break
-                //self?.coordinator?.cacthTheEvent(items)
-            case .failure(let error): break
+            case .success(let entities):
+                self?._fetchNewEntities(entities)
+            case .failure(let error):
                 //self?._presenter.locationCatch(the: .other(error))
+                break
             }
         }
     }
@@ -70,7 +90,7 @@ extension Main.InteractorImpl: LocationUpdating {
     
     func location(
         _ worker: LocationUseCase,
-        locationDidUpdated locationCoordinate: Coordinate
+        locationDidUpdated locationCoordinate: Coordinates
     ) {
         _presenter.locationDidUpdated(with: locationCoordinate)
     }

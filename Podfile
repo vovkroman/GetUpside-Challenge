@@ -8,6 +8,7 @@ def pods
   
   # Google Maps routines
   pod 'GoogleMaps'
+  pod 'Google-Maps-iOS-Utils'
 
   #Realm DB
   pod 'Realm'

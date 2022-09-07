@@ -30,6 +30,6 @@ extension LogoViewController: LogoTransitionable {
     }
     
     func transitionDidEnd(_ transition: UIViewControllerAnimatedTransitioning) {
-        //contentView.removeFromSuperview()
+        contentView.removeFromSuperview()
     }
 }

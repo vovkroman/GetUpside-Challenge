@@ -58,7 +58,7 @@
 		6F8C9D2826B05CE7000D5DA0 /* Floating+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8C9D2726B05CE7000D5DA0 /* Floating+Extensions.swift */; };
 		6FA1016826B324C80052D939 /* Optional+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA1016726B324C80052D939 /* Optional+Extensions.swift */; };
 		6FA1016A26B327340052D939 /* AnyOf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA1016926B327340052D939 /* AnyOf.swift */; };
-		6FA3112627411E6E0061F91C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA3112527411E6E0061F91C /* MapViewController.swift */; };
+		6FA3112627411E6E0061F91C /* GoogleMapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA3112527411E6E0061F91C /* GoogleMapsViewController.swift */; };
 		6FA31128274136140061F91C /* UIColor+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA31127274136140061F91C /* UIColor+Image.swift */; };
 		6FA32B6B26B6F03600275B48 /* SplashPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA32B6A26B6F03600275B48 /* SplashPresenter.swift */; };
 		6FA4A3C0274156BF005AEEBE /* SquareSegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA4A3BF274156BF005AEEBE /* SquareSegmentControl.swift */; };
@@ -88,6 +88,7 @@
 		6FC4411C273005EC00C54028 /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC4411B273005EC00C54028 /* LogoView.swift */; };
 		6FC4411E2730096D00C54028 /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC4411D2730096D00C54028 /* ContainerView.swift */; };
 		6FC441212730098F00C54028 /* ContainerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FC441202730098F00C54028 /* ContainerView.xib */; };
+		6FCC5BDC28C8A01800E29CC6 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FCC5BDB28C8A01800E29CC6 /* MainViewModel.swift */; };
 		6FF277E82773777700D4FFE0 /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF277E72773777700D4FFE0 /* SplashViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -184,7 +185,7 @@
 		6F8C9D2726B05CE7000D5DA0 /* Floating+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Floating+Extensions.swift"; sourceTree = "<group>"; };
 		6FA1016726B324C80052D939 /* Optional+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Extensions.swift"; sourceTree = "<group>"; };
 		6FA1016926B327340052D939 /* AnyOf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyOf.swift; sourceTree = "<group>"; };
-		6FA3112527411E6E0061F91C /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		6FA3112527411E6E0061F91C /* GoogleMapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsViewController.swift; sourceTree = "<group>"; };
 		6FA31127274136140061F91C /* UIColor+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Image.swift"; sourceTree = "<group>"; };
 		6FA32B6A26B6F03600275B48 /* SplashPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashPresenter.swift; sourceTree = "<group>"; };
 		6FA4A3BF274156BF005AEEBE /* SquareSegmentControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareSegmentControl.swift; sourceTree = "<group>"; };
@@ -214,6 +215,7 @@
 		6FC4411B273005EC00C54028 /* LogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
 		6FC4411D2730096D00C54028 /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
 		6FC441202730098F00C54028 /* ContainerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContainerView.xib; sourceTree = "<group>"; };
+		6FCC5BDB28C8A01800E29CC6 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		6FF277E72773777700D4FFE0 /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
 		C0FC476D691215081D5BF116 /* Pods-GetUpside-Challenge-App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GetUpside-Challenge-App.debug.xcconfig"; path = "Target Support Files/Pods-GetUpside-Challenge-App/Pods-GetUpside-Challenge-App.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -420,7 +422,7 @@
 				6FB41DD9273EBEFD00E226A2 /* MainViewController.swift */,
 				6FB7C1622739C54E00F0D8AE /* LogoViewController.swift */,
 				6FB7C1662739CBFD00F0D8AE /* ErrorViewController.swift */,
-				6FA3112527411E6E0061F91C /* MapViewController.swift */,
+				6FA3112527411E6E0061F91C /* GoogleMapsViewController.swift */,
 			);
 			path = ScreenViewController;
 			sourceTree = "<group>";
@@ -635,6 +637,7 @@
 			children = (
 				6FA4A3C52741AACC005AEEBE /* MainPresenter.swift */,
 				6FAA46B827A8252900266F2D /* MainStateMachine.swift */,
+				6FCC5BDB28C8A01800E29CC6 /* MainViewModel.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -963,7 +966,7 @@
 				6FA1016A26B327340052D939 /* AnyOf.swift in Sources */,
 				6FB7C1672739CBFD00F0D8AE /* ErrorViewController.swift in Sources */,
 				6F33AA4426CFB54600A469FC /* SplashStateMachine.swift in Sources */,
-				6FA3112627411E6E0061F91C /* MapViewController.swift in Sources */,
+				6FA3112627411E6E0061F91C /* GoogleMapsViewController.swift in Sources */,
 				6F51D1E9273C582B00BDDF6C /* MapView.swift in Sources */,
 				6F8C9D1F26B02BA6000D5DA0 /* LocationWorker.swift in Sources */,
 				6FF277E82773777700D4FFE0 /* SplashViewModel.swift in Sources */,
@@ -1016,6 +1019,7 @@
 				6FA32B6B26B6F03600275B48 /* SplashPresenter.swift in Sources */,
 				6FB6CE962731C0EE0011EB5B /* Configuration.swift in Sources */,
 				6F8411FC278DC676006C5B8E /* EateryConverter.swift in Sources */,
+				6FCC5BDC28C8A01800E29CC6 /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1230,6 +1234,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YS94N9V9CH;
 				INFOPLIST_FILE = "GetUpside-Challenge-AppTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1251,6 +1256,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YS94N9V9CH;
 				INFOPLIST_FILE = "GetUpside-Challenge-AppTests/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1271,6 +1277,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YS94N9V9CH;
 				INFOPLIST_FILE = "GetUpside-Challenge-AppUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1290,6 +1297,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YS94N9V9CH;
 				INFOPLIST_FILE = "GetUpside-Challenge-AppUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -9,7 +9,7 @@ final class MainView: UIView, NibReusable {
         tabBarMenu.updateLayout()
     }
         
-    func add(_ children: [UIViewController], on parent: UIViewController?) {
+    func add(_ children: ContiguousArray<UIViewController>, on parent: UIViewController?) {
         for index in stride(from: children.count-1, through: 0, by: -1) {
             let viewController = children[index]
             tabBarMenu.addTabItem(with: viewController.title, at: index)

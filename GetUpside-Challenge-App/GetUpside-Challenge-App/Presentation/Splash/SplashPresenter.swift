@@ -1,12 +1,12 @@
 import Foundation
 
-protocol StateMachineObserver: AnyObject {
+protocol SplashStateMachineObserver: AnyObject {
     func stateDidChanched(_ stateMachine: Splash.StateMachine, to: Splash.StateMachine.State)
 }
 
 protocol LocationPresenting: AnyObject {
     func locationDidRequestForAuthorization()
-    func locationDidUpdated(with coordinate: Coordinate)
+    func locationDidUpdated(with coordinate: Coordinates)
     func locationCatch(the error: Location.Error)
 }
 
@@ -16,7 +16,7 @@ extension Splash {
         private var _stateMachine: StateMachine = StateMachine()
         private let _queue: DispatchQueue
         
-        weak var observer: StateMachineObserver? {
+        weak var observer: SplashStateMachineObserver? {
             didSet {
                 _stateMachine.observer = observer
             }
@@ -31,14 +31,14 @@ extension Splash {
 extension Splash.Presenter: LocationPresenting {
     func locationCatch(the error: Location.Error) {
         let viewModel = Splash.ViewModel(error)
-        _queue.async(execute: combine(.catchError(viewModel), with: _stateMachine.transition))
+        _queue.sync(execute: combine(.catchError(viewModel), with: _stateMachine.transition))
     }
     
-    func locationDidUpdated(with coordinate: Coordinate) {
-        _queue.async(execute: combine(.coordinateDidUpdated(coordinate), with: _stateMachine.transition))
+    func locationDidUpdated(with coordinate: Coordinates) {
+        _queue.sync(execute: combine(.coordinateDidUpdated(coordinate), with: _stateMachine.transition))
     }
     
     func locationDidRequestForAuthorization() {
-        _queue.async(execute: combine(.authDidStarted, with: _stateMachine.transition))
+        _queue.sync(execute: combine(.authDidStarted, with: _stateMachine.transition))
     }
 }

@@ -1,7 +1,7 @@
 import Foundation
 import CoreLocation
 
-typealias Coordinate = CLLocationCoordinate2D
+typealias Coordinates = CLLocationCoordinate2D
 typealias LocationStatus = CLAuthorizationStatus
 typealias OtherError = Error
 
@@ -18,7 +18,7 @@ protocol LocationUseCase: AnyObject {
 
 protocol LocationUpdating: AnyObject {
     func location(_ worker: LocationUseCase, authStatusDidUpdated status: LocationStatus)
-    func location(_ worker: LocationUseCase, locationDidUpdated locationCoordinate: Coordinate)
+    func location(_ worker: LocationUseCase, locationDidUpdated locationCoordinate: Coordinates)
     func location(_ worker: LocationUseCase, catch error: Error)
 }
 

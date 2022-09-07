@@ -2,14 +2,14 @@ import UIKit
 
 extension Main {
     final class Scene: BaseScene<MainView, InteractorImpl> {
+        
         override func viewDidLoad() {
             super.viewDidLoad()
-            
-            interactor.requestLocation()
+            interactor.initialSetup()
             
             contentView.tabBarMenu.delegate = self
             
-            let mapVC = MapViewController()
+            let mapVC = GoogleMapsViewController()
             mapVC.title = "Map"
             
             navigationItem.title = mapVC.title
@@ -24,6 +24,22 @@ extension Main {
             super.viewDidLayoutSubviews()
             contentView.updateLayout()
         }
+        
+        // MARK: - State handling
+        private func _handleState(_ state: Main.StateMachine.State) {
+            switch state {
+            case .list(let viewModels):
+                break
+            default:
+                break
+            }
+        }
+    }
+}
+
+extension Main.Scene: MainStateMachineObserver {
+    func stateDidChanched(_ stateMachine: Main.StateMachine, to: Main.StateMachine.State) {
+        DispatchQueue.main.async(execute: combine(to, with: _handleState))
     }
 }
 

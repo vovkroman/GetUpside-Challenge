@@ -89,6 +89,7 @@ extension AppDependencies: MainSceneFactoriable {
         
         locationWorker.delegate = interactor
         let viewController = Main.Scene(interactor: interactor)
+        presenter.observer = viewController
         return viewController
     }
 }

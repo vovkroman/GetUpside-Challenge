@@ -5,7 +5,7 @@ protocol LocationSupporting: AnyObject {
 }
 
 protocol DataFetching: AnyObject {
-    func fetachData(_ coordinate: Coordinate)
+    func fetachData(_ coordinate: Coordinates)
 }
 
 protocol SplashUseCase: LocationSupporting, DataFetching {}
@@ -45,7 +45,7 @@ extension Splash.InteractorImpl: SplashUseCase {
         }
     }
     
-    func fetachData(_ coordinate: Coordinate) {
+    func fetachData(_ coordinate: Coordinates) {
         _apiWorker.fetchData(coordinate).observe { [weak self] result in
             switch result {
             case .success(let items):
@@ -84,7 +84,7 @@ extension Splash.InteractorImpl: LocationUpdating {
     
     func location(
         _ worker: LocationUseCase,
-        locationDidUpdated locationCoordinate: Coordinate
+        locationDidUpdated locationCoordinate: Coordinates
     ) {
         _presenter.locationDidUpdated(with: locationCoordinate)
     }

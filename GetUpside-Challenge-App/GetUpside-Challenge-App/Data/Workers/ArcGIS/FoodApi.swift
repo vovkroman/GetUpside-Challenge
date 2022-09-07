@@ -1,7 +1,7 @@
 import Foundation
 
 enum FoodApi {
-    case getFood(location: Coordinate)
+    case getFood(location: Coordinates)
 }
 
 extension FoodApi: FetchType {
@@ -24,7 +24,7 @@ extension FoodApi: FetchType {
         }
     }
     
-    var location: Coordinate? {
+    var location: Coordinates? {
         switch self {
         case .getFood(let location):
             return location

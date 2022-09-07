@@ -6,7 +6,7 @@ enum ArcGis {}
 
 // Interface for Items worker (use case), to get items (eateries from either Local DB or ArgisAPI)
 protocol GetEateriesUseCase: AnyObject {
-    func fetchData(_ coordinate: Coordinate) -> Future<[Eatery]>
+    func fetchData(_ coordinate: Coordinates) -> Future<[Eatery]>
     func cancelFetching()
 }
 
@@ -16,7 +16,7 @@ extension ArcGis {
         private let _router: AnyFetchRouter<FoodApi>
         
         func fetch(
-            _ coordinate: Coordinate
+            _ coordinate: Coordinates
         ) -> Future<[AGSGeocodeResult]> {
             return _router.performFetch(.getFood(location: coordinate))
         }
@@ -38,7 +38,7 @@ extension ArcGis.Worker: GetEateriesUseCase {
         cancel()
     }
     
-    func fetchData(_ coordinate: Coordinate) -> Future<[Eatery]> {
+    func fetchData(_ coordinate: Coordinates) -> Future<[Eatery]> {
         let converter = Convertor.EateryConverter()
         return fetch(coordinate)
                .transformed { results in

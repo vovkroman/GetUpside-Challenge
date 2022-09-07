@@ -21,7 +21,7 @@ extension Splash {
             interactor.requestLocation()
         }
         
-        private func _fetchData(by coordinate: Coordinate) {
+        private func _fetchData(by coordinate: Coordinates) {
             interactor.fetachData(coordinate)
         }
         
@@ -46,7 +46,7 @@ extension Splash {
     }
 }
 
-extension Splash.Scene: StateMachineObserver {
+extension Splash.Scene: SplashStateMachineObserver {
     func stateDidChanched(_ stateMachine: Splash.StateMachine, to: Splash.StateMachine.State) {
         DispatchQueue.main.async(execute: combine(to, with: _handleState))
     }

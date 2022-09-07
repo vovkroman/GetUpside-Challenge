@@ -6,13 +6,13 @@ extension Splash {
         enum State {
             case idle
             case loading
-            case locating(coordinate: Coordinate)
+            case locating(coordinate: Coordinates)
             case error(viewModel: Splash.ViewModel)
         }
         
         enum Event {
             case authDidStarted
-            case coordinateDidUpdated(Coordinate)
+            case coordinateDidUpdated(Coordinates)
             case catchError(Splash.ViewModel)
         }
         
@@ -26,7 +26,7 @@ extension Splash {
             }
         }
         
-        weak var observer: StateMachineObserver?
+        weak var observer: SplashStateMachineObserver?
         
         func transition(with event: Event) {
             switch (_state, event) {
