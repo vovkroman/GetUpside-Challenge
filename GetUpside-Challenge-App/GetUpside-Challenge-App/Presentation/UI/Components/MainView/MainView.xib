@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,15 +12,15 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="MainView" customModule="GetUpside_Challenge_App" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="402"/>
+            <rect key="frame" x="0.0" y="0.0" width="365" height="278"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3uX-0K-2RU">
-                    <rect key="frame" x="0.0" y="44" width="414" height="358"/>
+                    <rect key="frame" x="0.0" y="44" width="365" height="234"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q7V-Tg-MTr" customClass="TabBarMenuView" customModule="GetUpside_Challenge_App" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="44" width="414" height="0.0"/>
+                    <rect key="frame" x="0.0" y="44" width="365" height="0.0"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" priority="999" id="f0U-mv-bnX"/>
@@ -43,7 +43,7 @@
                 <outlet property="containerView" destination="3uX-0K-2RU" id="PHS-DD-4ap"/>
                 <outlet property="tabBarMenu" destination="q7V-Tg-MTr" id="8Bu-uP-oJg"/>
             </connections>
-            <point key="canvasLocation" x="81.159420289855078" y="25.446428571428569"/>
+            <point key="canvasLocation" x="116.66666666666667" y="-16.071428571428569"/>
         </view>
     </objects>
     <resources>

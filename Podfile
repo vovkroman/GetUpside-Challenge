@@ -3,7 +3,7 @@ use_frameworks!
 
 workspace 'GetUpside-Challenge'
 
-def pods
+def app_dependencies
   pod 'ArcGIS-Runtime-SDK-iOS'#, '100.10'
   
   # Google Maps routines
@@ -15,10 +15,18 @@ def pods
   pod 'RealmSwift'
 end
 
+def map_dependencies
+  # Google Maps routines
+  pod 'GoogleMaps'
+  pod 'Google-Maps-iOS-Utils'
+end
+
 target 'GetUpside-Challenge-App' do
   project 'GetUpside-Challenge-App/GetUpside-Challenge-App.xcodeproj'
-  pods
+  app_dependencies
+  map_dependencies
 end
+
 
 post_install do |installer|
   installer.pods_project.targets.each do |target|

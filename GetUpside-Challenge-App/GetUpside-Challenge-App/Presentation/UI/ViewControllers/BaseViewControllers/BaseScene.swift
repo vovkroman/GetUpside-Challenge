@@ -18,6 +18,7 @@ class BaseViewController<View: Viewable>: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -34,10 +35,12 @@ class BaseScene<View: Viewable, InteractorImpl>: BaseViewController<View>, Inter
         super.init()
     }
     
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    @available(*, unavailable)
     required init() {
         fatalError("init() has not been implemented")
     }

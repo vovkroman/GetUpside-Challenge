@@ -30,7 +30,6 @@ extension Main.Presenter: MainPresentable {
     func dataDidLoaded(_ items: Set<Eatery>) {
         let viewModels = items.compactMap(Main.ViewModel.init)
         _queue.sync(execute: combine(.loadingFinished(viewModels: viewModels), with: _stateMachine.transition))
-        print("I has been invoked \(#function)")
     }
     
     func locationDidRequestForAuthorization() {
