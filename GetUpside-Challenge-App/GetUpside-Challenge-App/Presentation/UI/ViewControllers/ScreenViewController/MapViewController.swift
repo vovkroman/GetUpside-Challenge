@@ -4,27 +4,16 @@ import GoogleMapsUtils
 
 final class MapViewController: BaseViewController<MapView> {
     
-    var clusterManager: Cluster.Manager!
+    var clusterManager: ClusterManagerSupporting!
         
     override func viewDidLoad() {
         super.viewDidLoad()
         contentView.applyStyle()
     }
     
-    func update(with items: [Main.ViewModel]) {
-        for viewModel in items {
-            let marker = GMSMarker(position: viewModel.coordinates)
-            marker.tracksViewChanges = false
-            marker.title = viewModel.name
-            marker.appearAnimation = .pop
-            clusterManager.add(marker)
-        }
-        clusterManager.cluster()
-    }
-    
     // MARK: - Private methods
     
-    required init(_ clusterManager: Cluster.Manager) {
+    required init(_ clusterManager: ClusterManagerSupporting) {
         self.clusterManager = clusterManager
         super.init()
     }
@@ -36,4 +25,15 @@ final class MapViewController: BaseViewController<MapView> {
 
 extension MapViewController: ChildUpdatable {
     
+    func update<ViewModel: Main.ViewModelable>(_ viewModels: [ViewModel]) {
+        for viewModel in viewModels {
+            let marker = GMSMarker(position: viewModel.coordinates)
+            marker.tracksViewChanges = false
+            marker.iconView = PinIconView(viewModel.shape, CGRect(origin: .zero, size: CGSize(width: 50, height: 50.0)))
+            marker.snippet = viewModel.name
+            
+            marker.appearAnimation = .pop
+            clusterManager.add(marker)
+        }
+    }
 }

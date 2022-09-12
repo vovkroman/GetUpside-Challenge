@@ -1,5 +1,5 @@
 import UIKit
 
 final class ListViewController: UITableViewController, ChildUpdatable {
-    func update(with items: [Main.ViewModel]) {}
+    func update<ViewModel: Main.ViewModelable>(_ viewModels: [ViewModel]) {}
 }

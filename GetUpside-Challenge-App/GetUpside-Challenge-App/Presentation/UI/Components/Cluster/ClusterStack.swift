@@ -2,8 +2,13 @@ import Foundation
 import GoogleMapsUtils
 import UIKit
 
+protocol ClusterManagerSupporting: AnyObject {
+    func add(_ item: GMUClusterItem)
+    func cluster()
+}
+
 extension Cluster {
-    class IconGenerator: GMUDefaultClusterIconGenerator {}
+    final class IconGenerator: GMUDefaultClusterIconGenerator {}
 }
 
 extension Cluster {
@@ -11,7 +16,7 @@ extension Cluster {
 }
 
 extension Cluster {
-    class Renderer: GMUDefaultClusterRenderer {
+    final class Renderer: GMUDefaultClusterRenderer {
         override func shouldRender(as cluster: GMUCluster, atZoom zoom: Float) -> Bool {
             return cluster.count >= 10
         }
@@ -19,6 +24,6 @@ extension Cluster {
 }
 
 extension Cluster {
-    class Manager: GMUClusterManager {}
+    final class Manager: GMUClusterManager, ClusterManagerSupporting {}
 }
 

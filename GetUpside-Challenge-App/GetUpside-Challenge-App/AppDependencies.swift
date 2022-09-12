@@ -88,7 +88,13 @@ extension AppDependencies: MainSceneFactoriable {
         )
         
         locationWorker.delegate = interactor
-        let viewController = Main.Scene(interactor, [buildMapScene, buildListScene])
+        let map = buildMapScene()
+        map.title = "Map"
+        
+        let list = buildListScene()
+        list.title = "List"
+        
+        let viewController = Main.Scene(interactor, [map, list])
         presenter.observer = viewController
         return viewController
     }
@@ -96,17 +102,16 @@ extension AppDependencies: MainSceneFactoriable {
     func buildMapScene() -> MapViewController {
         
         let viewController = MapViewController()
-        viewController.title = "Map"
         /*
          Build cluster graph with the supplied icon generator and
          renderer
          */
         let mapView = viewController.contentView
         let iconGenerator = Cluster.IconGenerator(buckets: [10, 25, 50, 100], backgroundImages: [
-                                                                                           UIImage.circle(diameter: 40, color: .black),
-                                                                                           UIImage.circle(diameter: 60, color: .darkGray),
-                                                                                           UIImage.circle(diameter: 80, color: .gray),
-                                                                                           UIImage.circle(diameter: 100, color: .lightGray)])
+                                                                                           UIImage.circle(diameter: 60, color: .black),
+                                                                                           UIImage.circle(diameter: 80, color: .darkGray),
+                                                                                           UIImage.circle(diameter: 100, color: .gray),
+                                                                                           UIImage.circle(diameter: 120, color: .lightGray)])
         let algorithm = Cluster.Algorithm()
         let renderer = Cluster.Renderer(mapView: mapView,
                                         clusterIconGenerator: iconGenerator)
@@ -121,7 +126,6 @@ extension AppDependencies: MainSceneFactoriable {
     
     func buildListScene() -> ListViewController {
         let viewController = ListViewController()
-        viewController.title = "List"
         return viewController
     }
 }

@@ -1,32 +1,31 @@
 import UIKit
 
 protocol ChildUpdatable: AnyObject {
-    func update(with items: [Main.ViewModel])
+    func update<ViewModel: Main.ViewModelable>(_ viewModels: [ViewModel])
 }
 
 extension Main {
     
+    typealias ViewModelable = Namable & CoordinatesSupporting & Shapable
     typealias Childable = UIViewController & ChildUpdatable
-    typealias Provider = () -> Childable
     
     final class Scene: BaseScene<MainView, InteractorImpl> {
         
-        private var _providers: [Provider] = []
+        private let _kids: ContiguousArray<Childable>
         
         override func viewDidLoad() {
             super.viewDidLoad()
+            
+            defer {
+                interactor.initialSetup()
+            }
+            
             contentView.tabBarMenu.delegate = self
 
-            if _providers.isEmpty { return }
-            var controllers: ContiguousArray<UIViewController> = []
-            for provider in _providers {
-                controllers.append(provider())
-            }
-            navigationItem.title = controllers[0].title
+            if _kids.isEmpty { return }
             
-            contentView.add(controllers, on: self)
-            
-            interactor.initialSetup()
+            navigationItem.title = _kids[0].title
+            contentView.add(_kids, on: self)
         }
         
         override func viewDidLayoutSubviews() {
@@ -35,13 +34,13 @@ extension Main {
         }
         
         func addItems(_ viewModels: [ViewModel]) {
-            for child in children {
-                (child as? MapViewController)?.update(with: viewModels)
+            for kid in _kids {
+                kid.update(viewModels)
             }
         }
         
-        required init(_ interactor: InteractorImpl, _ providers: [Provider]) {
-            self._providers = providers
+        required init(_ interactor: InteractorImpl, _ kids: ContiguousArray<Childable>) {
+            self._kids = kids
             super.init(interactor: interactor)
         }
         

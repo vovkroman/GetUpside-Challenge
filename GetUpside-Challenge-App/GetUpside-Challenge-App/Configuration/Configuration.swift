@@ -1,10 +1,3 @@
-//
-//  Configuration.swift
-//  GetUpside-Challenge-App
-//
-//  Created by Roman Vovk on 02.11.2021.
-//
-
 import Foundation
 
 enum Configuration {

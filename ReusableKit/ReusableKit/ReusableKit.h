@@ -1,10 +1,3 @@
-//
-//  ReusableKit.h
-//  ReusableKit
-//
-//  Created by Roman Vovk on 02.11.2021.
-//
-
 #import <Foundation/Foundation.h>
 
 //! Project version number for ReusableKit.
