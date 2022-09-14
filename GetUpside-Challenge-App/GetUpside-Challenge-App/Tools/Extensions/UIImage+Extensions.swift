@@ -1,4 +1,5 @@
 import UIKit
+
 extension UIImage {
     class func circle(diameter: CGFloat, color: UIColor) -> UIImage {
         let renderer = UIGraphicsImageRenderer(size: CGSize(width: diameter, height: diameter))

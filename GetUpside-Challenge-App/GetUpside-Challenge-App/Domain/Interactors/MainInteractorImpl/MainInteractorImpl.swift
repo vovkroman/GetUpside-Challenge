@@ -15,7 +15,7 @@ extension Main {
         
         var coordinator: AnyCoordinating<Main.Event>?
         
-        // MARK: - Private methods
+        // MARK: - Private API
         
         private func _fetchNewEntities(_ entities: [Eatery]) {
             var new: Set<Eatery> = Set()

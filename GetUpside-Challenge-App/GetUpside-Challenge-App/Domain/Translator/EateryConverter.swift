@@ -15,7 +15,7 @@ extension Convertor {
             let name = from.label
             let attributes = from.attributes
             let data = Eatery.Data(coordinates: coordinates, name: name, payload: attributes)
-            return .american(data: data)
+            return .coffeeShop(data: data)
         }
         
         func convertToFrom(from: Eatery) throws -> AGSGeocodeResult {

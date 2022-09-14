@@ -1,8 +1,16 @@
 import ReusableKit
 import Logger
 import GoogleMaps
+import UIKit
 
 class MapView: GMSMapView, NibReusable {
+    
+    override var selectedMarker: GMSMarker? {
+        didSet {
+            guard let selectedMarker = selectedMarker else { return }
+            selectedMarker.selecte()
+        }
+    }
     
     // MARK: - Configuration methods
 
@@ -21,3 +29,4 @@ private extension MapView {
         }
     }
 }
+

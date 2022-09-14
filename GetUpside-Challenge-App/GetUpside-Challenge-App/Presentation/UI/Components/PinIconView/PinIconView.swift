@@ -1,38 +1,76 @@
 import UIKit
 
 final class PinIconView: UIView {
-    private let _shape: Pin.Shape
     
-    init(_ shape: Pin.Shape, _ frame: CGRect) {
+    @IBInspectable
+    var borderColor: UIColor = .darkGray
+    
+    @IBInspectable
+    var fillColor: UIColor = .lightGray
+    
+    @IBInspectable
+    var borderWidth: CGFloat = 1.0
+        
+    private let _shape: ShapeSupportable
+    private(set) var _shapeLayer: CAShapeLayer!
+    
+    // MARK: - Life Cycle
+    
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        _applyStyle(rect)
+    }
+    
+    init(_ shape: ShapeSupportable, _ frame: CGRect) {
         self._shape = shape
         super.init(frame: frame)
     }
     
-    override func draw(_ rect: CGRect) {
-        _applyMask(rect)
-        
-        layer.borderColor = UIColor.black.cgColor
-        layer.borderWidth = 5.0
-        layer.backgroundColor = UIColor.gray.cgColor
-    }
+    // MARK: - Private API
     
-    private func _applyMask(_ rect: CGRect) {
-        let shapeLayer = CAShapeLayer()
-
+    private func _setupPath(_ rect: CGRect) -> UIBezierPath {
         let bezierPath = UIBezierPath()
         let outer: Pin.Profile = .pin(rect: rect)
         bezierPath.append(outer.path)
         
-        let size = rect.size
-        let profileRect = CGRect(center: rect.center, size: size.apply(0.5))
-        let inner: Pin.Profile = _shape.profile(profileRect)
-        bezierPath.append(inner.path)
-        shapeLayer.path = bezierPath.cgPath
+        let _size = rect.size
+        let profileRect = CGRect(center: rect.center, size: _size.apply(0.5))
+        let inner: UIBezierPath = _shape.profile(profileRect)
+        bezierPath.append(inner)
         
-        layer.addSublayer(shapeLayer)
+        return bezierPath
+    }
+    
+    private func _applyStyle(_ rect: CGRect) {
+        let bezierPath = _setupPath(rect)
+        let path = bezierPath.cgPath
+        _applyMask(path)
+        _applyBorder(path)
+    }
+    
+    private func _applyMask(_ path: CGPath) {
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.path = path
         shapeLayer.fillRule = .evenOdd
         
+        
         layer.mask = shapeLayer
+        layer.contentsScale = UIScreen.main.scale
+        layer.backgroundColor = fillColor.cgColor
+        
+        _shapeLayer = shapeLayer
+    }
+    
+    private func _applyBorder(_ path: CGPath) {
+        let borderLayer = CAShapeLayer()
+        borderLayer.path = path
+        
+        borderLayer.contentsScale = UIScreen.main.scale
+        borderLayer.lineWidth = borderWidth
+        borderLayer.strokeColor = borderColor.cgColor
+        borderLayer.fillColor = UIColor.clear.cgColor
+        
+        layer.addSublayer(borderLayer)
     }
     
     @available(*, unavailable)

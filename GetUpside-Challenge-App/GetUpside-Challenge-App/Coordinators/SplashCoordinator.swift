@@ -26,7 +26,7 @@ extension Splash {
             _navigationController.delegate = self
         }
         
-        // MARK: - Private methods
+        // MARK: - Private API
         
         private func _navigateToMainFlow(animated: Bool = true, _entities: [Eatery]) {
             let mainCoordintaor = Main.Coordinator(_navigationController, _appDependecies, _entities)

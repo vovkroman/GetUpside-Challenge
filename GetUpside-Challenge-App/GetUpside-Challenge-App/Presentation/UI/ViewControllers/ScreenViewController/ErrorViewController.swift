@@ -39,10 +39,12 @@ final class ErrorViewController: BaseViewController<ErrorView> {
         super.init()
     }
     
+    @available(*, unavailable)
     required init() {
         fatalError("init() has not been implemented")
     }
     
+    @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -50,7 +52,7 @@ final class ErrorViewController: BaseViewController<ErrorView> {
     // MARK: Actions
     
     @objc private func _onTapped(_ sender: UIButton) {
-        _viewModel.action?()
+        let _ = _viewModel.action?()
     }
 }
 

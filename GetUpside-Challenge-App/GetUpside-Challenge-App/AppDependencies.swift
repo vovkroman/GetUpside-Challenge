@@ -107,11 +107,7 @@ extension AppDependencies: MainSceneFactoriable {
          renderer
          */
         let mapView = viewController.contentView
-        let iconGenerator = Cluster.IconGenerator(buckets: [10, 25, 50, 100], backgroundImages: [
-                                                                                           UIImage.circle(diameter: 60, color: .black),
-                                                                                           UIImage.circle(diameter: 80, color: .darkGray),
-                                                                                           UIImage.circle(diameter: 100, color: .gray),
-                                                                                           UIImage.circle(diameter: 120, color: .lightGray)])
+        let iconGenerator = Constant.Map.iconGenerator
         let algorithm = Cluster.Algorithm()
         let renderer = Cluster.Renderer(mapView: mapView,
                                         clusterIconGenerator: iconGenerator)

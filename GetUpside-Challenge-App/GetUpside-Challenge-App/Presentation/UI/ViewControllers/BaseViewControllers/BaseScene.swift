@@ -22,6 +22,10 @@ class BaseViewController<View: Viewable>: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    deinit {
+        Logger.debug("\(self) has been removed", category: .lifeCycle)
+    }
 }
 
 class BaseScene<View: Viewable, InteractorImpl>: BaseViewController<View>, Interactorable {

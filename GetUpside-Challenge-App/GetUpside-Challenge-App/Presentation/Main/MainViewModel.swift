@@ -9,12 +9,18 @@ protocol CoordinatesSupporting {
 }
 
 protocol Shapable {
-    var shape: Pin.Shape { get }
+    var shape: Shape { get }
 }
 
 extension Main {
     struct ViewModel  {
         typealias Model = Eatery
+        
+        var attributed: NSAttributedString {
+            let attr = NSMutableAttributedString()
+            attr.append(NSAttributedString(string: "ivan------->test"))
+            return attr
+        }
         
         private let _model: Model
         
@@ -31,7 +37,7 @@ extension Main.ViewModel: Namable {
 }
 
 extension Main.ViewModel: Shapable {
-    var shape: Pin.Shape {
+    var shape: Shape {
         switch _model {
         case .american, .british, .chinese, .international, .seafood, .fastFood:
             return .restaurante

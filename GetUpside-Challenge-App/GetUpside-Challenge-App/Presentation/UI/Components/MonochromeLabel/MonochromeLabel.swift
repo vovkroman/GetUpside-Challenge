@@ -1,6 +1,6 @@
 import UIKit
 
-final class MonochromeLabel: UILabel {
+class MonochromeLabel: UILabel {
     
     override init(frame: CGRect) {
         super.init(frame: frame)

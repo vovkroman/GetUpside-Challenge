@@ -1,23 +1,32 @@
 import UIKit
 
-extension Pin {
-    
-    enum Shape {
-        case burger
-        case restaurante
-        case cafe
-        
-        func profile(_ rect: CGRect) -> Profile {
-            switch self {
-            case .burger:
-                return .burger(rect: rect)
-            case .restaurante:
-                return .cover(rect: rect)
-            case .cafe:
-                return .cup(rect: rect)
-            }
+protocol ShapeSupportable {
+    func profile(_ rect: CGRect) -> UIBezierPath
+}
+
+enum Shape {
+    case burger
+    case restaurante
+    case cafe
+}
+
+extension Shape: ShapeSupportable {
+    func profile(_ rect: CGRect) -> UIBezierPath {
+        switch self {
+        case .burger:
+            let profile: Pin.Profile = .burger(rect: rect)
+            return profile.path
+        case .restaurante:
+            let profile: Pin.Profile = .cover(rect: rect)
+            return profile.path
+        case .cafe:
+            let profile: Pin.Profile = .cup(rect: rect)
+            return profile.path
         }
     }
+}
+
+extension Pin {
     
     enum Profile {
         case pin(rect: CGRect)
@@ -38,7 +47,7 @@ extension Pin {
             }
         }
         
-        // MARK: - Private methods
+        // MARK: - Private API
         
         private func drawCup(_ rect: CGRect) -> UIBezierPath {
             
@@ -49,6 +58,7 @@ extension Pin {
             let maxY = rect.maxY
             let maxX = rect.maxX
             let centerY = rect.centerY
+            let centerX = rect.centerX
             
             let cupPath = UIBezierPath()
             
@@ -67,12 +77,19 @@ extension Pin {
             cupPath.append(bowlPath)
             
             let handler = UIBezierPath()
-            handler.addArc(withCenter: CGPoint(maxX - 0.05 * width, centerY),
-                           radius: 0.05 * width,
-                           startAngle: 0,
-                           endAngle: 2 * CGFloat.pi,
+            handler.addArc(withCenter: CGPoint(maxX - 0.1 * width, centerY),
+                           radius: 0.1 * width,
+                           startAngle: 1.5 * CGFloat.pi ,
+                           endAngle: 0.75 * CGFloat.pi,
                            clockwise: true)
+            handler.close()
             cupPath.append(handler)
+            
+            let saucerPath = UIBezierPath()
+            saucerPath.move(to: CGPoint(minX + 0.15 * width, maxY - 0.15 * height))
+            saucerPath.addQuadCurve(to: CGPoint(maxX - 0.15 * width, maxY - 0.15 * height), controlPoint: CGPoint(centerX, maxY))
+            saucerPath.close()
+            cupPath.append(saucerPath)
             
             return cupPath
         }

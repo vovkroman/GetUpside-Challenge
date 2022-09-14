@@ -2,7 +2,7 @@ import UIKit
 
 final class LetteringLayer: CAShapeLayer {
     
-    // MARK: - Private methods
+    // MARK: - Private API
     
     var textPath: CGPath?
     
