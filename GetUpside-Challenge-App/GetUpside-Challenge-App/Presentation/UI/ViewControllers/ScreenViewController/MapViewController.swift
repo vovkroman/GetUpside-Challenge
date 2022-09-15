@@ -11,13 +11,14 @@ final class MapViewController: BaseViewController<MapView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        _applyStyle()
+        _setup()
     }
     
     // MARK: - Private API
     
-    private func _applyStyle() {
+    private func _setup() {
         contentView.applyStyle()
+        contentView.delegate = self
     }
     
     // MARK: - Init methods
@@ -32,19 +33,26 @@ final class MapViewController: BaseViewController<MapView> {
     }
 }
 
+extension MapViewController: GMSMapViewDelegate {
+    
+}
+
 extension MapViewController: ChildUpdatable {
     
     func update<ViewModel: Main.ViewModelable>(_ viewModels: [ViewModel]) {
-        let pin = Constant.Map.Pin.self
-        
-        let size = pin.size
-        let rect = CGRect(origin: .zero, size: size)
-        
         for viewModel in viewModels {
-            
             let marker = GMSMarker(position: viewModel.coordinates)
-            marker.tracksViewChanges = false
-            marker.iconView = PinIconView(viewModel.shape, rect)
+            
+            let image = viewModel.image
+            let imageView = UIImageView(image: image)
+            let rect = CGRect(center: imageView.center, size: image.size)
+            let iconView = PinIconView(frame: rect)
+            
+            iconView.addSubview(imageView)
+            
+            imageView.frame = CGRect(center: imageView.center, size: image.size)
+            
+            marker.iconView = iconView
             marker.snippet = viewModel.name
             
             marker.appearAnimation = .pop

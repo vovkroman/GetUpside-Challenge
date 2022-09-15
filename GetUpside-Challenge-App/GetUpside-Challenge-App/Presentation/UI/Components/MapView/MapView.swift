@@ -3,17 +3,22 @@ import Logger
 import GoogleMaps
 import UIKit
 
+
 class MapView: GMSMapView, NibReusable {
     
     override var selectedMarker: GMSMarker? {
-        didSet {
-            guard let selectedMarker = selectedMarker else { return }
-            selectedMarker.selecte()
+        willSet {
+            newValue?.select()
+            selectedMarker?.deselect()
         }
     }
     
     // MARK: - Configuration methods
 
+    func deselectAll() {
+        selectedMarker?.deselect()
+    }
+    
     func applyStyle() {
         _applyMapStyle()
     }

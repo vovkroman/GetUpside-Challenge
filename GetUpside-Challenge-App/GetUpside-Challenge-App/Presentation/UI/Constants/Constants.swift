@@ -32,12 +32,12 @@ enum Constant {
     enum Map {
         static let iconGenerator: Cluster.IconGenerator = Cluster.IconGenerator(buckets: [10, 25, 50, 100],
                                                                                 backgroundImages: [
-                                                                                    UIImage.circle(diameter: 60, color: .black),
-                                                                                    UIImage.circle(diameter: 80, color: .darkGray),
-                                                                                    UIImage.circle(diameter: 100, color: .gray),
-                                                                                    UIImage.circle(diameter: 120, color: .lightGray)])
+                                                                                    UIImage.circle(60, .black),
+                                                                                    UIImage.circle(80, .darkGray),
+                                                                                    UIImage.circle(100, .gray),
+                                                                                    UIImage.circle(120, .lightGray)])
         enum Pin {
-            static let size: CGSize = CGSize(width: 35, height: 40.0)
+            static let size: CGSize = CGSize(width: 40, height: 50.0)
         }
     }
     
@@ -45,9 +45,3 @@ enum Constant {
         static let kCLDistanceHundredMeters: Double = 100.0
     }
 }
-
-let iconGenerator = Cluster.IconGenerator(buckets: [10, 25, 50, 100], backgroundImages: [
-                                                                                   UIImage.circle(diameter: 60, color: .black),
-                                                                                   UIImage.circle(diameter: 80, color: .darkGray),
-                                                                                   UIImage.circle(diameter: 100, color: .gray),
-                                                                                   UIImage.circle(diameter: 120, color: .lightGray)])

@@ -3,11 +3,13 @@ import GoogleMaps
 
 extension GMSMarker {
     
-    func selecte() {
-        
+    func select() {
+        guard let iconView = iconView as? Animatable else { return }
+        iconView.startAnimation()
     }
     
-    func deselecte() {
-    
+    func deselect() {
+        guard let iconView = iconView as? Animatable else { return }
+        iconView.endAnimation()
     }
 }

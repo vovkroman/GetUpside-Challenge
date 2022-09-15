@@ -28,7 +28,14 @@ extension Main {
 extension Main.Presenter: MainPresentable {
     
     func dataDidLoaded(_ items: Set<Eatery>) {
-        let viewModels = items.compactMap(Main.ViewModel.init)
+        var viewModels: [Main.ViewModel] = []
+        let pin = Constant.Map.Pin.self
+        
+        let size = pin.size
+
+        for item in items {
+            viewModels.append(Main.ViewModel(item, size))
+        }
         _queue.sync(execute: combine(.loadingFinished(viewModels: viewModels), with: _stateMachine.transition))
     }
     

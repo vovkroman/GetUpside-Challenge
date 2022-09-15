@@ -57,7 +57,8 @@ extension RevealAnimator: UIViewControllerAnimatedTransitioning {
                                                                   CATransform3DMakeScale(150.0, 150.0, 1.0)),
             duration: _duartion,
             timingFunc: CAMediaTimingFunction(name: .easeIn),
-            isRemovedOnCompletion: false)
+            isRemovedOnCompletion: false
+        )
         let _animation = CABasicAnimation(type: .transform(params: animParams))
         _animation.fillMode = .forwards
         

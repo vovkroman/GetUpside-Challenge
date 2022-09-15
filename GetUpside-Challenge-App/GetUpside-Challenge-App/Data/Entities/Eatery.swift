@@ -1,6 +1,6 @@
 import Foundation
 
-enum Eatery {
+enum Eatery: CustomStringConvertible {
     struct Data {
         let coordinates: Coordinates
         let name: String
@@ -60,6 +60,29 @@ enum Eatery {
             return data.name
         case .fastFood( let data):
             return data.name
+        }
+    }
+    
+    var description: String {
+        switch self {
+        case .american:
+            return "american food"
+        case .british:
+            return "british food"
+        case .burger:
+            return "burger"
+        case .chinese:
+            return "中国菜"
+        case .bakery:
+            return "bakery"
+        case .international:
+            return "international food"
+        case .coffeeShop:
+            return "coffee shop"
+        case .seafood:
+            return "sea food"
+        case .fastFood:
+            return "fast food"
         }
     }
 }

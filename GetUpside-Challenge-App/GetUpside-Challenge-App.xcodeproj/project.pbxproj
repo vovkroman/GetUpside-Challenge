@@ -70,6 +70,7 @@
 		6FB41DDD273EC18200E226A2 /* MainInteractorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB41DDC273EC18200E226A2 /* MainInteractorImpl.swift */; };
 		6FB41DE0273ECA7200E226A2 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB41DDF273ECA7200E226A2 /* MainView.swift */; };
 		6FB41DE2273ECA9D00E226A2 /* MainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FB41DE1273ECA9D00E226A2 /* MainView.xib */; };
+		6FB5546D28D388FE00C25B63 /* PinIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB5546C28D388FE00C25B63 /* PinIconView.swift */; };
 		6FB6CE5B27314F230011EB5B /* BorderedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB6CE5A27314F230011EB5B /* BorderedButton.swift */; };
 		6FB6CE7E2731535C0011EB5B /* ReusableKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FB6CE7D2731535C0011EB5B /* ReusableKit.framework */; };
 		6FB6CE7F2731535C0011EB5B /* ReusableKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6FB6CE7D2731535C0011EB5B /* ReusableKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -84,7 +85,6 @@
 		6FC096F027294FAD0044C1D5 /* ScreenFactoring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC096EF27294FAD0044C1D5 /* ScreenFactoring.swift */; };
 		6FC2863C28CF5EAF00677DBB /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC2863B28CF5EAF00677DBB /* Profile.swift */; };
 		6FC2863E28CF5ECE00677DBB /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC2863D28CF5ECE00677DBB /* CGPoint+Extensions.swift */; };
-		6FC2864128CF5FB400677DBB /* PinIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC2864028CF5FB400677DBB /* PinIconView.swift */; };
 		6FC2864328CF6BA000677DBB /* CGSize+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC2864228CF6BA000677DBB /* CGSize+Extensions.swift */; };
 		6FC2864728CF7E6B00677DBB /* EateryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC2864528CF7E6B00677DBB /* EateryTableViewCell.swift */; };
 		6FC2864828CF7E6B00677DBB /* EateryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FC2864628CF7E6B00677DBB /* EateryTableViewCell.xib */; };
@@ -208,6 +208,7 @@
 		6FB41DDC273EC18200E226A2 /* MainInteractorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInteractorImpl.swift; sourceTree = "<group>"; };
 		6FB41DDF273ECA7200E226A2 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		6FB41DE1273ECA9D00E226A2 /* MainView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainView.xib; sourceTree = "<group>"; };
+		6FB5546C28D388FE00C25B63 /* PinIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinIconView.swift; sourceTree = "<group>"; };
 		6FB6CE5A27314F230011EB5B /* BorderedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedButton.swift; sourceTree = "<group>"; };
 		6FB6CE7D2731535C0011EB5B /* ReusableKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ReusableKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FB6CE942731BD070011EB5B /* Configuration.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Configuration.xcconfig; sourceTree = "<group>"; };
@@ -222,7 +223,6 @@
 		6FC096EF27294FAD0044C1D5 /* ScreenFactoring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenFactoring.swift; sourceTree = "<group>"; };
 		6FC2863B28CF5EAF00677DBB /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		6FC2863D28CF5ECE00677DBB /* CGPoint+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extensions.swift"; sourceTree = "<group>"; };
-		6FC2864028CF5FB400677DBB /* PinIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinIconView.swift; sourceTree = "<group>"; };
 		6FC2864228CF6BA000677DBB /* CGSize+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+Extensions.swift"; sourceTree = "<group>"; };
 		6FC2864528CF7E6B00677DBB /* EateryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EateryTableViewCell.swift; sourceTree = "<group>"; };
 		6FC2864628CF7E6B00677DBB /* EateryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EateryTableViewCell.xib; sourceTree = "<group>"; };
@@ -404,7 +404,6 @@
 				6FB6CE5927314EF80011EB5B /* Components */,
 				6F3EE9B626A0459800821E41 /* Main.storyboard */,
 				6F3EE9B026A0459800821E41 /* AppDelegate.swift */,
-				6F3EEA2926A04E9A00821E41 /* Views */,
 				6F3EEA1C26A04E0400821E41 /* ViewControllers */,
 				6F3EEA1926A04DE500821E41 /* Constants */,
 				6F3EEA1626A04DDA00821E41 /* Animator */,
@@ -431,6 +430,7 @@
 		6F3EEA1C26A04E0400821E41 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				6FA4A3C127416234005AEEBE /* AppNavigationController */,
 				6F3EEA1E26A04E0400821E41 /* ScreenViewController */,
 				6F3EEA2126A04E0400821E41 /* BaseViewControllers */,
 			);
@@ -456,13 +456,6 @@
 				6F3EEA2226A04E0400821E41 /* BaseScene.swift */,
 			);
 			path = BaseViewControllers;
-			sourceTree = "<group>";
-		};
-		6F3EEA2926A04E9A00821E41 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		6F3EEA2A26A04EB000821E41 /* SplashView */ = {
@@ -710,14 +703,21 @@
 			path = MainView;
 			sourceTree = "<group>";
 		};
+		6FB5546B28D388EC00C25B63 /* PinIconView */ = {
+			isa = PBXGroup;
+			children = (
+				6FB5546C28D388FE00C25B63 /* PinIconView.swift */,
+			);
+			path = PinIconView;
+			sourceTree = "<group>";
+		};
 		6FB6CE5927314EF80011EB5B /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				6FB5546B28D388EC00C25B63 /* PinIconView */,
 				6FB06C7528D2066F00955644 /* ShapedLabel */,
 				6FA3859328D0D33F0054ED8E /* TableViewCells */,
-				6FC2863F28CF5FA500677DBB /* PinIconView */,
 				6FC847B928C9DF0500301F65 /* Cluster */,
-				6FA4A3C127416234005AEEBE /* AppNavigationController */,
 				6FA4A3BE27415696005AEEBE /* SquareSegmentControl */,
 				6F4CEF0C2740641300A4293A /* TabBarMenuView */,
 				6FB41DDE273ECA5D00E226A2 /* MainView */,
@@ -773,14 +773,6 @@
 				6FB97201273D0B9200E99E57 /* MultichromeLabel.swift */,
 			);
 			path = MultichromeLabel;
-			sourceTree = "<group>";
-		};
-		6FC2863F28CF5FA500677DBB /* PinIconView */ = {
-			isa = PBXGroup;
-			children = (
-				6FC2864028CF5FB400677DBB /* PinIconView.swift */,
-			);
-			path = PinIconView;
 			sourceTree = "<group>";
 		};
 		6FC2864428CF7E0600677DBB /* EateryTableViewCell */ = {
@@ -1031,7 +1023,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F3EEA3E26A04EEC00821E41 /* UIBezierPath+Extensions.swift in Sources */,
-				6FC2864128CF5FB400677DBB /* PinIconView.swift in Sources */,
 				6F3EEA2726A04E0400821E41 /* BaseScene.swift in Sources */,
 				6F3EEA3B26A04EEC00821E41 /* LetteringView.swift in Sources */,
 				6F8C9D2826B05CE7000D5DA0 /* Floating+Extensions.swift in Sources */,
@@ -1050,6 +1041,7 @@
 				6FF277E82773777700D4FFE0 /* SplashViewModel.swift in Sources */,
 				6F3EEA4E26A05E9D00821E41 /* Interactorable.swift in Sources */,
 				6F56108E26B17B6D002182BA /* SplashInteractorImpl.swift in Sources */,
+				6FB5546D28D388FE00C25B63 /* PinIconView.swift in Sources */,
 				6FB06C7728D206A000955644 /* PillLabel.swift in Sources */,
 				6FC847B828C9DE9800301F65 /* MapViewController.swift in Sources */,
 				6F3EEA1826A04DDA00821E41 /* RevealAnimator.swift in Sources */,
