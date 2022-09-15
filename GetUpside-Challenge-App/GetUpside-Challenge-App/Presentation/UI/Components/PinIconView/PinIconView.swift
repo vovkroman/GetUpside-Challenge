@@ -12,7 +12,6 @@ final class PinIconView: UIView {
     var borderWidth: CGFloat = 1.0
         
     private let _shape: ShapeSupportable
-    private(set) var _shapeLayer: CAShapeLayer!
     
     // MARK: - Life Cycle
     
@@ -53,12 +52,9 @@ final class PinIconView: UIView {
         shapeLayer.path = path
         shapeLayer.fillRule = .evenOdd
         
-        
         layer.mask = shapeLayer
         layer.contentsScale = UIScreen.main.scale
         layer.backgroundColor = fillColor.cgColor
-        
-        _shapeLayer = shapeLayer
     }
     
     private func _applyBorder(_ path: CGPath) {

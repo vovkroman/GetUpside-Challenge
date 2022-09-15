@@ -16,12 +16,6 @@ extension Main {
     struct ViewModel  {
         typealias Model = Eatery
         
-        var attributed: NSAttributedString {
-            let attr = NSMutableAttributedString()
-            attr.append(NSAttributedString(string: "ivan------->test"))
-            return attr
-        }
-        
         private let _model: Model
         
         init(_ model: Model) {
