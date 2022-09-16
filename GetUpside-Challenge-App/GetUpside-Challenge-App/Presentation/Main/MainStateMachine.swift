@@ -21,7 +21,7 @@ extension Main {
                 guard oldValue != _state else { return }
                 observer?.stateDidChanched(
                     self,
-                    to: _state
+                    _state
                 )
             }
         }

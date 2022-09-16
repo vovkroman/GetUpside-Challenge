@@ -4,9 +4,9 @@ extension UIColor {
     func imageWithColor(_ size: CGSize) -> UIImage {
         let config = UIGraphicsImageRendererFormat()
         config.opaque = true
-        return UIGraphicsImageRenderer(size: size, format: config).image { rendererContext in
+        return UIGraphicsImageRenderer(size: size, format: config).image { ctx in
             self.setFill()
-            rendererContext.fill(CGRect(origin: .zero, size: size))
+            ctx.fill(CGRect(origin: .zero, size: size))
         }
     }
 }

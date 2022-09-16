@@ -17,7 +17,7 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3uX-0K-2RU">
                     <rect key="frame" x="0.0" y="44" width="365" height="234"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q7V-Tg-MTr" customClass="TabBarMenuView" customModule="GetUpside_Challenge_App" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="44" width="365" height="0.0"/>
@@ -28,7 +28,7 @@
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="3uX-0K-2RU" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="6Pl-Qu-GMI"/>
                 <constraint firstItem="3uX-0K-2RU" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="7E9-Fx-4ph"/>

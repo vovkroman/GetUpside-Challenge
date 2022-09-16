@@ -7,8 +7,8 @@ final class PillLabel: MonochromeLabel {
     
     override var intrinsicContentSize: CGSize {
         let size = super.intrinsicContentSize
-        return CGSize(width: size.width + 2 * padding,
-                          height: size.height + 2 * padding)
+        return CGSize(size.width + 2 * padding,
+                          size.height + 2 * padding)
     }
     
     override func drawText(in rect: CGRect) {
@@ -18,7 +18,7 @@ final class PillLabel: MonochromeLabel {
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
-        let path = UIBezierPath(roundedRect: rect, cornerRadius: rect.height / 2)
+        let path = UIBezierPath(roundedRect: rect, cornerRadius: 0.5 * rect.height)
         let shape = CAShapeLayer()
         
         shape.path = path.cgPath

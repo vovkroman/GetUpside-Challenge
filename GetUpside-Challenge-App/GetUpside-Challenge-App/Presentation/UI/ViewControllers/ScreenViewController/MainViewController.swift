@@ -62,7 +62,7 @@ extension Main {
 }
 
 extension Main.Scene: MainStateMachineObserver {
-    func stateDidChanched(_ stateMachine: Main.StateMachine, to: Main.StateMachine.State) {
+    func stateDidChanched(_ stateMachine: Main.StateMachine, _ to: Main.StateMachine.State) {
         DispatchQueue.main.async(execute: combine(to, with: _handleState))
     }
 }

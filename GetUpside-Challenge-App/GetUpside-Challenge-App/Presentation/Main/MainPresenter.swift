@@ -1,7 +1,7 @@
 import Foundation
 
 protocol MainStateMachineObserver: AnyObject {
-    func stateDidChanched(_ stateMachine: Main.StateMachine, to: Main.StateMachine.State)
+    func stateDidChanched(_ stateMachine: Main.StateMachine, _ to: Main.StateMachine.State)
 }
 
 protocol MainDataLoadable: AnyObject {
@@ -10,6 +10,7 @@ protocol MainDataLoadable: AnyObject {
 
 extension Main {
     final class Presenter {
+        private var _filter: AnySpec<Eatery> = AnySpec(EmptySpec<Eatery>())
         private let _stateMachine: StateMachine = StateMachine()
         private let _queue: DispatchQueue
         
@@ -33,7 +34,7 @@ extension Main.Presenter: MainPresentable {
         
         let size = pin.size
 
-        for item in items {
+        for item in items where _filter.isSatisfied(item) {
             viewModels.append(Main.ViewModel(item, size))
         }
         _queue.sync(execute: combine(.loadingFinished(viewModels: viewModels), with: _stateMachine.transition))

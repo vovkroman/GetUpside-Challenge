@@ -44,15 +44,9 @@ extension MapViewController: ChildUpdatable {
             let marker = GMSMarker(position: viewModel.coordinates)
             
             let image = viewModel.image
-            let imageView = UIImageView(image: image)
-            let rect = CGRect(center: imageView.center, size: image.size)
-            let iconView = PinIconView(frame: rect)
+            let pinIconView = PinIconView(image: image)
+            marker.iconView = pinIconView
             
-            iconView.addSubview(imageView)
-            
-            imageView.frame = CGRect(center: imageView.center, size: image.size)
-            
-            marker.iconView = iconView
             marker.snippet = viewModel.name
             
             marker.appearAnimation = .pop
