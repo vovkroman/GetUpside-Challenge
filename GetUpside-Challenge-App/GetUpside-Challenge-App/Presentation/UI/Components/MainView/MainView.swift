@@ -4,9 +4,16 @@ final class MainView: UIView, NibReusable {
     
     @IBOutlet private(set) weak var tabBarMenu: TabBarMenuView!
     @IBOutlet private(set) weak var containerView: UIView!
+    @IBOutlet private(set) weak var navigationBar: UINavigationBar!
+    
+    // MARK: - Updates methods
     
     func updateLayout() {
         tabBarMenu.updateLayout()
+    }
+    
+    func update(_ title: String?) {
+        navigationBar.topItem?.title = title
     }
         
     func add<ViewController: UIViewController>(_ children: ContiguousArray<ViewController>, on parent: UIViewController?) {

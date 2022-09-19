@@ -46,7 +46,6 @@
 		6F4CEF0E2740642D00A4293A /* TabBarMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4CEF0D2740642D00A4293A /* TabBarMenuView.swift */; };
 		6F4CEF102740645500A4293A /* TabBarMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F4CEF0F2740645500A4293A /* TabBarMenuView.xib */; };
 		6F51D1E9273C582B00BDDF6C /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F51D1E8273C582B00BDDF6C /* MapView.swift */; };
-		6F53957428D478CD00C18E38 /* PathBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F53957328D478CD00C18E38 /* PathBuilder.swift */; };
 		6F56108926B16236002182BA /* NSAttributedStringBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F56108826B16236002182BA /* NSAttributedStringBuilder.swift */; };
 		6F56108E26B17B6D002182BA /* SplashInteractorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F56108D26B17B6D002182BA /* SplashInteractorImpl.swift */; };
 		6F6B7A142734567A00B46087 /* ServiceSetupers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6B7A132734567A00B46087 /* ServiceSetupers.swift */; };
@@ -186,7 +185,6 @@
 		6F4CEF0D2740642D00A4293A /* TabBarMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarMenuView.swift; sourceTree = "<group>"; };
 		6F4CEF0F2740645500A4293A /* TabBarMenuView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabBarMenuView.xib; sourceTree = "<group>"; };
 		6F51D1E8273C582B00BDDF6C /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
-		6F53957328D478CD00C18E38 /* PathBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathBuilder.swift; sourceTree = "<group>"; };
 		6F56108826B16236002182BA /* NSAttributedStringBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSAttributedStringBuilder.swift; sourceTree = "<group>"; };
 		6F56108D26B17B6D002182BA /* SplashInteractorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashInteractorImpl.swift; sourceTree = "<group>"; };
 		6F6B7A132734567A00B46087 /* ServiceSetupers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceSetupers.swift; sourceTree = "<group>"; };
@@ -639,7 +637,6 @@
 				6F33AA4326CFB54600A469FC /* SplashStateMachine.swift */,
 				6FA32B6A26B6F03600275B48 /* SplashPresenter.swift */,
 				6FF277E72773777700D4FFE0 /* SplashViewModel.swift */,
-				6F53957328D478CD00C18E38 /* PathBuilder.swift */,
 			);
 			path = Splash;
 			sourceTree = "<group>";
@@ -1075,7 +1072,6 @@
 				6F8C9D2326B0341A000D5DA0 /* Location+Extensions.swift in Sources */,
 				6F3EEA3F26A04EEC00821E41 /* UIBezierPath+TextPaths.m in Sources */,
 				6FB6CE992731C1AF0011EB5B /* ApplicationConfig.swift in Sources */,
-				6F53957428D478CD00C18E38 /* PathBuilder.swift in Sources */,
 				6F4CEF0E2740642D00A4293A /* TabBarMenuView.swift in Sources */,
 				6F3EEA1226A04A7A00821E41 /* Namespaces.swift in Sources */,
 				6FC44117272FFEBF00C54028 /* ErrorView.swift in Sources */,

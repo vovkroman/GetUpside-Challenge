@@ -60,7 +60,7 @@ extension Main.ViewModel: Imagable {
     private var _shape: Shape {
         switch _model {
         case .american, .british, .chinese, .international, .seafood, .fastFood:
-            return .restaurante
+            return .restaurant
         case .burger:
             return .burger
         default:

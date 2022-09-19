@@ -24,7 +24,7 @@ extension Main {
 
             if _kids.isEmpty { return }
             
-            navigationItem.title = _kids[0].title
+            contentView.update(_kids[0].title)
             contentView.add(_kids, on: self)
         }
         
@@ -70,7 +70,7 @@ extension Main.Scene: MainStateMachineObserver {
 extension Main.Scene: TabBarMenuDelegate {
     func tabBarMenu(_ menu: TabBarMenuView, didSelected index: Int) {
         let vc = children[index]
-        navigationItem.title = vc.title
+        contentView.update(vc.title)
         view.bringSubviewToFront(vc.view)
     }
 }

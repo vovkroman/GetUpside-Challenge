@@ -6,7 +6,7 @@ protocol ShapeSupportable {
 
 enum Shape {
     case burger
-    case restaurante
+    case restaurant
     case cafe
 }
 
@@ -14,13 +14,13 @@ extension Shape: ShapeSupportable {
     func profile(_ rect: CGRect) -> UIBezierPath {
         switch self {
         case .burger:
-            let profile: Pin.Profile = .burger(rect: rect)
+            let profile: Pin.Profile = Pin.Profile.burger(rect: rect)
             return profile.path
-        case .restaurante:
-            let profile: Pin.Profile = .cover(rect: rect)
+        case .restaurant:
+            let profile: Pin.Profile = Pin.Profile.cover(rect: rect)
             return profile.path
         case .cafe:
-            let profile: Pin.Profile = .cup(rect: rect)
+            let profile: Pin.Profile = Pin.Profile.cup(rect: rect)
             return profile.path
         }
     }
@@ -169,7 +169,7 @@ extension Pin {
             
             let upCoverPath = UIBezierPath()
             upCoverPath.addArc(withCenter: rect.center,
-                               radius: height / 2,
+                               radius: 0.5 * height,
                                startAngle: CGFloat.pi,
                                endAngle: 0,
                                clockwise: true)

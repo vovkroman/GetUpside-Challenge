@@ -5,7 +5,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,40 +14,55 @@
             <rect key="frame" x="0.0" y="0.0" width="365" height="278"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3uX-0K-2RU">
-                    <rect key="frame" x="0.0" y="44" width="365" height="234"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q7V-Tg-MTr" customClass="TabBarMenuView" customModule="GetUpside_Challenge_App" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="44" width="365" height="0.0"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <rect key="frame" x="0.0" y="88" width="365" height="0.0"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" priority="999" id="f0U-mv-bnX"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3uX-0K-2RU">
+                    <rect key="frame" x="0.0" y="88" width="365" height="190"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <navigationBar contentMode="scaleToFill" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vkl-ks-l5M">
+                    <rect key="frame" x="0.0" y="44" width="365" height="44"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <textAttributes key="titleTextAttributes">
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="textShadowColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </textAttributes>
+                    <textAttributes key="largeTitleTextAttributes">
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="textShadowColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </textAttributes>
+                    <items>
+                        <navigationItem title="Map" id="VKl-Mj-UvO"/>
+                    </items>
+                </navigationBar>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="vkl-ks-l5M" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="0TS-RW-kXB"/>
                 <constraint firstItem="3uX-0K-2RU" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="6Pl-Qu-GMI"/>
                 <constraint firstItem="3uX-0K-2RU" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="7E9-Fx-4ph"/>
                 <constraint firstItem="3uX-0K-2RU" firstAttribute="top" secondItem="q7V-Tg-MTr" secondAttribute="bottom" id="7zr-vJ-DDQ"/>
-                <constraint firstItem="q7V-Tg-MTr" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="Ki3-IZ-HcI"/>
+                <constraint firstAttribute="trailing" secondItem="vkl-ks-l5M" secondAttribute="trailing" id="Jwc-IH-eum"/>
+                <constraint firstItem="q7V-Tg-MTr" firstAttribute="top" secondItem="vkl-ks-l5M" secondAttribute="bottom" id="R2H-sA-UgW"/>
                 <constraint firstItem="q7V-Tg-MTr" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="Ue5-1v-01N"/>
                 <constraint firstItem="q7V-Tg-MTr" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="iPt-qD-N3g"/>
                 <constraint firstItem="3uX-0K-2RU" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="nBu-iP-GdY"/>
+                <constraint firstItem="vkl-ks-l5M" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="nYM-Fv-tz4"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="containerView" destination="3uX-0K-2RU" id="PHS-DD-4ap"/>
+                <outlet property="navigationBar" destination="vkl-ks-l5M" id="6oD-gC-zs9"/>
                 <outlet property="tabBarMenu" destination="q7V-Tg-MTr" id="8Bu-uP-oJg"/>
             </connections>
             <point key="canvasLocation" x="116.66666666666667" y="-16.071428571428569"/>
         </view>
     </objects>
-    <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-    </resources>
 </document>

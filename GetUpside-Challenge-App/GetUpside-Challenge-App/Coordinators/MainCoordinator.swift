@@ -14,7 +14,6 @@ extension Main {
         // MARK: - Public methods
         
         override func start(animated: Bool) {
-            _navigationController.isNavigationBarHidden = false
             let scene = _appDependecies.buildMainScene(AnyCoordinating(self), _entities)
             _navigationController.setViewControllers([scene], animated: animated)
         }
