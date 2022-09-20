@@ -1,6 +1,6 @@
 import ReusableKit
 
-final class EateryTableViewCell: UITableViewCell, NibReusable {
+final class EateryCell: UITableViewCell, NibReusable {
     
     @IBOutlet weak private var _titleLabel: MonochromeLabel!
     @IBOutlet weak private var _typeLabel: PillLabel!

@@ -29,7 +29,7 @@ extension Main {
         
         // MARK: - Public methods
         
-        func initialSetup() {
+        func setup() {
             if _entities.isEmpty { return }
             _presenter.dataDidLoaded(_entities)
         }

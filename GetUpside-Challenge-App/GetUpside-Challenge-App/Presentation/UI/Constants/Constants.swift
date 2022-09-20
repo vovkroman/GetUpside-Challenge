@@ -41,6 +41,12 @@ enum Constant {
         }
     }
     
+    enum Filter {
+        static let height: CGFloat = 70.0
+        static let attributes: [NSAttributedString.Key: Any] = [.font: UIFont.boldSystemFont(ofSize: 24),
+                                                                    .foregroundColor: UIColor.black]
+    }
+    
     enum Location {
         static let kCLDistanceHundredMeters: Double = 100.0
     }

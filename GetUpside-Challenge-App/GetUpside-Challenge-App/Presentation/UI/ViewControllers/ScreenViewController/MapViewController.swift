@@ -39,7 +39,7 @@ extension MapViewController: GMSMapViewDelegate {
 
 extension MapViewController: ChildUpdatable {
     
-    func update<ViewModel: Main.ViewModelable>(_ viewModels: [ViewModel]) {
+    func update<ViewModel: Main.ViewModelable>(_ viewModels: ContiguousArray<ViewModel>) {
         for viewModel in viewModels {
             let marker = GMSMarker(position: viewModel.coordinates)
             

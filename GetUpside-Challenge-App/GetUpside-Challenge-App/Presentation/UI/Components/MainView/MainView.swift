@@ -5,6 +5,7 @@ final class MainView: UIView, NibReusable {
     @IBOutlet private(set) weak var tabBarMenu: TabBarMenuView!
     @IBOutlet private(set) weak var containerView: UIView!
     @IBOutlet private(set) weak var navigationBar: UINavigationBar!
+    @IBOutlet private(set) weak var filterView: FilterView!
     
     // MARK: - Updates methods
     

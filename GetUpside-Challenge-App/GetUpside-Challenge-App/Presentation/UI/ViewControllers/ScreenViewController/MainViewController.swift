@@ -1,7 +1,7 @@
 import UIKit
 
 protocol ChildUpdatable: AnyObject {
-    func update<ViewModel: Main.ViewModelable>(_ viewModels: [ViewModel])
+    func update<ViewModel: Main.ViewModelable>(_ viewModels: ContiguousArray<ViewModel>)
 }
 
 extension Main {
@@ -13,11 +13,13 @@ extension Main {
         
         private let _kids: ContiguousArray<Childable>
         
+        // MARK: - Life Cycle of UIViewController
+        
         override func viewDidLoad() {
             super.viewDidLoad()
             
             defer {
-                interactor.initialSetup()
+                interactor.setup()
             }
             
             contentView.tabBarMenu.delegate = self
@@ -33,12 +35,6 @@ extension Main {
             contentView.updateLayout()
         }
         
-        func addItems(_ viewModels: [ViewModel]) {
-            for kid in _kids {
-                kid.update(viewModels)
-            }
-        }
-        
         required init(_ interactor: InteractorImpl, _ kids: ContiguousArray<Childable>) {
             self._kids = kids
             super.init(interactor: interactor)
@@ -49,11 +45,25 @@ extension Main {
             fatalError("init(interactor:) has not been implemented")
         }
         
+        // MARK: - Private API
+        
+        private func _addItems(_ viewModels: ContiguousArray<ViewModel>) {
+            for kid in _kids {
+                kid.update(viewModels)
+            }
+        }
+        
+        private func _addFilters(_ viewModel: ContiguousArray<Filter.ViewModel>) {
+            contentView.filterView.update(viewModel)
+        }
+        
         // MARK: - State handling
+        
         private func _handleState(_ state: Main.StateMachine.State) {
             switch state {
-            case .list(let viewModels):
-                addItems(viewModels)
+            case .list(let response):
+                _addItems(response.viewModels)
+                _addFilters(response.filters)
             default:
                 break
             }

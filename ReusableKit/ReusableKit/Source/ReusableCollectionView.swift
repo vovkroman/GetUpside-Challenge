@@ -15,7 +15,8 @@ extension UICollectionView {
         register(cellType.self, forCellWithReuseIdentifier: cellType.reuseIdentifier)
     }
     
-    final func dequeueReusableCell<T: UICollectionViewCell>(
+    @inlinable
+    final public func dequeueReusableCell<T: UICollectionViewCell>(
         for indexPath: IndexPath, cellType: T.Type = T.self
     ) -> T where T: Reusable {
         guard let cell = dequeueReusableCell(withReuseIdentifier: cellType.reuseIdentifier, for: indexPath) as? T else {

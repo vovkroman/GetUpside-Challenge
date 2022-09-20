@@ -10,7 +10,7 @@ protocol MainDataLoadable: AnyObject {
 
 extension Main {
     final class Presenter {
-        private var _filter: AnySpec<Eatery> = AnySpec(EmptySpec<Eatery>())
+
         private let _stateMachine: StateMachine = StateMachine()
         private let _queue: DispatchQueue
         
@@ -28,16 +28,49 @@ extension Main {
 
 extension Main.Presenter: MainPresentable {
     
-    func dataDidLoaded(_ items: Set<Eatery>) {
-        var viewModels: [Main.ViewModel] = []
-        let pin = Constant.Map.Pin.self
+    private func _buildFilterViewModel(_ model: Eatery) -> Filter.ViewModel {
+        let filter = Constant.Filter.self
+        let attributes = filter.attributes
         
-        let size = pin.size
-
-        for item in items where _filter.isSatisfied(item) {
-            viewModels.append(Main.ViewModel(item, size))
+        let size = CGSize(.infinity, filter.height)
+        return Filter.ViewModel { builer in
+            let attributedString = NSAttributedString(string: model.description, attributes: attributes)
+            let rect = attributedString.boundingRect(with: size, options: [], context: nil)
+            
+            builer.attributedString = attributedString
+            builer.size = CGSize(rect.width, rect.height)
         }
-        _queue.sync(execute: combine(.loadingFinished(viewModels: viewModels), with: _stateMachine.transition))
+    }
+    
+    private func _buildMainViewModel(_ model: Eatery) -> Main.ViewModel {
+        let Pin = Constant.Map.Pin.self
+        let size = Pin.size
+        return Main.ViewModel { builder in
+            builder.name = model.name
+            builder.type = "\(model)"
+            builder.coordonates = model.coordinates
+            builder.image = builder.build(model, size)
+        }
+    }
+    
+    func dataDidLoaded(_ items: Set<Eatery>) {
+        var itemViewModels: ContiguousArray<Main.ViewModel> = []
+        var filterViewModels: ContiguousArray<Filter.ViewModel> = []
+        
+        var used: Set<String> = Set()
+        for item in items {
+            let mainViewModel = _buildMainViewModel(item)
+            
+            if !used.contains(mainViewModel.type) {
+                let filerViewModel = _buildFilterViewModel(item)
+                filterViewModels.append(filerViewModel)
+                used.insert(mainViewModel.type)
+            }
+            
+            itemViewModels.append(mainViewModel)
+        }
+        
+        _queue.sync(execute: combine(.loadingFinished(respons: Main.Response(viewModels: itemViewModels, filters: filterViewModels)), with: _stateMachine.transition))
     }
     
     func locationDidRequestForAuthorization() {

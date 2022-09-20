@@ -3,12 +3,12 @@ import Logger
 
 final class ListViewController: UITableViewController {
     
-    private var _viewModels: [Main.ViewModelable] = []
+    private var _viewModels: ContiguousArray<Main.ViewModelable> = []
     
     // MARK: - Private API
     
     private func _configTableView() {
-        tableView.register(EateryTableViewCell.self)
+        tableView.register(EateryCell.self)
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = UITableView.automaticDimension
     }
@@ -25,12 +25,12 @@ final class ListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: EateryTableViewCell = tableView.dequeueReusableCell(for: indexPath)
+        let cell: EateryCell = tableView.dequeueReusableCell(for: indexPath)
         return cell
     }
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let displatCell = cell as? EateryTableViewCell
+        let displatCell = cell as? EateryCell
         displatCell?.configure(_viewModels[indexPath.row])
     }
     
@@ -40,8 +40,9 @@ final class ListViewController: UITableViewController {
 }
 
 extension ListViewController: ChildUpdatable {
-    func update<ViewModel: Main.ViewModelable>(_ viewModels: [ViewModel]) {
-        _viewModels = viewModels
+    
+    func update<ViewModel: Main.ViewModelable>(_ viewModels: ContiguousArray<ViewModel>) {
+        //_viewModels = ContiguousArray(viewModels)
         tableView.reloadData()
     }
 }

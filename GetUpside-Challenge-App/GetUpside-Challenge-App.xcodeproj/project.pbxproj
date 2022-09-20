@@ -12,6 +12,11 @@
 		6F0B3DF226AF1DC600A01ABF /* FetchType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0B3DEC26AF1DC600A01ABF /* FetchType.swift */; };
 		6F0B3DF426AF1DC600A01ABF /* FoodApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0B3DEE26AF1DC600A01ABF /* FoodApi.swift */; };
 		6F0B3DF526AF1DC600A01ABF /* FetchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0B3DF026AF1DC600A01ABF /* FetchRouter.swift */; };
+		6F0BEAAF28D885C100C1788F /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0BEAAE28D885C100C1788F /* FilterView.swift */; };
+		6F0BEAB128D8889400C1788F /* FilterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F0BEAB028D8889400C1788F /* FilterView.xib */; };
+		6F0BEAB828D8947C00C1788F /* FilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0BEAB628D8947C00C1788F /* FilterCell.swift */; };
+		6F0BEAB928D8947C00C1788F /* FilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F0BEAB728D8947C00C1788F /* FilterCell.xib */; };
+		6F0BEABB28D8A76500C1788F /* FilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0BEABA28D8A76500C1788F /* FilterViewModel.swift */; };
 		6F33AA4426CFB54600A469FC /* SplashStateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F33AA4326CFB54600A469FC /* SplashStateMachine.swift */; };
 		6F3EE9B126A0459800821E41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3EE9B026A0459800821E41 /* AppDelegate.swift */; };
 		6F3EE9B826A0459800821E41 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F3EE9B626A0459800821E41 /* Main.storyboard */; };
@@ -71,8 +76,6 @@
 		6FB41DE0273ECA7200E226A2 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB41DDF273ECA7200E226A2 /* MainView.swift */; };
 		6FB41DE2273ECA9D00E226A2 /* MainView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FB41DE1273ECA9D00E226A2 /* MainView.xib */; };
 		6FB5546D28D388FE00C25B63 /* PinIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB5546C28D388FE00C25B63 /* PinIconView.swift */; };
-		6FB5547028D39E0000C25B63 /* Filtering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB5546F28D39E0000C25B63 /* Filtering.swift */; };
-		6FB5547228D39EA100C25B63 /* Specification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB5547128D39EA100C25B63 /* Specification.swift */; };
 		6FB6CE5B27314F230011EB5B /* BorderedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB6CE5A27314F230011EB5B /* BorderedButton.swift */; };
 		6FB6CE7E2731535C0011EB5B /* ReusableKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FB6CE7D2731535C0011EB5B /* ReusableKit.framework */; };
 		6FB6CE7F2731535C0011EB5B /* ReusableKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6FB6CE7D2731535C0011EB5B /* ReusableKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -88,8 +91,8 @@
 		6FC2863C28CF5EAF00677DBB /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC2863B28CF5EAF00677DBB /* Profile.swift */; };
 		6FC2863E28CF5ECE00677DBB /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC2863D28CF5ECE00677DBB /* CGPoint+Extensions.swift */; };
 		6FC2864328CF6BA000677DBB /* CGSize+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC2864228CF6BA000677DBB /* CGSize+Extensions.swift */; };
-		6FC2864728CF7E6B00677DBB /* EateryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC2864528CF7E6B00677DBB /* EateryTableViewCell.swift */; };
-		6FC2864828CF7E6B00677DBB /* EateryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FC2864628CF7E6B00677DBB /* EateryTableViewCell.xib */; };
+		6FC2864728CF7E6B00677DBB /* EateryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC2864528CF7E6B00677DBB /* EateryCell.swift */; };
+		6FC2864828CF7E6B00677DBB /* EateryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FC2864628CF7E6B00677DBB /* EateryCell.xib */; };
 		6FC2D6B628CDEBC9008DB2AA /* CGRect+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC2D6B528CDEBC9008DB2AA /* CGRect+Extensions.swift */; };
 		6FC44117272FFEBF00C54028 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC44116272FFEBF00C54028 /* ErrorView.swift */; };
 		6FC44119272FFF4400C54028 /* ErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FC44118272FFF4400C54028 /* ErrorView.xib */; };
@@ -145,6 +148,11 @@
 		6F0B3DEC26AF1DC600A01ABF /* FetchType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchType.swift; sourceTree = "<group>"; };
 		6F0B3DEE26AF1DC600A01ABF /* FoodApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodApi.swift; sourceTree = "<group>"; };
 		6F0B3DF026AF1DC600A01ABF /* FetchRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchRouter.swift; sourceTree = "<group>"; };
+		6F0BEAAE28D885C100C1788F /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
+		6F0BEAB028D8889400C1788F /* FilterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterView.xib; sourceTree = "<group>"; };
+		6F0BEAB628D8947C00C1788F /* FilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCell.swift; sourceTree = "<group>"; };
+		6F0BEAB728D8947C00C1788F /* FilterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterCell.xib; sourceTree = "<group>"; };
+		6F0BEABA28D8A76500C1788F /* FilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewModel.swift; sourceTree = "<group>"; };
 		6F33AA4326CFB54600A469FC /* SplashStateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashStateMachine.swift; sourceTree = "<group>"; };
 		6F3EE9AD26A0459800821E41 /* GetUpside-Challenge-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GetUpside-Challenge-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F3EE9B026A0459800821E41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -211,8 +219,6 @@
 		6FB41DDF273ECA7200E226A2 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		6FB41DE1273ECA9D00E226A2 /* MainView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainView.xib; sourceTree = "<group>"; };
 		6FB5546C28D388FE00C25B63 /* PinIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinIconView.swift; sourceTree = "<group>"; };
-		6FB5546F28D39E0000C25B63 /* Filtering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filtering.swift; sourceTree = "<group>"; };
-		6FB5547128D39EA100C25B63 /* Specification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Specification.swift; sourceTree = "<group>"; };
 		6FB6CE5A27314F230011EB5B /* BorderedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedButton.swift; sourceTree = "<group>"; };
 		6FB6CE7D2731535C0011EB5B /* ReusableKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ReusableKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FB6CE942731BD070011EB5B /* Configuration.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Configuration.xcconfig; sourceTree = "<group>"; };
@@ -228,8 +234,8 @@
 		6FC2863B28CF5EAF00677DBB /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		6FC2863D28CF5ECE00677DBB /* CGPoint+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extensions.swift"; sourceTree = "<group>"; };
 		6FC2864228CF6BA000677DBB /* CGSize+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+Extensions.swift"; sourceTree = "<group>"; };
-		6FC2864528CF7E6B00677DBB /* EateryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EateryTableViewCell.swift; sourceTree = "<group>"; };
-		6FC2864628CF7E6B00677DBB /* EateryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EateryTableViewCell.xib; sourceTree = "<group>"; };
+		6FC2864528CF7E6B00677DBB /* EateryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EateryCell.swift; sourceTree = "<group>"; };
+		6FC2864628CF7E6B00677DBB /* EateryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EateryCell.xib; sourceTree = "<group>"; };
 		6FC2D6B528CDEBC9008DB2AA /* CGRect+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+Extensions.swift"; sourceTree = "<group>"; };
 		6FC44116272FFEBF00C54028 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		6FC44118272FFF4400C54028 /* ErrorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ErrorView.xib; sourceTree = "<group>"; };
@@ -321,6 +327,32 @@
 			path = Router;
 			sourceTree = "<group>";
 		};
+		6F0BEAAD28D885A600C1788F /* FilterView */ = {
+			isa = PBXGroup;
+			children = (
+				6F0BEAAE28D885C100C1788F /* FilterView.swift */,
+				6F0BEAB028D8889400C1788F /* FilterView.xib */,
+			);
+			path = FilterView;
+			sourceTree = "<group>";
+		};
+		6F0BEAB228D893DC00C1788F /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				6F0BEAB528D8943C00C1788F /* FilterViewCell */,
+			);
+			path = CollectionViewCell;
+			sourceTree = "<group>";
+		};
+		6F0BEAB528D8943C00C1788F /* FilterViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				6F0BEAB628D8947C00C1788F /* FilterCell.swift */,
+				6F0BEAB728D8947C00C1788F /* FilterCell.xib */,
+			);
+			path = FilterViewCell;
+			sourceTree = "<group>";
+		};
 		6F3EE9A426A0459700821E41 = {
 			isa = PBXGroup;
 			children = (
@@ -405,6 +437,8 @@
 		6F3EEA1526A04DD100821E41 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				6F0BEAB228D893DC00C1788F /* CollectionViewCell */,
+				6FA3859328D0D33F0054ED8E /* TableViewCells */,
 				6FB6CE5927314EF80011EB5B /* Components */,
 				6F3EE9B626A0459800821E41 /* Main.storyboard */,
 				6F3EE9B026A0459800821E41 /* AppDelegate.swift */,
@@ -563,7 +597,7 @@
 		6F56108A26B16AFD002182BA /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				6FB5546E28D39D9A00C25B63 /* Filtering */,
+				6FB5546E28D39D9A00C25B63 /* Filter */,
 				6FA4A3C42741AAA5005AEEBE /* Main */,
 				6FA32B6926B6F01D00275B48 /* Splash */,
 				6F3EEA1526A04DD100821E41 /* UI */,
@@ -644,7 +678,7 @@
 		6FA3859328D0D33F0054ED8E /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
-				6FC2864428CF7E0600677DBB /* EateryTableViewCell */,
+				6FC2864428CF7E0600677DBB /* EateryCell */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -683,12 +717,12 @@
 			path = Entities;
 			sourceTree = "<group>";
 		};
-		6FB06C7528D2066F00955644 /* ShapedLabel */ = {
+		6FB06C7528D2066F00955644 /* PillLabel */ = {
 			isa = PBXGroup;
 			children = (
 				6FB06C7628D206A000955644 /* PillLabel.swift */,
 			);
-			path = ShapedLabel;
+			path = PillLabel;
 			sourceTree = "<group>";
 		};
 		6FB41DDB273EC16200E226A2 /* MainInteractorImpl */ = {
@@ -716,21 +750,20 @@
 			path = PinIconView;
 			sourceTree = "<group>";
 		};
-		6FB5546E28D39D9A00C25B63 /* Filtering */ = {
+		6FB5546E28D39D9A00C25B63 /* Filter */ = {
 			isa = PBXGroup;
 			children = (
-				6FB5547128D39EA100C25B63 /* Specification.swift */,
-				6FB5546F28D39E0000C25B63 /* Filtering.swift */,
+				6F0BEABA28D8A76500C1788F /* FilterViewModel.swift */,
 			);
-			path = Filtering;
+			path = Filter;
 			sourceTree = "<group>";
 		};
 		6FB6CE5927314EF80011EB5B /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				6F0BEAAD28D885A600C1788F /* FilterView */,
 				6FB5546B28D388EC00C25B63 /* PinIconView */,
-				6FB06C7528D2066F00955644 /* ShapedLabel */,
-				6FA3859328D0D33F0054ED8E /* TableViewCells */,
+				6FB06C7528D2066F00955644 /* PillLabel */,
 				6FC847B928C9DF0500301F65 /* Cluster */,
 				6FA4A3BE27415696005AEEBE /* SquareSegmentControl */,
 				6F4CEF0C2740641300A4293A /* TabBarMenuView */,
@@ -789,13 +822,13 @@
 			path = MultichromeLabel;
 			sourceTree = "<group>";
 		};
-		6FC2864428CF7E0600677DBB /* EateryTableViewCell */ = {
+		6FC2864428CF7E0600677DBB /* EateryCell */ = {
 			isa = PBXGroup;
 			children = (
-				6FC2864528CF7E6B00677DBB /* EateryTableViewCell.swift */,
-				6FC2864628CF7E6B00677DBB /* EateryTableViewCell.xib */,
+				6FC2864528CF7E6B00677DBB /* EateryCell.swift */,
+				6FC2864628CF7E6B00677DBB /* EateryCell.xib */,
 			);
-			path = EateryTableViewCell;
+			path = EateryCell;
 			sourceTree = "<group>";
 		};
 		6FC44115272FFEA200C54028 /* ErrorView */ = {
@@ -947,10 +980,12 @@
 				6FBF957E274E7855003B1142 /* silver_GM_style.json in Resources */,
 				6F3EEA2D26A04EB000821E41 /* SplashView.xib in Resources */,
 				6F3EE9B826A0459800821E41 /* Main.storyboard in Resources */,
-				6FC2864828CF7E6B00677DBB /* EateryTableViewCell.xib in Resources */,
+				6FC2864828CF7E6B00677DBB /* EateryCell.xib in Resources */,
 				6FC44119272FFF4400C54028 /* ErrorView.xib in Resources */,
 				6FB41DE2273ECA9D00E226A2 /* MainView.xib in Resources */,
+				6F0BEAB128D8889400C1788F /* FilterView.xib in Resources */,
 				6FB7C1652739C56D00F0D8AE /* LogoView.xib in Resources */,
+				6F0BEAB928D8947C00C1788F /* FilterCell.xib in Resources */,
 				6F4CEF102740645500A4293A /* TabBarMenuView.xib in Resources */,
 				6FC847C928CA067700301F65 /* MapView.xib in Resources */,
 			);
@@ -1036,6 +1071,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F0BEAAF28D885C100C1788F /* FilterView.swift in Sources */,
 				6F3EEA3E26A04EEC00821E41 /* UIBezierPath+Extensions.swift in Sources */,
 				6F3EEA2726A04E0400821E41 /* BaseScene.swift in Sources */,
 				6F3EEA3B26A04EEC00821E41 /* LetteringView.swift in Sources */,
@@ -1044,21 +1080,20 @@
 				6FC2863E28CF5ECE00677DBB /* CGPoint+Extensions.swift in Sources */,
 				6FA4A3C0274156BF005AEEBE /* SquareSegmentControl.swift in Sources */,
 				6F3EE9EF26A047B800821E41 /* SplashCoordinator.swift in Sources */,
-				6FC2864728CF7E6B00677DBB /* EateryTableViewCell.swift in Sources */,
+				6FC2864728CF7E6B00677DBB /* EateryCell.swift in Sources */,
 				6F56108926B16236002182BA /* NSAttributedStringBuilder.swift in Sources */,
 				6FA1016A26B327340052D939 /* AnyOf.swift in Sources */,
 				6FB7C1672739CBFD00F0D8AE /* ErrorViewController.swift in Sources */,
 				6F33AA4426CFB54600A469FC /* SplashStateMachine.swift in Sources */,
 				6FC847BB28C9DF0500301F65 /* ClusterStack.swift in Sources */,
 				6F51D1E9273C582B00BDDF6C /* MapView.swift in Sources */,
+				6F0BEABB28D8A76500C1788F /* FilterViewModel.swift in Sources */,
 				6F8C9D1F26B02BA6000D5DA0 /* LocationWorker.swift in Sources */,
 				6FF277E82773777700D4FFE0 /* SplashViewModel.swift in Sources */,
 				6F3EEA4E26A05E9D00821E41 /* Interactorable.swift in Sources */,
 				6F56108E26B17B6D002182BA /* SplashInteractorImpl.swift in Sources */,
-				6FB5547228D39EA100C25B63 /* Specification.swift in Sources */,
 				6FB5546D28D388FE00C25B63 /* PinIconView.swift in Sources */,
 				6FB06C7728D206A000955644 /* PillLabel.swift in Sources */,
-				6FB5547028D39E0000C25B63 /* Filtering.swift in Sources */,
 				6FC847B828C9DE9800301F65 /* MapViewController.swift in Sources */,
 				6F3EEA1826A04DDA00821E41 /* RevealAnimator.swift in Sources */,
 				6F7633D6277235CD005BB743 /* UIApplication+Extensions.swift in Sources */,
@@ -1066,6 +1101,7 @@
 				6FA1016826B324C80052D939 /* Optional+Extensions.swift in Sources */,
 				6FA4A3C32741627D005AEEBE /* AppNavigationController.swift in Sources */,
 				6FC2D6B628CDEBC9008DB2AA /* CGRect+Extensions.swift in Sources */,
+				6F0BEAB828D8947C00C1788F /* FilterCell.swift in Sources */,
 				6FC4411E2730096D00C54028 /* ContainerView.swift in Sources */,
 				6FB6CE5B27314F230011EB5B /* BorderedButton.swift in Sources */,
 				6F3EEA2626A04E0400821E41 /* SplashViewController.swift in Sources */,

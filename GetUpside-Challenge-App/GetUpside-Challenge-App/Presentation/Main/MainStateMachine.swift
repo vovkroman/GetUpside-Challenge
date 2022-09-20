@@ -1,17 +1,23 @@
 import Foundation
 
 extension Main {
+    
+    struct Response {
+        let viewModels: ContiguousArray<ViewModel>
+        let filters: ContiguousArray<Filter.ViewModel>
+    }
+    
     final class StateMachine {
         enum State {
             case idle
-            case list([ViewModel])
+            case list(Response)
             case loading
             case operating
             case error
         }
         
         enum Event {
-            case loadingFinished(viewModels: [ViewModel])
+            case loadingFinished(respons: Response)
         }
         
         weak var observer: MainStateMachineObserver?
@@ -28,8 +34,8 @@ extension Main {
         
         func transition(with event: Event) {
             switch (_state, event) {
-            case (.idle, .loadingFinished(let viewModels)):
-                _state = .list(viewModels)
+            case (.idle, .loadingFinished(let response)):
+                _state = .list(response)
             default:
                 break
             }
