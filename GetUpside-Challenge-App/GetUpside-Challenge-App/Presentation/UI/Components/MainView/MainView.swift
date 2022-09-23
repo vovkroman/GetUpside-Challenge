@@ -5,7 +5,7 @@ final class MainView: UIView, NibReusable {
     @IBOutlet private(set) weak var tabBarMenu: TabBarMenuView!
     @IBOutlet private(set) weak var containerView: UIView!
     @IBOutlet private(set) weak var navigationBar: UINavigationBar!
-    @IBOutlet private(set) weak var filterView: FilterView!
+    @IBOutlet private(set) weak var filterView: ContainerView!
     
     // MARK: - Updates methods
     
@@ -16,7 +16,7 @@ final class MainView: UIView, NibReusable {
     func update(_ title: String?) {
         navigationBar.topItem?.title = title
     }
-        
+    
     func add<ViewController: UIViewController>(_ children: ContiguousArray<ViewController>, on parent: UIViewController?) {
         for index in stride(from: children.count-1, through: 0, by: -1) {
             let viewController = children[index]

@@ -11,8 +11,8 @@ extension Filter {
         
         typealias BuilderBlock = (Builder) -> ()
         
-        let _size: CGSize
-        let _attributedString: NSAttributedString
+        let size: CGSize
+        let attributedString: NSAttributedString
         
          convenience init(_ block: BuilderBlock) {
             let builder = Builder()
@@ -21,8 +21,8 @@ extension Filter {
         }
         
         init(_ builder: Builder) {
-            _size = builder.size
-            _attributedString = builder.attributedString
+            self.size = builder.size
+            self.attributedString = builder.attributedString
         }
     }
 }

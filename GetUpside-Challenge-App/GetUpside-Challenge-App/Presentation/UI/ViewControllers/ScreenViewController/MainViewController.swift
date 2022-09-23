@@ -23,6 +23,7 @@ extension Main {
             }
             
             contentView.tabBarMenu.delegate = self
+            contentView.filterView.parentViewController = self
 
             if _kids.isEmpty { return }
             
@@ -53,8 +54,12 @@ extension Main {
             }
         }
         
-        private func _addFilters(_ viewModel: ContiguousArray<Filter.ViewModel>) {
-            contentView.filterView.update(viewModel)
+        private func _addFilters(_ viewModels: ContiguousArray<Filter.ViewModel>) {
+            guard let controller = contentView.filterView.childViewController else {
+                contentView.filterView.childViewController = Filter.ViewController(viewModels)
+                return
+            }
+            controller
         }
         
         // MARK: - State handling

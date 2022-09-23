@@ -21,7 +21,7 @@
                         <constraint firstAttribute="height" priority="999" id="f0U-mv-bnX"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wt7-Iq-JSl" customClass="FilterView" customModule="GetUpside_Challenge_App" customModuleProvider="target">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wt7-Iq-JSl" customClass="ContainerView" customModule="GetUpside_Challenge_App" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="88" width="365" height="40"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
@@ -69,7 +69,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="containerView" destination="3uX-0K-2RU" id="PHS-DD-4ap"/>
-                <outlet property="filterView" destination="wt7-Iq-JSl" id="Qjp-uN-RMf"/>
+                <outlet property="filterView" destination="wt7-Iq-JSl" id="nXe-7y-yQL"/>
                 <outlet property="navigationBar" destination="vkl-ks-l5M" id="6oD-gC-zs9"/>
                 <outlet property="tabBarMenu" destination="q7V-Tg-MTr" id="8Bu-uP-oJg"/>
             </connections>

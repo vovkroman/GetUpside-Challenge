@@ -12,8 +12,6 @@
 		6F0B3DF226AF1DC600A01ABF /* FetchType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0B3DEC26AF1DC600A01ABF /* FetchType.swift */; };
 		6F0B3DF426AF1DC600A01ABF /* FoodApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0B3DEE26AF1DC600A01ABF /* FoodApi.swift */; };
 		6F0B3DF526AF1DC600A01ABF /* FetchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0B3DF026AF1DC600A01ABF /* FetchRouter.swift */; };
-		6F0BEAAF28D885C100C1788F /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0BEAAE28D885C100C1788F /* FilterView.swift */; };
-		6F0BEAB128D8889400C1788F /* FilterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F0BEAB028D8889400C1788F /* FilterView.xib */; };
 		6F0BEAB828D8947C00C1788F /* FilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0BEAB628D8947C00C1788F /* FilterCell.swift */; };
 		6F0BEAB928D8947C00C1788F /* FilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F0BEAB728D8947C00C1788F /* FilterCell.xib */; };
 		6F0BEABB28D8A76500C1788F /* FilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0BEABA28D8A76500C1788F /* FilterViewModel.swift */; };
@@ -48,6 +46,7 @@
 		6F3EEA4B26A0510600821E41 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3EEA4A26A0510600821E41 /* Globals.swift */; };
 		6F3EEA4E26A05E9D00821E41 /* Interactorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3EEA4D26A05E9D00821E41 /* Interactorable.swift */; };
 		6F414D84278DA67A00D0EA28 /* Convertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F414D83278DA67A00D0EA28 /* Convertable.swift */; };
+		6F472C3328DC90EB005213CA /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F472C3228DC90EB005213CA /* FilterViewController.swift */; };
 		6F4CEF0E2740642D00A4293A /* TabBarMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4CEF0D2740642D00A4293A /* TabBarMenuView.swift */; };
 		6F4CEF102740645500A4293A /* TabBarMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F4CEF0F2740645500A4293A /* TabBarMenuView.xib */; };
 		6F51D1E9273C582B00BDDF6C /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F51D1E8273C582B00BDDF6C /* MapView.swift */; };
@@ -148,8 +147,6 @@
 		6F0B3DEC26AF1DC600A01ABF /* FetchType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchType.swift; sourceTree = "<group>"; };
 		6F0B3DEE26AF1DC600A01ABF /* FoodApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodApi.swift; sourceTree = "<group>"; };
 		6F0B3DF026AF1DC600A01ABF /* FetchRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchRouter.swift; sourceTree = "<group>"; };
-		6F0BEAAE28D885C100C1788F /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
-		6F0BEAB028D8889400C1788F /* FilterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterView.xib; sourceTree = "<group>"; };
 		6F0BEAB628D8947C00C1788F /* FilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCell.swift; sourceTree = "<group>"; };
 		6F0BEAB728D8947C00C1788F /* FilterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterCell.xib; sourceTree = "<group>"; };
 		6F0BEABA28D8A76500C1788F /* FilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewModel.swift; sourceTree = "<group>"; };
@@ -190,6 +187,7 @@
 		6F3EEA4A26A0510600821E41 /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		6F3EEA4D26A05E9D00821E41 /* Interactorable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interactorable.swift; sourceTree = "<group>"; };
 		6F414D83278DA67A00D0EA28 /* Convertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Convertable.swift; sourceTree = "<group>"; };
+		6F472C3228DC90EB005213CA /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		6F4CEF0D2740642D00A4293A /* TabBarMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarMenuView.swift; sourceTree = "<group>"; };
 		6F4CEF0F2740645500A4293A /* TabBarMenuView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabBarMenuView.xib; sourceTree = "<group>"; };
 		6F51D1E8273C582B00BDDF6C /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
@@ -325,15 +323,6 @@
 				6F0B3DF026AF1DC600A01ABF /* FetchRouter.swift */,
 			);
 			path = Router;
-			sourceTree = "<group>";
-		};
-		6F0BEAAD28D885A600C1788F /* FilterView */ = {
-			isa = PBXGroup;
-			children = (
-				6F0BEAAE28D885C100C1788F /* FilterView.swift */,
-				6F0BEAB028D8889400C1788F /* FilterView.xib */,
-			);
-			path = FilterView;
 			sourceTree = "<group>";
 		};
 		6F0BEAB228D893DC00C1788F /* CollectionViewCell */ = {
@@ -484,6 +473,7 @@
 				6FB7C1622739C54E00F0D8AE /* LogoViewController.swift */,
 				6FB7C1662739CBFD00F0D8AE /* ErrorViewController.swift */,
 				6FC847CA28CA5C7800301F65 /* ListViewController.swift */,
+				6F472C3228DC90EB005213CA /* FilterViewController.swift */,
 			);
 			path = ScreenViewController;
 			sourceTree = "<group>";
@@ -761,7 +751,6 @@
 		6FB6CE5927314EF80011EB5B /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				6F0BEAAD28D885A600C1788F /* FilterView */,
 				6FB5546B28D388EC00C25B63 /* PinIconView */,
 				6FB06C7528D2066F00955644 /* PillLabel */,
 				6FC847B928C9DF0500301F65 /* Cluster */,
@@ -983,7 +972,6 @@
 				6FC2864828CF7E6B00677DBB /* EateryCell.xib in Resources */,
 				6FC44119272FFF4400C54028 /* ErrorView.xib in Resources */,
 				6FB41DE2273ECA9D00E226A2 /* MainView.xib in Resources */,
-				6F0BEAB128D8889400C1788F /* FilterView.xib in Resources */,
 				6FB7C1652739C56D00F0D8AE /* LogoView.xib in Resources */,
 				6F0BEAB928D8947C00C1788F /* FilterCell.xib in Resources */,
 				6F4CEF102740645500A4293A /* TabBarMenuView.xib in Resources */,
@@ -1071,7 +1059,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6F0BEAAF28D885C100C1788F /* FilterView.swift in Sources */,
 				6F3EEA3E26A04EEC00821E41 /* UIBezierPath+Extensions.swift in Sources */,
 				6F3EEA2726A04E0400821E41 /* BaseScene.swift in Sources */,
 				6F3EEA3B26A04EEC00821E41 /* LetteringView.swift in Sources */,
@@ -1143,6 +1130,7 @@
 				6FB41DDD273EC18200E226A2 /* MainInteractorImpl.swift in Sources */,
 				6F0B3DF426AF1DC600A01ABF /* FoodApi.swift in Sources */,
 				6F0B3DF126AF1DC600A01ABF /* ArcGisWorker.swift in Sources */,
+				6F472C3328DC90EB005213CA /* FilterViewController.swift in Sources */,
 				6FA32B6B26B6F03600275B48 /* SplashPresenter.swift in Sources */,
 				6FC847CB28CA5C7800301F65 /* ListViewController.swift in Sources */,
 				6FB6CE962731C0EE0011EB5B /* Configuration.swift in Sources */,

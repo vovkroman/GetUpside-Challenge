@@ -5,6 +5,10 @@ extension Convertor {
     
     struct EateryConverter: Convertable {
         
+        private enum Keys {
+            static let type = "Type"
+        }
+        
         typealias From = AGSGeocodeResult
         typealias To = Eatery
         
@@ -14,8 +18,11 @@ extension Convertor {
             }
             let name = from.label
             let attributes = from.attributes
-            let data = Eatery.Data(coordinates: coordinates, name: name, payload: attributes)
-            return .coffeeShop(data: data)
+            var type: Eatery.`Type` = .default
+            if let str = attributes?[Keys.type] as? String {
+                type = "\(str)"
+            }
+            return Eatery(type: type, coordinates: coordinates, name: name, payload: attributes)
         }
         
         func convertToFrom(from: Eatery) throws -> AGSGeocodeResult {

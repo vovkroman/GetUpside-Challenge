@@ -1,70 +1,40 @@
 import Foundation
 
-enum Eatery: CustomStringConvertible {
-    struct Data {
-        let coordinates: Coordinates
-        let name: String
-        let payload: [String: Any]?
+struct Eatery {
+    enum `Type`: String {
+        
+        case american = "American Food"
+        case british = "British Isles Food"
+        case burger = "Burgers"
+        case chinese = "Chinese Food"
+        case bakery = "Bakery"
+        case international = "International Food"
+        case coffeeShop = "Coffee Shop"
+        case seafood = "Seafood"
+        case fastFood = "Fast Food"
+        case `default` = "Eatery"
     }
     
-    case american(data: Data)
-    case british(data: Data)
-    case burger(data: Data)
-    case chinese(data: Data)
-    case bakery(data: Data)
-    case international(data: Data)
-    case coffeeShop(data: Data)
-    case seafood(data: Data)
-    case fastFood(data: Data)
+    let type: `Type`
+    let coordinates: Coordinates
+    let name: String
+    let payload: [String: Any]?
+}
+
+extension Eatery.`Type`: ExpressibleByStringLiteral {
     
-    var coordinates: Coordinates {
-        switch self {
-        case .american(let data):
-            return data.coordinates
-        case .british(let data):
-            return data.coordinates
-        case .burger(let data):
-            return data.coordinates
-        case .chinese(let data):
-            return data.coordinates
-        case .bakery(let data):
-            return data.coordinates
-        case .international(let data):
-            return data.coordinates
-        case .coffeeShop(let data):
-            return data.coordinates
-        case .seafood(let data):
-            return data.coordinates
-        case .fastFood(let data):
-            return data.coordinates
-        }
+    typealias StringLiteralType = String
+    
+    init(stringLiteral value: String) {
+        self = .init(rawValue: value) ?? .default
     }
-    
-    var name: String {
-        switch self {
-        case .american(let data):
-            return data.name
-        case .british(let data):
-            return data.name
-        case .burger(let data):
-            return data.name
-        case .chinese(let data):
-            return data.name
-        case .bakery(let data):
-            return data.name
-        case .international(let data):
-            return data.name
-        case .coffeeShop(let data):
-            return data.name
-        case .seafood(let data):
-            return data.name
-        case .fastFood( let data):
-            return data.name
-        }
-    }
-    
+}
+
+extension Eatery.`Type`: ExpressibleByStringInterpolation {}
+
+extension Eatery: CustomStringConvertible {
     var description: String {
-        switch self {
+        switch type {
         case .american:
             return "american food"
         case .british:
@@ -83,26 +53,15 @@ enum Eatery: CustomStringConvertible {
             return "sea food"
         case .fastFood:
             return "fast food"
+        case .default:
+            return "eatery"
         }
     }
 }
 
 extension Eatery: Hashable {
     static func == (lhs: Eatery, rhs: Eatery) -> Bool {
-        switch (lhs, rhs) {
-        case (.american(let lData), .american(let rData)),
-             (.british(let lData), .british(let rData)),
-            (.burger(let lData), .burger(let rData)),
-            (.chinese(let lData), .chinese(let rData)),
-            (.bakery(let lData), .bakery(let rData)),
-            (.international(let lData), .international(let rData)),
-            (.coffeeShop(let lData), .coffeeShop(let rData)),
-            (.seafood(let lData), .seafood(let rData)),
-            (.fastFood(let lData), .fastFood(let rData)):
-            return lData.coordinates == rData.coordinates && lData.name == rData.name
-        default:
-            return false
-        }
+        return lhs.coordinates == rhs.coordinates && lhs.name == rhs.name
     }
     
     func hash(into hasher: inout Hasher) {
