@@ -1,7 +1,7 @@
 import UIKit
 
 protocol ChildUpdatable: AnyObject {
-    func update<ViewModel: Main.ViewModelable>(_ viewModels: ContiguousArray<ViewModel>)
+    func update<ViewModel: Main.ViewModelable>(_ viewModels: [ViewModel])
 }
 
 extension Main {
@@ -48,18 +48,21 @@ extension Main {
         
         // MARK: - Private API
         
-        private func _addItems(_ viewModels: ContiguousArray<ViewModel>) {
+        private func _addItems(_ viewModels: [ViewModel]) {
             for kid in _kids {
                 kid.update(viewModels)
             }
         }
         
-        private func _addFilters(_ viewModels: ContiguousArray<Filter.ViewModel>) {
-            guard let controller = contentView.filterView.childViewController else {
-                contentView.filterView.childViewController = Filter.ViewController(viewModels)
+        private func _addFilters(_ viewModels: [Filter.ViewModel]) {
+            
+            guard let controller = contentView.filterView.childViewController as? Filter.ViewController else {
+                let controller = Filter.ViewController()
+                contentView.filterView.childViewController = controller
+                controller.render(viewModels)
                 return
             }
-            controller
+            controller.render(viewModels)
         }
         
         // MARK: - State handling

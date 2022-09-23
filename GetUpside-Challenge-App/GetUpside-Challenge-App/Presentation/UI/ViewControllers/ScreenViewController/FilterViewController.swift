@@ -2,20 +2,48 @@ import ReusableKit
 import UIKit
 
 extension Filter {
-    class ViewController: UICollectionViewController {
+    
+    final class CollectionViewFlowLayout: UICollectionViewFlowLayout {
         
-        private var _viewModels: ContiguousArray<Filter.ViewModel> = []
+        override init() {
+            super.init()
+            scrollDirection = .horizontal
+        }
+        
+        @available(*, unavailable)
+        required init?(coder: NSCoder) {
+            fatalError("init(coder:) has not been implemented")
+        }
+    }
+    
+    final class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+        
+        typealias ViewModel = Filtered
+        
+        private var _viewModels: [ViewModel] = []
         
         override func viewDidLoad() {
             super.viewDidLoad()
             _registerCell()
-            collectionView.backgroundColor = UIColor.white
+            _setupView()
         }
         
-        // MARK: - Congfig methods
+        // MARK: - Public API
+        
+        func render(_ viewModels: [ViewModel]) {
+            _viewModels.append(contentsOf: viewModels)
+            collectionView.reloadData()
+        }
+        
+        // MARK: - Private API
         
         private func _registerCell() {
             collectionView.register(FilterCell.self)
+        }
+        
+        private func _setupView() {
+            collectionView.showsHorizontalScrollIndicator = false
+            collectionView.backgroundColor = .clear
         }
         
         override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -27,23 +55,20 @@ extension Filter {
             return cell
         }
         
-        required init(_ viewModels: ContiguousArray<Filter.ViewModel>) {
-            _viewModels = viewModels
-            super.init(collectionViewLayout: UICollectionViewFlowLayout())
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+            let viewModel = _viewModels[indexPath.row]
+            return viewModel.size
+        }
+        
+        required init() {
+            let layout = CollectionViewFlowLayout()
+            super.init(collectionViewLayout: layout)
         }
         
         @available(*, unavailable)
         required init?(coder: NSCoder) {
             fatalError("init(coder:) has not been implemented")
         }
-    }
-}
-
-extension Filter.ViewController: UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let viewModel = _viewModels[indexPath.row]
-        return viewModel.size
     }
 }
 

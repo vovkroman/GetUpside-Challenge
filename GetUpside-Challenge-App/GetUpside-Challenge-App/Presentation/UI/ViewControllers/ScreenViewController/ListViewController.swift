@@ -3,7 +3,7 @@ import Logger
 
 final class ListViewController: UITableViewController {
     
-    private var _viewModels: ContiguousArray<Main.ViewModelable> = []
+    private var _viewModels: [Main.ViewModelable] = []
     
     // MARK: - Private API
     
@@ -41,8 +41,8 @@ final class ListViewController: UITableViewController {
 
 extension ListViewController: ChildUpdatable {
     
-    func update<ViewModel: Main.ViewModelable>(_ viewModels: ContiguousArray<ViewModel>) {
-        //_viewModels = ContiguousArray(viewModels)
+    func update<ViewModel: Main.ViewModelable>(_ viewModels: [ViewModel]) {
+        _viewModels = viewModels
         tableView.reloadData()
     }
 }

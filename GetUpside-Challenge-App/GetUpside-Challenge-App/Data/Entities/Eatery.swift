@@ -31,6 +31,7 @@ extension Eatery.`Type`: ExpressibleByStringLiteral {
 }
 
 extension Eatery.`Type`: ExpressibleByStringInterpolation {}
+extension Eatery.`Type`: Equatable {}
 
 extension Eatery: CustomStringConvertible {
     var description: String {

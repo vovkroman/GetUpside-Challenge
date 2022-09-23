@@ -1,11 +1,11 @@
 import Foundation
 
+struct Response {
+    let viewModels: [Main.ViewModel]
+    let filters: [Filter.ViewModel]
+}
+
 extension Main {
-    
-    struct Response {
-        let viewModels: ContiguousArray<ViewModel>
-        let filters: ContiguousArray<Filter.ViewModel>
-    }
     
     final class StateMachine {
         enum State {

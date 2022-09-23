@@ -60,7 +60,8 @@ extension Main {
         }
     }
     
-    final class ViewModel  {
+    struct ViewModel  {
+        
         typealias BuilderBlock = (Builder) -> ()
         
         private let _name: String
@@ -68,7 +69,7 @@ extension Main {
         private let _coordinates: Coordinates
         private let _type: String
         
-        convenience init(_ block: BuilderBlock) {
+        init(_ block: BuilderBlock) {
             let builder = Builder()
             block(builder)
             self.init(builder)

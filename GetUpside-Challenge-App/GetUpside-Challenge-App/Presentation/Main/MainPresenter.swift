@@ -47,15 +47,15 @@ extension Main.Presenter: MainPresentable {
         let size = Pin.size
         return Main.ViewModel { builder in
             builder.name = model.name
-            builder.type = "\(model)"
+            builder.type = "\(model.type)"
             builder.coordonates = model.coordinates
             builder.image = builder.build(model, size)
         }
     }
     
     func dataDidLoaded(_ items: Set<Eatery>) {
-        var itemViewModels: ContiguousArray<Main.ViewModel> = []
-        var filterViewModels: ContiguousArray<Filter.ViewModel> = []
+        var itemViewModels: [Main.ViewModel] = []
+        var filterViewModels: [Filter.ViewModel] = []
         
         var used: Set<String> = Set()
         for item in items {
@@ -70,7 +70,7 @@ extension Main.Presenter: MainPresentable {
             itemViewModels.append(mainViewModel)
         }
         
-        _queue.sync(execute: combine(.loadingFinished(respons: Main.Response(viewModels: itemViewModels, filters: filterViewModels)), with: _stateMachine.transition))
+        _queue.sync(execute: combine(.loadingFinished(respons: Response(viewModels: itemViewModels, filters: filterViewModels)), with: _stateMachine.transition))
     }
     
     func locationDidRequestForAuthorization() {
