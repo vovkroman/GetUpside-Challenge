@@ -1,4 +1,4 @@
-import UIKit
+import UI
 import Logger
 import GoogleMaps
 import GoogleMapsUtils
@@ -34,17 +34,19 @@ final class MapViewController: BaseViewController<MapView> {
 }
 
 extension MapViewController: GMSMapViewDelegate {
-    
+    // TODO: implememnt GMSMapViewDelegate delegate
 }
 
 extension MapViewController: ChildUpdatable {
     
     func update<ViewModel: Main.ViewModelable>(_ viewModels: [ViewModel]) {
+        typealias PinIconImage = IconView
+        
         for viewModel in viewModels {
             let marker = GMSMarker(position: viewModel.coordinates)
             
             let image = viewModel.image
-            let pinIconView = PinIconView(image: image)
+            let pinIconView = PinIconImage(image: image)
             marker.iconView = pinIconView
             
             marker.snippet = viewModel.name

@@ -1,4 +1,4 @@
-import UIKit
+import UI
 
 protocol ChildUpdatable: AnyObject {
     func update<ViewModel: Main.ViewModelable>(_ viewModels: [ViewModel])
@@ -12,7 +12,7 @@ extension Main {
     final class Scene: BaseScene<MainView, InteractorImpl> {
         
         private let _kids: ContiguousArray<Childable>
-        
+
         // MARK: - Life Cycle of UIViewController
         
         override func viewDidLoad() {
@@ -43,7 +43,7 @@ extension Main {
         
         @available(*, unavailable)
         required init(interactor: T) {
-            fatalError("init(interactor:) has not been implemented")
+            fatalError("init(interactor:) has not been implemented, use init(interactor: InteractorImpl, kids:)")
         }
         
         // MARK: - Private API

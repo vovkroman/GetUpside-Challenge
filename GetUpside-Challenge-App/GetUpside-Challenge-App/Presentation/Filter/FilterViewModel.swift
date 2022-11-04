@@ -1,4 +1,4 @@
-import Foundation
+import UIKit
 
 protocol Attributable {
     var attributedString: NSAttributedString { get }
@@ -7,8 +7,6 @@ protocol Attributable {
 protocol SizeSupportable {
     var size: CGSize { get }
 }
-
-typealias Filtered = Attributable & SizeSupportable
 
 extension Filter {
     

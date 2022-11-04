@@ -1,4 +1,4 @@
-import Foundation
+import UIKit
 import FutureKit
 
 typealias Action = () -> Future<Bool>

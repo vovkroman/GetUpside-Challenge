@@ -1,4 +1,4 @@
-import Foundation
+import UI
 
 protocol MainStateMachineObserver: AnyObject {
     func stateDidChanched(_ stateMachine: Main.StateMachine, _ to: Main.StateMachine.State)

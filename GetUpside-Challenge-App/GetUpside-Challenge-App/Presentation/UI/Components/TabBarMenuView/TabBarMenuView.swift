@@ -1,6 +1,13 @@
 import ReusableKit
 import UIKit
 
+final class SquareSegmentControl: UISegmentedControl {
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        layer.cornerRadius = 0
+    }
+}
+
 protocol TabBarMenuDelegate: AnyObject {
     func tabBarMenu(_ menu: TabBarMenuView, didSelected index: Int)
 }

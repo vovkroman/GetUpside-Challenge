@@ -1,4 +1,4 @@
-import UIKit
+import UI
 
 extension Splash {
     
@@ -10,13 +10,13 @@ extension Splash {
         
         override func viewDidLoad() {
             super.viewDidLoad()
-            _initialSetup()
+            _setup()
             _showLogo()
         }
         
         // MARK: - Configurations
         
-        private func _initialSetup() {
+        private func _setup() {
             _containerView.parentViewController = self // I'm your father Luke
             interactor.requestLocation()
         }

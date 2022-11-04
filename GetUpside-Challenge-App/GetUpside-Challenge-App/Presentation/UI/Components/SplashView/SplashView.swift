@@ -1,4 +1,5 @@
 import ReusableKit
+import UI
 
 final class SplashView: UIView, NibReusable {
     @IBOutlet private(set) weak var containerView: ContainerView!

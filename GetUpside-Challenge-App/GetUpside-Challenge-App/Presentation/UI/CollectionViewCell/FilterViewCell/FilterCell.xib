@@ -17,7 +17,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="176" height="46"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="American Food" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="add-sw-5Sg" customClass="PillLabel" customModule="GetUpside_Challenge_App" customModuleProvider="target">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="American Food" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="add-sw-5Sg" customClass="PillLabel" customModule="UI">
                         <rect key="frame" x="0.0" y="0.0" width="176" height="46"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -34,6 +34,9 @@
                 <constraint firstAttribute="bottom" secondItem="add-sw-5Sg" secondAttribute="bottom" id="mKx-BQ-ra8"/>
             </constraints>
             <size key="customSize" width="240" height="46"/>
+            <connections>
+                <outlet property="_titleLabel" destination="add-sw-5Sg" id="Gwn-ci-tht"/>
+            </connections>
             <point key="canvasLocation" x="-100.00000000000001" y="83.035714285714278"/>
         </collectionViewCell>
     </objects>

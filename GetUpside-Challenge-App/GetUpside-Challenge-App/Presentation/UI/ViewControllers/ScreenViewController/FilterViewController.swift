@@ -3,6 +3,8 @@ import UIKit
 
 extension Filter {
     
+    typealias ViewModelable = Attributable & SizeSupportable
+    
     final class CollectionViewFlowLayout: UICollectionViewFlowLayout {
         
         override init() {
@@ -18,9 +20,7 @@ extension Filter {
     
     final class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
         
-        typealias ViewModel = Filtered
-        
-        private var _viewModels: [ViewModel] = []
+        private var _viewModels: [ViewModelable] = []
         
         override func viewDidLoad() {
             super.viewDidLoad()
@@ -53,6 +53,11 @@ extension Filter {
         override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
             let cell: FilterCell = collectionView.dequeueReusableCell(for: indexPath)
             return cell
+        }
+        
+        override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+            let displayCell = cell as? FilterCell
+            displayCell?.configure(_viewModels[indexPath.row])
         }
         
         func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

@@ -1,4 +1,4 @@
-import Foundation
+import UIKit
 
 protocol Coordinating: AnyObject {
     associatedtype Event

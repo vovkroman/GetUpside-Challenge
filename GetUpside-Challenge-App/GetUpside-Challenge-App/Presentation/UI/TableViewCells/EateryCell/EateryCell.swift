@@ -1,3 +1,4 @@
+import UI
 import ReusableKit
 
 final class EateryCell: UITableViewCell, NibReusable {

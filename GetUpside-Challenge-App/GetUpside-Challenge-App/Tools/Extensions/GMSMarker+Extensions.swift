@@ -1,4 +1,4 @@
-import Foundation
+import UI
 import GoogleMaps
 
 extension GMSMarker {

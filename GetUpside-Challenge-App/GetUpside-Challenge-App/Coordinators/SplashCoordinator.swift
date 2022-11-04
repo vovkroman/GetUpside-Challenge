@@ -1,4 +1,4 @@
-import UIKit
+import UI
 import Logger
 
 extension Splash {

@@ -1,6 +1,6 @@
-import Foundation
+import UI
 
-final class LogoViewController: BaseViewController<LogoView> {
+final class LogoViewController: BaseViewController<GetUpsideLogoView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()

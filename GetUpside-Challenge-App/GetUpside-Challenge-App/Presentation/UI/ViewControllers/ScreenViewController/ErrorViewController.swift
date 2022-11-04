@@ -1,5 +1,6 @@
 import ReusableKit
 import UIKit
+import UI
 
 final class ErrorViewController: BaseViewController<ErrorView> {
     
