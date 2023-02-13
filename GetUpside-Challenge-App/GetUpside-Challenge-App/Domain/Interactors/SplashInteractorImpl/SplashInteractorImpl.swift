@@ -25,7 +25,7 @@ extension Splash {
         init(
             _ location: LocationUseCase,
             _ apiWorker: GetEateriesUseCase,
-            presenter: LocationPresenting
+            _ presenter: LocationPresenting
         ) {
             _apiWorker = apiWorker
             _locationWorker = location

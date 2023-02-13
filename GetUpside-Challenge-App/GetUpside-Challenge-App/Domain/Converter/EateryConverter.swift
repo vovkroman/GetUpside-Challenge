@@ -22,7 +22,12 @@ extension Convertor {
             if let str = attributes?[Keys.type] as? String {
                 type = "\(str)"
             }
-            return Eatery(type: type, coordinates: coordinates, name: name, payload: attributes)
+            return Eatery(
+                type: type,
+                coordinates: coordinates,
+                name: name,
+                payload: attributes
+            )
         }
         
         func convertToFrom(from: Eatery) throws -> AGSGeocodeResult {

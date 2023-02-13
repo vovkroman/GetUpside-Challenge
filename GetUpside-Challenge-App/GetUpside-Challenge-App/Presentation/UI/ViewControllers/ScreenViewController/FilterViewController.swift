@@ -60,6 +60,11 @@ extension Filter {
             displayCell?.configure(_viewModels[indexPath.row])
         }
         
+        override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+            let viewModel = _viewModels[indexPath.row]
+            print("Did select: \(viewModel.attributedString)")
+        }
+        
         func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
             let viewModel = _viewModels[indexPath.row]
             return viewModel.size

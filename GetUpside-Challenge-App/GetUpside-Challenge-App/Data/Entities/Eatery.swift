@@ -2,7 +2,6 @@ import Foundation
 
 struct Eatery {
     enum `Type`: String {
-        
         case american = "American Food"
         case british = "British Isles Food"
         case burger = "Burgers"

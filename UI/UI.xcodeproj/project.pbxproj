@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6F350C20299A586800A1498D /* LetteringOverlayConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F350C1F299A586800A1498D /* LetteringOverlayConfig.swift */; };
 		6F48F71928DE078300C0DCC3 /* UI.docc in Sources */ = {isa = PBXBuildFile; fileRef = 6F48F71828DE078300C0DCC3 /* UI.docc */; };
 		6F48F71A28DE078300C0DCC3 /* UI.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F48F71728DE078300C0DCC3 /* UI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6F48F72528DE07E100C0DCC3 /* MultichromeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F48F72228DE07E000C0DCC3 /* MultichromeLabel.swift */; };
@@ -20,7 +21,7 @@
 		6F48F74128DE0DAB00C0DCC3 /* ReusableKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F48F74028DE0DAB00C0DCC3 /* ReusableKit.framework */; };
 		6F48F75628DE0EC100C0DCC3 /* ContainerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F48F74528DE0EC100C0DCC3 /* ContainerView.xib */; };
 		6F48F75728DE0EC100C0DCC3 /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F48F74628DE0EC100C0DCC3 /* ContainerView.swift */; };
-		6F48F75928DE0EC100C0DCC3 /* LetteringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F48F74B28DE0EC100C0DCC3 /* LetteringView.swift */; };
+		6F48F75928DE0EC100C0DCC3 /* LetteringOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F48F74B28DE0EC100C0DCC3 /* LetteringOverlay.swift */; };
 		6F48F75A28DE0EC100C0DCC3 /* AnimationTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F48F74C28DE0EC100C0DCC3 /* AnimationTypes.swift */; };
 		6F48F75B28DE0EC100C0DCC3 /* LetteringLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F48F74D28DE0EC100C0DCC3 /* LetteringLayer.swift */; };
 		6F48F75C28DE0EC100C0DCC3 /* ARCGPathFromString.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F48F75028DE0EC100C0DCC3 /* ARCGPathFromString.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -47,6 +48,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6F350C1F299A586800A1498D /* LetteringOverlayConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetteringOverlayConfig.swift; sourceTree = "<group>"; };
 		6F48F71428DE078300C0DCC3 /* UI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F48F71728DE078300C0DCC3 /* UI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UI.h; sourceTree = "<group>"; };
 		6F48F71828DE078300C0DCC3 /* UI.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = UI.docc; sourceTree = "<group>"; };
@@ -61,7 +63,7 @@
 		6F48F74028DE0DAB00C0DCC3 /* ReusableKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ReusableKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F48F74528DE0EC100C0DCC3 /* ContainerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContainerView.xib; sourceTree = "<group>"; };
 		6F48F74628DE0EC100C0DCC3 /* ContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
-		6F48F74B28DE0EC100C0DCC3 /* LetteringView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LetteringView.swift; sourceTree = "<group>"; };
+		6F48F74B28DE0EC100C0DCC3 /* LetteringOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LetteringOverlay.swift; sourceTree = "<group>"; };
 		6F48F74C28DE0EC100C0DCC3 /* AnimationTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationTypes.swift; sourceTree = "<group>"; };
 		6F48F74D28DE0EC100C0DCC3 /* LetteringLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LetteringLayer.swift; sourceTree = "<group>"; };
 		6F48F75028DE0EC100C0DCC3 /* ARCGPathFromString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARCGPathFromString.h; sourceTree = "<group>"; };
@@ -201,28 +203,29 @@
 			isa = PBXGroup;
 			children = (
 				6F48F75528DE0EC100C0DCC3 /* LogoView.swift */,
-				6F48F74928DE0EC100C0DCC3 /* LetteringView */,
+				6F48F74928DE0EC100C0DCC3 /* LetteringOverlay */,
 			);
 			path = LogoView;
 			sourceTree = "<group>";
 		};
-		6F48F74928DE0EC100C0DCC3 /* LetteringView */ = {
+		6F48F74928DE0EC100C0DCC3 /* LetteringOverlay */ = {
 			isa = PBXGroup;
 			children = (
-				6F48F74A28DE0EC100C0DCC3 /* LetteringView */,
+				6F48F74A28DE0EC100C0DCC3 /* LetteringOverlay */,
 				6F48F74E28DE0EC100C0DCC3 /* Supplementary */,
 			);
-			path = LetteringView;
+			path = LetteringOverlay;
 			sourceTree = "<group>";
 		};
-		6F48F74A28DE0EC100C0DCC3 /* LetteringView */ = {
+		6F48F74A28DE0EC100C0DCC3 /* LetteringOverlay */ = {
 			isa = PBXGroup;
 			children = (
-				6F48F74B28DE0EC100C0DCC3 /* LetteringView.swift */,
+				6F48F74B28DE0EC100C0DCC3 /* LetteringOverlay.swift */,
 				6F48F74C28DE0EC100C0DCC3 /* AnimationTypes.swift */,
 				6F48F74D28DE0EC100C0DCC3 /* LetteringLayer.swift */,
+				6F350C1F299A586800A1498D /* LetteringOverlayConfig.swift */,
 			);
-			path = LetteringView;
+			path = LetteringOverlay;
 			sourceTree = "<group>";
 		};
 		6F48F74E28DE0EC100C0DCC3 /* Supplementary */ = {
@@ -349,10 +352,11 @@
 				6F48F76928DE180A00C0DCC3 /* RevealAnimator.swift in Sources */,
 				6F48F73D28DE0C9900C0DCC3 /* CGPoint+Extensions.swift in Sources */,
 				6F48F75728DE0EC100C0DCC3 /* ContainerView.swift in Sources */,
+				6F350C20299A586800A1498D /* LetteringOverlayConfig.swift in Sources */,
 				6F48F75B28DE0EC100C0DCC3 /* LetteringLayer.swift in Sources */,
 				6F48F72C28DE08F200C0DCC3 /* PillLabel.swift in Sources */,
 				6F48F71928DE078300C0DCC3 /* UI.docc in Sources */,
-				6F48F75928DE0EC100C0DCC3 /* LetteringView.swift in Sources */,
+				6F48F75928DE0EC100C0DCC3 /* LetteringOverlay.swift in Sources */,
 				6F48F75E28DE0EC100C0DCC3 /* UIBezierPath+TextPaths.m in Sources */,
 				6F48F75D28DE0EC100C0DCC3 /* UIBezierPath+Extensions.swift in Sources */,
 			);

@@ -31,6 +31,7 @@ extension Main.Presenter: MainPresentable {
     private func _buildFilterViewModel(_ model: Eatery) -> Filter.ViewModel {
         let filter = Constant.Filter.self
         let attributes = filter.attributes
+        let padding = filter.padding
         
         let size = CGSize(.infinity, filter.height)
         return Filter.ViewModel { builer in
@@ -38,7 +39,7 @@ extension Main.Presenter: MainPresentable {
             let rect = attributedString.boundingRect(with: size, options: [], context: nil)
             
             builer.attributedString = attributedString
-            builer.size = CGSize(rect.width, rect.height)
+            builer.size = CGSize(rect.width + padding.dx, rect.height + padding.dy)
         }
     }
     

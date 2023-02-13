@@ -35,7 +35,8 @@ enum Constant {
                                                                                     UIImage.circle(60, .black),
                                                                                     UIImage.circle(80, .darkGray),
                                                                                     UIImage.circle(100, .gray),
-                                                                                    UIImage.circle(120, .lightGray)])
+                                                                                    UIImage.circle(120, .lightGray)
+                                                                                ])
         enum Pin {
             static let size: CGSize = CGSize(width: 40, height: 50.0)
         }
@@ -43,8 +44,11 @@ enum Constant {
     
     enum Filter {
         static let height: CGFloat = 70.0
-        static let attributes: [NSAttributedString.Key: Any] = [.font: UIFont.boldSystemFont(ofSize: 24),
-                                                                    .foregroundColor: UIColor.black]
+        static let padding: (dx: CGFloat, dy: CGFloat) = (dx: 8.0, dy: 1.0)
+        static let attributes: [NSAttributedString.Key: Any] = [
+            .font: UIFont.boldSystemFont(ofSize: 24),
+            .foregroundColor: UIColor.black
+        ]
     }
     
     enum Location {

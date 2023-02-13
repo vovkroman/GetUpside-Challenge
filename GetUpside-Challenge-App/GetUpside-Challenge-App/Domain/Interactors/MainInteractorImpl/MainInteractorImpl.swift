@@ -17,7 +17,7 @@ extension Main {
         
         // MARK: - Private API
         
-        private func _fetchNewEntities(_ entities: [Eatery]) {
+        private func _onLoadedData(_ entities: [Eatery]) {
             var new: Set<Eatery> = Set()
             for entity in entities {
                 if _entities.contains(entity) { continue }
@@ -62,7 +62,7 @@ extension Main.InteractorImpl: MainUseCase {
         _apiWorker.fetchData(coordinate).observe { [weak self] result in
             switch result {
             case .success(let entities):
-                self?._fetchNewEntities(entities)
+                self?._onLoadedData(entities)
             case .failure(let error):
                 //self?._presenter.locationCatch(the: .other(error))
                 break

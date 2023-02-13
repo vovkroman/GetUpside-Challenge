@@ -1,34 +1,35 @@
 import UI
 
-protocol ChildUpdatable: AnyObject {
+protocol ChildUpdatable: UIViewController {
     func update<ViewModel: Main.ViewModelable>(_ viewModels: [ViewModel])
 }
 
 extension Main {
     
     typealias ViewModelable = Namable & CoordinatesSupporting & Imagable & Typable
-    typealias Childable = UIViewController & ChildUpdatable
+    typealias Childable = ChildUpdatable
     
     final class Scene: BaseScene<MainView, InteractorImpl> {
         
-        private let _kids: ContiguousArray<Childable>
+        private let _children: [ChildUpdatable]
+        private let _filter: Filter.ViewController
 
         // MARK: - Life Cycle of UIViewController
         
         override func viewDidLoad() {
             super.viewDidLoad()
-            
-            defer {
-                interactor.setup()
-            }
-            
+            // config tabBarMenu
             contentView.tabBarMenu.delegate = self
-            contentView.filterView.parentViewController = self
 
-            if _kids.isEmpty { return }
+            // add child view controller to self
+            if _children.isEmpty { return }
+            contentView.addChilren(_children, self)
             
-            contentView.update(_kids[0].title)
-            contentView.add(_kids, on: self)
+            // config filter
+            contentView.filterView.parentViewController = self
+            contentView.filterView.childViewController = _filter
+            
+            interactor.setup()
         }
         
         override func viewDidLayoutSubviews() {
@@ -36,8 +37,13 @@ extension Main {
             contentView.updateLayout()
         }
         
-        required init(_ interactor: InteractorImpl, _ kids: ContiguousArray<Childable>) {
-            self._kids = kids
+        required init(
+            _ interactor: InteractorImpl,
+            _ children: [Childable],
+            _ filter: Filter.ViewController
+        ) {
+            self._children = children
+            self._filter = filter
             super.init(interactor: interactor)
         }
         
@@ -46,23 +52,23 @@ extension Main {
             fatalError("init(interactor:) has not been implemented, use init(interactor: InteractorImpl, kids:)")
         }
         
+        deinit {
+            _filter.removeFromParent()
+            _children.forEach { child in
+                child.removeFromParent()
+            }
+        }
+        
         // MARK: - Private API
         
         private func _addItems(_ viewModels: [ViewModel]) {
-            for kid in _kids {
-                kid.update(viewModels)
+            for child in _children {
+                child.update(viewModels)
             }
         }
         
         private func _addFilters(_ viewModels: [Filter.ViewModel]) {
-            
-            guard let controller = contentView.filterView.childViewController as? Filter.ViewController else {
-                let controller = Filter.ViewController()
-                contentView.filterView.childViewController = controller
-                controller.render(viewModels)
-                return
-            }
-            controller.render(viewModels)
+            _filter.render(viewModels)
         }
         
         // MARK: - State handling

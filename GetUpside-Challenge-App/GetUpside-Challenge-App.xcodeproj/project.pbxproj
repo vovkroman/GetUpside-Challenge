@@ -471,14 +471,14 @@
 			path = Interactors;
 			sourceTree = "<group>";
 		};
-		6F414D82278DA62C00D0EA28 /* Translator */ = {
+		6F414D82278DA62C00D0EA28 /* Converter */ = {
 			isa = PBXGroup;
 			children = (
 				6F414D83278DA67A00D0EA28 /* Convertable.swift */,
 				6F8411FB278DC676006C5B8E /* EateryConverter.swift */,
 				6F8411FD278DD043006C5B8E /* AnyConverter.swift */,
 			);
-			path = Translator;
+			path = Converter;
 			sourceTree = "<group>";
 		};
 		6F48F76A28DE19F700C0DCC3 /* GetUpsideLogoView */ = {
@@ -525,7 +525,7 @@
 		6F56108B26B16B12002182BA /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				6F414D82278DA62C00D0EA28 /* Translator */,
+				6F414D82278DA62C00D0EA28 /* Converter */,
 				6F3EEA4C26A05E7B00821E41 /* Interactors */,
 			);
 			path = Domain;

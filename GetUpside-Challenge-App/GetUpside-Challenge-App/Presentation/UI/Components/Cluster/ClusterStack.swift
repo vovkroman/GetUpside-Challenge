@@ -18,7 +18,7 @@ extension Cluster {
 extension Cluster {
     final class Renderer: GMUDefaultClusterRenderer {
         override func shouldRender(as cluster: GMUCluster, atZoom zoom: Float) -> Bool {
-            return cluster.count >= 10
+            return cluster.count >= 3
         }
     }
 }

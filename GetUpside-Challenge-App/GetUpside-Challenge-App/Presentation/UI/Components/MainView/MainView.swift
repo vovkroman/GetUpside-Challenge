@@ -18,7 +18,10 @@ final class MainView: UIView, NibReusable {
         navigationBar.topItem?.title = title
     }
     
-    func add<ViewController: UIViewController>(_ children: ContiguousArray<ViewController>, on parent: UIViewController?) {
+    func addChilren<ViewController: UIViewController>(
+        _ children: [ViewController],
+        _ parent: UIViewController?
+    ) {
         for index in stride(from: children.count-1, through: 0, by: -1) {
             let viewController = children[index]
             tabBarMenu.addTabItem(with: viewController.title, at: index)

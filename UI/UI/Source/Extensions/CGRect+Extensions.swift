@@ -35,11 +35,4 @@ public extension CGRect {
         get { return midY }
         set { origin.y = round(newValue - height * 0.5) }
     }
-    
-    // MARK: - "with" convenience functions
-    
-    /** Same-sized rectangle with a new center
-    - parameter center: The new center, ignored if nil
-    - returns: A new rectangle with the same size and a new center
-     */
 }

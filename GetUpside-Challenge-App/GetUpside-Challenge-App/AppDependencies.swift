@@ -60,7 +60,7 @@ extension AppDependencies: SplashSceneFactoriable {
         let interactor = Splash.InteractorImpl(
             locationWorker,
             argisWorker,
-            presenter: presenter
+            presenter
         )
         interactor.coordinator = coordinator
         locationWorker.delegate = interactor
@@ -94,9 +94,15 @@ extension AppDependencies: MainSceneFactoriable {
         let list = buildListScene()
         list.title = "List"
         
-        let viewController = Main.Scene(interactor, [map, list])
+        let filter = buildFilterScene()
+        
+        let viewController = Main.Scene(interactor, [map, list], filter)
         presenter.observer = viewController
         return viewController
+    }
+    
+    func buildFilterScene() -> Filter.ViewController {
+        return Filter.ViewController()
     }
     
     func buildMapScene() -> MapViewController {
@@ -109,12 +115,16 @@ extension AppDependencies: MainSceneFactoriable {
         let mapView = viewController.contentView
         let iconGenerator = Constant.Map.iconGenerator
         let algorithm = Cluster.Algorithm()
-        let renderer = Cluster.Renderer(mapView: mapView,
-                                        clusterIconGenerator: iconGenerator)
+        let renderer = Cluster.Renderer(
+            mapView: mapView,
+            clusterIconGenerator: iconGenerator
+        )
         
-        let clusterManager = Cluster.Manager(map: mapView,
-                                             algorithm: algorithm,
-                                             renderer: renderer)
+        let clusterManager = Cluster.Manager(
+            map: mapView,
+            algorithm: algorithm,
+            renderer: renderer
+        )
         
         viewController.clusterManager = clusterManager
         return viewController

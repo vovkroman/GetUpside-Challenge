@@ -1,6 +1,6 @@
 import UIKit
 
-open class LetteringView: UIView {
+open class LetteringOverlay: UIView {
     
     // MARK: - Public methods
     
@@ -8,6 +8,12 @@ open class LetteringView: UIView {
         didSet {
             guard let cgPath = attributedString?.bezierPath?.cgPath else { return }
             layer.textPath = cgPath
+        }
+    }
+    
+    public var config: LetteringLayerConfig = .default {
+        didSet {
+            layer.config = config
         }
     }
     

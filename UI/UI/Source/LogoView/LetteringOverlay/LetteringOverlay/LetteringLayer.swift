@@ -5,6 +5,7 @@ open class LetteringLayer: CAShapeLayer {
     // MARK: - Private API
     
     public var textPath: CGPath?
+    public var config: LetteringLayerConfig = .default
     
     open func updateLayer() {
         guard let textPath = textPath else { return }
@@ -26,11 +27,11 @@ open class LetteringLayer: CAShapeLayer {
     }
     
     private func _setup() {
-        strokeColor = UIColor.white.cgColor
-        fillColor = UIColor.clear.cgColor
+        strokeColor = config.stokeColor.cgColor
+        fillColor = config.fillColor.cgColor
         contentsScale = UIScreen.main.scale
         isGeometryFlipped = true
-        lineWidth = 4.0
+        lineWidth = config.lineWidth
         lineCap = .round
     }
     
