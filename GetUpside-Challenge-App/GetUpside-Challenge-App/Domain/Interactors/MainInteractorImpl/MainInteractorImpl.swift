@@ -20,6 +20,8 @@ extension Main {
         private func _onLoadedData(_ entities: [Eatery]) {
             var new: Set<Eatery> = Set()
             for entity in entities {
+                
+                // check if newcoming entity has been processed
                 if _entities.contains(entity) { continue }
                 _entities.insert(entity)
                 new.insert(entity)
@@ -32,6 +34,10 @@ extension Main {
         func setup() {
             if _entities.isEmpty { return }
             _presenter.dataDidLoaded(_entities)
+        }
+        
+        func filter() {
+            
         }
         
         init(

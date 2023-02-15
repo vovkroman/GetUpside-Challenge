@@ -42,7 +42,7 @@ extension ArcGis.Worker: GetEateriesUseCase {
         let converter = Convertor.EateryConverter()
         return fetch(coordinate)
                .transformed { results in
-                return results.compactMap{ try? converter.convertFromTo(from: $0) }
-            }
+                   return results.compactMap{ try? converter.convertFromTo(from: $0) }
+               }
     }
 }

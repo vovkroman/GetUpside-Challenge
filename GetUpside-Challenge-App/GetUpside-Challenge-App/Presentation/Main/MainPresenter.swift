@@ -39,6 +39,7 @@ extension Main.Presenter: MainPresentable {
             let rect = attributedString.boundingRect(with: size, options: [], context: nil)
             
             builer.attributedString = attributedString
+            builer.type = model.type
             builer.size = CGSize(rect.width + padding.dx, rect.height + padding.dy)
         }
     }
@@ -70,8 +71,8 @@ extension Main.Presenter: MainPresentable {
             
             itemViewModels.append(mainViewModel)
         }
-        
-        _queue.sync(execute: combine(.loadingFinished(respons: Response(viewModels: itemViewModels, filters: filterViewModels)), with: _stateMachine.transition))
+        let response = Response(viewModels: itemViewModels, filters: filterViewModels)
+        _queue.sync(execute: combine(.loadingFinished(respons: response), with: _stateMachine.transition))
     }
     
     func locationDidRequestForAuthorization() {

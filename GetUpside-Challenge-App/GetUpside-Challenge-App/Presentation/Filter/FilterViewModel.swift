@@ -13,6 +13,7 @@ extension Filter {
     class Builder {
         var size: CGSize = .zero
         var attributedString: NSAttributedString = NSAttributedString()
+        var type: Eatery.`Type` = .default
     }
     
     struct ViewModel {
