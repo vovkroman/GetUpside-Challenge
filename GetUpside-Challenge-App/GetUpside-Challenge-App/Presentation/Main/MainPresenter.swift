@@ -1,4 +1,5 @@
 import UI
+import FilterKit
 
 protocol MainStateMachineObserver: AnyObject {
     func stateDidChanched(_ stateMachine: Main.StateMachine, _ to: Main.StateMachine.State)
@@ -13,6 +14,7 @@ extension Main {
 
         private let _stateMachine: StateMachine = StateMachine()
         private let _queue: DispatchQueue
+        private let _executor: FilterExecutor<Eatery> = FilterExecutor<Eatery>()
         
         weak var observer: MainStateMachineObserver? {
             didSet {

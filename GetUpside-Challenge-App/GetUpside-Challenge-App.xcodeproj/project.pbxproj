@@ -18,6 +18,8 @@
 		6F0BEAB828D8947C00C1788F /* FilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0BEAB628D8947C00C1788F /* FilterCell.swift */; };
 		6F0BEAB928D8947C00C1788F /* FilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F0BEAB728D8947C00C1788F /* FilterCell.xib */; };
 		6F0BEABB28D8A76500C1788F /* FilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0BEABA28D8A76500C1788F /* FilterViewModel.swift */; };
+		6F1DFD28299D41B000E3F30D /* FilterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F1DFD27299D41B000E3F30D /* FilterKit.framework */; };
+		6F1DFD29299D41B000E3F30D /* FilterKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6F1DFD27299D41B000E3F30D /* FilterKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6F33AA4426CFB54600A469FC /* SplashStateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F33AA4326CFB54600A469FC /* SplashStateMachine.swift */; };
 		6F3EE9B126A0459800821E41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3EE9B026A0459800821E41 /* AppDelegate.swift */; };
 		6F3EE9B826A0459800821E41 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F3EE9B626A0459800821E41 /* Main.storyboard */; };
@@ -115,6 +117,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				6F3EEA1026A0488C00821E41 /* Logger.framework in Embed Frameworks */,
+				6F1DFD29299D41B000E3F30D /* FilterKit.framework in Embed Frameworks */,
 				6F3EEA0C26A0488800821E41 /* FutureKit.framework in Embed Frameworks */,
 				6F48F76628DE154000C0DCC3 /* UI.framework in Embed Frameworks */,
 				6FB6CE7F2731535C0011EB5B /* ReusableKit.framework in Embed Frameworks */,
@@ -137,6 +140,7 @@
 		6F0BEAB628D8947C00C1788F /* FilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCell.swift; sourceTree = "<group>"; };
 		6F0BEAB728D8947C00C1788F /* FilterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterCell.xib; sourceTree = "<group>"; };
 		6F0BEABA28D8A76500C1788F /* FilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewModel.swift; sourceTree = "<group>"; };
+		6F1DFD27299D41B000E3F30D /* FilterKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FilterKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F33AA4326CFB54600A469FC /* SplashStateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashStateMachine.swift; sourceTree = "<group>"; };
 		6F3EE9AD26A0459800821E41 /* GetUpside-Challenge-App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GetUpside-Challenge-App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F3EE9B026A0459800821E41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -224,6 +228,7 @@
 				6F3EEA0F26A0488C00821E41 /* Logger.framework in Frameworks */,
 				6F3EEA0B26A0488800821E41 /* FutureKit.framework in Frameworks */,
 				2D245BBD3A173D1978103490 /* Pods_GetUpside_Challenge_App.framework in Frameworks */,
+				6F1DFD28299D41B000E3F30D /* FilterKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,6 +394,7 @@
 		6F3EEA0926A0488800821E41 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6F1DFD27299D41B000E3F30D /* FilterKit.framework */,
 				6F48F76428DE154000C0DCC3 /* UI.framework */,
 				6FB6CE7D2731535C0011EB5B /* ReusableKit.framework */,
 				6F3EEA0E26A0488C00821E41 /* Logger.framework */,

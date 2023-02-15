@@ -2,13 +2,16 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:GetUpside-Challenge-App/GetUpside-Challenge-App.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:FilterKit/FilterKit.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:ReusableKit/ReusableKit.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:UI/UI.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:GetUpside-Challenge-App/GetUpside-Challenge-App.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Logger/Logger.xcodeproj">
