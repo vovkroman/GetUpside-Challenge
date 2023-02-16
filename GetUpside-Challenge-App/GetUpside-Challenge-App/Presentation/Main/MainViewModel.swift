@@ -13,8 +13,8 @@ protocol Imagable {
     var image: UIImage { get }
 }
 
-protocol Typable {
-    var type: String { get }
+protocol Identifiable {
+    var id: String { get }
 }
 
 extension Main {
@@ -103,8 +103,8 @@ extension Main.ViewModel: CoordinatesSupporting {
     }
 }
 
-extension Main.ViewModel: Typable {
-    var type: String {
+extension Main.ViewModel: Identifiable {
+    var id: String {
         return _type
     }
 }

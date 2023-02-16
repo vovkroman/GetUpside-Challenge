@@ -10,16 +10,17 @@ protocol SizeSupportable {
 
 extension Filter {
     
-    class Builder {
+    final class Builder {
+        var id: String = ""
         var size: CGSize = .zero
         var attributedString: NSAttributedString = NSAttributedString()
-        var type: Eatery.`Type` = .default
     }
     
     struct ViewModel {
         
         typealias BuilderBlock = (Builder) -> ()
         
+        private let _id: String
         private let _size: CGSize
         private let _attributedString: NSAttributedString
         
@@ -30,8 +31,12 @@ extension Filter {
         }
         
         init(_ builder: Builder) {
-            _size = builder.size
+            // unique identifier for filter item
+            _id = builder.id
             _attributedString = builder.attributedString
+            
+            // size of item
+            _size = builder.size
         }
     }
 }

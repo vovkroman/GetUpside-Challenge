@@ -5,40 +5,18 @@ protocol MainPresentable: LocationPresenting & MainDataLoadable {}
 
 extension Main {
     final class InteractorImpl {
+        
         // Workers
-        private let _locationWorker: LocationUseCase
-        private let _apiWorker: GetEateriesUseCase
+        let locationWorker: LocationUseCase
+        let apiWorker: GetEateriesUseCase
         
         // Presenters
-        private let _presenter: MainPresentable
-        private var _entities: Set<Eatery>
+        let presenter: MainPresentable
+        var entities: Set<Eatery>
         
         var coordinator: AnyCoordinating<Main.Event>?
         
-        // MARK: - Private API
-        
-        private func _onLoadedData(_ entities: [Eatery]) {
-            var new: Set<Eatery> = Set()
-            for entity in entities {
-                
-                // check if newcoming entity has been processed
-                if _entities.contains(entity) { continue }
-                _entities.insert(entity)
-                new.insert(entity)
-            }
-            _presenter.dataDidLoaded(new)
-        }
-        
         // MARK: - Public methods
-        
-        func setup() {
-            if _entities.isEmpty { return }
-            _presenter.dataDidLoaded(_entities)
-        }
-        
-        func filter() {
-            
-        }
         
         init(
             _ location: LocationUseCase,
@@ -46,65 +24,18 @@ extension Main {
             _ presenter: MainPresentable,
             _ entities: [Eatery]
         ) {
-            _apiWorker = apiWorker
-            _locationWorker = location
-            _presenter = presenter
-            _entities = Set(entities)
+            self.apiWorker = apiWorker
+            self.locationWorker = location
+            self.presenter = presenter
+            self.entities = Set(entities)
         }
     }
 }
 
-extension Main.InteractorImpl: MainUseCase {
-    func requestLocation() {
-        if _locationWorker.isUserAuthorized {
-            _locationWorker.startUpdatingLocation()
-        } else {
-            _locationWorker.requestForAutorization()
-            _presenter.locationDidRequestForAuthorization()
-        }
-    }
+extension Main.InteractorImpl {
     
-    func fetachData(_ coordinate: Coordinates) {
-        _apiWorker.fetchData(coordinate).observe { [weak self] result in
-            switch result {
-            case .success(let entities):
-                self?._onLoadedData(entities)
-            case .failure(let error):
-                //self?._presenter.locationCatch(the: .other(error))
-                break
-            }
-        }
-    }
-}
-
-extension Main.InteractorImpl: LocationUpdating {
-    func location(
-        _ worker: LocationUseCase,
-        authStatusDidUpdated status: LocationStatus
-    ) {
-        switch status {
-        case .authorizedAlways, .authorizedWhenInUse:
-            _locationWorker.startUpdatingLocation()
-        case .denied:
-            _presenter.locationCatch(the: Location.Error.denied)
-        case .restricted:
-            _presenter.locationCatch(the: Location.Error.restricted)
-        default: // including not defined
-            break
-        }
-    }
-    
-    func location(
-        _ worker: LocationUseCase,
-        locationDidUpdated locationCoordinate: Coordinates
-    ) {
-        _presenter.locationDidUpdated(with: locationCoordinate)
-    }
-    
-    func location(
-        _ worker: LocationUseCase,
-        catch error: Error
-    ) {
-        _presenter.locationCatch(the: .other(error))
+    func setup() {
+        if entities.isEmpty { return }
+        presenter.dataDidLoaded(entities)
     }
 }

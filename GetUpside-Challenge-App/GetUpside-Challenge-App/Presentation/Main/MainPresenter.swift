@@ -41,7 +41,7 @@ extension Main.Presenter: MainPresentable {
             let rect = attributedString.boundingRect(with: size, options: [], context: nil)
             
             builer.attributedString = attributedString
-            builer.type = model.type
+            builer.id = "\(model.type)"
             builer.size = CGSize(rect.width + padding.dx, rect.height + padding.dy)
         }
     }
@@ -65,10 +65,10 @@ extension Main.Presenter: MainPresentable {
         for item in items {
             let mainViewModel = _buildMainViewModel(item)
             
-            if !used.contains(mainViewModel.type) {
+            if !used.contains(mainViewModel.id) {
                 let filerViewModel = _buildFilterViewModel(item)
                 filterViewModels.append(filerViewModel)
-                used.insert(mainViewModel.type)
+                used.insert(mainViewModel.id)
             }
             
             itemViewModels.append(mainViewModel)

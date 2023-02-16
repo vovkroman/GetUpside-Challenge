@@ -6,7 +6,7 @@ protocol ChildUpdatable: UIViewController {
 
 extension Main {
     
-    typealias ViewModelable = Namable & CoordinatesSupporting & Imagable & Typable
+    typealias ViewModelable = Namable & CoordinatesSupporting & Imagable & Identifiable
     typealias Childable = ChildUpdatable
     
     final class Scene: BaseScene<MainView, InteractorImpl> {

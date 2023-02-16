@@ -8,6 +8,6 @@ final class EateryCell: UITableViewCell, NibReusable {
     
     func configure(_ viewModel: Main.ViewModelable) {
         _titleLabel.text = viewModel.name
-        _typeLabel.text = viewModel.type
+        _typeLabel.text = viewModel.id
     }
 }
