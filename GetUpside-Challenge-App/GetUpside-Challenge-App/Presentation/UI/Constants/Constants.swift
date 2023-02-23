@@ -30,13 +30,15 @@ enum Constant {
     }
     
     enum Map {
-        static let iconGenerator: Cluster.IconGenerator = Cluster.IconGenerator(buckets: [10, 25, 50, 100],
-                                                                                backgroundImages: [
-                                                                                    UIImage.circle(60, .black),
-                                                                                    UIImage.circle(80, .darkGray),
-                                                                                    UIImage.circle(100, .gray),
-                                                                                    UIImage.circle(120, .lightGray)
-                                                                                ])
+        static let iconGenerator: Cluster.IconGenerator = Cluster.IconGenerator(
+            buckets: [10, 25, 50, 100],
+            backgroundImages: [
+                UIImage.circle(60, .black),
+                UIImage.circle(80, .darkGray),
+                UIImage.circle(100, .gray),
+                UIImage.circle(120, .lightGray)
+            ]
+        )
         enum Pin {
             static let size: CGSize = CGSize(width: 40, height: 50.0)
         }

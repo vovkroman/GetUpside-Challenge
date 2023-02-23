@@ -60,6 +60,7 @@ extension Eatery: CustomStringConvertible {
 }
 
 extension Eatery: Hashable {
+    
     static func == (lhs: Eatery, rhs: Eatery) -> Bool {
         return lhs.coordinates == rhs.coordinates && lhs.name == rhs.name
     }

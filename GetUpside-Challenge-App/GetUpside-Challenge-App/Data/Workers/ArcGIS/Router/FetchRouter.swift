@@ -14,24 +14,24 @@ protocol FetchRouter {
 
 class AnyFetchRouter<Fetch: FetchType>: FetchRouter {
     
-    typealias FetchData = (locator: AGSLocatorTask, params: AGSGeocodeParameters)
+    typealias ParamsProvider = (locator: AGSLocatorTask, params: AGSGeocodeParameters)
     
-    private var _fetchTask: AGSCancelable?
-    private var _locatorTask: AGSLocatorTask?
+    private var fetchTask: AGSCancelable?
+    private var locatorTask: AGSLocatorTask?
     
     func performFetch(
         _ route: Fetch
     ) -> Future<[AGSGeocodeResult]> {
-        let promise: Promise<[AGSGeocodeResult]> = .init()
+        let promise: Promise<[AGSGeocodeResult]> = Promise()
         do {
-            let fecthdata = try _buildFetch(from: route)
+            let paramsProvider = try buildParamsProvider(from: route)
             
-            _locatorTask = fecthdata.locator
-            let params = fecthdata.params
+            locatorTask = paramsProvider.locator
+            let params = paramsProvider.params
             
-            Logger.debug("\(String(describing: _locatorTask)) has been perfromed", category: .api)
+            Logger.debug("\(String(describing: locatorTask)) has been perfromed", category: .api)
             
-            _fetchTask = _locatorTask?.geocode(
+            fetchTask = locatorTask?.geocode(
                 withSearchText: route.searchResult,
                 parameters: params
             ) { (result, error) in
@@ -46,16 +46,26 @@ class AnyFetchRouter<Fetch: FetchType>: FetchRouter {
                 promise.resolve(with: [])
             }
         } catch let error {
-            Logger.error("\(String(describing: _locatorTask?.url)) failed with error \(error)", category: .api)
+            Logger.error("\(String(describing: locatorTask?.url)) failed with error \(error)", category: .api)
             promise.reject(with: error)
         }
         
         return promise
     }
     
-    private func _buildFetch(
+    func cancel() {
+        guard let fetchTask = fetchTask else { return }
+        Logger.debug("\(String(describing: locatorTask?.url)) has been canceled", category: .api)
+        fetchTask.cancel()
+        locatorTask = nil
+    }
+}
+
+private extension AnyFetchRouter {
+    
+    private func buildParamsProvider(
         from route: Fetch
-    ) throws -> FetchData {
+    ) throws -> ParamsProvider {
         guard let url = URL(string: route.urlString) else {
             throw FetchError.error(description: "Failed to create URL from \(route.urlString)")
         }
@@ -82,12 +92,5 @@ class AnyFetchRouter<Fetch: FetchType>: FetchRouter {
 //            params.searchArea = builder.toGeometry()
         }
         return (locatorTask, params)
-    }
-    
-    func cancel() {
-        guard let fetchTask = _fetchTask else { return }
-        Logger.debug("\(String(describing: _locatorTask?.url)) has been canceled", category: .api)
-        fetchTask.cancel()
-        _locatorTask = nil
     }
 }
