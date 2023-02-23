@@ -7,13 +7,13 @@ extension Splash {
             case idle
             case loading
             case locating(coordinate: Coordinates)
-            case error(viewModel: Splash.ViewModel)
+            case error(error: Location.Error)
         }
         
         enum Event {
             case authDidStarted
             case coordinateDidUpdated(Coordinates)
-            case catchError(Splash.ViewModel)
+            case catchError(Location.Error)
         }
         
         private var _state: State = .idle {
@@ -34,8 +34,8 @@ extension Splash {
                 _state = .loading
             case (.idle, .coordinateDidUpdated(let coordinate)), (.error, .coordinateDidUpdated(let coordinate)):
                 _state = .locating(coordinate: coordinate)
-            case (.idle, .catchError(let viewModel)), (.loading, .catchError(let viewModel)), (.locating, .catchError(let viewModel)):
-                _state = .error(viewModel: viewModel)
+            case (.idle, .catchError(let error)), (.loading, .catchError(let error)), (.locating, .catchError(let error)):
+                _state = .error(error: error)
             case (.loading, .authDidStarted):
                 break
             case (.loading, .coordinateDidUpdated(let coordinate)):
@@ -45,7 +45,7 @@ extension Splash {
             case (.locating, .coordinateDidUpdated):
                 break
             case (.error(let old), .catchError(let new)) where old != new:
-                _state = .error(viewModel: new)
+                _state = .error(error: new)
             case (.error, .catchError):
                 break
             }

@@ -63,13 +63,3 @@ extension Splash.ViewModel: ActionaSupporting, ButtonTitlable, Descriptionable {
         }
     }
 }
-
-
-extension Splash.ViewModel: Equatable {
-    static func == (
-        lhs: Splash.ViewModel,
-        rhs: Splash.ViewModel
-    ) -> Bool {
-        return lhs._model == rhs._model
-    }
-}

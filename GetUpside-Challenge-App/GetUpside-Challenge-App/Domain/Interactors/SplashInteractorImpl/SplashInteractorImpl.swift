@@ -15,84 +15,34 @@ extension Splash {
     final class InteractorImpl {
         
         // workers
-        private let _locationWorker: LocationUseCase
-        private let _apiWorker: GetEateriesUseCase
+        let locationWorker: LocationUseCase
+        let apiWorker: GetEateriesUseCase
         
-        private var _presenter: LocationPresenting
-        
+        // navigation
         var coordinator: AnyCoordinating<Splash.Event>?
+        
+        private let presenter: SplashPresenterSupport
+        
+        // State machine
+        private(set) var stateMachine: StateMachine = StateMachine()
+        let queue: DispatchQueue
+        
+        weak var observer: SplashStateMachineObserver? {
+            didSet {
+                stateMachine.observer = observer
+            }
+        }
         
         init(
             _ location: LocationUseCase,
             _ apiWorker: GetEateriesUseCase,
-            _ presenter: LocationPresenting
+            _ queue: DispatchQueue,
+            _ presenter: SplashPresenterSupport
         ) {
-            _apiWorker = apiWorker
-            _locationWorker = location
-            _presenter = presenter
+            self.apiWorker = apiWorker
+            self.locationWorker = location
+            self.presenter = presenter
+            self.queue = queue
         }
-    }
-}
-
-extension Splash.InteractorImpl: SplashUseCase {
-    
-    func requestLocation() {
-        if _locationWorker.isUserAuthorized {
-            _locationWorker.startUpdatingLocation()
-        } else {
-            _locationWorker.requestForAutorization()
-            _presenter.locationDidRequestForAuthorization()
-        }
-    }
-    
-    func fetachData(_ coordinate: Coordinates) {
-        _apiWorker.fetchData(coordinate).observe { [weak self] result in
-            switch result {
-            case .success(let items):
-                self?.coordinator?.cacthTheEvent(items)
-            case .failure(let error):
-                self?._presenter.locationCatch(the: .other(error))
-            case .failure(let error as NSError) where any(value: error.code, items: NSURLErrorNetworkConnectionLost, NSURLErrorNotConnectedToInternet):
-                
-                break
-            }
-        }
-    }
-    
-    func cancelFetching() {
-        _apiWorker.cancelFetching()
-    }
-}
-
-extension Splash.InteractorImpl: LocationUpdating {
-    func location(
-        _ worker: LocationUseCase,
-        authStatusDidUpdated status: LocationStatus
-    ) {
-        switch status {
-        case .authorizedAlways, .authorizedWhenInUse:
-            // user's been authorized, but not got the current location
-            _locationWorker.startUpdatingLocation()
-        case .denied:
-            _presenter.locationCatch(the: Location.Error.denied)
-        case .restricted:
-            _presenter.locationCatch(the: Location.Error.restricted)
-        default: // including not defined
-            break
-        }
-    }
-    
-    func location(
-        _ worker: LocationUseCase,
-        locationDidUpdated locationCoordinate: Coordinates
-    ) {
-        _presenter.locationDidUpdated(with: locationCoordinate)
-    }
-    
-    func location(
-        _ worker: LocationUseCase,
-        catch error: Error
-    ) {
-        _presenter.locationCatch(the: .other(error))
     }
 }

@@ -39,7 +39,7 @@ class AppDependencies {
         return queue
     }()
     
-    func setupServices() {
+    func initializeServices() {
         let services: [Serviceable] = [ArcGISSetuper(_appConfig), GoogleMapsSetuper(_appConfig)]
         services.forEach{ $0.setup() }
     }
@@ -61,17 +61,20 @@ extension AppDependencies: SplashSceneFactoriable {
             target: _queue
         )
         
-        let presenter = Splash.Presenter(queue)
+        // build VIP cycle dependencies
+        let presenter = Splash.Presenter()
         let interactor = Splash.InteractorImpl(
             locationWorker,
             argisWorker,
+            queue,
             presenter
         )
+        interactor.observer = presenter
         interactor.coordinator = coordinator
         locationWorker.delegate = interactor
-        let viewController = Splash.Scene(interactor: interactor)
-        presenter.observer = viewController
-        return viewController
+        let scene = Splash.Scene(interactor: interactor)
+        presenter.view = scene
+        return scene
     }
 }
 

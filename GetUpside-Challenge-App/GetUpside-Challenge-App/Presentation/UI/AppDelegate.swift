@@ -3,16 +3,16 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    private let _appCoordinator: ApplicationCoordinator
-    private let _appDependencies: AppDependencies = AppDependencies()
+    private let appCoordinator: ApplicationCoordinator
+    private let appDependencies: AppDependencies = AppDependencies()
     
     func application(_
                         application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
 
-        _appDependencies.setupServices()
-        _appCoordinator.start()
+        appDependencies.initializeServices()
+        appCoordinator.start()
 
         return true
     }
@@ -20,9 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     override init() {
         let window = UIWindow(frame: UIScreen.main.bounds)
-        _appCoordinator = ApplicationCoordinator(
+        appCoordinator = ApplicationCoordinator(
             window: window,
-            appDependencies: _appDependencies
+            appDependencies: appDependencies
         )
         super.init()
     }

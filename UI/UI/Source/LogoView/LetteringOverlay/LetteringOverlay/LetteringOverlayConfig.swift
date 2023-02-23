@@ -11,7 +11,7 @@ public extension LetteringLayerConfig {
         return LetteringLayerConfig(
             stokeColor: .white,
             fillColor: .clear,
-            lineWidth: 0.0
+            lineWidth: 4.0
         )
     }
 }

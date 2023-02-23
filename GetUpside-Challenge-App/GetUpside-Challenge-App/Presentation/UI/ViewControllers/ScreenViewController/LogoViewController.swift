@@ -14,6 +14,7 @@ final class LogoViewController: BaseViewController<GetUpsideLogoView> {
 }
 
 extension LogoViewController: LogoTransitionable {
+
     var maskLayer: CAShapeLayer? {
         let shapelayer = CAShapeLayer()
         shapelayer.isGeometryFlipped = true

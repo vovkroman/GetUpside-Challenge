@@ -4,41 +4,39 @@ protocol SplashStateMachineObserver: AnyObject {
     func stateDidChanched(_ stateMachine: Splash.StateMachine, to: Splash.StateMachine.State)
 }
 
-protocol LocationPresenting: AnyObject {
-    func locationDidRequestForAuthorization()
-    func locationDidUpdated(with coordinate: Coordinates)
-    func locationCatch(the error: Location.Error)
+protocol SplashPresenterSupport: AnyObject {}
+
+protocol SplashPresentable: AnyObject {
+    func onLoading()
+    func onLocationDidUpdate(_ coordinate: Coordinates)
+    func onErrorDidCatch(_ viewModel: Splash.ViewModel)
 }
 
 extension Splash {
     
-    final class Presenter {
-        private var _stateMachine: StateMachine = StateMachine()
-        private let _queue: DispatchQueue
-        
-        weak var observer: SplashStateMachineObserver? {
-            didSet {
-                _stateMachine.observer = observer
-            }
-        }
-        
-        init(_ queue: DispatchQueue) {
-            _queue = queue
+    final class Presenter: SplashPresenterSupport {
+        weak var view: SplashPresentable?
+    }
+}
+
+private extension Splash.Presenter {
+    
+    func handleState(_ state: Splash.StateMachine.State) {
+        switch state {
+        case .idle, .loading:
+            view?.onLoading()
+        case .locating(let coordinate):
+            view?.onLocationDidUpdate(coordinate)
+        case .error(let error):
+            let viewModel = Splash.ViewModel(error)
+            view?.onErrorDidCatch(viewModel)
         }
     }
 }
 
-extension Splash.Presenter: LocationPresenting {
-    func locationCatch(the error: Location.Error) {
-        let viewModel = Splash.ViewModel(error)
-        _queue.sync(execute: combine(.catchError(viewModel), with: _stateMachine.transition))
-    }
+extension Splash.Presenter: SplashStateMachineObserver {
     
-    func locationDidUpdated(with coordinate: Coordinates) {
-        _queue.sync(execute: combine(.coordinateDidUpdated(coordinate), with: _stateMachine.transition))
-    }
-    
-    func locationDidRequestForAuthorization() {
-        _queue.sync(execute: combine(.authDidStarted, with: _stateMachine.transition))
+    func stateDidChanched(_ stateMachine: Splash.StateMachine, to: Splash.StateMachine.State) {
+        DispatchQueue.main.async(execute: combine(to, with: handleState))
     }
 }
