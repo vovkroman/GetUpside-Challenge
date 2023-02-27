@@ -1,7 +1,7 @@
 import Foundation
 
 protocol MainUseCase: DataFetching, LocationSupporting {}
-protocol MainPresentable: LocationPresenting & MainDataLoadable {}
+protocol MainPresentable: MainDataLoadable {}
 
 extension Main {
     final class InteractorImpl {
@@ -36,6 +36,6 @@ extension Main.InteractorImpl {
     
     func setup() {
         if entities.isEmpty { return }
-        presenter.dataDidLoaded(entities)
+        presenter.onDataDidLoad(entities)
     }
 }

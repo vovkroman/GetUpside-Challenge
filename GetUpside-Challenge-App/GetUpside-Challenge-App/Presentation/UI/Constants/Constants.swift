@@ -30,6 +30,7 @@ enum Constant {
     }
     
     enum Map {
+        static let joinTheCluster: Int = 3
         static let iconGenerator: Cluster.IconGenerator = Cluster.IconGenerator(
             buckets: [10, 25, 50, 100],
             backgroundImages: [

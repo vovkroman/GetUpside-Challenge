@@ -36,9 +36,9 @@ extension Eatery: CustomStringConvertible {
     var description: String {
         switch type {
         case .american:
-            return "american food"
+            return "american"
         case .british:
-            return "british food"
+            return "british"
         case .burger:
             return "burger"
         case .chinese:
@@ -46,13 +46,13 @@ extension Eatery: CustomStringConvertible {
         case .bakery:
             return "bakery"
         case .international:
-            return "international food"
+            return "international"
         case .coffeeShop:
             return "coffee shop"
         case .seafood:
-            return "sea food"
+            return "sea"
         case .fastFood:
-            return "fast food"
+            return "fast"
         case .default:
             return "eatery"
         }

@@ -11,7 +11,7 @@ extension Main.InteractorImpl: MainUseCase {
             entities.insert(entity)
             new.insert(entity)
         }
-        presenter.dataDidLoaded(new)
+        presenter.onDataDidLoad(new)
     }
     
     func requestLocation() {

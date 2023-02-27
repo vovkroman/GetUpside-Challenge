@@ -11,7 +11,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
 
-        appDependencies.initializeServices()
+        appDependencies.initialize()
         appCoordinator.start()
 
         return true

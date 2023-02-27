@@ -39,9 +39,9 @@ class AppDependencies {
         return queue
     }()
     
-    func initializeServices() {
+    func initialize() {
         let services: [Serviceable] = [ArcGISSetuper(_appConfig), GoogleMapsSetuper(_appConfig)]
-        services.forEach{ $0.setup() }
+        services.forEach{ $0.register() }
     }
 }
 
@@ -79,6 +79,7 @@ extension AppDependencies: SplashSceneFactoriable {
 }
 
 extension AppDependencies: MainSceneFactoriable {
+    
     func buildMainScene(_ coordinator: AnyCoordinating<Main.Event>, _ entities: [Eatery]) -> UIViewController {
         let locationWorker = Location.Worker(_locationManager)
         let argisWorker = ArcGis.Worker(AnyFetchRouter())
@@ -96,30 +97,28 @@ extension AppDependencies: MainSceneFactoriable {
         )
         
         locationWorker.delegate = interactor
-        let map = buildMapScene()
-        map.title = "Map"
         
-        let list = buildListScene()
-        list.title = "List"
-        
-        let filter = buildFilterScene()
-        
-        let viewController = Main.Scene(interactor, [map, list], filter)
-        presenter.observer = viewController
-        return viewController
+        let scene = Main.Scene(
+            interactor,
+            [buildMapScene("Map"), buildListScene("List")],
+            buildFilterScene()
+        )
+        presenter.observer = scene
+        return scene
     }
     
     func buildFilterScene() -> Filter.ViewController {
         return Filter.ViewController()
     }
     
-    func buildMapScene() -> MapViewController {
+    func buildMapScene(_ title: String) -> MapViewController {
         
-        let viewController = MapViewController()
+        let scene = MapViewController()
+        scene.title = title
 
         /// Build cluster graph with the supplied icon generator and renderer
         ///
-        let mapView = viewController.contentView
+        let mapView = scene.contentView
         let iconGenerator = Constant.Map.iconGenerator
         let algorithm = Cluster.Algorithm()
         let renderer = Cluster.Renderer(
@@ -132,12 +131,14 @@ extension AppDependencies: MainSceneFactoriable {
             algorithm: algorithm,
             renderer: renderer
         )
-        
-        viewController.clusterManager = clusterManager
-        return viewController
+
+        scene.clusterManager = clusterManager
+        return scene
     }
     
-    func buildListScene() -> ListViewController {
-        return ListViewController()
+    func buildListScene(_ title: String) -> ListViewController {
+        let scene = ListViewController()
+        scene.title = title
+        return scene
     }
 }

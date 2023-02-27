@@ -2,14 +2,14 @@ import ArcGIS
 import GoogleMaps
 
 protocol Serviceable {
-    func setup()
+    func register()
 }
 
 struct GoogleMapsSetuper: Serviceable {
     
     private var _apiKey: String
         
-    func setup() {
+    func register() {
         GMSServices.provideAPIKey(_apiKey)
     }
     
@@ -22,7 +22,7 @@ struct ArcGISSetuper: Serviceable {
     
     private var _apiKey: String
     
-    func setup() {
+    func register() {
         AGSArcGISRuntimeEnvironment.apiKey = _apiKey
     }
     

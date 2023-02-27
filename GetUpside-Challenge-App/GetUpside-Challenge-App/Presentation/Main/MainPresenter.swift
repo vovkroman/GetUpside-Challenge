@@ -6,7 +6,7 @@ protocol MainStateMachineObserver: AnyObject {
 }
 
 protocol MainDataLoadable: AnyObject {
-    func dataDidLoaded(_ items: Set<Eatery>)
+    func onDataDidLoad(_ items: Set<Eatery>)
 }
 
 extension Main {
@@ -28,9 +28,10 @@ extension Main {
     }
 }
 
-extension Main.Presenter: MainPresentable {
+
+private extension Main.Presenter {
     
-    private func _buildFilterViewModel(_ model: Eatery) -> Filter.ViewModel {
+    func makeFilterViewModel(_ model: Eatery) -> Filter.ViewModel {
         let filter = Constant.Filter.self
         let attributes = filter.attributes
         let padding = filter.padding
@@ -46,7 +47,7 @@ extension Main.Presenter: MainPresentable {
         }
     }
     
-    private func _buildMainViewModel(_ model: Eatery) -> Main.ViewModel {
+    func makeMainViewModel(_ model: Eatery) -> Main.ViewModel {
         let Pin = Constant.Map.Pin.self
         let size = Pin.size
         return Main.ViewModel { builder in
@@ -56,24 +57,28 @@ extension Main.Presenter: MainPresentable {
             builder.image = builder.build(model, size)
         }
     }
+}
+
+
+extension Main.Presenter: MainPresentable {
     
-    func dataDidLoaded(_ items: Set<Eatery>) {
-        var itemViewModels: [Main.ViewModel] = []
+    func onDataDidLoad(_ items: Set<Eatery>) {
+        var newMainViewModels: [Main.ViewModel] = []
         var filterViewModels: [Filter.ViewModel] = []
         
-        var used: Set<String> = Set()
+        var used: Set<String> = []
         for item in items {
-            let mainViewModel = _buildMainViewModel(item)
+            let mainViewModel = makeMainViewModel(item)
             
             if !used.contains(mainViewModel.id) {
-                let filerViewModel = _buildFilterViewModel(item)
+                let filerViewModel = makeFilterViewModel(item)
                 filterViewModels.append(filerViewModel)
                 used.insert(mainViewModel.id)
             }
             
-            itemViewModels.append(mainViewModel)
+            newMainViewModels.append(mainViewModel)
         }
-        let response = Response(viewModels: itemViewModels, filters: filterViewModels)
+        let response = Response(viewModels: newMainViewModels, filters: filterViewModels)
         _queue.sync(execute: combine(.loadingFinished(respons: response), with: _stateMachine.transition))
     }
     

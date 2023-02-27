@@ -12,13 +12,14 @@ extension Cluster {
 }
 
 extension Cluster {
+    // used a QuadTree
     class Algorithm: GMUNonHierarchicalDistanceBasedAlgorithm {}
 }
 
 extension Cluster {
     final class Renderer: GMUDefaultClusterRenderer {
         override func shouldRender(as cluster: GMUCluster, atZoom zoom: Float) -> Bool {
-            return cluster.count >= 3
+            return cluster.count >= Constant.Map.joinTheCluster
         }
     }
 }
