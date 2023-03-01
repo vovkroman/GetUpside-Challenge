@@ -5,7 +5,7 @@ protocol LocationSupporting: AnyObject {
 }
 
 protocol DataFetching: AnyObject {
-    func fetachData(_ coordinate: Coordinates)
+    func fetchingData(_ coordinate: Coordinates)
 }
 
 protocol SplashUseCase: LocationSupporting, DataFetching {}
@@ -21,7 +21,7 @@ extension Splash {
         // navigation
         var coordinator: AnyCoordinating<Splash.Event>?
         
-        private let presenter: SplashPresenterSupport
+        private let presenter: SplashPresenterSupporting
         
         // State machine
         private(set) var stateMachine: StateMachine = StateMachine()
@@ -37,7 +37,7 @@ extension Splash {
             _ location: LocationUseCase,
             _ apiWorker: GetEateriesUseCase,
             _ queue: DispatchQueue,
-            _ presenter: SplashPresenterSupport
+            _ presenter: SplashPresenterSupporting
         ) {
             self.apiWorker = apiWorker
             self.locationWorker = location

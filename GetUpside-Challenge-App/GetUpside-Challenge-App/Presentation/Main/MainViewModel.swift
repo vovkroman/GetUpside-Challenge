@@ -18,17 +18,16 @@ protocol Identifiable {
 }
 
 extension Main {
-    
-    typealias Model = Eatery
-    
+        
     final class Builder {
         
         var image: UIImage = UIImage()
         var name: String = String()
         var coordonates: Coordinates = Coordinates()
         var type: String = String()
+        var row: Int = 0
         
-        private func defineShape(_ model: Model) -> Shape {
+        private func defineShape(_ model: Eatery) -> Shape {
             switch model.type {
             case .american, .british, .chinese, .international, .seafood, .fastFood:
                 return .restaurant
@@ -39,11 +38,11 @@ extension Main {
             }
         }
         
-        func build(_ model: Model, _ size: CGSize) -> UIImage {
+        func build(_ model: Eatery, _ size: CGSize) -> UIImage {
             return UIImage.drawImage(_buildPath(model, size), .lightGray, .darkGray)
         }
         
-        private func _buildPath(_ model: Model, _ size: CGSize) -> UIBezierPath {
+        private func _buildPath(_ model: Eatery, _ size: CGSize) -> UIBezierPath {
             let rect = CGRect(origin: .zero, size: size)
             
             let shape = defineShape(model)
@@ -68,6 +67,7 @@ extension Main {
         private let _image: UIImage
         private let _coordinates: Coordinates
         private let _type: String
+        private let _indexPath: IndexPath
         
         init(_ block: BuilderBlock) {
             let builder = Builder()
@@ -80,6 +80,7 @@ extension Main {
             _image = builder.image
             _coordinates = builder.coordonates
             _type = builder.type
+            _indexPath = IndexPath(row: builder.row, section: 0)
         }
     }
 }

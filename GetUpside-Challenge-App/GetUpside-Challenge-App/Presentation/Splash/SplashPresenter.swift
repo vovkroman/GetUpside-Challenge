@@ -4,7 +4,7 @@ protocol SplashStateMachineObserver: AnyObject {
     func stateDidChanched(_ stateMachine: Splash.StateMachine, to: Splash.StateMachine.State)
 }
 
-protocol SplashPresenterSupport: AnyObject {}
+protocol SplashPresenterSupporting: AnyObject {}
 
 protocol SplashPresentable: AnyObject {
     func onLoading()
@@ -14,7 +14,7 @@ protocol SplashPresentable: AnyObject {
 
 extension Splash {
     
-    final class Presenter: SplashPresenterSupport {
+    final class Presenter: SplashPresenterSupporting {
         weak var view: SplashPresentable?
     }
 }

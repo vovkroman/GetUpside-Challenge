@@ -11,8 +11,8 @@ extension Main {
     
     final class Scene: BaseScene<MainView, InteractorImpl> {
         
-        private let _children: [ChildUpdatable]
-        private let _filter: Filter.ViewController
+        private let overlays: [ChildUpdatable]
+        private let filter: Filter.ViewController
 
         // MARK: - Life Cycle of UIViewController
         
@@ -22,14 +22,14 @@ extension Main {
             contentView.tabBarMenu.delegate = self
 
             // add child view controller to self
-            if _children.isEmpty { return }
-            contentView.addChilren(_children, self)
+            if overlays.isEmpty { return }
+            contentView.addChilren(overlays, self)
             
             // config filter
             contentView.filterView.parentViewController = self
-            contentView.filterView.childViewController = _filter
+            contentView.filterView.childViewController = filter
             
-            interactor.setup()
+            interactor.onInitialLoad()
         }
         
         override func viewDidLayoutSubviews() {
@@ -39,11 +39,11 @@ extension Main {
         
         required init(
             _ interactor: InteractorImpl,
-            _ children: [Childable],
+            _ overlays: [Childable],
             _ filter: Filter.ViewController
         ) {
-            self._children = children
-            self._filter = filter
+            self.overlays = overlays
+            self.filter = filter
             super.init(interactor: interactor)
         }
         
@@ -53,41 +53,28 @@ extension Main {
         }
         
         deinit {
-            _filter.removeFromParent()
-            _children.forEach { child in
+            filter.removeFromParent()
+            overlays.forEach { child in
                 child.removeFromParent()
-            }
-        }
-        
-        // MARK: - Private API
-        
-        private func _addItems(_ viewModels: [ViewModel]) {
-            for child in _children {
-                child.update(viewModels)
-            }
-        }
-        
-        private func _addFilters(_ viewModels: [Filter.ViewModel]) {
-            _filter.render(viewModels)
-        }
-        
-        // MARK: - State handling
-        
-        private func _handleState(_ state: Main.StateMachine.State) {
-            switch state {
-            case .list(let response):
-                _addItems(response.viewModels)
-                _addFilters(response.filters)
-            default:
-                break
             }
         }
     }
 }
 
-extension Main.Scene: MainStateMachineObserver {
-    func stateDidChanched(_ stateMachine: Main.StateMachine, _ to: Main.StateMachine.State) {
-        DispatchQueue.main.async(execute: combine(to, with: _handleState))
+extension Main.Scene: MainPresentable {
+    
+    func onLoading() {
+        ////
+    }
+    
+    func onFilterChanged(_ viewModels: [Filter.ViewModel]) {
+        filter.render(viewModels)
+    }
+    
+    func onLoadDidEnd(_ viewModels: [Main.ViewModel]) {
+        for overlay in overlays {
+            overlay.update(viewModels)
+        }
     }
 }
 

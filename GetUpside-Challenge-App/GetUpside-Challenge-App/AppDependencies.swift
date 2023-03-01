@@ -88,13 +88,16 @@ extension AppDependencies: MainSceneFactoriable {
             target: _queue
         )
         
-        let presenter = Main.Presenter(queue)
+        let presenter = Main.Presenter()
         let interactor = Main.InteractorImpl(
             locationWorker,
             argisWorker,
             presenter,
+            queue,
             entities
         )
+        
+        interactor.observer = presenter
         
         locationWorker.delegate = interactor
         
@@ -103,7 +106,7 @@ extension AppDependencies: MainSceneFactoriable {
             [buildMapScene("Map"), buildListScene("List")],
             buildFilterScene()
         )
-        presenter.observer = scene
+        presenter.view = scene
         return scene
     }
     

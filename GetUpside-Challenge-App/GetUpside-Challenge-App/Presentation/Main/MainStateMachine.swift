@@ -1,41 +1,35 @@
 import Foundation
 
-struct Response {
-    let viewModels: [Main.ViewModel]
-    let filters: [Filter.ViewModel]
-}
-
 extension Main {
     
     final class StateMachine {
         enum State {
             case idle
-            case list(Response)
+            case list(Main.Response)
             case loading
-            case operating
             case error
         }
         
         enum Event {
-            case loadingFinished(respons: Response)
+            case loadingFinished(Main.Response)
         }
         
         weak var observer: MainStateMachineObserver?
         
-        private var _state: State = .idle {
+        private(set) var state: State = .idle {
             didSet {
-                guard oldValue != _state else { return }
+                guard oldValue != state else { return }
                 observer?.stateDidChanched(
                     self,
-                    _state
+                    oldValue
                 )
             }
         }
         
         func transition(with event: Event) {
-            switch (_state, event) {
+            switch (state, event) {
             case (.idle, .loadingFinished(let response)):
-                _state = .list(response)
+                state = .list(response)
             default:
                 break
             }

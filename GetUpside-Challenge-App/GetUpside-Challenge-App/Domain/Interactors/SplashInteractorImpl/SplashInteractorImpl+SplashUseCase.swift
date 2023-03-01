@@ -15,7 +15,7 @@ extension Splash.InteractorImpl: SplashUseCase {
         }
     }
     
-    func fetachData(_ coordinate: Coordinates) {
+    func fetchingData(_ coordinate: Coordinates) {
         apiWorker.fetchData(coordinate).observe { [weak self] result in
             switch result {
             case .success(let items):

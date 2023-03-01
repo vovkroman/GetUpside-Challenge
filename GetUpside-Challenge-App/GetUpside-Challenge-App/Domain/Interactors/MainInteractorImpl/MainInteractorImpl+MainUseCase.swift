@@ -2,36 +2,53 @@ import Foundation
 
 extension Main.InteractorImpl: MainUseCase {
     
-    private func onLoadedData(_ newComings: [Eatery]) {
-        var new: Set<Eatery> = Set()
-        for entity in newComings {
-            
-            // check if newcoming entity has been processed
-            if entities.contains(entity) { continue }
-            entities.insert(entity)
-            new.insert(entity)
-        }
-        presenter.onDataDidLoad(new)
-    }
-    
     func requestLocation() {
         if locationWorker.isUserAuthorized {
             locationWorker.startUpdatingLocation()
         } else {
             locationWorker.requestForAutorization()
-            presenter.locationDidRequestForAuthorization()
         }
     }
     
-    func fetachData(_ coordinate: Coordinates) {
+    func fetchingData(_ coordinate: Coordinates) {
         apiWorker.fetchData(coordinate).observe { [weak self] result in
             switch result {
             case .success(let entities):
-                self?.onLoadedData(entities)
+                self?.onStartProcessing(entities)
             case .failure(let error):
-                    //self?._presenter.locationCatch(the: .other(error))
+                // self?._presenter.locationCatch(the: .other(error))
                 break
             }
         }
+    }
+}
+
+extension Main.InteractorImpl {
+    
+    func onInitialLoad() {
+        for entity in eateries {
+            // check if newcoming filter has been processed
+            if filters.contains(entity.description) { continue }
+            filters.insert(entity.description)
+        }
+        onLoadDidFinished(eateries, filters)
+    }
+    
+    func onStartProcessing<S: Sequence>(_ newComings: S) where S.Element == Eatery {
+        for entity in newComings where !eateries.contains(entity) {
+            
+            // check if newcoming entity has been processed
+            eateries.insert(entity)
+            
+            // check if newcoming filter has been processed
+            if filters.contains(entity.description) { continue }
+            filters.insert(entity.description)
+        }
+        onLoadDidFinished(eateries, filters)
+    }
+    
+    func onLoadDidFinished(_ eateries: Main.Eateries, _ filters: Main.Filters) {
+        let response = Main.Response(eateries, filters)
+        queue.sync(execute: combine(.loadingFinished(response), with: stateMachine.transition))
     }
 }

@@ -14,6 +14,7 @@ extension Filter {
         var id: String = ""
         var size: CGSize = .zero
         var attributedString: NSAttributedString = NSAttributedString()
+        var row: Int = 0
     }
     
     struct ViewModel {
@@ -23,6 +24,7 @@ extension Filter {
         private let _id: String
         private let _size: CGSize
         private let _attributedString: NSAttributedString
+        private let _indexPath: IndexPath
         
          init(_ block: BuilderBlock) {
             let builder = Builder()
@@ -37,6 +39,7 @@ extension Filter {
             
             // size of item
             _size = builder.size
+            _indexPath = IndexPath(row: builder.row, section: 0)
         }
     }
 }

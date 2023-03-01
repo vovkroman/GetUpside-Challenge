@@ -22,7 +22,7 @@ extension Splash {
         }
         
         private func fetchData(by coordinate: Coordinates) {
-            interactor.fetachData(coordinate)
+            interactor.fetchingData(coordinate)
         }
         
         private func cancelFetching() {

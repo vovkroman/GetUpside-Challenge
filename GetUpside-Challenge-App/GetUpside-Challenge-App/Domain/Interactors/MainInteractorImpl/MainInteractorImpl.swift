@@ -1,9 +1,13 @@
 import Foundation
 
 protocol MainUseCase: DataFetching, LocationSupporting {}
-protocol MainPresentable: MainDataLoadable {}
+protocol MainPresenterSupporting: MainDataLoadable {}
 
 extension Main {
+    
+    typealias Eateries = Set<Eatery>
+    typealias Filters = Set<String>
+    
     final class InteractorImpl {
         
         // Workers
@@ -11,31 +15,37 @@ extension Main {
         let apiWorker: GetEateriesUseCase
         
         // Presenters
-        let presenter: MainPresentable
-        var entities: Set<Eatery>
+        private let presenter: MainPresenterSupporting
+        
+        var eateries: Eateries
+        var filters: Filters = []
         
         var coordinator: AnyCoordinating<Main.Event>?
+        
+        // state machine
+        let queue: DispatchQueue
+        var stateMachine: StateMachine = StateMachine()
+        
+        weak var observer: MainStateMachineObserver? {
+            didSet {
+                stateMachine.observer = observer
+            }
+        }
         
         // MARK: - Public methods
         
         init(
             _ location: LocationUseCase,
             _ apiWorker: GetEateriesUseCase,
-            _ presenter: MainPresentable,
-            _ entities: [Eatery]
+            _ presenter: MainPresenterSupporting,
+            _ queue: DispatchQueue,
+            _ eateries: [Eatery]
         ) {
             self.apiWorker = apiWorker
             self.locationWorker = location
             self.presenter = presenter
-            self.entities = Set(entities)
+            self.queue = queue
+            self.eateries = Set(eateries)
         }
-    }
-}
-
-extension Main.InteractorImpl {
-    
-    func setup() {
-        if entities.isEmpty { return }
-        presenter.onDataDidLoad(entities)
     }
 }
