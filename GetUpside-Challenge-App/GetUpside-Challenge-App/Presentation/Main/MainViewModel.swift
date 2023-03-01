@@ -13,8 +13,8 @@ protocol Imagable {
     var image: UIImage { get }
 }
 
-protocol Identifiable {
-    var id: String { get }
+protocol Typable {
+    var type: String { get }
 }
 
 extension Main {
@@ -25,7 +25,6 @@ extension Main {
         var name: String = String()
         var coordonates: Coordinates = Coordinates()
         var type: String = String()
-        var row: Int = 0
         
         private func defineShape(_ model: Eatery) -> Shape {
             switch model.type {
@@ -63,11 +62,10 @@ extension Main {
         
         typealias BuilderBlock = (Builder) -> ()
         
-        private let _name: String
-        private let _image: UIImage
-        private let _coordinates: Coordinates
-        private let _type: String
-        private let _indexPath: IndexPath
+        let name: String
+        let image: UIImage
+        let coordinates: Coordinates
+        let type: String
         
         init(_ block: BuilderBlock) {
             let builder = Builder()
@@ -76,36 +74,12 @@ extension Main {
         }
         
         init(_ builder: Builder) {
-            _name = builder.name
-            _image = builder.image
-            _coordinates = builder.coordonates
-            _type = builder.type
-            _indexPath = IndexPath(row: builder.row, section: 0)
+            name = builder.name
+            image = builder.image
+            coordinates = builder.coordonates
+            type = builder.type
         }
     }
 }
 
-extension Main.ViewModel: Namable {
-    var name: String {
-        return _name
-    }
-}
-
-extension Main.ViewModel: Imagable {
-    
-    var image: UIImage {
-        return _image
-    }
-}
-
-extension Main.ViewModel: CoordinatesSupporting {
-    var coordinates: Coordinates {
-        return _coordinates
-    }
-}
-
-extension Main.ViewModel: Identifiable {
-    var id: String {
-        return _type
-    }
-}
+extension Main.ViewModel: Namable, Imagable, CoordinatesSupporting, Typable {}

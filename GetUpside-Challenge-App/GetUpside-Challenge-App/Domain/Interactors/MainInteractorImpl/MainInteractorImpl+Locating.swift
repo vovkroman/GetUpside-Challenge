@@ -8,10 +8,10 @@ extension Main.InteractorImpl: LocationUpdating {
         switch status {
         case .authorizedAlways, .authorizedWhenInUse:
             locationWorker.startUpdatingLocation()
-        case .denied:
-            presenter.locationCatch(the: Location.Error.denied)
-        case .restricted:
-            presenter.locationCatch(the: Location.Error.restricted)
+        case .denied: break
+            //presenter.locationCatch(the: Location.Error.denied)
+        case .restricted: break
+            //presenter.locationCatch(the: Location.Error.restricted)
         default: // including not defined
             break
         }
@@ -21,13 +21,13 @@ extension Main.InteractorImpl: LocationUpdating {
         _ worker: LocationUseCase,
         locationDidUpdated locationCoordinate: Coordinates
     ) {
-        presenter.locationDidUpdated(with: locationCoordinate)
+        //presenter.locationDidUpdated(with: locationCoordinate)
     }
     
     func location(
         _ worker: LocationUseCase,
         catch error: Error
     ) {
-        presenter.locationCatch(the: .other(error))
+       // presenter.locationCatch(the: .other(error))
     }
 }

@@ -4,11 +4,11 @@ import Logger
 
 final class ListViewController: UITableViewController {
     
-    private var _viewModels: [Main.ViewModelable] = []
+    private var viewModels: [Main.ViewModelable] = []
     
     // MARK: - Private API
     
-    private func _configTableView() {
+    private func configTableView() {
         tableView.register(EateryCell.self)
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = UITableView.automaticDimension
@@ -18,11 +18,11 @@ final class ListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        _configTableView()
+        configTableView()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return _viewModels.count
+        return viewModels.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -32,7 +32,7 @@ final class ListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         let displatCell = cell as? EateryCell
-        displatCell?.configure(_viewModels[indexPath.row])
+        displatCell?.configure(viewModels[indexPath.row])
     }
     
     deinit {
@@ -43,7 +43,7 @@ final class ListViewController: UITableViewController {
 extension ListViewController: ChildUpdatable {
     
     func update<ViewModel: Main.ViewModelable>(_ viewModels: [ViewModel]) {
-        _viewModels = viewModels
+        self.viewModels = viewModels
         tableView.reloadData()
     }
 }

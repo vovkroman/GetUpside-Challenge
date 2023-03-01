@@ -1,6 +1,5 @@
 import Foundation
 
-
 extension Main {
     struct Response {
         let eateries: Eateries

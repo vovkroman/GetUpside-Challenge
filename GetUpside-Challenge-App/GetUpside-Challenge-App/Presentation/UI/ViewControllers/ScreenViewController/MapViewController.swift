@@ -11,14 +11,7 @@ final class MapViewController: BaseViewController<MapView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        _setup()
-    }
-    
-    // MARK: - Private API
-    
-    private func _setup() {
-        contentView.applyStyle()
-        contentView.delegate = self
+        onLoaded()
     }
     
     // MARK: - Init methods
@@ -30,6 +23,14 @@ final class MapViewController: BaseViewController<MapView> {
     
     required init() {
         super.init()
+    }
+}
+
+extension MapViewController {
+    
+    private func onLoaded() {
+        contentView.applyStyle()
+        contentView.delegate = self
     }
 }
 

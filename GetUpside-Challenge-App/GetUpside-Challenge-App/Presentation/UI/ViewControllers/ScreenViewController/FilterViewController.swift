@@ -20,34 +20,23 @@ extension Filter {
     
     final class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
         
-        private var _viewModels: [ViewModelable] = []
+        private var viewModels: [ViewModelable] = []
         
         override func viewDidLoad() {
             super.viewDidLoad()
-            _registerCell()
-            _setupView()
+            registerCell()
+            setupView()
         }
         
         // MARK: - Public API
         
         func render(_ viewModels: [ViewModel]) {
-            _viewModels.append(contentsOf: viewModels)
+            self.viewModels = viewModels
             collectionView.reloadData()
         }
         
-        // MARK: - Private API
-        
-        private func _registerCell() {
-            collectionView.register(FilterCell.self)
-        }
-        
-        private func _setupView() {
-            collectionView.showsHorizontalScrollIndicator = false
-            collectionView.backgroundColor = .clear
-        }
-        
         override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            return _viewModels.count
+            return viewModels.count
         }
         
         override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -57,16 +46,16 @@ extension Filter {
         
         override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
             let displayCell = cell as? FilterCell
-            displayCell?.configure(_viewModels[indexPath.row])
+            displayCell?.configure(viewModels[indexPath.row])
         }
         
         override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-            let viewModel = _viewModels[indexPath.row]
+            let viewModel = viewModels[indexPath.row]
             print("Did select: \(viewModel.attributedString)")
         }
         
         func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-            let viewModel = _viewModels[indexPath.row]
+            let viewModel = viewModels[indexPath.row]
             return viewModel.size
         }
         
@@ -79,6 +68,18 @@ extension Filter {
         required init?(coder: NSCoder) {
             fatalError("init(coder:) has not been implemented")
         }
+    }
+}
+
+private extension Filter.ViewController {
+    
+    func registerCell() {
+        collectionView.register(FilterCell.self)
+    }
+    
+    func setupView() {
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.backgroundColor = .clear
     }
 }
 

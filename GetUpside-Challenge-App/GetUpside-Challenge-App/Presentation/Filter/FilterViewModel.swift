@@ -14,17 +14,15 @@ extension Filter {
         var id: String = ""
         var size: CGSize = .zero
         var attributedString: NSAttributedString = NSAttributedString()
-        var row: Int = 0
     }
     
     struct ViewModel {
         
         typealias BuilderBlock = (Builder) -> ()
         
-        private let _id: String
-        private let _size: CGSize
-        private let _attributedString: NSAttributedString
-        private let _indexPath: IndexPath
+        let id: String
+        let size: CGSize
+        let attributedString: NSAttributedString
         
          init(_ block: BuilderBlock) {
             let builder = Builder()
@@ -34,23 +32,13 @@ extension Filter {
         
         init(_ builder: Builder) {
             // unique identifier for filter item
-            _id = builder.id
-            _attributedString = builder.attributedString
+            id = builder.id
+            attributedString = builder.attributedString
             
             // size of item
-            _size = builder.size
-            _indexPath = IndexPath(row: builder.row, section: 0)
+            size = builder.size
         }
     }
 }
 
-extension Filter.ViewModel: Attributable, SizeSupportable {
-    
-    var attributedString: NSAttributedString {
-        return _attributedString
-    }
-    
-    var size: CGSize {
-        return _size
-    }
-}
+extension Filter.ViewModel: Attributable, SizeSupportable {}

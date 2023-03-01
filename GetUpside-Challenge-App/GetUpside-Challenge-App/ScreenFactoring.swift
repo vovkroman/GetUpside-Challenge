@@ -10,20 +10,20 @@ class AnyCoordinating<T>: Coordinating {
     
     typealias Event = T
     
-    private let _catchTheEvent: (Event) -> Void
-    private let _catchTheError: (Error) -> Void
+    private let catchTheEvent: (Event) -> Void
+    private let catchTheError: (Error) -> Void
     
     func cacthTheEvent(_ event: T) {
-        _catchTheEvent(event)
+        catchTheEvent(event)
     }
     
     func catchTheError(_ error: Error) {
-        _catchTheError(error)
+        catchTheError(error)
     }
     
     init<Coordinator: Coordinating>(_ coordinator: Coordinator) where Coordinator.Event == T {
-        _catchTheEvent = coordinator.cacthTheEvent
-        _catchTheError = coordinator.catchTheError
+        catchTheEvent = coordinator.cacthTheEvent
+        catchTheError = coordinator.catchTheError
     }
 }
 
