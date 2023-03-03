@@ -36,15 +36,15 @@ extension Splash {
 private extension Splash.Scene {
     
     func showAnimatingLogo() {
-        if let _ = containerView.childViewController as? LogoViewController {
+        if let _ = containerView.childViewController as? LogoScene {
             return
         }
-        let logoViewController = LogoViewController()
+        let logoViewController = LogoScene()
         containerView.childViewController = logoViewController
     }
     
     func showError<ViewModel: ButtonTitlable & ActionaSupporting & Descriptionable>(_ viewModel: ViewModel) {
-        let errorViewController = ErrorViewController(viewModel)
+        let errorViewController = ErrorScene(viewModel)
         containerView.childViewController = errorViewController
     }
 }

@@ -2,7 +2,7 @@ import ReusableKit
 import UIKit
 import UI
 
-final class ErrorViewController: BaseViewController<ErrorView> {
+final class ErrorScene: BaseViewController<ErrorView> {
     
     typealias ViewModelable = ButtonTitlable & ActionaSupporting & Descriptionable
     
@@ -57,7 +57,7 @@ final class ErrorViewController: BaseViewController<ErrorView> {
     }
 }
 
-extension ErrorViewController: LogoTransitionable {
+extension ErrorScene: LogoTransitionable {
     var maskLayer: CAShapeLayer? {
         return nil
     }

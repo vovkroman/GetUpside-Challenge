@@ -12,7 +12,7 @@ extension Main {
     final class Scene: BaseScene<MainView, InteractorImpl> {
         
         private let components: [Component]
-        private let filter: Filter.ViewController
+        private let filter: Filter.Component
 
         // MARK: - Life Cycle of UIViewController
         
@@ -40,7 +40,7 @@ extension Main {
         required init(
             _ interactor: InteractorImpl,
             _ overlays: [Childable],
-            _ filter: Filter.ViewController
+            _ filter: Filter.Component
         ) {
             self.components = overlays
             self.filter = filter

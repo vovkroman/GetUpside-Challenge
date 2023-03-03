@@ -23,7 +23,7 @@ extension Filter {
         }
     }
     
-    final class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+    final class Component: UICollectionViewController, UICollectionViewDelegateFlowLayout {
         
         private var viewModels: [ViewModelable] = []
         
@@ -83,7 +83,7 @@ extension Filter {
     }
 }
 
-private extension Filter.ViewController {
+private extension Filter.Component {
     
     func registerCell() {
         collectionView.register(FilterCell.self)

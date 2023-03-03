@@ -2,7 +2,7 @@ import UIKit
 import ReusableKit
 import Logger
 
-final class ListViewController: UITableViewController {
+final class ListComponent: UITableViewController {
     
     private var viewModels: [Main.ViewModelable] = []
     
@@ -40,7 +40,7 @@ final class ListViewController: UITableViewController {
     }
 }
 
-extension ListViewController: Component {
+extension ListComponent: Component {
     
     func onDisplay<ViewModel: Main.ViewModelable>(_ viewModels: [ViewModel]) {
         self.viewModels = viewModels

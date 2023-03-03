@@ -101,9 +101,10 @@ extension AppDependencies: MainSceneFactoriable {
         
         locationWorker.delegate = interactor
 
-        let mapComponent = buildMapScene("Map")
-        let listComponent = buildListScene("List")
-        let filterComponent = buildFilterScene()
+        let mapComponent = makedMapComponent("Map")
+        let listComponent = makeListComponent("List")
+        let filterComponent = makeFilterComponent()
+        
         let scene = Main.Scene(
             interactor,
             [mapComponent, listComponent],
@@ -116,13 +117,13 @@ extension AppDependencies: MainSceneFactoriable {
         return scene
     }
     
-    func buildFilterScene() -> Filter.ViewController {
-        return Filter.ViewController()
+    func makeFilterComponent() -> Filter.Component {
+        return Filter.Component()
     }
     
-    func buildMapScene(_ title: String) -> MapViewController {
+    func makedMapComponent(_ title: String) -> MapComponent {
         
-        let scene = MapViewController()
+        let scene = MapComponent()
         scene.title = title
 
         /// Build cluster graph with the supplied icon generator and renderer
@@ -145,8 +146,8 @@ extension AppDependencies: MainSceneFactoriable {
         return scene
     }
     
-    func buildListScene(_ title: String) -> ListViewController {
-        let scene = ListViewController()
+    func makeListComponent(_ title: String) -> ListComponent {
+        let scene = ListComponent()
         scene.title = title
         return scene
     }

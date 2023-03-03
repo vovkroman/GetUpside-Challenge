@@ -1,6 +1,6 @@
 import UI
 
-final class LogoViewController: BaseViewController<GetUpsideLogoView> {
+final class LogoScene: BaseViewController<GetUpsideLogoView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -13,7 +13,7 @@ final class LogoViewController: BaseViewController<GetUpsideLogoView> {
     }
 }
 
-extension LogoViewController: LogoTransitionable {
+extension LogoScene: LogoTransitionable {
 
     var maskLayer: CAShapeLayer? {
         let shapelayer = CAShapeLayer()

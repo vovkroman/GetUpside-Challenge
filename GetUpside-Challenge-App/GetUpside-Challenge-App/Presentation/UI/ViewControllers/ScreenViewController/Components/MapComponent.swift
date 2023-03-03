@@ -7,7 +7,7 @@ protocol LocatingDelegate: AnyObject {
     func onLocatingDidChage(_ component: UIViewController, _ coordinate: Coordinates)
 }
 
-final class MapViewController: BaseViewController<MapView> {
+final class MapComponent: BaseViewController<MapView> {
     
     var clusterManager: ClusterManagerSupporting!
     weak var delegate: LocatingDelegate?
@@ -31,7 +31,7 @@ final class MapViewController: BaseViewController<MapView> {
     }
 }
 
-extension MapViewController {
+extension MapComponent {
     
     private func onLoaded() {
         contentView.applyStyle()
@@ -39,11 +39,11 @@ extension MapViewController {
     }
 }
 
-extension MapViewController: GMSMapViewDelegate {
+extension MapComponent: GMSMapViewDelegate {
     // TODO: implememnt GMSMapViewDelegate delegate
 }
 
-extension MapViewController: Component {
+extension MapComponent: Component {
     
     func onDisplay<ViewModel: Main.ViewModelable>(_ viewModels: [ViewModel]) {
         typealias PinIconImage = IconView
