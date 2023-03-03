@@ -1,17 +1,23 @@
 import Foundation
 
-public struct LetteringLayerConfig {
-    let stokeColor: UIColor
-    let fillColor: UIColor
-    let lineWidth: CGFloat
+public struct Config {
+    public let stokeColor: UIColor
+    public let fillColor: UIColor
+    public let lineWidth: CGFloat
+    
+    public init(_ stokeColor: UIColor, _ fillColor: UIColor, _ lineWidth: CGFloat) {
+        self.stokeColor = stokeColor
+        self.fillColor = fillColor
+        self.lineWidth = lineWidth
+    }
 }
 
-public extension LetteringLayerConfig {
-    static var `default`: LetteringLayerConfig {
-        return LetteringLayerConfig(
-            stokeColor: .white,
-            fillColor: .clear,
-            lineWidth: 4.0
+public extension Config {
+    static var `default`: Config {
+        return Config(
+            .white,
+            .clear,
+            4.0
         )
     }
 }

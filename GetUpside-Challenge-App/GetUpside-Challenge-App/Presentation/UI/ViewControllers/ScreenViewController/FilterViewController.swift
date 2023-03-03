@@ -1,9 +1,14 @@
 import ReusableKit
 import UIKit
 
+protocol SelectionDelegate: AnyObject {
+    func onDidSelect<Item: Attributable>(_ component: UIViewController, _ item: Item)
+    func onDidDeselect<Item: Attributable>(_ component: UIViewController, _ item: Item)
+}
+
 extension Filter {
     
-    typealias ViewModelable = Attributable & SizeSupportable
+    typealias ViewModelable = Attributable & SizeSupportable & Selectable
     
     final class CollectionViewFlowLayout: UICollectionViewFlowLayout {
         
@@ -21,6 +26,8 @@ extension Filter {
     final class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
         
         private var viewModels: [ViewModelable] = []
+        
+        weak var delegate: SelectionDelegate?
         
         override func viewDidLoad() {
             super.viewDidLoad()
@@ -48,12 +55,17 @@ extension Filter {
             let displayCell = cell as? FilterCell
             displayCell?.configure(viewModels[indexPath.row])
         }
-        
-        override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-            let viewModel = viewModels[indexPath.row]
-            print("Did select: \(viewModel.attributedString)")
+                
+        override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+            viewModels[indexPath.row].toggle()
+            didSelect(viewModels[indexPath.row])
         }
         
+        override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+            viewModels[indexPath.row].toggle()
+            didSelect(viewModels[indexPath.row])
+        }
+                
         func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
             let viewModel = viewModels[indexPath.row]
             return viewModel.size
@@ -78,8 +90,17 @@ private extension Filter.ViewController {
     }
     
     func setupView() {
-        collectionView.showsHorizontalScrollIndicator = false
         collectionView.backgroundColor = .clear
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.allowsMultipleSelection = true
+    }
+    
+    func didSelect(_ viewModel: Filter.ViewModelable) {
+        if viewModel.isSelected {
+            delegate?.onDidSelect(self, viewModel)
+        } else {
+            delegate?.onDidDeselect(self, viewModel)
+        }
     }
 }
 

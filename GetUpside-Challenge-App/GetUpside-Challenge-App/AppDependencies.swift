@@ -100,12 +100,18 @@ extension AppDependencies: MainSceneFactoriable {
         interactor.observer = presenter
         
         locationWorker.delegate = interactor
-        
+
+        let mapComponent = buildMapScene("Map")
+        let listComponent = buildListScene("List")
+        let filterComponent = buildFilterScene()
         let scene = Main.Scene(
             interactor,
-            [buildMapScene("Map"), buildListScene("List")],
-            buildFilterScene()
+            [mapComponent, listComponent],
+            filterComponent
         )
+        mapComponent.delegate = scene
+        filterComponent.delegate = scene
+        
         presenter.view = scene
         return scene
     }

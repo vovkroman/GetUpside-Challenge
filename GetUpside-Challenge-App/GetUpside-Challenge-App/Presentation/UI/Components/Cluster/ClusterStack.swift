@@ -4,6 +4,7 @@ import UIKit
 
 protocol ClusterManagerSupporting: AnyObject {
     func add(_ item: GMUClusterItem)
+    func clearItems()
     func cluster()
 }
 

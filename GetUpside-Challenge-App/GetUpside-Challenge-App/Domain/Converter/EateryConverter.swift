@@ -18,12 +18,12 @@ extension Convertor {
             }
             let name = from.label
             let attributes = from.attributes
-            var type: Eatery.`Type` = .default
+            var category: Eatery.Category = .default
             if let str = attributes?[Keys.type] as? String {
-                type = "\(str)"
+                category = "\(str)"
             }
             return Eatery(
-                type: type,
+                category: category,
                 coordinates: coordinates,
                 name: name,
                 payload: attributes

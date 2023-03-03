@@ -1,8 +1,7 @@
 import UIKit
 
 @IBDesignable
-open class BorderedButton: UIButton {
-
+open class ErrordButton: UIButton, BorderApplicable {
     @IBInspectable
     open var borderColor: UIColor = .white
     
@@ -15,7 +14,7 @@ open class BorderedButton: UIButton {
     @IBInspectable
     open var cornerRadius: CGFloat = 4.0
     
-    private unowned var _borderLayer: CAShapeLayer!
+    public unowned var borderLayer: CAShapeLayer?
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -28,20 +27,21 @@ open class BorderedButton: UIButton {
     }
     
     public func setupView() {
-        let borderLayer = CAShapeLayer()
-        borderLayer.strokeColor = borderColor.cgColor
-        borderLayer.borderWidth = borderWidth
-        borderLayer.fillColor = fillColor.cgColor
-        _borderLayer = borderLayer
-        layer.addSublayer(borderLayer)
+        addBorder(Config(
+            borderColor,
+            fillColor,
+            borderWidth)
+        )
     }
     
     public override func layoutSubviews() {
         super.layoutSubviews()
         
         let rectCorners: UIRectCorner = .allCorners
-        
-        let borderPath = UIBezierPath(roundedRect: bounds, byRoundingCorners: rectCorners, cornerRadii: CGSize(width: cornerRadius, height: cornerRadius))
-        _borderLayer.path = borderPath.cgPath
+        let size = CGSize(cornerRadius, cornerRadius)
+        let path = UIBezierPath(roundedRect: bounds,
+                                byRoundingCorners: rectCorners,
+                                cornerRadii: size)
+        applyPath(path)
     }
 }

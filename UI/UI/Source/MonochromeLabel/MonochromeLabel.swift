@@ -4,15 +4,15 @@ open class MonochromeLabel: UILabel {
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        _config()
+        config()
     }
     
     required public init?(coder: NSCoder) {
         super.init(coder: coder)
-        _config()
+        config()
     }
     
-    private func _config() {
+    private func config() {
         layer.contentsFormat = .gray8Uint
     }
 }

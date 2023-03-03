@@ -11,6 +11,6 @@ extension Main.Presenter {
     func display(_ viewModels: [Main.ViewModel]) {
         guard let view = view,
                 !viewModels.isEmpty else { return }
-        queue.async(execute: combine(viewModels, with: view.onLoadDidEnd))
+        queue.async(execute: combine(viewModels, with: view.onDisplay))
     }
 }

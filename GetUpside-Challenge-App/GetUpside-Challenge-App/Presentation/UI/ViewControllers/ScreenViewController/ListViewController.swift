@@ -40,9 +40,9 @@ final class ListViewController: UITableViewController {
     }
 }
 
-extension ListViewController: ChildUpdatable {
+extension ListViewController: Component {
     
-    func update<ViewModel: Main.ViewModelable>(_ viewModels: [ViewModel]) {
+    func onDisplay<ViewModel: Main.ViewModelable>(_ viewModels: [ViewModel]) {
         self.viewModels = viewModels
         tableView.reloadData()
     }

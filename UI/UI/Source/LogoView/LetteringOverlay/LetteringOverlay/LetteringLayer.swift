@@ -5,7 +5,7 @@ open class LetteringLayer: CAShapeLayer {
     // MARK: - Private API
     
     public var textPath: CGPath?
-    public var config: LetteringLayerConfig = .default
+    public var config: Config = .default
     
     open func updateLayer() {
         guard let textPath = textPath else { return }

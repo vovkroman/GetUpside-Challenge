@@ -1,17 +1,17 @@
 import UI
 
-protocol ChildUpdatable: UIViewController {
-    func update<ViewModel: Main.ViewModelable>(_ viewModels: [ViewModel])
+protocol Component: UIViewController {
+    func onDisplay<ViewModel: Main.ViewModelable>(_ viewModels: [ViewModel])
 }
 
 extension Main {
     
     typealias ViewModelable = Namable & CoordinatesSupporting & Imagable & Typable
-    typealias Childable = ChildUpdatable
+    typealias Childable = Component
     
     final class Scene: BaseScene<MainView, InteractorImpl> {
         
-        private let overlays: [ChildUpdatable]
+        private let components: [Component]
         private let filter: Filter.ViewController
 
         // MARK: - Life Cycle of UIViewController
@@ -22,8 +22,8 @@ extension Main {
             contentView.tabBarMenu.delegate = self
 
             // add child view controller to self
-            if overlays.isEmpty { return }
-            contentView.addChilren(overlays, self)
+            if components.isEmpty { return }
+            contentView.addChilren(components, self)
             
             // config filter
             contentView.filterView.parentViewController = self
@@ -42,7 +42,7 @@ extension Main {
             _ overlays: [Childable],
             _ filter: Filter.ViewController
         ) {
-            self.overlays = overlays
+            self.components = overlays
             self.filter = filter
             super.init(interactor: interactor)
         }
@@ -54,7 +54,7 @@ extension Main {
         
         deinit {
             filter.removeFromParent()
-            overlays.forEach { child in
+            components.forEach { child in
                 child.removeFromParent()
             }
         }
@@ -71,9 +71,9 @@ extension Main.Scene: MainPresentable {
         filter.render(viewModels)
     }
     
-    func onLoadDidEnd(_ viewModels: [Main.ViewModel]) {
-        for overlay in overlays {
-            overlay.update(viewModels)
+    func onDisplay(_ viewModels: [Main.ViewModel]) {
+        for overlay in components {
+            overlay.onDisplay(viewModels)
         }
     }
 }
@@ -83,5 +83,20 @@ extension Main.Scene: TabBarMenuDelegate {
         let vc = children[index]
         contentView.update(vc.title)
         view.bringSubviewToFront(vc.view)
+    }
+}
+
+extension Main.Scene: SelectionDelegate, LocatingDelegate {
+    
+    func onDidSelect<Item : Attributable>(_ component: UIViewController, _ item: Item) {
+        interactor.applyFillter(item.attributedString.string)
+    }
+    
+    func onDidDeselect<Item: Attributable>(_ component: UIViewController, _ item: Item) {
+        interactor.removeFilter(item.attributedString.string)
+    }
+    
+    func onLocatingDidChage(_ component: UIViewController, _ coordinate: Coordinates) {
+        
     }
 }

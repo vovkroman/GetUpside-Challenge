@@ -31,7 +31,7 @@ extension Main.InteractorImpl {
             if filters.contains(entity.description) { continue }
             filters.insert(entity.description)
         }
-        onLoadDidFinished(eateries, filters)
+        onLoadDidFinish(eateries, filters)
     }
     
     func onStartProcessing<S: Sequence>(_ newComings: S) where S.Element == Eatery {
@@ -44,11 +44,11 @@ extension Main.InteractorImpl {
             if filters.contains(entity.description) { continue }
             filters.insert(entity.description)
         }
-        onLoadDidFinished(eateries, filters)
+        onLoadDidFinish(eateries, filters)
     }
     
-    func onLoadDidFinished(_ eateries: Main.Eateries, _ filters: Main.Filters) {
+    func onLoadDidFinish(_ eateries: Main.Eateries, _ filters: Main.Filters) {
         let response = Main.Response(eateries, filters)
-        queue.sync(execute: combine(.loadingFinished(response), with: stateMachine.transition))
+        queue.async(execute: combine(.loadingFinished(response), with: stateMachine.transition))
     }
 }

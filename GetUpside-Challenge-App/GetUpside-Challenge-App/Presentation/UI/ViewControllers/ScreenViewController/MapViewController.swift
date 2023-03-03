@@ -3,9 +3,14 @@ import Logger
 import GoogleMaps
 import GoogleMapsUtils
 
+protocol LocatingDelegate: AnyObject {
+    func onLocatingDidChage(_ component: UIViewController, _ coordinate: Coordinates)
+}
+
 final class MapViewController: BaseViewController<MapView> {
     
     var clusterManager: ClusterManagerSupporting!
+    weak var delegate: LocatingDelegate?
         
     // MARK: - Life Cycle
     
@@ -38,11 +43,11 @@ extension MapViewController: GMSMapViewDelegate {
     // TODO: implememnt GMSMapViewDelegate delegate
 }
 
-extension MapViewController: ChildUpdatable {
+extension MapViewController: Component {
     
-    func update<ViewModel: Main.ViewModelable>(_ viewModels: [ViewModel]) {
+    func onDisplay<ViewModel: Main.ViewModelable>(_ viewModels: [ViewModel]) {
         typealias PinIconImage = IconView
-        
+        clusterManager.clearItems()
         for viewModel in viewModels {
             let marker = GMSMarker(position: viewModel.coordinates)
             

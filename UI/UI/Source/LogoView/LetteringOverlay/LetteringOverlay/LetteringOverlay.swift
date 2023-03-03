@@ -11,7 +11,7 @@ open class LetteringOverlay: UIView {
         }
     }
     
-    public var config: LetteringLayerConfig = .default {
+    public var config: Config = .default {
         didSet {
             layer.config = config
         }

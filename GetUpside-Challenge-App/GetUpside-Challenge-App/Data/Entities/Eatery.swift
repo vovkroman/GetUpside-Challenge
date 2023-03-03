@@ -1,7 +1,7 @@
 import Foundation
 
 struct Eatery {
-    enum `Type`: String {
+    enum Category: String {
         case american = "American Food"
         case british = "British Isles Food"
         case burger = "Burgers"
@@ -14,13 +14,13 @@ struct Eatery {
         case `default` = "Eatery"
     }
     
-    let type: `Type`
+    let category: Category
     let coordinates: Coordinates
     let name: String
     let payload: [String: Any]?
 }
 
-extension Eatery.`Type`: ExpressibleByStringLiteral {
+extension Eatery.Category: ExpressibleByStringLiteral {
     
     typealias StringLiteralType = String
     
@@ -29,12 +29,12 @@ extension Eatery.`Type`: ExpressibleByStringLiteral {
     }
 }
 
-extension Eatery.`Type`: ExpressibleByStringInterpolation {}
-extension Eatery.`Type`: Equatable {}
+extension Eatery.Category: ExpressibleByStringInterpolation {}
+extension Eatery.Category: Equatable {}
 
 extension Eatery: CustomStringConvertible {
     var description: String {
-        switch type {
+        switch category {
         case .american:
             return "american"
         case .british:
@@ -69,5 +69,11 @@ extension Eatery: Hashable {
         hasher.combine(coordinates.latitude)
         hasher.combine(coordinates.longitude)
         hasher.combine(name)
+    }
+}
+
+extension Eatery: Typable {
+    var type: String {
+        return description
     }
 }

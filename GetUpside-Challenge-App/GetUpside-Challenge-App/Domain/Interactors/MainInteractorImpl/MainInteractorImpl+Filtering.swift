@@ -2,15 +2,13 @@ import Foundation
 
 extension Main.InteractorImpl {
     
-    func applyFilter(_ key: String) {
-        
+    func applyFillter(_ key: String) {
+        presenter.applyFilter(key)
+        onLoadDidFinish(eateries, [])
     }
     
     func removeFilter(_ key: String) {
-        
-    }
-    
-    func filter() {
-        
+        presenter.removeFilter(key)
+        onLoadDidFinish(eateries, [])
     }
 }

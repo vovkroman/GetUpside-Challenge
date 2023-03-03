@@ -1,7 +1,7 @@
 import Foundation
 
 protocol MainUseCase: DataFetching, LocationSupporting {}
-protocol MainPresenterSupporting: MainDataLoadable {}
+protocol MainPresenterSupporting: MainDataLoadable, FilterSupporting {}
 
 extension Main {
     
@@ -15,7 +15,7 @@ extension Main {
         let apiWorker: GetEateriesUseCase
         
         // Presenters
-        private let presenter: MainPresenterSupporting
+        let presenter: MainPresenterSupporting
         
         var eateries: Eateries
         var filters: Filters = []

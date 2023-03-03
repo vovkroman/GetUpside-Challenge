@@ -30,6 +30,8 @@ extension Main {
             switch (state, event) {
             case (.idle, .loadingFinished(let response)):
                 state = .list(response)
+            case (.list(_), .loadingFinished(let new)):
+                state = .list(new)
             default:
                 break
             }

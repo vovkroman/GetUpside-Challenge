@@ -9,18 +9,21 @@ protocol MainDataLoadable: AnyObject {
     func onDataDidLoad(_ response: Main.Response)
 }
 
+protocol FilterSupporting: AnyObject {
+    func applyFilter(_ key: String)
+    func removeFilter(_ key: String)
+}
+
 protocol MainPresentable: AnyObject {
     func onLoading()
     func onFilterChanged(_ viewModels: [Filter.ViewModel])
-    func onLoadDidEnd(_ viewModels: [Main.ViewModel])
+    func onDisplay(_ viewModels: [Main.ViewModel])
 }
 
 extension Main {
-    
     final class Presenter {
         weak var view: MainPresentable?
-        var usedFilterIds: Set<String> = []
-        let executor: FilterExecutor<Eatery> = FilterExecutor<Eatery>()
+        var executor: FilterExecutor<Eatery> = FilterExecutor<Eatery>()
         let queue: DispatchQueue = DispatchQueue.main
     }
 }

@@ -1,5 +1,10 @@
 import Foundation
 
+func combine<A>(
+    with closure: @escaping () -> A) -> () -> A {
+    return { closure() }
+}
+
 func combine<A, B>(
     _ value: A,
     with closure: @escaping (A) -> B) -> () -> B {

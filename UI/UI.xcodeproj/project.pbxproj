@@ -12,7 +12,7 @@
 		6F48F71A28DE078300C0DCC3 /* UI.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F48F71728DE078300C0DCC3 /* UI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6F48F72528DE07E100C0DCC3 /* MultichromeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F48F72228DE07E000C0DCC3 /* MultichromeLabel.swift */; };
 		6F48F72628DE07E100C0DCC3 /* MonochromeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F48F72428DE07E000C0DCC3 /* MonochromeLabel.swift */; };
-		6F48F72928DE089C00C0DCC3 /* BorderedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F48F72828DE089C00C0DCC3 /* BorderedButton.swift */; };
+		6F48F72928DE089C00C0DCC3 /* ErrordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F48F72828DE089C00C0DCC3 /* ErrordButton.swift */; };
 		6F48F72C28DE08F200C0DCC3 /* PillLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F48F72B28DE08F200C0DCC3 /* PillLabel.swift */; };
 		6F48F72F28DE092700C0DCC3 /* IconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F48F72E28DE092700C0DCC3 /* IconView.swift */; };
 		6F48F73C28DE0C9900C0DCC3 /* CGSize+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F48F73928DE0C9900C0DCC3 /* CGSize+Extensions.swift */; };
@@ -32,6 +32,7 @@
 		6F48F76128DE0EC100C0DCC3 /* LogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F48F75528DE0EC100C0DCC3 /* LogoView.swift */; };
 		6F48F76328DE148300C0DCC3 /* UIColor+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F48F76228DE148300C0DCC3 /* UIColor+Image.swift */; };
 		6F48F76928DE180A00C0DCC3 /* RevealAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F48F76828DE180A00C0DCC3 /* RevealAnimator.swift */; };
+		6F74CA1429B11460006F0F52 /* UIView+BorderApplicable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F74CA1329B11460006F0F52 /* UIView+BorderApplicable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -54,7 +55,7 @@
 		6F48F71828DE078300C0DCC3 /* UI.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = UI.docc; sourceTree = "<group>"; };
 		6F48F72228DE07E000C0DCC3 /* MultichromeLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultichromeLabel.swift; sourceTree = "<group>"; };
 		6F48F72428DE07E000C0DCC3 /* MonochromeLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonochromeLabel.swift; sourceTree = "<group>"; };
-		6F48F72828DE089C00C0DCC3 /* BorderedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderedButton.swift; sourceTree = "<group>"; };
+		6F48F72828DE089C00C0DCC3 /* ErrordButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrordButton.swift; sourceTree = "<group>"; };
 		6F48F72B28DE08F200C0DCC3 /* PillLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PillLabel.swift; sourceTree = "<group>"; };
 		6F48F72E28DE092700C0DCC3 /* IconView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconView.swift; sourceTree = "<group>"; };
 		6F48F73928DE0C9900C0DCC3 /* CGSize+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGSize+Extensions.swift"; sourceTree = "<group>"; };
@@ -74,6 +75,7 @@
 		6F48F75528DE0EC100C0DCC3 /* LogoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoView.swift; sourceTree = "<group>"; };
 		6F48F76228DE148300C0DCC3 /* UIColor+Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Image.swift"; sourceTree = "<group>"; };
 		6F48F76828DE180A00C0DCC3 /* RevealAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevealAnimator.swift; sourceTree = "<group>"; };
+		6F74CA1329B11460006F0F52 /* UIView+BorderApplicable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+BorderApplicable.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,7 +152,7 @@
 		6F48F72728DE089C00C0DCC3 /* BorderedButton */ = {
 			isa = PBXGroup;
 			children = (
-				6F48F72828DE089C00C0DCC3 /* BorderedButton.swift */,
+				6F48F72828DE089C00C0DCC3 /* ErrordButton.swift */,
 			);
 			path = BorderedButton;
 			sourceTree = "<group>";
@@ -178,6 +180,7 @@
 				6F48F73928DE0C9900C0DCC3 /* CGSize+Extensions.swift */,
 				6F48F73A28DE0C9900C0DCC3 /* CGPoint+Extensions.swift */,
 				6F48F73B28DE0C9900C0DCC3 /* CGRect+Extensions.swift */,
+				6F74CA1329B11460006F0F52 /* UIView+BorderApplicable.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -348,12 +351,13 @@
 				6F48F76128DE0EC100C0DCC3 /* LogoView.swift in Sources */,
 				6F48F73E28DE0C9900C0DCC3 /* CGRect+Extensions.swift in Sources */,
 				6F48F76328DE148300C0DCC3 /* UIColor+Image.swift in Sources */,
-				6F48F72928DE089C00C0DCC3 /* BorderedButton.swift in Sources */,
+				6F48F72928DE089C00C0DCC3 /* ErrordButton.swift in Sources */,
 				6F48F76928DE180A00C0DCC3 /* RevealAnimator.swift in Sources */,
 				6F48F73D28DE0C9900C0DCC3 /* CGPoint+Extensions.swift in Sources */,
 				6F48F75728DE0EC100C0DCC3 /* ContainerView.swift in Sources */,
 				6F350C20299A586800A1498D /* LetteringOverlayConfig.swift in Sources */,
 				6F48F75B28DE0EC100C0DCC3 /* LetteringLayer.swift in Sources */,
+				6F74CA1429B11460006F0F52 /* UIView+BorderApplicable.swift in Sources */,
 				6F48F72C28DE08F200C0DCC3 /* PillLabel.swift in Sources */,
 				6F48F71928DE078300C0DCC3 /* UI.docc in Sources */,
 				6F48F75928DE0EC100C0DCC3 /* LetteringOverlay.swift in Sources */,

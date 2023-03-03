@@ -1,6 +1,18 @@
 import UIKit
 
-open class PillLabel: MonochromeLabel {
+open class PillLabel: MonochromeLabel, BorderApplicable {
+    
+    public weak var borderLayer: CAShapeLayer?
+    
+    public var isSelected: Bool = false {
+        didSet {
+            if isSelected {
+                addBorder(Config(.black, .clear, 6.0))
+            } else {
+                removeBorder()
+            }
+        }
+    }
     
     @IBInspectable
     public var padding: CGFloat  = 0.0
@@ -23,6 +35,12 @@ open class PillLabel: MonochromeLabel {
         super.drawText(
             in: rect.inset(by: insets)
         )
+    }
+    
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        let path = UIBezierPath(roundedRect: bounds, cornerRadius: 0.5 * bounds.height)
+        applyPath(path)
     }
     
     public override func draw(_ rect: CGRect) {

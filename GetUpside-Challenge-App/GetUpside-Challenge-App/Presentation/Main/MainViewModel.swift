@@ -27,7 +27,7 @@ extension Main {
         var type: String = String()
         
         private func defineShape(_ model: Eatery) -> Shape {
-            switch model.type {
+            switch model.category {
             case .american, .british, .chinese, .international, .seafood, .fastFood:
                 return .restaurant
             case .burger:
