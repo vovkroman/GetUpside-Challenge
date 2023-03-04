@@ -13,8 +13,8 @@ protocol Imagable {
     var image: UIImage { get }
 }
 
-protocol Typable {
-    var type: String { get }
+protocol Categorized {
+    var categoryId: String { get }
 }
 
 extension Main {
@@ -24,7 +24,7 @@ extension Main {
         var image: UIImage = UIImage()
         var name: String = String()
         var coordonates: Coordinates = Coordinates()
-        var type: String = String()
+        var categoryId: String = String()
         
         private func defineShape(_ model: Eatery) -> Shape {
             switch model.category {
@@ -38,10 +38,10 @@ extension Main {
         }
         
         func build(_ model: Eatery, _ size: CGSize) -> UIImage {
-            return UIImage.drawImage(_buildPath(model, size), .lightGray, .darkGray)
+            return UIImage.drawImage(buildPath(model, size), .lightGray, .darkGray)
         }
         
-        private func _buildPath(_ model: Eatery, _ size: CGSize) -> UIBezierPath {
+        private func buildPath(_ model: Eatery, _ size: CGSize) -> UIBezierPath {
             let rect = CGRect(origin: .zero, size: size)
             
             let shape = defineShape(model)
@@ -58,14 +58,14 @@ extension Main {
         }
     }
     
-    struct ViewModel  {
+    struct ViewModel: Namable, Imagable, CoordinatesSupporting, Categorized  {
         
         typealias BuilderBlock = (Builder) -> ()
         
         let name: String
         let image: UIImage
         let coordinates: Coordinates
-        let type: String
+        let categoryId: String
         
         init(_ block: BuilderBlock) {
             let builder = Builder()
@@ -77,9 +77,7 @@ extension Main {
             name = builder.name
             image = builder.image
             coordinates = builder.coordonates
-            type = builder.type
+            categoryId = builder.categoryId
         }
     }
 }
-
-extension Main.ViewModel: Namable, Imagable, CoordinatesSupporting, Typable {}

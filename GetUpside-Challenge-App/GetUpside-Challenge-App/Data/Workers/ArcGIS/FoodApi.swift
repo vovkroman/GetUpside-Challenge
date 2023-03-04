@@ -32,7 +32,7 @@ extension FoodApi: FetchType {
     }
     
     var maxResults: Int {
-        return 20
+        return 10
     }
     
     var span: Double {

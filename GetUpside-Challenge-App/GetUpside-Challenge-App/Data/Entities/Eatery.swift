@@ -72,8 +72,8 @@ extension Eatery: Hashable {
     }
 }
 
-extension Eatery: Typable {
-    var type: String {
+extension Eatery: Categorized {
+    var categoryId: String {
         return description
     }
 }

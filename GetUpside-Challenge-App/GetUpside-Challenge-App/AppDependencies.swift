@@ -4,7 +4,7 @@ import CoreLocation
 /// Impl of DI conatiner
 class AppDependencies {
     
-    lazy private var _appConfig: ApplicationConfig = ApplicationConfig()
+    lazy private var appConfig: ApplicationConfig = ApplicationConfig()
     
     
     ///  Though the code above is fine, it can be optimised to reduce power usage in the following ways:
@@ -26,7 +26,7 @@ class AppDependencies {
     /// This is a bit of a trap though, as
     /// I’ve found it doesn’t actually affect which antennas are turned on like desiredAccuracy does,
     /// but just filters location changes instead.
-    lazy private var _locationManager: CLLocationManager = {
+    lazy private var locationManager: CLLocationManager = {
         let locationManager = CLLocationManager()
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         locationManager.distanceFilter = Constant.Location.kCLDistanceHundredMeters
@@ -34,13 +34,13 @@ class AppDependencies {
         return locationManager
     }()
     
-    lazy private var _queue: DispatchQueue = {
+    lazy private var queue: DispatchQueue = {
         let queue = DispatchQueue(label: "com.getUpside-challenge-global")
         return queue
     }()
     
     func initialize() {
-        let services: [Serviceable] = [ArcGISSetuper(_appConfig), GoogleMapsSetuper(_appConfig)]
+        let services: [Serviceable] = [ArcGISSetuper(appConfig), GoogleMapsSetuper(appConfig)]
         services.forEach{ $0.register() }
     }
 }
@@ -54,11 +54,11 @@ extension AppDependencies: AppNavigationable {
 extension AppDependencies: SplashSceneFactoriable {
     
     func buildSplashScene(_ coordinator: AnyCoordinating<Splash.Event>) -> UIViewController {
-        let locationWorker = Location.Worker(_locationManager)
+        let locationWorker = Location.Worker(locationManager)
         let argisWorker = ArcGis.Worker(AnyFetchRouter())
-        let queue = DispatchQueue(
+        let localQueue = DispatchQueue(
             label: "com.getUpside-challenge-splash",
-            target: _queue
+            target: queue
         )
         
         // build VIP cycle dependencies
@@ -66,7 +66,7 @@ extension AppDependencies: SplashSceneFactoriable {
         let interactor = Splash.InteractorImpl(
             locationWorker,
             argisWorker,
-            queue,
+            localQueue,
             presenter
         )
         interactor.observer = presenter
@@ -81,11 +81,11 @@ extension AppDependencies: SplashSceneFactoriable {
 extension AppDependencies: MainSceneFactoriable {
     
     func buildMainScene(_ coordinator: AnyCoordinating<Main.Event>, _ entities: [Eatery]) -> UIViewController {
-        let locationWorker = Location.Worker(_locationManager)
+        let locationWorker = Location.Worker(locationManager)
         let argisWorker = ArcGis.Worker(AnyFetchRouter())
-        let queue = DispatchQueue(
+        let localQueue = DispatchQueue(
             label: "com.getUpside-challenge-main",
-            target: _queue
+            target: queue
         )
         
         let presenter = Main.Presenter()
@@ -93,7 +93,7 @@ extension AppDependencies: MainSceneFactoriable {
             locationWorker,
             argisWorker,
             presenter,
-            queue,
+            localQueue,
             entities
         )
         
@@ -116,7 +116,9 @@ extension AppDependencies: MainSceneFactoriable {
         presenter.view = scene
         return scene
     }
-    
+}
+
+extension AppDependencies {
     func makeFilterComponent() -> Filter.Component {
         return Filter.Component()
     }

@@ -6,7 +6,7 @@ protocol Component: UIViewController {
 
 extension Main {
     
-    typealias ViewModelable = Namable & CoordinatesSupporting & Imagable & Typable
+    typealias ViewModelable = Namable & CoordinatesSupporting & Imagable & Categorized
     typealias Childable = Component
     
     final class Scene: BaseScene<MainView, InteractorImpl> {

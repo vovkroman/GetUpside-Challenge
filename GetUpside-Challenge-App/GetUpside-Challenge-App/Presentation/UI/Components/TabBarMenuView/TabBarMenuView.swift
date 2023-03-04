@@ -107,7 +107,7 @@ final class TabBarMenuView: UIView, NibOwnerLoadable {
         configureSegemntContol()
     }
     
-    @IBAction private func _didTapAction(_ sender: UISegmentedControl) {
+    @IBAction private func didTapAction(_ sender: UISegmentedControl) {
         let newOrigin = (sender.frame.width / CGFloat(sender.numberOfSegments)) * CGFloat(sender.selectedSegmentIndex)
         self.delegate?.tabBarMenu(self, didSelected: sender.numberOfSegments - sender.selectedSegmentIndex - 1)
         UIView.animate(withDuration: 0.23) {

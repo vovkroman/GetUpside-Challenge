@@ -12,7 +12,7 @@ extension Convertor {
             let size = Pin.size
             return Main.ViewModel { builder in
                 builder.name = from.name
-                builder.type = "\(from.type)"
+                builder.categoryId = from.categoryId
                 builder.coordonates = from.coordinates
                 builder.image = builder.build(from, size)
             }

@@ -10,7 +10,7 @@ public class RevealAnimator: NSObject {
     
     typealias Revealable = LogoTransitionable & UIView
     
-    private let _duartion: TimeInterval
+    private let duartion: TimeInterval
         
     public init?(
         _ duration: TimeInterval,
@@ -19,7 +19,7 @@ public class RevealAnimator: NSObject {
         guard operation == .push else {
             return nil
         }
-        _duartion = duration
+        self.duartion = duration
     }
     
     private func _onTransitionComplete(
@@ -36,7 +36,7 @@ extension RevealAnimator: UIViewControllerAnimatedTransitioning {
     public func transitionDuration(
         using transitionContext: UIViewControllerContextTransitioning?
     ) -> TimeInterval {
-        return _duartion
+        return duartion
     }
     
     public func animateTransition(
@@ -55,12 +55,12 @@ extension RevealAnimator: UIViewControllerAnimatedTransitioning {
             from: CATransform3DIdentity,
             to: CATransform3DConcat(CATransform3DMakeTranslation(10.0, 0.0, 0.0),
                                                                   CATransform3DMakeScale(150.0, 150.0, 1.0)),
-            duration: _duartion,
+            duration: duartion,
             timingFunc: CAMediaTimingFunction(name: .easeIn),
             isRemovedOnCompletion: false
         )
-        let _animation = CABasicAnimation(type: .transform(params: animParams))
-        _animation.fillMode = .forwards
+        let animation = CABasicAnimation(type: .transform(params: animParams))
+        animation.fillMode = .forwards
         
         toView.layer.mask = maskLayer
         fromView.transitionWillStart(self)
@@ -71,7 +71,7 @@ extension RevealAnimator: UIViewControllerAnimatedTransitioning {
         CATransaction.setCompletionBlock(completionBlock)
         CATransaction.begin()
         let id = Animation.KeyPath.self
-        maskLayer.add(_animation, forKey: "\(id.revalAnimation)")
+        maskLayer.add(animation, forKey: "\(id.revalAnimation)")
         CATransaction.commit()
     }
 }

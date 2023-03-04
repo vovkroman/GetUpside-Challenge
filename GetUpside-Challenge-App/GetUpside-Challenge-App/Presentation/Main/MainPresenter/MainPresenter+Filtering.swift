@@ -8,25 +8,26 @@
 import FilterKit
 
 extension Main.Presenter {
-    struct Spec<T: Typable>: Specification {
+    struct Spec<T: Categorized>: Specification {
+        
         public typealias Item = T
 
-        private let category: String
+        private let id: String
 
-        init(_ category: String) {
-            self.category = category
+        init(_ id: String) {
+            self.id = id
         }
 
         func isSatisfied(_ item: T) -> Bool {
-            return item.type == category
+            return item.categoryId == id
         }
 
         func hash(into hasher: inout Hasher) {
-            hasher.combine(category)
+            hasher.combine(id)
         }
 
         static func == (lhs: Spec, rhs: Spec) -> Bool {
-            return lhs.category == rhs.category
+            return lhs.id == rhs.id
         }
     }
 }

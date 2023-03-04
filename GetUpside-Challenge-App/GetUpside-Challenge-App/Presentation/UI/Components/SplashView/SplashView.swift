@@ -4,7 +4,7 @@ import UI
 final class SplashView: UIView, NibReusable {
     @IBOutlet private(set) weak var containerView: ContainerView!
     
-    private var _currentViewController: LogoTransitionable? {
+    private var currentViewController: LogoTransitionable? {
         return containerView.childViewController as? LogoTransitionable
     }
 }
@@ -12,14 +12,14 @@ final class SplashView: UIView, NibReusable {
 extension SplashView: LogoTransitionable {
     
     var maskLayer: CAShapeLayer? {
-        return _currentViewController?.maskLayer
+        return currentViewController?.maskLayer
     }
     
     func transitionWillStart(_ transition: UIViewControllerAnimatedTransitioning) {
-        _currentViewController?.transitionWillStart(transition)
+        currentViewController?.transitionWillStart(transition)
     }
     
     func transitionDidEnd(_ transition: UIViewControllerAnimatedTransitioning) {
-        _currentViewController?.transitionDidEnd(transition)
+        currentViewController?.transitionDidEnd(transition)
     }
 }
