@@ -11,8 +11,8 @@ def app_dependencies
   pod 'Google-Maps-iOS-Utils'
 
   #Realm DB
-  pod 'Realm'
-  pod 'RealmSwift'
+#  pod 'Realm'
+#  pod 'RealmSwift'
 end
 
 def map_dependencies

@@ -1,8 +1,8 @@
 import UIKit
 
-enum Animation {
+public enum Animation {
     
-    struct Params<Value> {
+    public struct Params<Value> {
         let beginTime: CFTimeInterval
         let from: Value
         let to: Value
@@ -10,7 +10,7 @@ enum Animation {
         let timingFunc: CAMediaTimingFunction
         let isRemovedOnCompletion: Bool
         
-        init(
+        public init(
             beginTime: CFTimeInterval = 0.0,
              from: Value,
              to: Value,
@@ -27,7 +27,7 @@ enum Animation {
         }
     }
     
-    enum KeyPath: CustomStringConvertible {
+    public enum KeyPath: CustomStringConvertible {
         
         case strokeStart(params: Params<CGFloat>)
         case strokeEnd(params: Params<CGFloat>)
@@ -36,7 +36,7 @@ enum Animation {
         case drawLineAnimation
         case revalAnimation
         
-        var description: String {
+        public var description: String {
             switch self {
             case .strokeEnd:
                 return "strokeEnd"
@@ -54,7 +54,7 @@ enum Animation {
 }
 
 extension CABasicAnimation {
-    convenience init(
+    public convenience init(
         type: Animation.KeyPath
     ) {
         self.init(keyPath: "\(type)")

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ErrorView" customModule="GetUpside_Challenge_App" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="295" height="98"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Error description" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xz2-yK-V20" customClass="MonochromeLabel" customModule="UI">
+                    <rect key="frame" x="0.0" y="0.0" width="295" height="36"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="20"/>
+                    <color key="textColor" red="0.92159587139999999" green="0.92154115439999995" blue="0.92157012220000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3pg-fT-6nw" customClass="ErrordButton" customModule="GetUpside_Challenge_App" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="52" width="295" height="30"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="srv-Ye-zDs"/>
+                    </constraints>
+                    <state key="normal" title="Button">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                            <real key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="15"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="fillColor">
+                            <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="3pg-fT-6nw" secondAttribute="bottom" constant="16" id="6gF-iH-sZy"/>
+                <constraint firstItem="3pg-fT-6nw" firstAttribute="centerX" secondItem="Xz2-yK-V20" secondAttribute="centerX" id="ByB-rN-r0Z"/>
+                <constraint firstItem="Xz2-yK-V20" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="R89-Sf-rsw"/>
+                <constraint firstItem="3pg-fT-6nw" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="VsX-9q-brT"/>
+                <constraint firstItem="Xz2-yK-V20" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="Xe3-Mu-Stk"/>
+                <constraint firstItem="3pg-fT-6nw" firstAttribute="top" secondItem="Xz2-yK-V20" secondAttribute="bottom" constant="16" id="b1r-fE-iNF"/>
+                <constraint firstItem="Xz2-yK-V20" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="pEY-ZL-OtR"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="actionButton" destination="3pg-fT-6nw" id="gjX-Ug-MvF"/>
+                <outlet property="descriptionLabel" destination="Xz2-yK-V20" id="GDf-oq-H9K"/>
+            </connections>
+            <point key="canvasLocation" x="-547.10144927536237" y="-70.982142857142847"/>
+        </view>
+    </objects>
+    <designables>
+        <designable name="3pg-fT-6nw">
+            <size key="intrinsicContentSize" width="46" height="30"/>
+        </designable>
+    </designables>
+</document>

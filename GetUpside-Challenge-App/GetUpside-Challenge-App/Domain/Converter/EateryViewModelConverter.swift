@@ -14,7 +14,7 @@ extension Convertor {
                 builder.name = from.name
                 builder.categoryId = from.categoryId
                 builder.coordonates = from.coordinates
-                builder.image = builder.build(from, size)
+                builder.image = builder.image(from, size)
             }
         }
         
