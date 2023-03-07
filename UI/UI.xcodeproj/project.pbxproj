@@ -30,6 +30,7 @@
 		6F48F76328DE148300C0DCC3 /* UIColor+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F48F76228DE148300C0DCC3 /* UIColor+Image.swift */; };
 		6F48F76928DE180A00C0DCC3 /* RevealAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F48F76828DE180A00C0DCC3 /* RevealAnimator.swift */; };
 		6F74CA1429B11460006F0F52 /* UIView+BorderApplicable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F74CA1329B11460006F0F52 /* UIView+BorderApplicable.swift */; };
+		6FC36D4D29B65F7A0092EE46 /* UIBezierPath+Tranforms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC36D4C29B65F7A0092EE46 /* UIBezierPath+Tranforms.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -70,6 +71,7 @@
 		6F48F76228DE148300C0DCC3 /* UIColor+Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Image.swift"; sourceTree = "<group>"; };
 		6F48F76828DE180A00C0DCC3 /* RevealAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevealAnimator.swift; sourceTree = "<group>"; };
 		6F74CA1329B11460006F0F52 /* UIView+BorderApplicable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+BorderApplicable.swift"; sourceTree = "<group>"; };
+		6FC36D4C29B65F7A0092EE46 /* UIBezierPath+Tranforms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBezierPath+Tranforms.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 				6F48F73A28DE0C9900C0DCC3 /* CGPoint+Extensions.swift */,
 				6F48F73B28DE0C9900C0DCC3 /* CGRect+Extensions.swift */,
 				6F74CA1329B11460006F0F52 /* UIView+BorderApplicable.swift */,
+				6FC36D4C29B65F7A0092EE46 /* UIBezierPath+Tranforms.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 				6F48F75B28DE0EC100C0DCC3 /* LetteringLayer.swift in Sources */,
 				6F74CA1429B11460006F0F52 /* UIView+BorderApplicable.swift in Sources */,
 				6F48F71928DE078300C0DCC3 /* UI.docc in Sources */,
+				6FC36D4D29B65F7A0092EE46 /* UIBezierPath+Tranforms.swift in Sources */,
 				6F48F75928DE0EC100C0DCC3 /* LetteringOverlay.swift in Sources */,
 				6F48F75E28DE0EC100C0DCC3 /* UIBezierPath+TextPaths.m in Sources */,
 				6F48F75D28DE0EC100C0DCC3 /* UIBezierPath+Extensions.swift in Sources */,

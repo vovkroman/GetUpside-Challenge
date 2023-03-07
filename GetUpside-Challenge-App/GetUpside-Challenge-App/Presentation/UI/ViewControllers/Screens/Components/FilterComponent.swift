@@ -51,6 +51,11 @@ extension Filter {
             return cell
         }
         
+        override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+            let headerView: FilterHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, for: indexPath)
+            return headerView
+        }
+        
         override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
             let displayCell = cell as? FilterCell
             displayCell?.configure(viewModels[indexPath.row])
@@ -71,8 +76,11 @@ extension Filter {
             return viewModel.size
         }
         
-        required init() {
-            let layout = CollectionViewFlowLayout()
+        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+            return CGSize(100.0, collectionView.frame.height)
+        }
+        
+        required init(_ layout: UICollectionViewFlowLayout = CollectionViewFlowLayout()) {
             super.init(collectionViewLayout: layout)
         }
         
@@ -87,6 +95,9 @@ private extension Filter.Component {
     
     func registerCell() {
         collectionView.register(FilterCell.self)
+        
+        let sectionHeader = UICollectionView.elementKindSectionHeader
+        collectionView.register(FilterHeaderView.self, ofKind: sectionHeader)
     }
     
     func setupView() {

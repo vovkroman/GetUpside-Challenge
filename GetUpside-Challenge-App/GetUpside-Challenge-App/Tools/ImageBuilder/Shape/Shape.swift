@@ -54,19 +54,21 @@ enum Shape {
         func draw(_ rect: CGRect) -> UIBezierPath {
             switch self {
                 case .burger:
-                    return drawBurger(rect)
+                    return drawBurgerIcon(rect)
                 case .cafe:
-                    return drawCup(rect)
+                    return drawCupIcon(rect)
                 case .restaurant:
-                    return drawCover(rect)
+                    return drawCoverIcon(rect)
             }
         }
     }
-    
+
     case circle(diameter: CGFloat)
     case rectangle(height: CGFloat, width: CGFloat)
     case pin(size: CGSize, inner: Inner)
     case emptyPin(size: CGSize)
+    case filtering(size: CGSize)
+    case sorting(size: CGSize)
     
     var bounds: CGRect {
         switch self {
@@ -76,8 +78,9 @@ enum Shape {
         case .rectangle(let height, let width):
             return CGRect(origin: .zero, size: CGSize(height, width))
         case.pin(let size, _ ), .emptyPin(let size):
-            let rect = CGRect(origin: .zero, size: size)
-            return rect
+            return CGRect(origin: .zero, size: size)
+        case .filtering(let size), .sorting(let size):
+            return CGRect(origin: .zero, size: size)
         }
     }
     
@@ -89,7 +92,7 @@ enum Shape {
             return UIBezierPath(rect: bounds)
         case .pin(_, let inner):
             let path = UIBezierPath()
-            let outer = drawPin(bounds)
+            let outer = drawPinIcon(bounds)
             path.append(outer)
             
             let size = bounds.size
@@ -98,8 +101,12 @@ enum Shape {
             path.append(inner)
             
             return path
-        case .emptyPin(_):
-            return drawPin(bounds)
+        case .emptyPin:
+            return drawPinIcon(bounds)
+        case .filtering:
+            return drawFilterIcon(bounds)
+        case .sorting:
+            return drawSortingIcon(bounds)
         }
     }
 }

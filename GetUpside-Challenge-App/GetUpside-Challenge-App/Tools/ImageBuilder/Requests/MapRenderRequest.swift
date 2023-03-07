@@ -1,11 +1,11 @@
 import UIKit
 
-enum RenderRequest {
+enum MapRenderRequest {
     case pin(category: Eatery.Category, size: CGSize)
     case cluster(diameter: CGFloat)
 }
 
-extension RenderRequest: ImageDescription {
+extension MapRenderRequest: ImageDescription {
     
     var size: CGSize {
         switch self {

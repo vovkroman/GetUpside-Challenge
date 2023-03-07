@@ -19,7 +19,6 @@ extension Convertor {
         }
         
         func convertToFrom(from: Main.ViewModel) throws -> Eatery {
-            // no need convert from Eatery.self to AGSGeocodeResult.self
             throw Error.convertFailed(context: "Could't convert item from \(Eatery.self) to \(Main.ViewModel.self)")
         }
     }

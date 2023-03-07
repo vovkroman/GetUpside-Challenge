@@ -39,9 +39,11 @@ open class ErrordButton: UIButton, BorderApplicable {
         
         let rectCorners: UIRectCorner = .allCorners
         let size = CGSize(cornerRadius, cornerRadius)
-        let path = UIBezierPath(roundedRect: bounds,
-                                byRoundingCorners: rectCorners,
-                                cornerRadii: size)
+        let path = UIBezierPath(
+            roundedRect: bounds,
+            byRoundingCorners: rectCorners,
+            cornerRadii: size
+        )
         applyPath(path)
     }
 }

@@ -27,7 +27,7 @@ extension Main {
         var categoryId: String = String()
         
         func image(_ model: Eatery, _ size: CGSize) -> UIImage {
-            let request: RenderRequest = .pin(category: model.category, size: size)
+            let request: MapRenderRequest = .pin(category: model.category, size: size)
             return ImageRenderer.render(request)
         }
     }

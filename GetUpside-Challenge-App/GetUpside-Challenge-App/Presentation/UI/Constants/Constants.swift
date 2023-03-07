@@ -34,12 +34,12 @@ enum Constant {
         static let iconGenerator: Cluster.IconGenerator = Cluster.IconGenerator(
             buckets: [10, 30, 50, 70, 90, 130],
             backgroundImages: [
-                ImageRenderer.render(RenderRequest.cluster(diameter: 70)),
-                ImageRenderer.render(RenderRequest.cluster(diameter: 100)),
-                ImageRenderer.render(RenderRequest.cluster(diameter: 120)),
-                ImageRenderer.render(RenderRequest.cluster(diameter: 150)),
-                ImageRenderer.render(RenderRequest.cluster(diameter: 190)),
-                ImageRenderer.render(RenderRequest.cluster(diameter: 210))
+                ImageRenderer.render(MapRenderRequest.cluster(diameter: 70)),
+                ImageRenderer.render(MapRenderRequest.cluster(diameter: 100)),
+                ImageRenderer.render(MapRenderRequest.cluster(diameter: 120)),
+                ImageRenderer.render(MapRenderRequest.cluster(diameter: 150)),
+                ImageRenderer.render(MapRenderRequest.cluster(diameter: 190)),
+                ImageRenderer.render(MapRenderRequest.cluster(diameter: 210))
             ]
         )
         enum Pin {

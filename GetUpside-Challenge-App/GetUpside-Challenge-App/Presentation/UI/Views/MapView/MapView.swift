@@ -20,13 +20,13 @@ class MapView: GMSMapView, NibReusable {
     }
     
     func applyStyle() {
-        _applyMapStyle()
+        applyMapStyle()
     }
 }
 
 private extension MapView {
     
-    func _applyMapStyle(withFilename name: String = "silver_GM_style", andType type: String = "json") {
+    func applyMapStyle(withFilename name: String = "silver_GM_style", andType type: String = "json") {
         if let styleURL = Bundle.main.url(forResource: name, withExtension: type) {
             mapStyle = try? GMSMapStyle(contentsOfFileURL: styleURL)
         } else {

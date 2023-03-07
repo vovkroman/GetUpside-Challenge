@@ -2,7 +2,7 @@ import UIKit
 
 extension Shape.Inner {
     
-    func drawCup(_ rect: CGRect) -> UIBezierPath {
+    func drawCupIcon(_ rect: CGRect) -> UIBezierPath {
         
         let width = rect.width
         let height = rect.height
@@ -47,7 +47,7 @@ extension Shape.Inner {
         return cupPath
     }
     
-    func drawCover(_ rect: CGRect) -> UIBezierPath {
+    func drawCoverIcon(_ rect: CGRect) -> UIBezierPath {
         let width = rect.width
         let height = rect.height
         let centerX = rect.centerX
@@ -84,7 +84,7 @@ extension Shape.Inner {
         return platePath
     }
     
-    func drawBurger(_ rect: CGRect) -> UIBezierPath {
+    func drawBurgerIcon(_ rect: CGRect) -> UIBezierPath {
         let width = rect.width
         let height = rect.height
         let centerY = rect.centerY
