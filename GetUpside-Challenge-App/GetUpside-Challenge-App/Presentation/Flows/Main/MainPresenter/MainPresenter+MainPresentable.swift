@@ -10,13 +10,10 @@ extension Main.Presenter: MainPresenterSupporting {
 
 private extension Main.Presenter {
     
-    func convertToFilterViewModels(_ models: Main.Filters) -> [Filter.ViewModel] {
+    func convertToFilterViewModels(_ models: Main.Filters) -> Filter.ViewModel {
         var viewModels: [Filter.ViewModel] = []
         let converter = Convertor.FilterViewModelConverter()
-        for model in models  {
-            viewModels.append(try! converter.convertFromTo(from: model))
-        }
-        return viewModels
+        return try! converter.convertFromTo(from: models)
     }
     
     func convertToEateyViewModel(_ models: Main.Eateries) -> [Main.ViewModel] {

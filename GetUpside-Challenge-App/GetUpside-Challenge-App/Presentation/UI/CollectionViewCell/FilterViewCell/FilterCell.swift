@@ -1,7 +1,7 @@
 import UI
 import ReusableKit
 
-final class FilterCell: UICollectionViewCell, NibReusable {
+final class FilterCell: UICollectionViewCell, NibReusable, Cellable {
     
     @IBOutlet private weak var titleLabel: PillLabel!
     
@@ -14,8 +14,13 @@ final class FilterCell: UICollectionViewCell, NibReusable {
         }
     }
     
-    func configure(_ viewModel: Filter.ViewModelable) {
-        titleLabel.attributedText = viewModel.attributedString
-        isSelected = viewModel.isSelected
+    func configure(_ configurator: Filter.CellConfigurator) {
+        titleLabel.attributedText = configurator.attributedString
+        isSelected = configurator.isSelected
+    }
+    
+    override func prepareForReuse() {
+        titleLabel.text = nil
+        isSelected = false
     }
 }

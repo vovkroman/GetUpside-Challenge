@@ -34,13 +34,21 @@ final class MapComponent: BaseComponent<MapView> {
 extension MapComponent {
     
     private func onLoaded() {
-        contentView.applyStyle()
+        contentView.setup()
         contentView.delegate = self
+        contentView.applyStyle()
     }
 }
 
 extension MapComponent: GMSMapViewDelegate {
-    // TODO: implememnt GMSMapViewDelegate delegate
+
+    func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
+        delegate?.onLocatingDidChage(self, position.target)
+    }
+    
+    func didTapMyLocationButton(for mapView: GMSMapView) -> Bool {
+        return true
+    }
 }
 
 extension MapComponent: Component {

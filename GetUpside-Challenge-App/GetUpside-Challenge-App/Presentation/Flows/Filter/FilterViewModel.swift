@@ -15,14 +15,24 @@ protocol Selectable {
 
 extension Filter {
     
-    final class Builder {
-        var id: String = ""
-        var size: CGSize = .zero
-        var attributedString: NSAttributedString = NSAttributedString()
-        var isSelected: Bool = false
+    struct ViewModel {
+        let headers: [HeaderConfigurator]
+        let cells: [CellConfigurator]
+        
+        init(_ headers: [HeaderConfigurator], _ cells: [CellConfigurator]) {
+            self.cells = cells
+            self.headers = headers
+        }
     }
     
-    class ViewModel {
+    class CellConfigurator {
+        
+        final class Builder {
+            var id: String = ""
+            var size: CGSize = .zero
+            var attributedString: NSAttributedString = NSAttributedString()
+            var isSelected: Bool = false
+        }
         
         typealias BuilderBlock = (Builder) -> ()
         
@@ -47,9 +57,29 @@ extension Filter {
             isSelected = builder.isSelected
         }
     }
+    
+    class HeaderConfigurator {
+        class Builder {
+            var image: UIImage = UIImage()
+        }
+        
+        typealias BuilderBlock = (Builder) -> ()
+
+        let image: UIImage
+        
+        convenience init(_ block: BuilderBlock) {
+            let builder = Builder()
+            block(builder)
+            self.init(builder)
+        }
+        
+        init(_ builder: Builder) {
+            image = builder.image
+        }
+    }
 }
 
-extension Filter.ViewModel: Attributable, SizeSupportable, Selectable {
+extension Filter.CellConfigurator: Attributable, SizeSupportable, Selectable {
     func toggle() {
         isSelected = !isSelected
     }

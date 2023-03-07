@@ -22,6 +22,11 @@ class MapView: GMSMapView, NibReusable {
     func applyStyle() {
         applyMapStyle()
     }
+    
+    func setup() {
+        isMyLocationEnabled = true
+        
+    }
 }
 
 private extension MapView {

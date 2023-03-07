@@ -67,8 +67,8 @@ extension Main.Scene: MainPresentable {
         ////
     }
     
-    func onFilterChanged(_ viewModels: [Filter.ViewModel]) {
-        filter.render(viewModels)
+    func onFilterChanged(_ viewModel: Filter.ViewModel) {
+        filter.render(viewModel.cells, viewModel.headers)
     }
     
     func onDisplay(_ viewModels: [Main.ViewModel]) {
@@ -97,6 +97,6 @@ extension Main.Scene: SelectionDelegate, LocatingDelegate {
     }
     
     func onLocatingDidChage(_ component: UIViewController, _ coordinate: Coordinates) {
-        
+        interactor.fetchingData(coordinate)
     }
 }

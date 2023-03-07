@@ -16,7 +16,7 @@ protocol FilterSupporting: AnyObject {
 
 protocol MainPresentable: AnyObject {
     func onLoading()
-    func onFilterChanged(_ viewModels: [Filter.ViewModel])
+    func onFilterChanged(_ viewModel: Filter.ViewModel)
     func onDisplay(_ viewModels: [Main.ViewModel])
 }
 

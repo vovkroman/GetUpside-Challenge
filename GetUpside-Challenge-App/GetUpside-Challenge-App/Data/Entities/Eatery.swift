@@ -42,7 +42,7 @@ extension Eatery: CustomStringConvertible {
         case .burger:
             return "burger"
         case .chinese:
-            return "中国菜"
+            return "chinese"
         case .bakery:
             return "bakery"
         case .international:
@@ -50,11 +50,11 @@ extension Eatery: CustomStringConvertible {
         case .coffeeShop:
             return "coffee shop"
         case .seafood:
-            return "sea"
+            return "sea food"
         case .fastFood:
-            return "fast"
+            return "fast food"
         case .default:
-            return "eatery"
+            return "not defined"
         }
     }
 }

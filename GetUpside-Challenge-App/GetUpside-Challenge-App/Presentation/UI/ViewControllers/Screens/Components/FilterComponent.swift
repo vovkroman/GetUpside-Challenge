@@ -7,10 +7,8 @@ protocol SelectionDelegate: AnyObject {
 }
 
 extension Filter {
-    
-    typealias ViewModelable = Attributable & SizeSupportable & Selectable
-    
-    final class CollectionViewFlowLayout: UICollectionViewFlowLayout {
+        
+    final class HorizontalLayout: UICollectionViewFlowLayout {
         
         override init() {
             super.init()
@@ -23,81 +21,90 @@ extension Filter {
         }
     }
     
-    final class Component: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+    final class Component: BaseListComponent<FilterCell, Filter.CellConfigurator> {
         
-        private var viewModels: [ViewModelable] = []
-        
+        private var headerConfigurators: [HeaderConfigurator] = []
         weak var delegate: SelectionDelegate?
         
         override func viewDidLoad() {
             super.viewDidLoad()
-            registerCell()
+            registerHeader()
             setupView()
         }
         
         // MARK: - Public API
         
-        func render(_ viewModels: [ViewModel]) {
-            self.viewModels = viewModels
+        func render(_ cells: [CellConfigurator], _ headers: [HeaderConfigurator]) {
+            self.configurators = cells
+            self.headerConfigurators = headers
             collectionView.reloadData()
         }
         
-        override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-            return viewModels.count
+        override func numberOfSections(in collectionView: UICollectionView) -> Int {
+            return headerConfigurators.count
         }
         
-        override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            let cell: FilterCell = collectionView.dequeueReusableCell(for: indexPath)
-            return cell
-        }
-        
-        override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-            let headerView: FilterHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, for: indexPath)
+        override func collectionView(
+            _ collectionView: UICollectionView,
+            viewForSupplementaryElementOfKind kind: String,
+            at indexPath: IndexPath
+        ) -> UICollectionReusableView {
+            let headerView: FilterHeaderView = collectionView.dequeueReusableSupplementaryView(
+                ofKind: UICollectionView.elementKindSectionHeader,
+                for: indexPath
+            )
+            headerView.configure(headerConfigurators[indexPath.section])
             return headerView
         }
-        
-        override func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-            let displayCell = cell as? FilterCell
-            displayCell?.configure(viewModels[indexPath.row])
-        }
                 
-        override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-            viewModels[indexPath.row].toggle()
-            didSelect(viewModels[indexPath.row])
+        override func collectionView(
+            _ collectionView: UICollectionView,
+            didSelectItemAt indexPath: IndexPath
+        ) {
+            configurators[indexPath.row].toggle()
+            didSelect(configurators[indexPath.row])
         }
         
-        override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-            viewModels[indexPath.row].toggle()
-            didSelect(viewModels[indexPath.row])
-        }
-                
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-            let viewModel = viewModels[indexPath.row]
-            return viewModel.size
+        override func collectionView(
+            _ collectionView: UICollectionView,
+            didDeselectItemAt indexPath: IndexPath
+        ) {
+            configurators[indexPath.row].toggle()
+            didSelect(configurators[indexPath.row])
         }
         
-        func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-            return CGSize(100.0, collectionView.frame.height)
+        override func collectionView(
+            _ collectionView: UICollectionView,
+            layout collectionViewLayout: UICollectionViewLayout,
+            referenceSizeForHeaderInSection section: Int
+        ) -> CGSize {
+            return CGSize.init(50, 50)
         }
         
-        required init(_ layout: UICollectionViewFlowLayout = CollectionViewFlowLayout()) {
-            super.init(collectionViewLayout: layout)
+        required init() {
+            super.init(HorizontalLayout())
         }
         
         @available(*, unavailable)
         required init?(coder: NSCoder) {
             fatalError("init(coder:) has not been implemented")
         }
+        
+        @available(*, unavailable)
+        required init(_ layout: UICollectionViewFlowLayout) {
+            fatalError("init(_:) has not been implemented")
+        }
     }
 }
 
 private extension Filter.Component {
     
-    func registerCell() {
-        collectionView.register(FilterCell.self)
-        
+    func registerHeader() {
         let sectionHeader = UICollectionView.elementKindSectionHeader
-        collectionView.register(FilterHeaderView.self, ofKind: sectionHeader)
+        collectionView.register(
+            FilterHeaderView.self,
+            ofKind: sectionHeader
+        )
     }
     
     func setupView() {
@@ -106,12 +113,11 @@ private extension Filter.Component {
         collectionView.allowsMultipleSelection = true
     }
     
-    func didSelect(_ viewModel: Filter.ViewModelable) {
-        if viewModel.isSelected {
-            delegate?.onDidSelect(self, viewModel)
+    func didSelect(_ configurator: Filter.CellConfigurator) {
+        if configurator.isSelected {
+            delegate?.onDidSelect(self, configurator)
         } else {
-            delegate?.onDidDeselect(self, viewModel)
+            delegate?.onDidDeselect(self, configurator)
         }
     }
 }
-
