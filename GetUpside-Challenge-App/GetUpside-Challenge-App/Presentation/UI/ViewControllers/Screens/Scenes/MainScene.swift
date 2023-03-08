@@ -88,12 +88,12 @@ extension Main.Scene: TabBarMenuDelegate {
 
 extension Main.Scene: SelectionDelegate, LocatingDelegate {
     
-    func onDidSelect<Item : Attributable>(_ component: UIViewController, _ item: Item) {
-        interactor.applyFillter(item.attributedString.string)
-    }
-    
-    func onDidDeselect<Item: Attributable>(_ component: UIViewController, _ item: Item) {
-        interactor.removeFilter(item.attributedString.string)
+    func onSelect(_ component: UIViewController, _ id: String, _ isSelected: Bool) {
+        if isSelected {
+            interactor.applyFillter(id)
+        } else {
+            interactor.removeFilter(id)
+        }
     }
     
     func onLocatingDidChage(_ component: UIViewController, _ coordinate: Coordinates) {

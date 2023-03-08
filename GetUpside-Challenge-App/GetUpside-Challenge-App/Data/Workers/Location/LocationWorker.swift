@@ -2,6 +2,7 @@ import Foundation
 import CoreLocation
 
 typealias Coordinates = CLLocationCoordinate2D
+typealias CurrentLocation = CLLocation
 typealias LocationStatus = CLAuthorizationStatus
 typealias OtherError = Error
 

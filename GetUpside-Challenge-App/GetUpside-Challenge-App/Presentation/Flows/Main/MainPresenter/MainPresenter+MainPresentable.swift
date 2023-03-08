@@ -11,8 +11,7 @@ extension Main.Presenter: MainPresenterSupporting {
 private extension Main.Presenter {
     
     func convertToFilterViewModels(_ models: Main.Filters) -> Filter.ViewModel {
-        var viewModels: [Filter.ViewModel] = []
-        let converter = Convertor.FilterViewModelConverter()
+        let converter = Convertor.FiltersViewModelConverter()
         return try! converter.convertFromTo(from: models)
     }
     

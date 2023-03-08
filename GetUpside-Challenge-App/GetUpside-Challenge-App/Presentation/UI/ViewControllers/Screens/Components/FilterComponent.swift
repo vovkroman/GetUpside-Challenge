@@ -2,8 +2,7 @@ import ReusableKit
 import UIKit
 
 protocol SelectionDelegate: AnyObject {
-    func onDidSelect<Item: Attributable>(_ component: UIViewController, _ item: Item)
-    func onDidDeselect<Item: Attributable>(_ component: UIViewController, _ item: Item)
+    func onSelect(_ component: UIViewController, _ id: String, _ isSelected: Bool)
 }
 
 extension Filter {
@@ -62,7 +61,7 @@ extension Filter {
             didSelectItemAt indexPath: IndexPath
         ) {
             configurators[indexPath.row].toggle()
-            didSelect(configurators[indexPath.row])
+            onSelect(configurators[indexPath.row])
         }
         
         override func collectionView(
@@ -70,7 +69,7 @@ extension Filter {
             didDeselectItemAt indexPath: IndexPath
         ) {
             configurators[indexPath.row].toggle()
-            didSelect(configurators[indexPath.row])
+            onSelect(configurators[indexPath.row])
         }
         
         override func collectionView(
@@ -78,7 +77,7 @@ extension Filter {
             layout collectionViewLayout: UICollectionViewLayout,
             referenceSizeForHeaderInSection section: Int
         ) -> CGSize {
-            return CGSize.init(50, 50)
+            return CGSize(50, 50)
         }
         
         required init() {
@@ -113,11 +112,7 @@ private extension Filter.Component {
         collectionView.allowsMultipleSelection = true
     }
     
-    func didSelect(_ configurator: Filter.CellConfigurator) {
-        if configurator.isSelected {
-            delegate?.onDidSelect(self, configurator)
-        } else {
-            delegate?.onDidDeselect(self, configurator)
-        }
+    func onSelect(_ configurator: Filter.CellConfigurator) {
+        delegate?.onSelect(self, configurator.id, configurator.isSelected)
     }
 }

@@ -8,9 +8,32 @@
 import FilterKit
 
 extension Main.Presenter {
-    struct Spec<T: Categorized>: Specification {
+    
+    struct DistanceSpec<T: CoordinatesSupporting>: Specification {
         
-        public typealias Item = T
+        typealias Item = T
+        
+        private let currLocation: CurrentLocation
+        private let radius: Double
+        
+        func isSatisfied(_ item: T) -> Bool {
+            let (latitude, longitude) = (item.coordinates.latitude, item.coordinates.longitude)
+            let itemLocation = CurrentLocation(latitude: latitude, longitude: longitude)
+            return currLocation.distance(from: itemLocation) <= radius
+        }
+        
+        init(_ coordinates: Coordinates, _ radius: Double) {
+            self.radius = radius
+            self.currLocation = CurrentLocation(
+                latitude: coordinates.latitude,
+                longitude: coordinates.longitude
+            )
+        }
+    }
+    
+    struct CategorySpec<T: Categorized>: Specification {
+        
+        typealias Item = T
 
         private let id: String
 
@@ -26,7 +49,7 @@ extension Main.Presenter {
             hasher.combine(id)
         }
 
-        static func == (lhs: Spec, rhs: Spec) -> Bool {
+        static func == (lhs: CategorySpec, rhs: CategorySpec) -> Bool {
             return lhs.id == rhs.id
         }
     }
@@ -34,10 +57,10 @@ extension Main.Presenter {
 
 extension Main.Presenter: FilterSupporting {
     func applyFilter(_ key: String) {
-        executor.apply(Spec(key))
+        executor.apply(CategorySpec(key))
     }
     
     func removeFilter(_ key: String) {
-        executor.remove(Spec(key))
+        executor.remove(CategorySpec(key))
     }
 }

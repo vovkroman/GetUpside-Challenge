@@ -2,34 +2,6 @@ import UI
 
 extension Shape {
     
-    func drawSortingIcon(_ rect: CGRect) -> UIBezierPath {
-        func drawArrow(_ rect: CGRect) -> UIBezierPath {
-            let path = UIBezierPath()
-            path.move(to: CGPoint(x: 0.2 * rect.maxX, y: rect.minY))
-            
-            path.addLine(to: CGPoint(0.2 * rect.maxX, 0.80 * rect.maxY))
-            path.addLine(to: CGPoint(0.16 * rect.maxX, 0.80 * rect.maxY))
-            path.addLine(to: CGPoint(0.24 * rect.maxX, rect.maxY))
-            path.addLine(to: CGPoint(0.32 * rect.maxX, 0.80 * rect.maxY))
-            path.addLine(to: CGPoint(0.28 * rect.maxX, 0.80 * rect.maxY))
-            path.addLine(to: CGPoint(0.28 * rect.maxX, rect.minY))
-            path.close()
-            return path
-        }
-        
-        let path = UIBezierPath()
-        let width = 0.5 * rect.width
-        let arrowPath = drawArrow(rect)
-        path.append(arrowPath)
-        
-        // rotat the arrow
-        arrowPath.rotate(.pi)
-        arrowPath.move(width, 0.0)
-        
-        path.append(arrowPath)
-        return path
-    }
-    
     func drawFilterIcon(_ rect: CGRect) -> UIBezierPath {
         
         // draw filter icon

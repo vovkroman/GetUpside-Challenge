@@ -49,9 +49,10 @@ enum Constant {
     
     enum Filter {
         static let height: CGFloat = 70.0
-        static let padding: (dx: CGFloat, dy: CGFloat) = (dx: 8.0, dy: 1.0)
+        static let padding: (dx: CGFloat, dy: CGFloat) = (dx: 16.0, dy: 4.0)
+        static let size: CGSize = CGSize(50.0, 50.0)
         static let attributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont.boldSystemFont(ofSize: 24),
+            .font: UIFont.boldSystemFont(ofSize: 22),
             .foregroundColor: UIColor.black
         ]
     }
