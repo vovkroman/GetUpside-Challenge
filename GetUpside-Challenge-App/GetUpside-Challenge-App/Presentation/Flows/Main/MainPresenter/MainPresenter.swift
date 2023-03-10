@@ -10,6 +10,7 @@ protocol MainDataLoadable: AnyObject {
 }
 
 protocol FilterSupporting: AnyObject {
+    func applyFilterNearMe(_ coorindates: Coordinates)
     func applyFilter(_ key: String)
     func removeFilter(_ key: String)
 }

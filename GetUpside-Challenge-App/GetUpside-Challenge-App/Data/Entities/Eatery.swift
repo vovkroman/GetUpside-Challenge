@@ -20,18 +20,6 @@ struct Eatery {
     let payload: [String: Any]?
 }
 
-extension Eatery.Category: ExpressibleByStringLiteral {
-    
-    typealias StringLiteralType = String
-    
-    init(stringLiteral value: String) {
-        self = .init(rawValue: value) ?? .default
-    }
-}
-
-extension Eatery.Category: ExpressibleByStringInterpolation {}
-extension Eatery.Category: Equatable {}
-
 extension Eatery: CustomStringConvertible {
     var description: String {
         switch category {
@@ -72,8 +60,21 @@ extension Eatery: Hashable {
     }
 }
 
-extension Eatery: Categorized {
+extension Eatery: Categorized, CoordinatesSupporting {
     var categoryId: String {
         return description
     }
 }
+
+// Category
+extension Eatery.Category: ExpressibleByStringLiteral {
+    
+    typealias StringLiteralType = String
+    
+    init(stringLiteral value: String) {
+        self = .init(rawValue: value) ?? .default
+    }
+}
+
+extension Eatery.Category: ExpressibleByStringInterpolation {}
+extension Eatery.Category: Equatable {}

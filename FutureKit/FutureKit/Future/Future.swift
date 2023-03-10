@@ -11,7 +11,7 @@ public class Future<Value> {
     }
     
     @usableFromInline
-    internal var callbacks = [(Result) -> Void]()
+    internal var callbacks = ContiguousArray<(Result) -> Void>()
     
     @inlinable
     public func observe(using callback: @escaping (Result) -> Void) {
@@ -26,7 +26,7 @@ public class Future<Value> {
     @usableFromInline
     internal func report(result: Result) {
         callbacks.forEach { $0(result) }
-        callbacks = []
+        callbacks.removeAll()
     }
     
     @inlinable

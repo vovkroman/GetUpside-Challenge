@@ -9,9 +9,9 @@ extension Convertor {
         func convertFromTo(from: Set<String>) throws -> Filter.ViewModel {
             var cellsConfigurators: [Filter.CellConfigurator] = []
             for item in from {
-                cellsConfigurators.append(makeCellConfigurator(from: item))
+                cellsConfigurators.append(makeCellConfigurator(item, .category(item)))
             }
-            cellsConfigurators.append(makeCellConfigurator(from: "near me (20 km)"))
+            cellsConfigurators.append(makeCellConfigurator("near me (20 km)", .nearMe))
             return Filter.ViewModel(
                 [makeHeaderConfigurator()],
                 cellsConfigurators
@@ -26,18 +26,18 @@ extension Convertor {
 
 private extension Convertor.FiltersViewModelConverter {
     
-    func makeCellConfigurator(from: String) -> Filter.CellConfigurator {
+    func makeCellConfigurator(_ title: String, _ type: Filter.`Type`) -> Filter.CellConfigurator {
         let filter = Constant.Filter.self
         let attributes = filter.attributes
         let padding = filter.padding
         
         let size = CGSize(.infinity, filter.height)
         return Filter.CellConfigurator { builer in
-            let attributedString = NSAttributedString(string: from, attributes: attributes)
+            let attributedString = NSAttributedString(string: title, attributes: attributes)
             let rect = attributedString.boundingRect(with: size, options: [], context: nil)
             
             builer.attributedString = attributedString
-            builer.id = "\(from)"
+            builer.id = type.id
             builer.size = CGSize(rect.width + padding.dx, rect.height + padding.dy)
         }
     }

@@ -1,4 +1,4 @@
-import Foundation
+import FutureKit
 import CoreLocation
 
 typealias Coordinates = CLLocationCoordinate2D
@@ -8,19 +8,9 @@ typealias OtherError = Error
 
 // Interface for location worker
 protocol LocationUseCase: AnyObject {
-    var isUserAuthorized: Bool { get }
-    func requestForAutorization()
     
-    func requestLocation()
-    
-    func stopUpdatingLocation()
-    func startUpdatingLocation()
-}
-
-protocol LocationUpdating: AnyObject {
-    func location(_ worker: LocationUseCase, authStatusDidUpdated status: LocationStatus)
-    func location(_ worker: LocationUseCase, locationDidUpdated locationCoordinate: Coordinates)
-    func location(_ worker: LocationUseCase, catch error: Error)
+    var observer: Future<Coordinates> { get }
+    func requestLocating()
 }
 
 extension Location {
@@ -35,16 +25,10 @@ extension Location {
     final class Worker: NSObject {
     
         private let manager: CLLocationManager
-        weak var delegate: LocationUpdating?
+        private var promise: RetainedPromise<Coordinates> = RetainedPromise()
         
-        private var _authorizationStatus: CLAuthorizationStatus {
-            let authorizationStatus: CLAuthorizationStatus
-            if #available(iOS 14.0, *) {
-                authorizationStatus = manager.authorizationStatus
-            } else {
-                authorizationStatus = CLLocationManager.authorizationStatus()
-            }
-            return authorizationStatus
+        var observer: Future<Coordinates> {
+            return promise
         }
         
         init(_ manager: CLLocationManager) {
@@ -60,47 +44,34 @@ extension Location {
 }
 
 extension Location.Worker: LocationUseCase {
-    var isUserAuthorized: Bool {
-        return any(value: _authorizationStatus, items: .authorizedAlways, .authorizedWhenInUse)
-    }
     
     // MARK: - Public method
-    func requestForAutorization() {
-        manager.requestWhenInUseAuthorization()
-    }
     
-    func requestLocation() {
-        manager.requestLocation()
-    }
-    
-    func startUpdatingLocation() {
+    func requestLocating() {
         manager.startUpdatingLocation()
-    }
-    
-    func stopUpdatingLocation() {
-        manager.stopUpdatingLocation()
     }
 }
 
 extension Location.Worker: CLLocationManagerDelegate {
+    
     func locationManager(
         _ manager: CLLocationManager,
         didChangeAuthorization status: CLAuthorizationStatus) {
-        delegate?.location(self, authStatusDidUpdated: status)
-    }
+            permissionsDidChange(status)
+        }
     
     func locationManager(
         _ manager: CLLocationManager,
         didUpdateLocations locations: [CLLocation]) {
-        guard let location = locations.last else { return }
-        delegate?.location(self, locationDidUpdated: location.coordinate)
-    }
+            guard let location = locations.last else { return }
+            promise.resolve(with: location.coordinate)
+        }
     
     func locationManager(
         _ manager: CLLocationManager,
         didFailWithError error: Error) {
-        delegate?.location(self, catch: error)
-    }
+            promise.reject(with: Location.Error.other(error))
+        }
 }
 
 extension Location.Error: Error, CustomStringConvertible {
@@ -139,6 +110,25 @@ extension Location.Error: Equatable {
             return lhs.localizedDescription == rhs.localizedDescription
         default:
             return false
+        }
+    }
+}
+
+private extension Location.Worker {
+    
+    func permissionsDidChange(_ status: LocationStatus) {
+        switch status {
+        case .authorizedAlways, .authorizedWhenInUse:
+            // if user authorizedWhenInUse, service request location immidiatly
+            manager.requestLocation()
+        case .denied:
+            promise.reject(with: Location.Error.denied)
+        case .restricted:
+            promise.reject(with: Location.Error.restricted)
+        case .notDetermined:
+            manager.requestWhenInUseAuthorization()
+        @unknown default: break
+            // nothing to do
         }
     }
 }

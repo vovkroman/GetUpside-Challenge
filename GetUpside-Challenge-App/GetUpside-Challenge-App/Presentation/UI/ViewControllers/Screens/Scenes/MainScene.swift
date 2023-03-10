@@ -89,10 +89,14 @@ extension Main.Scene: TabBarMenuDelegate {
 extension Main.Scene: SelectionDelegate, LocatingDelegate {
     
     func onSelect(_ component: UIViewController, _ id: String, _ isSelected: Bool) {
+        if id == Filter.CustomId.nearMe.rawValue {
+            interactor.applyFilterNearMe()
+            return
+        }
         if isSelected {
-            interactor.applyFillter(id)
+            interactor.applyCategoryFilter(id)
         } else {
-            interactor.removeFilter(id)
+            interactor.removeCategoryFilter(id)
         }
     }
     

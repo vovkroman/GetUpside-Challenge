@@ -1,17 +1,13 @@
-import Foundation
+import FutureKit
 
 extension Main.InteractorImpl: MainUseCase {
     
     func requestLocation() {
-        if locationWorker.isUserAuthorized {
-            locationWorker.startUpdatingLocation()
-        } else {
-            locationWorker.requestForAutorization()
-        }
+        // Noting to do
     }
     
-    func fetchingData(_ coordinate: Coordinates) {
-        apiWorker.fetchData(coordinate).observe { [weak self] result in
+    func fetchingData(_ coordinates: Coordinates) {
+        apiWorker.fetchData(coordinates).observe { [weak self] result in
             switch result {
             case .success(let entities):
                 self?.onStartProcessing(entities)
@@ -45,10 +41,5 @@ extension Main.InteractorImpl {
             filters.insert(entity.description)
         }
         onLoadDidFinish(eateries, filters)
-    }
-    
-    func onLoadDidFinish(_ eateries: Main.Eateries, _ filters: Main.Filters) {
-        let response = Main.Response(eateries, filters)
-        queue.async(execute: combine(.loadingFinished(response), with: stateMachine.transition))
     }
 }

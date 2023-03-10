@@ -15,6 +15,24 @@ protocol Selectable {
 
 extension Filter {
     
+    enum CustomId: String {
+        case nearMe = "near-me"
+    }
+    
+    enum `Type` {
+        case category(String)
+        case nearMe
+        case `default`
+        
+        var id: String {
+            switch self {
+            case .category(let id): return id
+            case .nearMe: return CustomId.nearMe.rawValue
+            default: return ""
+            }
+        }
+    }
+    
     struct ViewModel {
         let headers: [HeaderConfigurator]
         let cells: [CellConfigurator]

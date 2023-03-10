@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6F0CE9F929BA0FDA00DB9B65 /* RetainedPromise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0CE9F829BA0FDA00DB9B65 /* RetainedPromise.swift */; };
 		6F3EE99326A042CC00821E41 /* FutureKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 6F3EE99126A042CC00821E41 /* FutureKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6F3EE99C26A042E900821E41 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3EE99A26A042E900821E41 /* Extensions.swift */; };
 		6F3EE99D26A042E900821E41 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3EE99B26A042E900821E41 /* Operators.swift */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6F0CE9F829BA0FDA00DB9B65 /* RetainedPromise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetainedPromise.swift; sourceTree = "<group>"; };
 		6F3EE98E26A042CC00821E41 /* FutureKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FutureKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F3EE99126A042CC00821E41 /* FutureKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FutureKit.h; sourceTree = "<group>"; };
 		6F3EE99226A042CC00821E41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -55,7 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				6F3EE99926A042E900821E41 /* Additionally */,
-				6F3EE9A126A042F400821E41 /* Promise */,
+				6F3EE9A126A042F400821E41 /* Promises */,
 				6F3EE99E26A042EF00821E41 /* Future */,
 				6F3EE99126A042CC00821E41 /* FutureKit.h */,
 				6F3EE99226A042CC00821E41 /* Info.plist */,
@@ -80,12 +82,13 @@
 			path = Future;
 			sourceTree = "<group>";
 		};
-		6F3EE9A126A042F400821E41 /* Promise */ = {
+		6F3EE9A126A042F400821E41 /* Promises */ = {
 			isa = PBXGroup;
 			children = (
 				6F3EE9A226A042F400821E41 /* Promise.swift */,
+				6F0CE9F829BA0FDA00DB9B65 /* RetainedPromise.swift */,
 			);
-			path = Promise;
+			path = Promises;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,6 +170,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F3EE9A026A042EF00821E41 /* Future.swift in Sources */,
+				6F0CE9F929BA0FDA00DB9B65 /* RetainedPromise.swift in Sources */,
 				6F3EE99C26A042E900821E41 /* Extensions.swift in Sources */,
 				6F3EE99D26A042E900821E41 /* Operators.swift in Sources */,
 				6F3EE9A326A042F400821E41 /* Promise.swift in Sources */,

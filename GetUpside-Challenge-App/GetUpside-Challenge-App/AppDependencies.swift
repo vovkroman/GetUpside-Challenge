@@ -71,7 +71,6 @@ extension AppDependencies: SplashSceneFactoriable {
         )
         interactor.observer = presenter
         interactor.coordinator = coordinator
-        locationWorker.delegate = interactor
         let scene = Splash.Scene(interactor: interactor)
         presenter.view = scene
         return scene
@@ -99,8 +98,6 @@ extension AppDependencies: MainSceneFactoriable {
         
         interactor.observer = presenter
         
-        locationWorker.delegate = interactor
-
         let mapComponent = makedMapComponent("Map")
         let listComponent = makeListComponent("List")
         let filterComponent = makeFilterComponent()

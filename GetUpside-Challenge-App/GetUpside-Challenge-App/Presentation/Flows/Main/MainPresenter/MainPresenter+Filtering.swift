@@ -56,6 +56,15 @@ extension Main.Presenter {
 }
 
 extension Main.Presenter: FilterSupporting {
+    
+    func applyFilterNearMe(_ coorindates: Coordinates) {
+        executor.apply(DistanceSpec(coorindates, 2000.0))
+    }
+    
+    func removeFilterNearMe() {
+        
+    }
+    
     func applyFilter(_ key: String) {
         executor.apply(CategorySpec(key))
     }

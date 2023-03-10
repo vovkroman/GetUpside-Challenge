@@ -1,21 +1,33 @@
-import Foundation
+import FutureKit
 
 extension Main.InteractorImpl {
     
-    func applyFillter(_ key: String) {
-        if key == "near me (20 km)" {
-            requestLocation()
-            return
-        }
+    func applyCategoryFilter(_ key: String) {
         presenter.applyFilter(key)
         onLoadDidFinish(eateries, [])
     }
     
-    func removeFilter(_ key: String) {
-        if key == "near me (20 km)" {
-            return
-        }
+    func removeCategoryFilter(_ key: String) {
         presenter.removeFilter(key)
+        onLoadDidFinish(eateries, [])
+    }
+    
+    func applyFilterNearMe() {
+        locationWorker.observer.observe { [weak self] result in
+            switch result {
+            case .success(let coordinates):
+                self?.addFilterMearMe(coordinates)
+            case .failure(let error):
+                break
+            }
+        }
+        locationWorker.requestLocating()
+    }
+}
+
+extension Main.InteractorImpl {
+    func addFilterMearMe(_ coordinates: Coordinates) {
+        presenter.applyFilterNearMe(coordinates)
         onLoadDidFinish(eateries, [])
     }
 }

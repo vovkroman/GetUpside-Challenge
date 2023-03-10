@@ -2,17 +2,19 @@ import Foundation
 
 extension Splash.InteractorImpl: SplashUseCase {
     
-    var isUserAuthorized: Bool {
-        return locationWorker.isUserAuthorized
-    }
-    
     func requestLocation() {
-        if isUserAuthorized {
-            locationWorker.startUpdatingLocation()
-        } else {
-            locationDidRequestForAuthorization()
-            locationWorker.requestForAutorization()
+        locatingDidStart()
+        locationWorker.observer.observe { [weak self] result in
+            switch result {
+            case .success(let coordinates):
+                self?.locatingCoordinateDidUpdated(coordinates)
+            case .failure(let error as Location.Error):
+                self?.processTheError(error)
+            case .failure(let error):
+                self?.processTheError(.other(error))
+            }
         }
+        locationWorker.requestLocating()
     }
     
     func fetchingData(_ coordinate: Coordinates) {
