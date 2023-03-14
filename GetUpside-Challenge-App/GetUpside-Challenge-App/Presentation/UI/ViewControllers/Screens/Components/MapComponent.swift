@@ -42,12 +42,8 @@ extension MapComponent {
 
 extension MapComponent: GMSMapViewDelegate {
 
-    func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
+    func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
         delegate?.onLocatingDidChage(self, position.target)
-    }
-    
-    func didTapMyLocationButton(for mapView: GMSMapView) -> Bool {
-        return true
     }
 }
 

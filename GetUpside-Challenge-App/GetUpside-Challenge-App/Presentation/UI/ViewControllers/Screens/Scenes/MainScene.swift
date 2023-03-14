@@ -29,7 +29,7 @@ extension Main {
             contentView.filterView.parentViewController = self
             contentView.filterView.childViewController = filter
             
-            interactor.onInitialLoad()
+            interactor.onInitialLoaded()
         }
         
         override func viewDidLayoutSubviews() {
@@ -54,9 +54,7 @@ extension Main {
         
         deinit {
             filter.removeFromParent()
-            components.forEach { child in
-                child.removeFromParent()
-            }
+            components.forEach { $0.removeFromParent() }
         }
     }
 }
@@ -86,19 +84,25 @@ extension Main.Scene: TabBarMenuDelegate {
     }
 }
 
-extension Main.Scene: SelectionDelegate, LocatingDelegate {
+extension Main.Scene: SelectionFilterDelegate {
     
-    func onSelect(_ component: UIViewController, _ id: String, _ isSelected: Bool) {
-        if id == Filter.CustomId.nearMe.rawValue {
-            interactor.applyFilterNearMe()
-            return
-        }
-        if isSelected {
+    func onDidSelectFilter(_ component: UIViewController, _ type: Filter.`Type`) {
+        switch type {
+        case .category(let id):
             interactor.applyCategoryFilter(id)
-        } else {
-            interactor.removeCategoryFilter(id)
+        case .nearMe:
+            interactor.applyFilterNearMe(type.id)
+        case .default:
+            break
         }
     }
+    
+    func onDidDeselectFilter(_ component: UIViewController, _ type: Filter.`Type`) {
+        interactor.removeFilter(type.id)
+    }
+}
+
+extension Main.Scene: LocatingDelegate {
     
     func onLocatingDidChage(_ component: UIViewController, _ coordinate: Coordinates) {
         interactor.fetchingData(coordinate)

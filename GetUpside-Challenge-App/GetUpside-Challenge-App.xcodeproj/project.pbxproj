@@ -56,7 +56,6 @@
 		6F67CB9529A7B75D00EB05CD /* SplashInteractorImpl+SplashUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F67CB9429A7B75D00EB05CD /* SplashInteractorImpl+SplashUseCase.swift */; };
 		6F6B7A142734567A00B46087 /* ServiceSetupers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6B7A132734567A00B46087 /* ServiceSetupers.swift */; };
 		6F7633D6277235CD005BB743 /* UIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7633D5277235CD005BB743 /* UIApplication+Extensions.swift */; };
-		6F79EABB29B24221004DD95B /* MainPresenter+Filtering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F79EABA29B24221004DD95B /* MainPresenter+Filtering.swift */; };
 		6F7F869529A7DB620096F618 /* SplashInteractorImpl+StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7F869429A7DB620096F618 /* SplashInteractorImpl+StateMachine.swift */; };
 		6F8411FC278DC676006C5B8E /* EateryConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8411FB278DC676006C5B8E /* EateryConverter.swift */; };
 		6F8411FE278DD043006C5B8E /* AnyConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8411FD278DD043006C5B8E /* AnyConverter.swift */; };
@@ -110,6 +109,7 @@
 		6FC847C928CA067700301F65 /* MapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FC847C828CA067700301F65 /* MapView.xib */; };
 		6FC847CB28CA5C7800301F65 /* ListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC847CA28CA5C7800301F65 /* ListComponent.swift */; };
 		6FCC5BDC28C8A01800E29CC6 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FCC5BDB28C8A01800E29CC6 /* MainViewModel.swift */; };
+		6FDAA9E629BF764B002D5E5F /* EaterySpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDAA9E529BF764B002D5E5F /* EaterySpecs.swift */; };
 		6FF277E82773777700D4FFE0 /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF277E72773777700D4FFE0 /* SplashViewModel.swift */; };
 		6FF71AA229AD10EB0089BADB /* MainPresenter+MainPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF71AA129AD10EB0089BADB /* MainPresenter+MainPresentable.swift */; };
 /* End PBXBuildFile section */
@@ -202,7 +202,6 @@
 		6F67CB9429A7B75D00EB05CD /* SplashInteractorImpl+SplashUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SplashInteractorImpl+SplashUseCase.swift"; sourceTree = "<group>"; };
 		6F6B7A132734567A00B46087 /* ServiceSetupers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceSetupers.swift; sourceTree = "<group>"; };
 		6F7633D5277235CD005BB743 /* UIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extensions.swift"; sourceTree = "<group>"; };
-		6F79EABA29B24221004DD95B /* MainPresenter+Filtering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainPresenter+Filtering.swift"; sourceTree = "<group>"; };
 		6F7F869429A7DB620096F618 /* SplashInteractorImpl+StateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SplashInteractorImpl+StateMachine.swift"; sourceTree = "<group>"; };
 		6F8411FB278DC676006C5B8E /* EateryConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EateryConverter.swift; sourceTree = "<group>"; };
 		6F8411FD278DD043006C5B8E /* AnyConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyConverter.swift; sourceTree = "<group>"; };
@@ -257,6 +256,7 @@
 		6FC847C828CA067700301F65 /* MapView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapView.xib; sourceTree = "<group>"; };
 		6FC847CA28CA5C7800301F65 /* ListComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListComponent.swift; sourceTree = "<group>"; };
 		6FCC5BDB28C8A01800E29CC6 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		6FDAA9E529BF764B002D5E5F /* EaterySpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EaterySpecs.swift; sourceTree = "<group>"; };
 		6FF277E72773777700D4FFE0 /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
 		6FF71AA129AD10EB0089BADB /* MainPresenter+MainPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainPresenter+MainPresentable.swift"; sourceTree = "<group>"; };
 		C0FC476D691215081D5BF116 /* Pods-GetUpside-Challenge-App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GetUpside-Challenge-App.debug.xcconfig"; path = "Target Support Files/Pods-GetUpside-Challenge-App/Pods-GetUpside-Challenge-App.debug.xcconfig"; sourceTree = "<group>"; };
@@ -738,6 +738,7 @@
 			isa = PBXGroup;
 			children = (
 				6F0BEABA28D8A76500C1788F /* FilterViewModel.swift */,
+				6FDAA9E529BF764B002D5E5F /* EaterySpecs.swift */,
 			);
 			path = Filter;
 			sourceTree = "<group>";
@@ -867,7 +868,6 @@
 			isa = PBXGroup;
 			children = (
 				6FA4A3C52741AACC005AEEBE /* MainPresenter.swift */,
-				6F79EABA29B24221004DD95B /* MainPresenter+Filtering.swift */,
 				6FF71AA129AD10EB0089BADB /* MainPresenter+MainPresentable.swift */,
 				6FB8F1DA29AFB118008EC37D /* MainPresenter+Displaying.swift */,
 			);
@@ -1091,6 +1091,7 @@
 				6FC847BB28C9DF0500301F65 /* ClusterStack.swift in Sources */,
 				6F51D1E9273C582B00BDDF6C /* MapView.swift in Sources */,
 				6F84169629B62DD000514C18 /* InnerShape+Drawing.swift in Sources */,
+				6FDAA9E629BF764B002D5E5F /* EaterySpecs.swift in Sources */,
 				6F0BEABB28D8A76500C1788F /* FilterViewModel.swift in Sources */,
 				6F8C9D1F26B02BA6000D5DA0 /* LocationWorker.swift in Sources */,
 				6F7F869529A7DB620096F618 /* SplashInteractorImpl+StateMachine.swift in Sources */,
@@ -1146,7 +1147,6 @@
 				6FAE415C29B9053D00D27534 /* MainInteractorImpl+StateMachine.swift in Sources */,
 				6F0B3DF126AF1DC600A01ABF /* ArcGisWorker.swift in Sources */,
 				6F48F76C28DE1A1100C0DCC3 /* GetUpsideLogoView.swift in Sources */,
-				6F79EABB29B24221004DD95B /* MainPresenter+Filtering.swift in Sources */,
 				6FC044C329B5E5C10057BA1E /* ErrordButton.swift in Sources */,
 				6FA77F7A29B76DE7006E81C8 /* BaseListComponent.swift in Sources */,
 				6F472C3328DC90EB005213CA /* FilterComponent.swift in Sources */,

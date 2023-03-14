@@ -31,20 +31,17 @@ enum Constant {
     
     enum Map {
         static let numberInCluster: Int = 2
-        static let iconGenerator: Cluster.IconGenerator = Cluster.IconGenerator(
-            buckets: [10, 30, 50, 70, 90, 130],
-            backgroundImages: [
-                ImageRenderer.render(MapRenderRequest.cluster(diameter: 70)),
-                ImageRenderer.render(MapRenderRequest.cluster(diameter: 100)),
-                ImageRenderer.render(MapRenderRequest.cluster(diameter: 120)),
-                ImageRenderer.render(MapRenderRequest.cluster(diameter: 150)),
-                ImageRenderer.render(MapRenderRequest.cluster(diameter: 190)),
-                ImageRenderer.render(MapRenderRequest.cluster(diameter: 210))
-            ]
-        )
-        enum Pin {
-            static let size: CGSize = CGSize(width: 35.0, height: 50.0)
-        }
+        static let zooms: [Int] = []
+        static let clusterIcons: [UIImage] = [
+            ImageRenderer.render(MapRenderRequest.cluster(diameter: 70)),
+            ImageRenderer.render(MapRenderRequest.cluster(diameter: 100)),
+            ImageRenderer.render(MapRenderRequest.cluster(diameter: 120)),
+            ImageRenderer.render(MapRenderRequest.cluster(diameter: 150)),
+            ImageRenderer.render(MapRenderRequest.cluster(diameter: 190)),
+            ImageRenderer.render(MapRenderRequest.cluster(diameter: 210))
+        ]
+        static let clusterBuckets: [NSNumber] = [10, 30, 50, 70, 90, 130]
+        static let pinSize: CGSize = CGSize(width: 35.0, height: 50.0)
     }
     
     enum Filter {
@@ -58,6 +55,7 @@ enum Constant {
     }
     
     enum Location {
-        static let kCLDistanceHundredMeters: Double = 100.0
+        static let distanceTwentyThousandMeters: Double = 20_000.0
+        static let distanceHundredMeters: Double = 100.0
     }
 }

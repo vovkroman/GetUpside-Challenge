@@ -8,8 +8,8 @@ extension Convertor {
         typealias To = Main.ViewModel
         
         func convertFromTo(from: Eatery) throws -> Main.ViewModel {
-            let Pin = Constant.Map.Pin.self
-            let size = Pin.size
+            let map = Constant.Map.self
+            let size = map.pinSize
             return Main.ViewModel { builder in
                 builder.name = from.name
                 builder.categoryId = from.categoryId

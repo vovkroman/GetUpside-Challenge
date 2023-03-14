@@ -1,8 +1,9 @@
 import ReusableKit
 import UIKit
 
-protocol SelectionDelegate: AnyObject {
-    func onSelect(_ component: UIViewController, _ id: String, _ isSelected: Bool)
+protocol SelectionFilterDelegate: AnyObject {
+    func onDidSelectFilter(_ component: UIViewController, _ type: Filter.`Type`)
+    func onDidDeselectFilter(_ component: UIViewController, _ type: Filter.`Type`)
 }
 
 extension Filter {
@@ -23,7 +24,7 @@ extension Filter {
     final class Component: BaseListComponent<FilterCell, Filter.CellConfigurator> {
         
         private var headerConfigurators: [HeaderConfigurator] = []
-        weak var delegate: SelectionDelegate?
+        weak var delegate: SelectionFilterDelegate?
         
         override func viewDidLoad() {
             super.viewDidLoad()
@@ -77,7 +78,7 @@ extension Filter {
             layout collectionViewLayout: UICollectionViewLayout,
             referenceSizeForHeaderInSection section: Int
         ) -> CGSize {
-            return CGSize(50, 50)
+            return headerConfigurators[section].size
         }
         
         required init() {
@@ -113,6 +114,10 @@ private extension Filter.Component {
     }
     
     func onSelect(_ configurator: Filter.CellConfigurator) {
-        delegate?.onSelect(self, configurator.id, configurator.isSelected)
+        if configurator.isSelected {
+            delegate?.onDidSelectFilter(self, configurator.type)
+        } else {
+            delegate?.onDidDeselectFilter(self, configurator.type)
+        }
     }
 }

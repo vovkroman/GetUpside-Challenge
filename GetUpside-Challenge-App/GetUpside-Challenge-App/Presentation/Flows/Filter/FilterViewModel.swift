@@ -15,8 +15,13 @@ protocol Selectable {
 
 extension Filter {
     
-    enum CustomId: String {
+    enum CustomId: String, CustomStringConvertible {
         case nearMe = "near-me"
+        case `default` = "default"
+        
+        var description: String {
+            return rawValue
+        }
     }
     
     enum `Type` {
@@ -27,8 +32,10 @@ extension Filter {
         var id: String {
             switch self {
             case .category(let id): return id
-            case .nearMe: return CustomId.nearMe.rawValue
-            default: return ""
+            case .nearMe:
+                return "\(CustomId.nearMe)"
+            default:
+                return "\(CustomId.default)"
             }
         }
     }
@@ -46,7 +53,7 @@ extension Filter {
     class CellConfigurator {
         
         final class Builder {
-            var id: String = ""
+            var type: `Type` = .default
             var size: CGSize = .zero
             var attributedString: NSAttributedString = NSAttributedString()
             var isSelected: Bool = false
@@ -54,7 +61,7 @@ extension Filter {
         
         typealias BuilderBlock = (Builder) -> ()
         
-        let id: String
+        let type: `Type`
         let size: CGSize
         let attributedString: NSAttributedString
         var isSelected: Bool
@@ -66,8 +73,7 @@ extension Filter {
         }
         
         init(_ builder: Builder) {
-            // unique identifier for filter item
-            id = builder.id
+            type = builder.type
             attributedString = builder.attributedString
             
             // size of item
@@ -84,6 +90,7 @@ extension Filter {
         typealias BuilderBlock = (Builder) -> ()
 
         let image: UIImage
+        let size: CGSize
         
         convenience init(_ block: BuilderBlock) {
             let builder = Builder()
@@ -93,6 +100,7 @@ extension Filter {
         
         init(_ builder: Builder) {
             image = builder.image
+            size = image.size
         }
     }
 }

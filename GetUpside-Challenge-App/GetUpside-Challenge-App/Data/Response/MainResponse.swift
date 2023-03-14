@@ -2,10 +2,10 @@ import Foundation
 
 extension Main {
     struct Response {
-        let eateries: Eateries
+        let eateries: [Eatery]
         let filters: Filters
         
-        init(_ eateries: Eateries, _ filters: Filters) {
+        init(_ eateries: [Eatery], _ filters: Filters) {
             self.eateries = eateries
             self.filters = filters
         }

@@ -11,6 +11,7 @@ extension Main {
         }
         
         enum Event {
+            case startedLoading
             case loadingFinished(Main.Response)
         }
         
@@ -28,11 +29,13 @@ extension Main {
         
         func transition(with event: Event) {
             switch (state, event) {
-            case (.idle, .loadingFinished(let response)):
-                state = .list(response)
-            case (.list(_), .loadingFinished(let new)):
+            case (.idle, .startedLoading), (.list, .startedLoading), (.error, .startedLoading):
+                state = .loading
+            case (.idle, .loadingFinished(let new)), (.list, .loadingFinished(let new)),
+                (.loading, .loadingFinished(let new)), (.error, .loadingFinished(let new)):
                 state = .list(new)
-            default:
+            case (.loading, .startedLoading):
+                // noting to do, as it's alrady loading
                 break
             }
         }

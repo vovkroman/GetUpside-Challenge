@@ -1,11 +1,12 @@
-import Foundation
+import FilterKit
 
 protocol MainUseCase: DataFetching, LocationSupporting {}
-protocol MainPresenterSupporting: MainDataLoadable, FilterSupporting {}
+protocol MainPresenterSupporting {}
 
 extension Main {
     
-    typealias Eateries = Set<Eatery>
+    typealias Model = Eatery
+    typealias Eateries = Set<Model>
     typealias Filters = Set<String>
     
     final class InteractorImpl {
@@ -19,6 +20,8 @@ extension Main {
         
         var eateries: Eateries
         var filters: Filters = []
+        
+        var executor: FilterExecutor<String, Eatery> = FilterExecutor()
         
         var coordinator: AnyCoordinating<Main.Event>?
         
@@ -39,7 +42,7 @@ extension Main {
             _ apiWorker: GetEateriesUseCase,
             _ presenter: MainPresenterSupporting,
             _ queue: DispatchQueue,
-            _ eateries: [Eatery]
+            _ eateries: [Model]
         ) {
             self.apiWorker = apiWorker
             self.locationWorker = location

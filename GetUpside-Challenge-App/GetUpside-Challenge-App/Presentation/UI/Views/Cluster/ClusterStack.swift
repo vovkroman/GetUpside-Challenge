@@ -20,6 +20,7 @@ extension Cluster {
 extension Cluster {
     final class Renderer: GMUDefaultClusterRenderer {
         override func shouldRender(as cluster: GMUCluster, atZoom zoom: Float) -> Bool {
+            print("Zoom: \(zoom)")
             return cluster.count >= Constant.Map.numberInCluster
         }
     }
@@ -27,5 +28,4 @@ extension Cluster {
 
 extension Cluster {
     final class Manager: GMUClusterManager, ClusterManagerSupporting {}
-}
-
+} 

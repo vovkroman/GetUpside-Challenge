@@ -2,7 +2,7 @@ import Foundation
 
     //MARK: Specifications
 
-public protocol Specification: Hashable {
+public protocol Specification {
     
     associatedtype Item
     

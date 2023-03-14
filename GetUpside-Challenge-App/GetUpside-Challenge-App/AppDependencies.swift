@@ -27,9 +27,10 @@ class AppDependencies {
     /// I’ve found it doesn’t actually affect which antennas are turned on like desiredAccuracy does,
     /// but just filters location changes instead.
     lazy private var locationManager: CLLocationManager = {
+        let location = Constant.Location.self
         let locationManager = CLLocationManager()
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
-        locationManager.distanceFilter = Constant.Location.kCLDistanceHundredMeters
+        locationManager.distanceFilter = location.distanceHundredMeters
         
         return locationManager
     }()
@@ -128,7 +129,11 @@ extension AppDependencies {
         /// Build cluster graph with the supplied icon generator and renderer
         ///
         let mapView = scene.contentView
-        let iconGenerator = Constant.Map.iconGenerator
+        let cluster = Constant.Map.self
+        let iconGenerator = Cluster.IconGenerator(
+            buckets: cluster.clusterBuckets,
+            backgroundImages: cluster.clusterIcons
+        )
         let algorithm = Cluster.Algorithm()
         let renderer = Cluster.Renderer(
             mapView: mapView,

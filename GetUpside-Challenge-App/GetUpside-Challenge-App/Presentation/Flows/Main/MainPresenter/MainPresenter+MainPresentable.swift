@@ -6,6 +6,11 @@ extension Main.Presenter: MainPresenterSupporting {
         display(convertToEateyViewModel(response.eateries))
         display(convertToFilterViewModels(response.filters))
     }
+    
+    func onLoading() {
+        guard let view = view else { return }
+        queue.async(execute: combine(with: view.onLoading))
+    }
 }
 
 private extension Main.Presenter {
@@ -15,10 +20,11 @@ private extension Main.Presenter {
         return try! converter.convertFromTo(from: models)
     }
     
-    func convertToEateyViewModel(_ models: Main.Eateries) -> [Main.ViewModel] {
+    func convertToEateyViewModel(_ models: [Eatery]) -> [Main.ViewModel] {
         var viewModels: [Main.ViewModel] = []
         let converter = Convertor.EateryViewModelConverter()
-        for model in executor.filter(models) {
+        for model in models {
+            // used try! as it never throw an exeption
             viewModels.append(try! converter.convertFromTo(from: model))
         }
         return viewModels

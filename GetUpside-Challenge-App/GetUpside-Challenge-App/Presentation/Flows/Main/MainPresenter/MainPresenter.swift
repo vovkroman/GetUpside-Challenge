@@ -1,18 +1,7 @@
 import UI
-import FilterKit
 
 protocol MainStateMachineObserver: AnyObject {
     func stateDidChanched(_ stateMachine: Main.StateMachine, _ to: Main.StateMachine.State)
-}
-
-protocol MainDataLoadable: AnyObject {
-    func onDataDidLoad(_ response: Main.Response)
-}
-
-protocol FilterSupporting: AnyObject {
-    func applyFilterNearMe(_ coorindates: Coordinates)
-    func applyFilter(_ key: String)
-    func removeFilter(_ key: String)
 }
 
 protocol MainPresentable: AnyObject {
@@ -24,13 +13,13 @@ protocol MainPresentable: AnyObject {
 extension Main {
     final class Presenter {
         weak var view: MainPresentable?
-        var executor: FilterExecutor<Eatery> = FilterExecutor<Eatery>()
-        let queue: DispatchQueue = DispatchQueue.main
+        let queue: DispatchQueue = .main
     }
 }
 
 extension Main.Presenter: MainStateMachineObserver {
     func stateDidChanched(_ stateMachine: Main.StateMachine, _ from: Main.StateMachine.State) {
+        print("STATE: \(stateMachine.state)")
         handleState(stateMachine.state)
     }
 }
@@ -44,7 +33,7 @@ private extension Main.Presenter {
         case .error:
             break
         case .loading:
-            break
+            onLoading()
         }
     }
 }

@@ -10,17 +10,19 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="U6b-Vx-4bR" customClass="FilterHeaderView" customModule="GetUpside_Challenge_App" customModuleProvider="target">
+        <collectionReusableView userInteractionEnabled="NO" contentMode="center" id="U6b-Vx-4bR" customClass="FilterHeaderView" customModule="GetUpside_Challenge_App" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="133" height="50"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dlw-jb-WF3">
-                    <rect key="frame" x="4" y="4" width="129" height="42"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dlw-jb-WF3">
+                    <rect key="frame" x="4" y="4" width="125" height="42"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </imageView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="dlw-jb-WF3" secondAttribute="trailing" id="GQa-pE-yTM"/>
+                <constraint firstAttribute="trailing" secondItem="dlw-jb-WF3" secondAttribute="trailing" constant="4" id="GQa-pE-yTM"/>
                 <constraint firstItem="dlw-jb-WF3" firstAttribute="bottom" secondItem="VXr-Tz-HHm" secondAttribute="bottom" constant="-4" id="Xe3-LG-oQl"/>
                 <constraint firstItem="dlw-jb-WF3" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" constant="4" id="eSM-NT-Enq"/>
                 <constraint firstItem="dlw-jb-WF3" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="4" id="zxn-Pi-4AK"/>
