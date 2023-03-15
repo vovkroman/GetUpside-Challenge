@@ -23,7 +23,8 @@ extension Filter {
     
     final class Component: BaseListComponent<FilterCell, Filter.CellConfigurator> {
         
-        private var headerConfigurators: [HeaderConfigurator] = []
+        private var headerConfig: NSAttributedString =  NSAttributedString()
+        
         weak var delegate: SelectionFilterDelegate?
         
         override func viewDidLoad() {
@@ -34,14 +35,20 @@ extension Filter {
         
         // MARK: - Public API
         
-        func render(_ cells: [CellConfigurator], _ headers: [HeaderConfigurator]) {
-            self.configurators = cells
-            self.headerConfigurators = headers
-            collectionView.reloadData()
+        func render(_ viewModel: Filter.ViewModel) {
+            switch viewModel {
+            case .inital(let cells, let headerConfig):
+                self.configurators = cells
+                self.headerConfig = headerConfig
+                collectionView.reloadData()
+            case .update(let cellConfigs):
+                let (indexPathes, cells) = (cellConfigs.indexPathes, cellConfigs.cells)
+                addCells(cells, indexPathes)
+            }
         }
         
         override func numberOfSections(in collectionView: UICollectionView) -> Int {
-            return headerConfigurators.count
+            return 1
         }
         
         override func collectionView(
@@ -53,7 +60,7 @@ extension Filter {
                 ofKind: UICollectionView.elementKindSectionHeader,
                 for: indexPath
             )
-            headerView.configure(headerConfigurators[indexPath.section])
+            headerView.configure(headerConfig)
             return headerView
         }
                 
@@ -78,7 +85,7 @@ extension Filter {
             layout collectionViewLayout: UICollectionViewLayout,
             referenceSizeForHeaderInSection section: Int
         ) -> CGSize {
-            return headerConfigurators[section].size
+            return CGSize(50.0, 50.0)
         }
         
         required init() {
@@ -111,6 +118,16 @@ private extension Filter.Component {
         collectionView.backgroundColor = .clear
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.allowsMultipleSelection = true
+    }
+    
+    func addCells(
+        _ new: [Filter.CellConfigurator],
+        _ indexPathes: [IndexPath]
+    ) {
+        configurators.append(contentsOf: new)
+        collectionView.performBatchUpdates {
+            collectionView.insertItems(at: indexPathes)
+        }
     }
     
     func onSelect(_ configurator: Filter.CellConfigurator) {

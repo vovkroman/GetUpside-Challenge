@@ -25,7 +25,7 @@
                     <rect key="frame" x="0.0" y="92" width="365" height="40"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="40" id="pwt-Wz-0LA"/>
+                        <constraint firstAttribute="height" priority="999" constant="40" id="pwt-Wz-0LA"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3uX-0K-2RU" customClass="ContainerView" customModule="UI">

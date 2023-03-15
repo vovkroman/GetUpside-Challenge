@@ -2,9 +2,16 @@ import Foundation
 
 extension Main.Presenter: MainPresenterSupporting {
     
-    func onDataDidLoad(_ response: Main.Response) {
-        display(convertToEateyViewModel(response.eateries))
-        display(convertToFilterViewModels(response.filters))
+    func onDataDidLoad(_ response: Main.Response, _ isInitial: Bool) {
+        let eateries = response.eateries
+        if !eateries.isEmpty {
+            display(convertToEateyViewModel(eateries))
+        }
+        
+        let filters = response.filters
+        if !filters.isEmpty {
+            display(convertToFilterViewModels(filters, isInitial))
+        }
     }
     
     func onLoading() {
@@ -15,12 +22,12 @@ extension Main.Presenter: MainPresenterSupporting {
 
 private extension Main.Presenter {
     
-    func convertToFilterViewModels(_ models: Main.Filters) -> Filter.ViewModel {
-        let converter = Convertor.FiltersViewModelConverter()
+    func convertToFilterViewModels(_ models: [Filter.Model], _ isInitial: Bool) -> Filter.ViewModel {
+        let converter = Convertor.FiltersViewModelConverter(isInitial)
         return try! converter.convertFromTo(from: models)
     }
     
-    func convertToEateyViewModel(_ models: [Eatery]) -> [Main.ViewModel] {
+    func convertToEateyViewModel(_ models: [Main.Model]) -> [Main.ViewModel] {
         var viewModels: [Main.ViewModel] = []
         let converter = Convertor.EateryViewModelConverter()
         for model in models {

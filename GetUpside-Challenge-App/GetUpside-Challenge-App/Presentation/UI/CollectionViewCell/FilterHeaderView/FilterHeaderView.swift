@@ -2,9 +2,8 @@ import UIKit
 import ReusableKit
 
 class FilterHeaderView: UICollectionReusableView, NibReusable {
-    @IBOutlet weak var imageView: UIImageView!
     
-    func configure(_ configurator: Filter.HeaderConfigurator) {
-        imageView.image = configurator.image
+    func configure(_ configurator: NSAttributedString) {
+//        imageView.image = configurator.image
     }
 }

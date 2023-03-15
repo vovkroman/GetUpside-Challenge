@@ -40,14 +40,14 @@ extension Filter {
         }
     }
     
-    struct ViewModel {
-        let headers: [HeaderConfigurator]
+    struct CellConfigurators {
+        let indexPathes: [IndexPath]
         let cells: [CellConfigurator]
-        
-        init(_ headers: [HeaderConfigurator], _ cells: [CellConfigurator]) {
-            self.cells = cells
-            self.headers = headers
-        }
+    }
+    
+    enum ViewModel {
+        case inital(cells: [CellConfigurator], headerConfig: NSAttributedString)
+        case update(cellConfigs: CellConfigurators)
     }
     
     class CellConfigurator {
@@ -79,28 +79,6 @@ extension Filter {
             // size of item
             size = builder.size
             isSelected = builder.isSelected
-        }
-    }
-    
-    class HeaderConfigurator {
-        class Builder {
-            var image: UIImage = UIImage()
-        }
-        
-        typealias BuilderBlock = (Builder) -> ()
-
-        let image: UIImage
-        let size: CGSize
-        
-        convenience init(_ block: BuilderBlock) {
-            let builder = Builder()
-            block(builder)
-            self.init(builder)
-        }
-        
-        init(_ builder: Builder) {
-            image = builder.image
-            size = image.size
         }
     }
 }

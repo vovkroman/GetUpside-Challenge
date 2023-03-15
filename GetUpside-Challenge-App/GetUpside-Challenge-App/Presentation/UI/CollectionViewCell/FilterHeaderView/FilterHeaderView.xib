@@ -13,23 +13,8 @@
         <collectionReusableView userInteractionEnabled="NO" contentMode="center" id="U6b-Vx-4bR" customClass="FilterHeaderView" customModule="GetUpside_Challenge_App" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="133" height="50"/>
             <autoresizingMask key="autoresizingMask"/>
-            <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dlw-jb-WF3">
-                    <rect key="frame" x="4" y="4" width="125" height="42"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                </imageView>
-            </subviews>
             <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-            <constraints>
-                <constraint firstAttribute="trailing" secondItem="dlw-jb-WF3" secondAttribute="trailing" constant="4" id="GQa-pE-yTM"/>
-                <constraint firstItem="dlw-jb-WF3" firstAttribute="bottom" secondItem="VXr-Tz-HHm" secondAttribute="bottom" constant="-4" id="Xe3-LG-oQl"/>
-                <constraint firstItem="dlw-jb-WF3" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" constant="4" id="eSM-NT-Enq"/>
-                <constraint firstItem="dlw-jb-WF3" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="4" id="zxn-Pi-4AK"/>
-            </constraints>
-            <connections>
-                <outlet property="imageView" destination="dlw-jb-WF3" id="Jbm-Yq-Pw2"/>
-            </connections>
             <point key="canvasLocation" x="-236.15384615384613" y="45.497630331753555"/>
         </collectionReusableView>
     </objects>

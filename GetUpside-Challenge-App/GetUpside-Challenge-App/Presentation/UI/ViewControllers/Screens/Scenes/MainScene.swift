@@ -62,11 +62,11 @@ extension Main {
 extension Main.Scene: MainPresentable {
     
     func onLoading() {
-        ////
+        // show animation on loading
     }
     
     func onFilterChanged(_ viewModel: Filter.ViewModel) {
-        filter.render(viewModel.cells, viewModel.headers)
+        filter.render(viewModel)
     }
     
     func onDisplay(_ viewModels: [Main.ViewModel]) {

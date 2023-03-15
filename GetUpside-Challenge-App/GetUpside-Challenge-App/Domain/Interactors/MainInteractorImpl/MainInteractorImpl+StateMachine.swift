@@ -6,8 +6,13 @@ extension Main.InteractorImpl {
         stateMachine.transition(with: .startedLoading)
     }
     
-    func onLoadDidFinish(_ eateries: [Eatery], _ filters: Main.Filters) {
+    func onInitialLoadingDidFinish(_ eateries: [Main.Model], _ filters: [Filter.Model]) {
         let response = Main.Response(eateries, filters)
-        stateMachine.transition(with: .loadingFinished(response))
+        stateMachine.transition(with: .initialLoadingDidFinish(response))
+    }
+    
+    func onLoadDidFinish(_ eateries: [Main.Model], _ filters: [Filter.Model]) {
+        let response = Main.Response(eateries, filters)
+        stateMachine.transition(with: .loadingDidFinish(response))
     }
 }

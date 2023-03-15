@@ -9,10 +9,19 @@ extension Main.InteractorImpl {
     }
     
     func applyFilterNearMe(_ id: String) {
-        locationWorker.observer.observe { [weak self] result in
+        func createAndApply(_ id: String, _ coordinates: Coordinates) {
+            let Location = Constant.Location.self
+            let spec = DistanceSpec(
+                coordinates,
+                Location.distanceTwentyThousandMeters
+            )
+            queue.async(execute: combine(spec, id, with: executeFilter))
+        }
+        
+        locationWorker.observer.observe { result in
             switch result {
             case .success(let coordinates):
-                self?.applyNearMeFilter(id, coordinates)
+                createAndApply(id, coordinates)
             case .failure(let error):
                 break
             }
@@ -32,22 +41,13 @@ private extension Main.InteractorImpl {
         executor.apply(spec, id)
         onLoadingStarted()
         let filtered = executor.filter(eateries)
-        onLoadDidFinish(filtered, filters)
+        onLoadDidFinish(filtered, [])
     }
     
     func remove(_ id: String) {
         executor.remove(id)
         onLoadingStarted()
         let filtered = executor.filter(eateries)
-        onLoadDidFinish(filtered, filters)
-    }
-    
-    func applyNearMeFilter(_ id: String, _ coordinates: Coordinates) {
-        let Location = Constant.Location.self
-        let spec = DistanceSpec(
-            coordinates,
-            Location.distanceTwentyThousandMeters
-        )
-        queue.async(execute: combine(spec, id, with: executeFilter))
+        onLoadDidFinish(filtered, [])
     }
 }

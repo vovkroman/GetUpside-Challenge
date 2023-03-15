@@ -27,9 +27,10 @@ extension Main.Presenter: MainStateMachineObserver {
 private extension Main.Presenter {
     func handleState(_ state: Main.StateMachine.State) {
         switch state {
-        case .idle: break
-        case .list(let response):
-            onDataDidLoad(response)
+        case .idle:
+            break
+        case .list(let response, let isInitial):
+            onDataDidLoad(response, isInitial)
         case .error:
             break
         case .loading:

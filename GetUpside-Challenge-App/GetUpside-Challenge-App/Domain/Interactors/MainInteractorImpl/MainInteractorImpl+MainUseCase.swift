@@ -34,27 +34,38 @@ private extension Main.InteractorImpl {
         
     func handleInitialLoading() {
         onLoadingStarted()
-        var newComings: [Eatery] = []
+        var newEateries: [Eatery] = []
+        var newFilterIds: [Filter.Model] = []
+        var index = 0
         for entity in eateries {
             // check if newcoming filter has been processed
-            newComings.append(entity)
-            if filters.contains(entity.description) { continue }
-            filters.insert(entity.description)
+            newEateries.append(entity)
+            
+            let filterId = entity.description
+            if filters.contains(filterId) { continue }
+            filters.insert(filterId)
+            newFilterIds.append(Filter.Model(filterId, index))
+            index += 1
         }
-        onLoadDidFinish(newComings, filters)
+        onInitialLoadingDidFinish(newEateries, newFilterIds)
     }
     
     func handleNewEateries<S: Sequence>(_ newComings: S) where S.Element == Eatery {
         onLoadingStarted()
+        var newFilterIds: [Filter.Model] = []
+        var idx = filters.count
         for entity in newComings where !eateries.contains(entity) {
             
             // check if newcoming entity has been processed
             eateries.insert(entity)
             
             // check if newcoming filter has been processed
-            if filters.contains(entity.description) { continue }
-            filters.insert(entity.description)
+            let filterId = entity.description
+            if filters.contains(filterId) { continue }
+            filters.insert(filterId)
+            newFilterIds.append(Filter.Model(filterId, idx))
+            idx += 1
         }
-        onLoadDidFinish(executor.filter(eateries), filters)
+        onLoadDidFinish(executor.filter(eateries), newFilterIds)
     }
 }

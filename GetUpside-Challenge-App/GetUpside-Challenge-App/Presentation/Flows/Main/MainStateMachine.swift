@@ -5,14 +5,15 @@ extension Main {
     final class StateMachine {
         enum State {
             case idle
-            case list(Main.Response)
+            case list(response: Main.Response, isInitial: Bool)
             case loading
             case error
         }
         
         enum Event {
             case startedLoading
-            case loadingFinished(Main.Response)
+            case initialLoadingDidFinish(Main.Response)
+            case loadingDidFinish(Main.Response)
         }
         
         weak var observer: MainStateMachineObserver?
@@ -31,9 +32,12 @@ extension Main {
             switch (state, event) {
             case (.idle, .startedLoading), (.list, .startedLoading), (.error, .startedLoading):
                 state = .loading
-            case (.idle, .loadingFinished(let new)), (.list, .loadingFinished(let new)),
-                (.loading, .loadingFinished(let new)), (.error, .loadingFinished(let new)):
-                state = .list(new)
+            case (.idle, .initialLoadingDidFinish(let new)), (.list, .initialLoadingDidFinish(let new)),
+                (.loading, .initialLoadingDidFinish(let new)), (.error, .initialLoadingDidFinish(let new)):
+                state = .list(response: new, isInitial: true)
+            case (.idle, .loadingDidFinish(let new)), (.list, .loadingDidFinish(let new)),
+                (.loading, .loadingDidFinish(let new)), (.error, .loadingDidFinish(let new)):
+                state = .list(response: new, isInitial: false)
             case (.loading, .startedLoading):
                 // noting to do, as it's alrady loading
                 break

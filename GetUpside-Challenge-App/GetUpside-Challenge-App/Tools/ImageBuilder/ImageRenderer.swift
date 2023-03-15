@@ -5,6 +5,7 @@ struct ImageRenderer {
         let format = UIGraphicsImageRendererFormat()
         format.opaque = false
         format.scale = UIScreen.main.scale
+        format.preferredRange = .standard
         
         let path = request.shape.path
         let bounds = path.bounds
