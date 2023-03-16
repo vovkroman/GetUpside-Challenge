@@ -26,7 +26,7 @@ open class LetteringLayer: CAShapeLayer {
         path = changedPath
     }
     
-    private func _setup() {
+    private func onSetup() {
         strokeColor = config.stokeColor.cgColor
         fillColor = config.fillColor.cgColor
         contentsScale = UIScreen.main.scale
@@ -39,7 +39,7 @@ open class LetteringLayer: CAShapeLayer {
     
     public override init() {
         super.init()
-        _setup()
+        onSetup()
     }
     
     public override init(layer: Any) {
@@ -48,29 +48,29 @@ open class LetteringLayer: CAShapeLayer {
     
     required public init?(coder: NSCoder) {
         super.init(coder: coder)
-        _setup()
+        onSetup()
     }
     
     open func start() {
         let strokeAnimationGroup = CAAnimationGroup()
         
-        let _inAnimation = CABasicAnimation(type: .strokeEnd(params: Animation.Params(beginTime: 0.0,
+        let inAnimation = CABasicAnimation(type: .strokeEnd(params: Animation.Params(beginTime: 0.0,
                                                                                       from: 0.0,
                                                                                       to: 1.0,
                                                                                       duration: 3.0,
                                                                                       timingFunc: .init(name: .easeIn))))
         
-        let _outAnimation = CABasicAnimation(type: .strokeStart(params: Animation.Params(beginTime: _inAnimation.duration,
+        let outAnimation = CABasicAnimation(type: .strokeStart(params: Animation.Params(beginTime: inAnimation.duration,
                                                                                          from: 0.0,
                                                                                          to: 1.0,
                                                                                          duration: 3.0,
                                                                                          timingFunc: .init(name: .easeInEaseOut))))
         
         
-        strokeAnimationGroup.duration = _inAnimation.duration + _outAnimation.duration
+        strokeAnimationGroup.duration = inAnimation.duration + outAnimation.duration
         
         strokeAnimationGroup.repeatCount = .infinity
-        strokeAnimationGroup.animations = [_inAnimation, _outAnimation]
+        strokeAnimationGroup.animations = [inAnimation, outAnimation]
         
         let id = Animation.KeyPath.self
         add(strokeAnimationGroup, forKey: "\(id.drawLineAnimation)")

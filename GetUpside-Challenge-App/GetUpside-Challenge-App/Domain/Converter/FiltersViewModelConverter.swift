@@ -19,10 +19,12 @@ extension Convertor {
                 let numerOfModels = from.count
                 cellsConfigurators.append(makeCellConfigurator(Filter.Model("near me (20 km)", numerOfModels + 1), .nearMe))
                 return .inital(cells: cellsConfigurators,
-                               headerConfig: makeHeader("Filter: ")
+                               header: makeHeader("Filter:")
                 )
             }
-            return .update(cellConfigs: Filter.CellConfigurators(indexPathes: indexPathes, cells: cellsConfigurators))
+            return .update(cellConfigs: Filter.CellConfigurators(indexPathes: indexPathes,
+                                                                 cells: cellsConfigurators)
+            )
         }
         
         func convertToFrom(from: Filter.ViewModel) throws -> [Filter.Model] {
@@ -43,17 +45,29 @@ private extension Convertor.FiltersViewModelConverter {
         let padding = filter.padding
         
         let size = CGSize(.infinity, filter.height)
-        return Filter.CellConfigurator { builer in
+        return Filter.CellConfigurator { builder in
             let attributedString = NSAttributedString(string: item.description, attributes: attributes)
             let rect = attributedString.boundingRect(with: size, options: [], context: nil)
             
-            builer.attributedString = attributedString
-            builer.type = type
-            builer.size = CGSize(rect.width + padding.dx, rect.height + padding.dy)
+            builder.attributedString = attributedString
+            builder.type = type
+            builder.size = CGSize(rect.width + padding.dx, rect.height + padding.dy)
         }
     }
     
-    func makeHeader(_ title: String) -> NSAttributedString {
-        return NSAttributedString(string: title)
+    func makeHeader(_ title: String) -> Filter.HeaderConfigurator {
+        let filter = Constant.Filter.self
+        let attributes = filter.attributes
+        let padding = filter.padding
+        
+        let size = CGSize(.infinity, filter.height)
+        return Filter.HeaderConfigurator { builder in
+            
+            let attributedString = NSAttributedString(string: title, attributes: attributes)
+            let rect = attributedString.boundingRect(with: size, options: [], context: nil)
+            
+            builder.attributedString = attributedString
+            builder.size = CGSize(rect.width + padding.dx, rect.height + padding.dy)
+        }
     }
 }

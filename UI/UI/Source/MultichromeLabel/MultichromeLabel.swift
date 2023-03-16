@@ -4,15 +4,15 @@ open class MultichromeLabel: UILabel {
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        _config()
+        initialConfig()
     }
     
     required public init?(coder: NSCoder) {
         super.init(coder: coder)
-        _config()
+        initialConfig()
     }
     
-    private func _config() {
+    private func initialConfig() {
         layer.contentsFormat = .RGBA8Uint
     }
 }

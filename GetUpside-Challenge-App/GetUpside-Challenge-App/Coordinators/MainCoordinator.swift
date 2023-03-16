@@ -6,22 +6,22 @@ extension Main {
     
     class Coordinator: BaseCoordinator {
         
-        private let _navigationController: UINavigationController
-        private let _appDependecies: AppDependencies
-        private let _entities: [Eatery]
+        private let navigationController: UINavigationController
+        private let appDependecies: AppDependencies
+        private let entities: [Eatery]
         weak var parentCoordinator: ApplicationCoordinator?
         
         // MARK: - Public methods
         
         override func start(animated: Bool) {
-            let scene = _appDependecies.buildMainScene(AnyCoordinating(self), _entities)
-            _navigationController.setViewControllers([scene], animated: animated)
+            let scene = appDependecies.buildMainScene(AnyCoordinating(self), entities)
+            navigationController.setViewControllers([scene], animated: animated)
         }
         
         init(_ navigationController: UINavigationController, _ appDependecies: AppDependencies, _ entities: [Eatery]) {
-            _navigationController = navigationController
-            _appDependecies = appDependecies
-            _entities = entities
+            self.navigationController = navigationController
+            self.appDependecies = appDependecies
+            self.entities = entities
         }
     }
 }

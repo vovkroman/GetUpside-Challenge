@@ -49,7 +49,7 @@ enum Constant {
         static let padding: (dx: CGFloat, dy: CGFloat) = (dx: 16.0, dy: 4.0)
         static let size: CGSize = CGSize(50.0, 50.0)
         static let attributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont.boldSystemFont(ofSize: 22),
+            .font: UIFont.systemFont(ofSize: 21, weight: .regular),
             .foregroundColor: UIColor.black
         ]
     }

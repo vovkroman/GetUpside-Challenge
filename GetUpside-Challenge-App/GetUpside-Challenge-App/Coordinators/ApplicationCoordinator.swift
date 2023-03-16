@@ -2,22 +2,22 @@ import UIKit
 
 final class ApplicationCoordinator: BaseCoordinator {
     
-    private let _window: UIWindow
-    private let _appDependencies: AppDependencies
+    private let window: UIWindow
+    private let appDependencies: AppDependencies
     
     override func start(
         animated: Bool = true
     ) {
-        let navigationController = _appDependencies.buildNavigationScene()
+        let navigationController = appDependencies.buildNavigationScene()
         navigationController.isNavigationBarHidden = true
         
-        _window.rootViewController = navigationController
-        _window.makeKeyAndVisible()
+        window.rootViewController = navigationController
+        window.makeKeyAndVisible()
     
         // to coordinate to splash if we need to fetch some data (such as intial service requests)
         let splashCoordinator = Splash.Coordinator(
             navigationController,
-            appDependecies: _appDependencies
+            appDependecies: appDependencies
         )
         splashCoordinator.parentCoordinator = self
 
@@ -32,7 +32,7 @@ final class ApplicationCoordinator: BaseCoordinator {
         window: UIWindow,
         appDependencies: AppDependencies
     ) {
-        _window = window
-        _appDependencies = appDependencies
+        self.window = window
+        self.appDependencies = appDependencies
     }
 }

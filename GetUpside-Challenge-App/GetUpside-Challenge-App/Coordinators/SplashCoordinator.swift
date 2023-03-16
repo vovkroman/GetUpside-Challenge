@@ -28,7 +28,7 @@ extension Splash {
         
         // MARK: - Private API
         
-        private func _navigateToMainFlow(animated: Bool = true, _ entities: [Eatery]) {
+        private func navigateToMainFlow(animated: Bool = true, _ entities: [Eatery]) {
             let mainCoordintaor = Main.Coordinator(navigationController, appDependecies, entities)
             mainCoordintaor.parentCoordinator = parentCoordinator
             parentCoordinator?.removeDependency(self)
@@ -42,7 +42,7 @@ extension Splash.Coordinator: Coordinating {
     typealias Event = [Eatery]
     
     func cacthTheEvent(_ event: Event) {
-        DispatchQueue.main.async(execute: combine(true, event, with: _navigateToMainFlow))
+        DispatchQueue.main.async(execute: combine(true, event, with: navigateToMainFlow))
     }
     
     func catchTheError(_ error: Error) {}

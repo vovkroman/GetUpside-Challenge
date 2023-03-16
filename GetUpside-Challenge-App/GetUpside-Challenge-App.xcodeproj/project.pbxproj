@@ -348,15 +348,6 @@
 			path = Router;
 			sourceTree = "<group>";
 		};
-		6F0BEAB228D893DC00C1788F /* CollectionViewCell */ = {
-			isa = PBXGroup;
-			children = (
-				6F36B3D129C2232700783AC1 /* FilterHeaderView */,
-				6F0BEAB528D8943C00C1788F /* FilterViewCell */,
-			);
-			path = CollectionViewCell;
-			sourceTree = "<group>";
-		};
 		6F0BEAB528D8943C00C1788F /* FilterViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -463,9 +454,7 @@
 			isa = PBXGroup;
 			children = (
 				6F3EE9B026A0459800821E41 /* AppDelegate.swift */,
-				6F0BEAB228D893DC00C1788F /* CollectionViewCell */,
-				6FA3859328D0D33F0054ED8E /* TableViewCells */,
-				6FB6CE5927314EF80011EB5B /* Views */,
+				6FB6CE5927314EF80011EB5B /* AppViews */,
 				6F3EE9B626A0459800821E41 /* Main.storyboard */,
 				6F3EEA1C26A04E0400821E41 /* ViewControllers */,
 				6F3EEA1926A04DE500821E41 /* Constants */,
@@ -485,19 +474,19 @@
 			isa = PBXGroup;
 			children = (
 				6FA4A3C127416234005AEEBE /* AppNavigationController */,
-				6F3EEA1E26A04E0400821E41 /* Screens */,
+				6F3EEA1E26A04E0400821E41 /* Screens&Components */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		6F3EEA1E26A04E0400821E41 /* Screens */ = {
+		6F3EEA1E26A04E0400821E41 /* Screens&Components */ = {
 			isa = PBXGroup;
 			children = (
 				6F3EEA2126A04E0400821E41 /* Base */,
 				6F79EABC29B275C4004DD95B /* Scenes */,
 				6F79EABD29B275E2004DD95B /* Components */,
 			);
-			path = Screens;
+			path = "Screens&Components";
 			sourceTree = "<group>";
 		};
 		6F3EEA2126A04E0400821E41 /* Base */ = {
@@ -551,6 +540,7 @@
 		6F51D1E7273C580400BDDF6C /* MapView */ = {
 			isa = PBXGroup;
 			children = (
+				6FC847BA28C9DF0500301F65 /* ClusterStack.swift */,
 				6F51D1E8273C582B00BDDF6C /* MapView.swift */,
 				6FC847C828CA067700301F65 /* MapView.xib */,
 			);
@@ -689,14 +679,6 @@
 			path = Splash;
 			sourceTree = "<group>";
 		};
-		6FA3859328D0D33F0054ED8E /* TableViewCells */ = {
-			isa = PBXGroup;
-			children = (
-				6FC2864428CF7E0600677DBB /* EateryCell */,
-			);
-			path = TableViewCells;
-			sourceTree = "<group>";
-		};
 		6FA4A3C127416234005AEEBE /* AppNavigationController */ = {
 			isa = PBXGroup;
 			children = (
@@ -753,21 +735,23 @@
 			path = Filter;
 			sourceTree = "<group>";
 		};
-		6FB6CE5927314EF80011EB5B /* Views */ = {
+		6FB6CE5927314EF80011EB5B /* AppViews */ = {
 			isa = PBXGroup;
 			children = (
+				6FC2864428CF7E0600677DBB /* EateryCell */,
+				6F0BEAB528D8943C00C1788F /* FilterViewCell */,
+				6F36B3D129C2232700783AC1 /* FilterHeaderView */,
 				6FC044BE29B5E52E0057BA1E /* IconView */,
 				6FC044C029B5E52F0057BA1E /* PillLabel */,
 				6FC044C229B5E52F0057BA1E /* BorderedButton */,
 				6F06E77728E04D4D0049FEE3 /* TabBarMenuView */,
 				6F48F76A28DE19F700C0DCC3 /* GetUpsideLogoView */,
-				6FC847B928C9DF0500301F65 /* Cluster */,
 				6FB41DDE273ECA5D00E226A2 /* MainView */,
 				6F51D1E7273C580400BDDF6C /* MapView */,
 				6F3EEA2A26A04EB000821E41 /* SplashView */,
 				6FC44115272FFEA200C54028 /* ErrorView */,
 			);
-			path = Views;
+			path = AppViews;
 			sourceTree = "<group>";
 		};
 		6FB6CE932731BCA90011EB5B /* Configuration */ = {
@@ -854,14 +838,6 @@
 				6FC44118272FFF4400C54028 /* ErrorView.xib */,
 			);
 			path = ErrorView;
-			sourceTree = "<group>";
-		};
-		6FC847B928C9DF0500301F65 /* Cluster */ = {
-			isa = PBXGroup;
-			children = (
-				6FC847BA28C9DF0500301F65 /* ClusterStack.swift */,
-			);
-			path = Cluster;
 			sourceTree = "<group>";
 		};
 		6FF71AA029AD10C60089BADB /* MainPresenter */ = {

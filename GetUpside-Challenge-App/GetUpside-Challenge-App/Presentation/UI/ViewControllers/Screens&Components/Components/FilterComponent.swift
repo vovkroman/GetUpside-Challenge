@@ -12,18 +12,23 @@ extension Filter {
         
         override init() {
             super.init()
-            scrollDirection = .horizontal
+            config()
         }
         
         @available(*, unavailable)
         required init?(coder: NSCoder) {
             fatalError("init(coder:) has not been implemented")
         }
+        
+        private func config() {
+            scrollDirection = .horizontal
+            sectionHeadersPinToVisibleBounds = true
+        }
     }
     
     final class Component: BaseListComponent<FilterCell, Filter.CellConfigurator> {
         
-        private var headerConfig: NSAttributedString =  NSAttributedString()
+        private var headerConfigurator: HeaderConfigurator?
         
         weak var delegate: SelectionFilterDelegate?
         
@@ -37,9 +42,9 @@ extension Filter {
         
         func render(_ viewModel: Filter.ViewModel) {
             switch viewModel {
-            case .inital(let cells, let headerConfig):
+            case .inital(let cells, let header):
                 self.configurators = cells
-                self.headerConfig = headerConfig
+                self.headerConfigurator = header
                 collectionView.reloadData()
             case .update(let cellConfigs):
                 let (indexPathes, cells) = (cellConfigs.indexPathes, cellConfigs.cells)
@@ -48,6 +53,9 @@ extension Filter {
         }
         
         override func numberOfSections(in collectionView: UICollectionView) -> Int {
+            guard headerConfigurator != nil else {
+                return 0
+            }
             return 1
         }
         
@@ -60,7 +68,9 @@ extension Filter {
                 ofKind: UICollectionView.elementKindSectionHeader,
                 for: indexPath
             )
-            headerView.configure(headerConfig)
+            if let config = headerConfigurator {
+                headerView.configure(config)
+            }
             return headerView
         }
                 
@@ -85,7 +95,10 @@ extension Filter {
             layout collectionViewLayout: UICollectionViewLayout,
             referenceSizeForHeaderInSection section: Int
         ) -> CGSize {
-            return CGSize(100.0, 50.0)
+            if let config = headerConfigurator {
+                return config.size
+            }
+            return .zero
         }
         
         required init() {
@@ -115,7 +128,7 @@ private extension Filter.Component {
     }
     
     func setupView() {
-        collectionView.backgroundColor = .clear
+        collectionView.backgroundColor = .white
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.allowsMultipleSelection = true
     }

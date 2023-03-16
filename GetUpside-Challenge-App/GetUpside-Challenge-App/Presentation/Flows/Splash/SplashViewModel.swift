@@ -20,10 +20,10 @@ extension Splash {
     struct ViewModel {
         typealias Model = Location.Error
         
-        private let _model: Model
+        private let model: Model
         
         init(_ model: Model) {
-            _model = model
+            self.model = model
         }
     }
 }
@@ -31,14 +31,14 @@ extension Splash {
 extension Splash.ViewModel: ActionaSupporting, ButtonTitlable, Descriptionable {
     
     var isEnabled: Bool {
-        if case .denied = _model {
+        if case .denied = model {
             return true
         }
         return false
     }
     
     var action: Action? {
-        if case .denied = _model {
+        if case .denied = model {
             let url = URL(string: UIApplication.openSettingsURLString)!
             return combine(url, [:], with: UIApplication.shared.openURL)
         } else {
@@ -47,7 +47,7 @@ extension Splash.ViewModel: ActionaSupporting, ButtonTitlable, Descriptionable {
     }
     
     var title: String {
-        if case .denied = _model {
+        if case .denied = model {
             return "Go to Settings ..."
         } else {
             return ""
@@ -55,9 +55,9 @@ extension Splash.ViewModel: ActionaSupporting, ButtonTitlable, Descriptionable {
     }
     
     var description: String {
-        switch _model {
+        switch model {
         case .denied, .restricted, .unknown:
-            return _model.description
+            return model.description
         case .other(let error):
             return error.localizedDescription
         }

@@ -40,13 +40,37 @@ extension Filter {
         }
     }
     
+    final class HeaderConfigurator {
+        
+        final class Builder {
+            var size: CGSize = .zero
+            var attributedString: NSAttributedString = NSAttributedString()
+        }
+        
+        typealias BuilderBlock = (Builder) -> ()
+        
+        let attributedString: NSAttributedString
+        let size: CGSize
+        
+        convenience init(_ block: BuilderBlock) {
+            let builder = Builder()
+            block(builder)
+            self.init(builder)
+        }
+        
+        init(_ builder: Builder) {
+            attributedString = builder.attributedString
+            size = builder.size
+        }
+    }
+    
     struct CellConfigurators {
         let indexPathes: [IndexPath]
         let cells: [CellConfigurator]
     }
     
     enum ViewModel {
-        case inital(cells: [CellConfigurator], headerConfig: NSAttributedString)
+        case inital(cells: [CellConfigurator], header: HeaderConfigurator)
         case update(cellConfigs: CellConfigurators)
     }
     

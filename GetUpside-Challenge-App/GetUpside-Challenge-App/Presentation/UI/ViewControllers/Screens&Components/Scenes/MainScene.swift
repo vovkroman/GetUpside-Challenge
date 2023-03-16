@@ -38,6 +38,10 @@ extension Main {
             contentView.updateLayout()
         }
         
+        override var preferredStatusBarStyle: UIStatusBarStyle {
+            return .default
+        }
+        
         required init(
             _ interactor: InteractorImpl,
             _ overlays: [Childable],

@@ -14,6 +14,10 @@ extension Splash {
             showAnimatingLogo()
         }
         
+        override var preferredStatusBarStyle: UIStatusBarStyle {
+            return .lightContent
+        }
+        
         // MARK: - Configurations
         
         private func setup() {

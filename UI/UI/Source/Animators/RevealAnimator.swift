@@ -22,7 +22,7 @@ public class RevealAnimator: NSObject {
         self.duartion = duration
     }
     
-    private func _onTransitionComplete(
+    private func onTransitionComplete(
         with context: UIViewControllerContextTransitioning,
         toView: UIView,
         fromView: UIView) {
@@ -66,7 +66,7 @@ extension RevealAnimator: UIViewControllerAnimatedTransitioning {
         fromView.transitionWillStart(self)
         let completionBlock: () -> Void = { [weak self] in
             guard let self = self else { return }
-            self._onTransitionComplete(with: transitionContext, toView: toView, fromView: fromView)
+            self.onTransitionComplete(with: transitionContext, toView: toView, fromView: fromView)
         }
         CATransaction.setCompletionBlock(completionBlock)
         CATransaction.begin()

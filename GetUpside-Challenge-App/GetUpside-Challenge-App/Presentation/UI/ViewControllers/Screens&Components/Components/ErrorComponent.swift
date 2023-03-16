@@ -15,7 +15,7 @@ final class ErrorComponent: BaseComponent<ErrorView> {
         let actionButton: UIButton = contentView.actionButton
         
         if viewModel.isEnabled {
-            actionButton.addTarget(self, action: #selector(_onTapped(_:)), for: .touchUpInside)
+            actionButton.addTarget(self, action: #selector(onTapped(_:)), for: .touchUpInside)
             actionButton.setTitle(viewModel.title, for: .normal)
         } else {
             actionButton.isHidden = true
@@ -27,7 +27,7 @@ final class ErrorComponent: BaseComponent<ErrorView> {
         super.viewDidDisappear(animated)
         let actionButton: UIButton = contentView.actionButton
         
-        actionButton.removeTarget(self, action: #selector(_onTapped(_:)), for: .touchUpInside)
+        actionButton.removeTarget(self, action: #selector(onTapped(_:)), for: .touchUpInside)
         actionButton.setTitle(nil, for: .normal)
         
         contentView.descriptionLabel.text = nil
@@ -52,7 +52,7 @@ final class ErrorComponent: BaseComponent<ErrorView> {
     
     // MARK: Actions
     
-    @objc private func _onTapped(_ sender: UIButton) {
+    @objc private func onTapped(_ sender: UIButton) {
         let _ = viewModel.action?()
     }
 }

@@ -13,7 +13,7 @@ public extension BorderApplicable where Self: UIView {
         guard borderLayer == nil else { return }
         let borderLayer = CAShapeLayer()
         borderLayer.strokeColor = config.stokeColor.cgColor
-        borderLayer.borderWidth = config.lineWidth
+        borderLayer.lineWidth = config.lineWidth
         borderLayer.fillColor = config.fillColor.cgColor
         self.borderLayer = borderLayer
         layer.addSublayer(borderLayer)

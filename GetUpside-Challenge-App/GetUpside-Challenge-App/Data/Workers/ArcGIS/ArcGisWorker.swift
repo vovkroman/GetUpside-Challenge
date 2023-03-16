@@ -13,22 +13,22 @@ protocol GetEateriesUseCase: AnyObject {
 extension ArcGis {
     final class Worker {
         
-        private let _router: AnyFetchRouter<FoodApi>
+        private let router: AnyFetchRouter<FoodApi>
         
         func fetch(
             _ coordinate: Coordinates
         ) -> Future<[AGSGeocodeResult]> {
-            return _router.performFetch(.getFood(location: coordinate))
+            return router.performFetch(.getFood(location: coordinate))
         }
         
         func cancel() {
-            _router.cancel()
+            router.cancel()
         }
         
         init(
             _ router: AnyFetchRouter<FoodApi>
         ) {
-            _router = router
+            self.router = router
         }
     }
 }
