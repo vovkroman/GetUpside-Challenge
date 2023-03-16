@@ -145,6 +145,7 @@ extension AppDependencies {
             algorithm: algorithm,
             renderer: renderer
         )
+        clusterManager.setMapDelegate(scene)
 
         scene.clusterManager = clusterManager
         return scene

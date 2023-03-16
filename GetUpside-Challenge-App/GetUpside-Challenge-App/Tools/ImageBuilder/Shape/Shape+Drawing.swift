@@ -2,23 +2,23 @@ import UI
 
 extension Shape {
     
-    func drawFilterIcon(_ rect: CGRect) -> UIBezierPath {
-        
-        // draw filter icon
-        let path = UIBezierPath()
-        
-        let width = 0.25 * rect.width
-        path.move(to: CGPoint(rect.minX, rect.minY))
-        path.addLine(to: CGPoint(x: rect.maxX, y: rect.minY))
-        path.addLine(to: CGPoint(x: 0.66 * rect.maxX - 0.25 * width, y: 0.33 * rect.maxY))
-        path.addLine(to: CGPoint(x: 0.66 * rect.maxX - 0.25 * width, y: 0.66 * rect.maxY))
-        path.addLine(to: CGPoint(x: 0.33 * rect.maxX + 0.25 * width, y: rect.maxY))
-        path.addLine(to: CGPoint(x: 0.33 * rect.maxX + 0.25 * width, y: 0.33 * rect.maxY))
-        path.addLine(to: CGPoint(x: rect.minX, y: rect.minY))
-        path.close()
-        
-        return path
-    }
+//    func drawFilterIcon(_ rect: CGRect) -> UIBezierPath {
+//
+//        // draw filter icon
+//        let path = UIBezierPath()
+//
+//        let width = 0.25 * rect.width
+//        path.move(to: CGPoint(rect.minX, rect.minY))
+//        path.addLine(to: CGPoint(x: rect.maxX, y: rect.minY))
+//        path.addLine(to: CGPoint(x: 0.66 * rect.maxX - 0.25 * width, y: 0.33 * rect.maxY))
+//        path.addLine(to: CGPoint(x: 0.66 * rect.maxX - 0.25 * width, y: 0.66 * rect.maxY))
+//        path.addLine(to: CGPoint(x: 0.33 * rect.maxX + 0.25 * width, y: rect.maxY))
+//        path.addLine(to: CGPoint(x: 0.33 * rect.maxX + 0.25 * width, y: 0.33 * rect.maxY))
+//        path.addLine(to: CGPoint(x: rect.minX, y: rect.minY))
+//        path.close()
+//
+//        return path
+//    }
     
     func drawPinIcon(_ rect: CGRect) -> UIBezierPath {
         // draw droplet icon

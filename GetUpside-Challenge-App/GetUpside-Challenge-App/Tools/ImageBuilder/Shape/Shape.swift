@@ -67,7 +67,6 @@ enum Shape {
     case rectangle(height: CGFloat, width: CGFloat)
     case pin(size: CGSize, inner: Inner)
     case emptyPin(size: CGSize)
-    case filtering(size: CGSize)
     
     var bounds: CGRect {
         switch self {
@@ -77,8 +76,6 @@ enum Shape {
         case .rectangle(let height, let width):
             return CGRect(origin: .zero, size: CGSize(height, width))
         case.pin(let size, _ ), .emptyPin(let size):
-            return CGRect(origin: .zero, size: size)
-        case .filtering(let size):
             return CGRect(origin: .zero, size: size)
         }
     }
@@ -102,8 +99,6 @@ enum Shape {
             return path
         case .emptyPin:
             return drawPinIcon(bounds)
-        case .filtering:
-            return drawFilterIcon(bounds)
         }
     }
 }

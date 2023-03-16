@@ -1,9 +1,11 @@
 import UIKit
 import ReusableKit
 
-class FilterHeaderView: UICollectionReusableView, NibReusable {
+final class FilterHeaderView: UICollectionReusableView, NibReusable {
+    
+    @IBOutlet weak private var titleLabel: PillLabel!
     
     func configure(_ configurator: NSAttributedString) {
-//        imageView.image = configurator.image
+        titleLabel.attributedText = configurator
     }
 }

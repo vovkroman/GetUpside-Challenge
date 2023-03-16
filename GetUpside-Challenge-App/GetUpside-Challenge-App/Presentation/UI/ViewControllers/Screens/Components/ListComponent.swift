@@ -4,15 +4,8 @@ import Logger
 
 final class ListComponent: UITableViewController {
     
+    private weak var activityIndicator: UIActivityIndicatorView?
     private var viewModels: [Main.ViewModelable] = []
-    
-    // MARK: - Private API
-    
-    private func configTableView() {
-        tableView.register(EateryCell.self)
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = UITableView.automaticDimension
-    }
     
     // MARK: - Life Cycle
     
@@ -46,8 +39,20 @@ final class ListComponent: UITableViewController {
 
 extension ListComponent: Component {
     
+    func onLoading() {
+        //////////
+    }
+    
     func onDisplay<ViewModel: Main.ViewModelable>(_ viewModels: [ViewModel]) {
         self.viewModels = viewModels
         tableView.reloadData()
+    }
+}
+
+private extension ListComponent {
+    private func configTableView() {
+        tableView.register(EateryCell.self)
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = UITableView.automaticDimension
     }
 }

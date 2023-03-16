@@ -85,7 +85,7 @@ extension Filter {
             layout collectionViewLayout: UICollectionViewLayout,
             referenceSizeForHeaderInSection section: Int
         ) -> CGSize {
-            return CGSize(50.0, 50.0)
+            return CGSize(100.0, 50.0)
         }
         
         required init() {

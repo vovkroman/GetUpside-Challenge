@@ -1,6 +1,7 @@
 import UI
 
 protocol Component: UIViewController {
+    func onLoading()
     func onDisplay<ViewModel: Main.ViewModelable>(_ viewModels: [ViewModel])
 }
 
@@ -62,7 +63,9 @@ extension Main {
 extension Main.Scene: MainPresentable {
     
     func onLoading() {
-        // show animation on loading
+        for overlay in components {
+            overlay.onLoading()
+        }
     }
     
     func onFilterChanged(_ viewModel: Filter.ViewModel) {

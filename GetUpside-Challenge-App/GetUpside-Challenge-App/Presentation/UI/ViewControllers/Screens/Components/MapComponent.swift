@@ -1,5 +1,4 @@
 import UI
-import Logger
 import GoogleMaps
 import GoogleMapsUtils
 
@@ -41,13 +40,16 @@ extension MapComponent {
 }
 
 extension MapComponent: GMSMapViewDelegate {
-
-    func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
-        delegate?.onLocatingDidChage(self, position.target)
+    func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
+        delegate?.onLocatingDidChage(self, coordinate)
     }
 }
 
 extension MapComponent: Component {
+    
+    func onLoading() {
+        /// Nothing to do
+    }
     
     func onDisplay<ViewModel: Main.ViewModelable>(_ viewModels: [ViewModel]) {
         typealias PinIconImage = IconView
