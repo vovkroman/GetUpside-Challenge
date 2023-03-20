@@ -57,7 +57,7 @@ final class ErrorComponent: BaseComponent<ErrorView> {
     }
 }
 
-extension ErrorComponent: LogoTransitionable {
+extension ErrorComponent: MaskTransitionable {
     var maskLayer: CAShapeLayer? {
         return nil
     }

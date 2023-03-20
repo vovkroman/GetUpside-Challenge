@@ -1,10 +1,11 @@
 import ReusableKit
 import Logger
 import GoogleMaps
-import UIKit
-
+import UI
 
 class MapView: GMSMapView, NibReusable {
+    
+    @IBOutlet weak private var touchView: TouchAnimatedView!
     
     override var selectedMarker: GMSMarker? {
         willSet {
@@ -15,6 +16,14 @@ class MapView: GMSMapView, NibReusable {
     
     // MARK: - Configuration methods
 
+    func onDidLayoutSubviews() {
+        bringSubviewToFront(touchView)
+    }
+    
+    func didTouch(_ point: CGPoint) {
+        touchView.drawTouch(point)
+    }
+    
     func deselectAll() {
         selectedMarker?.deselect()
     }
@@ -25,7 +34,6 @@ class MapView: GMSMapView, NibReusable {
     
     func setup() {
         isMyLocationEnabled = true
-        
     }
 }
 

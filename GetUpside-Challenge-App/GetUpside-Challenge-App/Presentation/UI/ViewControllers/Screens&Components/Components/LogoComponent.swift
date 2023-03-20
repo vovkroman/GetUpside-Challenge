@@ -13,7 +13,7 @@ final class LogoComponent: BaseComponent<GetUpsideLogoView> {
     }
 }
 
-extension LogoComponent: LogoTransitionable {
+extension LogoComponent: MaskTransitionable {
 
     var maskLayer: CAShapeLayer? {
         let shapelayer = CAShapeLayer()

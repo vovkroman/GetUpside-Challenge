@@ -32,9 +32,13 @@ public enum Animation {
         case strokeStart(params: Params<CGFloat>)
         case strokeEnd(params: Params<CGFloat>)
         case transform(params: Params<CATransform3D>)
+        case opacity(params: Params<[Double]>)
+        case scale(params: Params<Int>)
         
+        // groups
         case drawLineAnimation
         case revalAnimation
+        case pulsing
         
         public var description: String {
             switch self {
@@ -48,6 +52,12 @@ public enum Animation {
                 return "transform"
             case .revalAnimation:
                 return "revalAnimation"
+            case .scale:
+                return "transform.scale.xy"
+            case .opacity:
+                return "opacity"
+            case .pulsing:
+                return "pulsing"
             }
         }
     }
@@ -72,6 +82,18 @@ extension CABasicAnimation {
             fromValue = params.from
             toValue = params.to
             duration = params.duration
+            timingFunction = params.timingFunc
+            isRemovedOnCompletion = params.isRemovedOnCompletion
+        case .opacity(let params):
+            beginTime = params.beginTime
+            fromValue = params.from
+            toValue = params.to
+            timingFunction = params.timingFunc
+            isRemovedOnCompletion = params.isRemovedOnCompletion
+        case .scale(let params):
+            beginTime = params.beginTime
+            fromValue = params.from
+            toValue = params.to
             timingFunction = params.timingFunc
             isRemovedOnCompletion = params.isRemovedOnCompletion
         default:

@@ -40,7 +40,7 @@ final class ListComponent: UITableViewController {
 extension ListComponent: Component {
     
     func onLoading() {
-        //////////
+        //////
     }
     
     func onDisplay<ViewModel: Main.ViewModelable>(_ viewModels: [ViewModel]) {

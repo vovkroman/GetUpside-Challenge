@@ -1,6 +1,6 @@
 import UIKit
 
-public protocol LogoTransitionable: AnyObject {
+public protocol MaskTransitionable: AnyObject {
     var maskLayer: CAShapeLayer? { get }
     func transitionWillStart(_ transition: UIViewControllerAnimatedTransitioning)
     func transitionDidEnd(_ transition: UIViewControllerAnimatedTransitioning)
@@ -8,7 +8,7 @@ public protocol LogoTransitionable: AnyObject {
 
 public class RevealAnimator: NSObject {
     
-    typealias Revealable = LogoTransitionable & UIView
+    typealias Revealable = MaskTransitionable & UIView
     
     private let duartion: TimeInterval
         
@@ -54,7 +54,7 @@ extension RevealAnimator: UIViewControllerAnimatedTransitioning {
         let animParams = Animation.Params(
             from: CATransform3DIdentity,
             to: CATransform3DConcat(CATransform3DMakeTranslation(10.0, 0.0, 0.0),
-                                                                  CATransform3DMakeScale(150.0, 150.0, 1.0)),
+                                    CATransform3DMakeScale(150.0, 150.0, 1.0)),
             duration: duartion,
             timingFunc: CAMediaTimingFunction(name: .easeIn),
             isRemovedOnCompletion: false

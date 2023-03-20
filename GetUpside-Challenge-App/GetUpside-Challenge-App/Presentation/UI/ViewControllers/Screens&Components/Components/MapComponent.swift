@@ -18,6 +18,11 @@ final class MapComponent: BaseComponent<MapView> {
         onLoaded()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        onLayoutSubviews()
+    }
+    
     // MARK: - Init methods
     
     required init(_ clusterManager: ClusterManagerSupporting) {
@@ -32,6 +37,10 @@ final class MapComponent: BaseComponent<MapView> {
 
 extension MapComponent {
     
+    private func onLayoutSubviews() {
+        contentView.onDidLayoutSubviews()
+    }
+    
     private func onLoaded() {
         contentView.setup()
         contentView.delegate = self
@@ -41,6 +50,8 @@ extension MapComponent {
 
 extension MapComponent: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
+        let touchPoint = mapView.projection.point(for: coordinate)
+        contentView.didTouch(touchPoint)
         delegate?.onLocatingDidChage(self, coordinate)
     }
 }

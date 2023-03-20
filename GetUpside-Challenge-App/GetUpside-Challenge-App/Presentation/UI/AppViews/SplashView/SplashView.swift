@@ -4,12 +4,12 @@ import UI
 final class SplashView: UIView, NibReusable {
     @IBOutlet private(set) weak var containerView: ContainerView!
     
-    private var currentViewController: LogoTransitionable? {
-        return containerView.childViewController as? LogoTransitionable
+    private var currentViewController: MaskTransitionable? {
+        return containerView.childViewController as? MaskTransitionable
     }
 }
 
-extension SplashView: LogoTransitionable {
+extension SplashView: MaskTransitionable {
     
     var maskLayer: CAShapeLayer? {
         return currentViewController?.maskLayer
