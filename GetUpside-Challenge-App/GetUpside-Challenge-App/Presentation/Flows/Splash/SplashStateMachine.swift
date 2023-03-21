@@ -11,7 +11,7 @@ extension Splash {
         }
         
         enum Event {
-            case locatingDidStart
+            case loadingDidStart
             case coordinatesDidUpdated(Coordinates)
             case catchError(Location.Error)
         }
@@ -30,13 +30,13 @@ extension Splash {
         
         func transition(with event: Event) {
             switch (_state, event) {
-            case (.idle, .locatingDidStart), (.locating, .locatingDidStart), (.error, .locatingDidStart):
+            case (.idle, .loadingDidStart), (.locating, .loadingDidStart), (.error, .loadingDidStart):
                 _state = .loading
             case (.idle, .coordinatesDidUpdated(let coordinate)), (.error, .coordinatesDidUpdated(let coordinate)):
                 _state = .locating(coordinate: coordinate)
             case (.idle, .catchError(let error)), (.loading, .catchError(let error)), (.locating, .catchError(let error)):
                 _state = .error(error: error)
-            case (.loading, .locatingDidStart):
+            case (.loading, .loadingDidStart):
                 break
             case (.loading, .coordinatesDidUpdated(let coordinate)):
                 _state = .locating(coordinate: coordinate)

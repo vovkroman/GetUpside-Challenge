@@ -3,16 +3,14 @@ use_frameworks!
 
 workspace 'GetUpside-Challenge'
 
-def app_dependencies
+def argis_dependencies
   pod 'ArcGIS-Runtime-SDK-iOS'#, '100.10'
-  
-  # Google Maps routines
-  pod 'GoogleMaps'
-  pod 'Google-Maps-iOS-Utils'
+end
 
+def realm_dependencies
   #Realm DB
-#  pod 'Realm'
-#  pod 'RealmSwift'
+  pod 'Realm'
+  pod 'RealmSwift'
 end
 
 def map_dependencies
@@ -23,7 +21,8 @@ end
 
 target 'GetUpside-Challenge-App' do
   project 'GetUpside-Challenge-App/GetUpside-Challenge-App.xcodeproj'
-  app_dependencies
+  argis_dependencies
+  realm_dependencies
   map_dependencies
 end
 

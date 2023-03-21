@@ -2,8 +2,8 @@ import Foundation
 
 extension Splash.InteractorImpl {
     
-    func locatingDidStart() {
-        queue.async(execute: combine(.locatingDidStart, with: stateMachine.transition))
+    func loadingDidStart() {
+        queue.async(execute: combine(.loadingDidStart, with: stateMachine.transition))
     }
     
     func locatingCoordinateDidUpdated(_ coordinates: Coordinates) {

@@ -6,6 +6,7 @@ extension Convertor {
         
         typealias From = Eatery
         typealias To = Main.ViewModel
+        typealias Error = Convertor.Error
         
         func convertFromTo(from: Eatery) throws -> Main.ViewModel {
             let map = Constant.Map.self
@@ -19,7 +20,7 @@ extension Convertor {
         }
         
         func convertToFrom(from: Main.ViewModel) throws -> Eatery {
-            throw Error.convertFailed(context: "Could't convert item from \(Eatery.self) to \(Main.ViewModel.self)")
+            throw Error("Could't convert item from \(Eatery.self) to \(Main.ViewModel.self)")
         }
     }
 }

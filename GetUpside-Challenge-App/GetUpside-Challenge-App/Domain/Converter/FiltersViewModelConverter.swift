@@ -5,6 +5,7 @@ extension Convertor {
     struct FiltersViewModelConverter: Convertable {
         typealias From = [Filter.Model]
         typealias To = Filter.ViewModel
+        typealias Error = Convertor.Error
         
         let isInitialConfig: Bool
         
@@ -28,7 +29,7 @@ extension Convertor {
         }
         
         func convertToFrom(from: Filter.ViewModel) throws -> [Filter.Model] {
-            throw Error.convertFailed(context: "Could't convert item from \(Filter.ViewModel.self) to \([Filter.Model].self)")
+            throw Error("Could't convert item from \(Filter.ViewModel.self) to \([Filter.Model].self)")
         }
         
         init(_ isInitialConfig: Bool) {

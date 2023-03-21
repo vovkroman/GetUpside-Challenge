@@ -17,7 +17,6 @@ final class PulsingLayer: CALayer {
         add(animation, forKey: "\(id.pulsing)")
     }
     
-    
     init(_ config: Configuration, _ frame: CGRect) {
         radius = config.radius
         super.init()

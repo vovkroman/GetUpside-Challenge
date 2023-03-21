@@ -17,6 +17,7 @@ extension Splash {
         // workers
         let locationWorker: LocationUseCase
         let apiWorker: GetEateriesUseCase
+        let dbWorker: GetEateriesUseCase
         
         // navigation
         var coordinator: AnyCoordinating<Splash.Event>?
@@ -36,11 +37,13 @@ extension Splash {
         init(
             _ location: LocationUseCase,
             _ apiWorker: GetEateriesUseCase,
+            _ dbWorker: GetEateriesUseCase,
             _ queue: DispatchQueue,
             _ presenter: SplashPresenterSupporting
         ) {
             self.apiWorker = apiWorker
             self.locationWorker = location
+            self.dbWorker = dbWorker
             self.presenter = presenter
             self.queue = queue
         }

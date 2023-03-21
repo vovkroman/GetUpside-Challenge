@@ -10,7 +10,11 @@ public protocol BorderApplicable: AnyObject {
 public extension BorderApplicable where Self: UIView {
     
     func addBorder(_ config: Config) {
-        guard borderLayer == nil else { return }
+        if let layer = borderLayer {
+            layer.mask = nil
+            layer.removeFromSuperlayer()
+            borderLayer = nil
+        }
         let borderLayer = CAShapeLayer()
         borderLayer.strokeColor = config.stokeColor.cgColor
         borderLayer.lineWidth = config.lineWidth

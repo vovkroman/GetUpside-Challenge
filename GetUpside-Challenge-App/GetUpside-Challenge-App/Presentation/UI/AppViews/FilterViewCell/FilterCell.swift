@@ -4,9 +4,7 @@ import ReusableKit
 final class FilterCell: UICollectionViewCell, NibReusable, Cellable {
     
     @IBOutlet private weak var titleLabel: PillLabel!
-    
-    weak var borderLayer: CAShapeLayer?
-    
+        
     override var isSelected: Bool {
         didSet {
             guard oldValue != isSelected else { return }

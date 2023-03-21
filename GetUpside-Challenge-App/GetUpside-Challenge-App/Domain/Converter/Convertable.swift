@@ -4,8 +4,12 @@ enum Convertor {}
 
 
 extension Convertor {
-    enum Error {
-        case convertFailed(context: String)
+    struct Error {
+        let context: String
+        
+        init(_ context: String) {
+            self.context = context
+        }
     }
 }
 

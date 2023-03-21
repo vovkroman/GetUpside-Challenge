@@ -25,3 +25,9 @@ func combine<A, B, C, D>(
     with closure: @escaping (A, B, C) -> D) -> () -> D {
     return { closure(value1, value2, value3) }
 }
+
+func combine<A, B>(
+    _ value: A,
+    with closure: @escaping (A) throws -> B) -> () throws -> B {
+    return { try closure(value) }
+}

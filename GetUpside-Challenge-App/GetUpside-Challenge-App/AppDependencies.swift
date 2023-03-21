@@ -35,6 +35,10 @@ class AppDependencies {
         return locationManager
     }()
     
+    lazy private var databaseManager: RealmSpace.Manager = {
+        return RealmSpace.Manager(queue)
+    }()
+    
     lazy private var queue: DispatchQueue = {
         let queue = DispatchQueue(label: "com.getUpside-challenge-global")
         return queue
@@ -57,6 +61,7 @@ extension AppDependencies: SplashSceneFactoriable {
     func buildSplashScene(_ coordinator: AnyCoordinating<Splash.Event>) -> UIViewController {
         let locationWorker = Location.Worker(locationManager)
         let argisWorker = ArcGis.Worker(AnyFetchRouter())
+        let dbWorker = DB.Worker(databaseManager)
         let localQueue = DispatchQueue(
             label: "com.getUpside-challenge-splash",
             target: queue
@@ -67,6 +72,7 @@ extension AppDependencies: SplashSceneFactoriable {
         let interactor = Splash.InteractorImpl(
             locationWorker,
             argisWorker,
+            dbWorker,
             localQueue,
             presenter
         )

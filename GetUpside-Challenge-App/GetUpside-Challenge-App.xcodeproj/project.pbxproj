@@ -18,6 +18,8 @@
 		6F0BEAB828D8947C00C1788F /* FilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0BEAB628D8947C00C1788F /* FilterCell.swift */; };
 		6F0BEAB928D8947C00C1788F /* FilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F0BEAB728D8947C00C1788F /* FilterCell.xib */; };
 		6F0BEABB28D8A76500C1788F /* FilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0BEABA28D8A76500C1788F /* FilterViewModel.swift */; };
+		6F1C734F29C9C7E500A735A8 /* Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1C734E29C9C7E500A735A8 /* Realm.swift */; };
+		6F1C735129C9CC8600A735A8 /* EateryConverter+RealmEatery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1C735029C9CC8600A735A8 /* EateryConverter+RealmEatery.swift */; };
 		6F1DFD28299D41B000E3F30D /* FilterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F1DFD27299D41B000E3F30D /* FilterKit.framework */; };
 		6F1DFD29299D41B000E3F30D /* FilterKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6F1DFD27299D41B000E3F30D /* FilterKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6F2B0E5D299D5BB500AFA2CB /* MainInteractorImpl+Filtering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2B0E5C299D5BB500AFA2CB /* MainInteractorImpl+Filtering.swift */; };
@@ -60,7 +62,7 @@
 		6F6B7A142734567A00B46087 /* ServiceSetupers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6B7A132734567A00B46087 /* ServiceSetupers.swift */; };
 		6F7633D6277235CD005BB743 /* UIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7633D5277235CD005BB743 /* UIApplication+Extensions.swift */; };
 		6F7F869529A7DB620096F618 /* SplashInteractorImpl+StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7F869429A7DB620096F618 /* SplashInteractorImpl+StateMachine.swift */; };
-		6F8411FC278DC676006C5B8E /* EateryConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8411FB278DC676006C5B8E /* EateryConverter.swift */; };
+		6F8411FC278DC676006C5B8E /* EateryConverter+AGSGeocodeResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8411FB278DC676006C5B8E /* EateryConverter+AGSGeocodeResult.swift */; };
 		6F8411FE278DD043006C5B8E /* AnyConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8411FD278DD043006C5B8E /* AnyConverter.swift */; };
 		6F84169429B62DD000514C18 /* Shape+Drawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F84169029B62DCF00514C18 /* Shape+Drawing.swift */; };
 		6F84169529B62DD000514C18 /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F84169129B62DCF00514C18 /* Shape.swift */; };
@@ -109,6 +111,8 @@
 		6FC847C928CA067700301F65 /* MapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FC847C828CA067700301F65 /* MapView.xib */; };
 		6FC847CB28CA5C7800301F65 /* ListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC847CA28CA5C7800301F65 /* ListComponent.swift */; };
 		6FCC5BDC28C8A01800E29CC6 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FCC5BDB28C8A01800E29CC6 /* MainViewModel.swift */; };
+		6FD8F83929C8F062003D6789 /* DBWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD8F83829C8F062003D6789 /* DBWorker.swift */; };
+		6FD8F83B29C8FEF7003D6789 /* RealmEatery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD8F83A29C8FEF7003D6789 /* RealmEatery.swift */; };
 		6FDAA9E629BF764B002D5E5F /* EaterySpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDAA9E529BF764B002D5E5F /* EaterySpecs.swift */; };
 		6FF277E82773777700D4FFE0 /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF277E72773777700D4FFE0 /* SplashViewModel.swift */; };
 		6FF71AA229AD10EB0089BADB /* MainPresenter+MainPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF71AA129AD10EB0089BADB /* MainPresenter+MainPresentable.swift */; };
@@ -162,6 +166,8 @@
 		6F0BEAB628D8947C00C1788F /* FilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCell.swift; sourceTree = "<group>"; };
 		6F0BEAB728D8947C00C1788F /* FilterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterCell.xib; sourceTree = "<group>"; };
 		6F0BEABA28D8A76500C1788F /* FilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewModel.swift; sourceTree = "<group>"; };
+		6F1C734E29C9C7E500A735A8 /* Realm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Realm.swift; sourceTree = "<group>"; };
+		6F1C735029C9CC8600A735A8 /* EateryConverter+RealmEatery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EateryConverter+RealmEatery.swift"; sourceTree = "<group>"; };
 		6F1DFD27299D41B000E3F30D /* FilterKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FilterKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F2B0E5C299D5BB500AFA2CB /* MainInteractorImpl+Filtering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainInteractorImpl+Filtering.swift"; sourceTree = "<group>"; };
 		6F2B0E5E299D5C6C00AFA2CB /* MainInteractorImpl+MainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainInteractorImpl+MainUseCase.swift"; sourceTree = "<group>"; };
@@ -206,7 +212,7 @@
 		6F6B7A132734567A00B46087 /* ServiceSetupers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceSetupers.swift; sourceTree = "<group>"; };
 		6F7633D5277235CD005BB743 /* UIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extensions.swift"; sourceTree = "<group>"; };
 		6F7F869429A7DB620096F618 /* SplashInteractorImpl+StateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SplashInteractorImpl+StateMachine.swift"; sourceTree = "<group>"; };
-		6F8411FB278DC676006C5B8E /* EateryConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EateryConverter.swift; sourceTree = "<group>"; };
+		6F8411FB278DC676006C5B8E /* EateryConverter+AGSGeocodeResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EateryConverter+AGSGeocodeResult.swift"; sourceTree = "<group>"; };
 		6F8411FD278DD043006C5B8E /* AnyConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyConverter.swift; sourceTree = "<group>"; };
 		6F84169029B62DCF00514C18 /* Shape+Drawing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Shape+Drawing.swift"; sourceTree = "<group>"; };
 		6F84169129B62DCF00514C18 /* Shape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shape.swift; sourceTree = "<group>"; };
@@ -256,6 +262,8 @@
 		6FC847C828CA067700301F65 /* MapView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapView.xib; sourceTree = "<group>"; };
 		6FC847CA28CA5C7800301F65 /* ListComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListComponent.swift; sourceTree = "<group>"; };
 		6FCC5BDB28C8A01800E29CC6 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		6FD8F83829C8F062003D6789 /* DBWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBWorker.swift; sourceTree = "<group>"; };
+		6FD8F83A29C8FEF7003D6789 /* RealmEatery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmEatery.swift; sourceTree = "<group>"; };
 		6FDAA9E529BF764B002D5E5F /* EaterySpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EaterySpecs.swift; sourceTree = "<group>"; };
 		6FF277E72773777700D4FFE0 /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
 		6FF71AA129AD10EB0089BADB /* MainPresenter+MainPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainPresenter+MainPresentable.swift"; sourceTree = "<group>"; };
@@ -315,6 +323,7 @@
 		6F0B3DE826AF1DB200A01ABF /* Workers */ = {
 			isa = PBXGroup;
 			children = (
+				6FD8F83729C8F03D003D6789 /* DB */,
 				6F8C9D1D26B02B90000D5DA0 /* Location */,
 				6F0B3DE926AF1DC600A01ABF /* ArcGIS */,
 			);
@@ -355,6 +364,15 @@
 				6F0BEAB728D8947C00C1788F /* FilterCell.xib */,
 			);
 			path = FilterViewCell;
+			sourceTree = "<group>";
+		};
+		6F1C734D29C9C7D100A735A8 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				6FD8F83A29C8FEF7003D6789 /* RealmEatery.swift */,
+				6F1C734E29C9C7E500A735A8 /* Realm.swift */,
+			);
+			path = Realm;
 			sourceTree = "<group>";
 		};
 		6F36B3D129C2232700783AC1 /* FilterHeaderView */ = {
@@ -521,7 +539,8 @@
 			children = (
 				6F414D83278DA67A00D0EA28 /* Convertable.swift */,
 				6F8411FD278DD043006C5B8E /* AnyConverter.swift */,
-				6F8411FB278DC676006C5B8E /* EateryConverter.swift */,
+				6F8411FB278DC676006C5B8E /* EateryConverter+AGSGeocodeResult.swift */,
+				6F1C735029C9CC8600A735A8 /* EateryConverter+RealmEatery.swift */,
 				6FB8F1DC29AFBAA9008EC37D /* EateryViewModelConverter.swift */,
 				6FB8F1DE29AFBBE9008EC37D /* FiltersViewModelConverter.swift */,
 			);
@@ -840,6 +859,15 @@
 			path = ErrorView;
 			sourceTree = "<group>";
 		};
+		6FD8F83729C8F03D003D6789 /* DB */ = {
+			isa = PBXGroup;
+			children = (
+				6F1C734D29C9C7D100A735A8 /* Realm */,
+				6FD8F83829C8F062003D6789 /* DBWorker.swift */,
+			);
+			path = DB;
+			sourceTree = "<group>";
+		};
 		6FF71AA029AD10C60089BADB /* MainPresenter */ = {
 			isa = PBXGroup;
 			children = (
@@ -1072,6 +1100,7 @@
 				6F8C9D1F26B02BA6000D5DA0 /* LocationWorker.swift in Sources */,
 				6F7F869529A7DB620096F618 /* SplashInteractorImpl+StateMachine.swift in Sources */,
 				6FF277E82773777700D4FFE0 /* SplashViewModel.swift in Sources */,
+				6F1C735129C9CC8600A735A8 /* EateryConverter+RealmEatery.swift in Sources */,
 				6FC044C429B5E5FD0057BA1E /* PillLabel.swift in Sources */,
 				6F3EEA4E26A05E9D00821E41 /* Interactorable.swift in Sources */,
 				6F56108E26B17B6D002182BA /* SplashInteractorImpl.swift in Sources */,
@@ -1080,6 +1109,7 @@
 				6F7633D6277235CD005BB743 /* UIApplication+Extensions.swift in Sources */,
 				6FA1016826B324C80052D939 /* Optional+Extensions.swift in Sources */,
 				6F84169729B62DD000514C18 /* MapRenderRequest.swift in Sources */,
+				6FD8F83929C8F062003D6789 /* DBWorker.swift in Sources */,
 				6FA4A3C32741627D005AEEBE /* AppNavigationController.swift in Sources */,
 				6F0BEAB828D8947C00C1788F /* FilterCell.swift in Sources */,
 				6F2B0E5F299D5C6C00AFA2CB /* MainInteractorImpl+MainUseCase.swift in Sources */,
@@ -1099,6 +1129,7 @@
 				6F3EE9F026A047B800821E41 /* Coordinatable.swift in Sources */,
 				6F3EE9B126A0459800821E41 /* AppDelegate.swift in Sources */,
 				6FAA46B927A8252900266F2D /* MainStateMachine.swift in Sources */,
+				6F1C734F29C9C7E500A735A8 /* Realm.swift in Sources */,
 				6F8411FE278DD043006C5B8E /* AnyConverter.swift in Sources */,
 				6F0B3DF226AF1DC600A01ABF /* FetchType.swift in Sources */,
 				6F3EEA4B26A0510600821E41 /* Globals.swift in Sources */,
@@ -1122,6 +1153,7 @@
 				6F0B3DF426AF1DC600A01ABF /* FoodApi.swift in Sources */,
 				6FAE415C29B9053D00D27534 /* MainInteractorImpl+StateMachine.swift in Sources */,
 				6F0B3DF126AF1DC600A01ABF /* ArcGisWorker.swift in Sources */,
+				6FD8F83B29C8FEF7003D6789 /* RealmEatery.swift in Sources */,
 				6F48F76C28DE1A1100C0DCC3 /* GetUpsideLogoView.swift in Sources */,
 				6FC044C329B5E5C10057BA1E /* ErrordButton.swift in Sources */,
 				6FA77F7A29B76DE7006E81C8 /* BaseListComponent.swift in Sources */,
@@ -1130,7 +1162,7 @@
 				6FA32B6B26B6F03600275B48 /* SplashPresenter.swift in Sources */,
 				6FC847CB28CA5C7800301F65 /* ListComponent.swift in Sources */,
 				6FB6CE962731C0EE0011EB5B /* Configuration.swift in Sources */,
-				6F8411FC278DC676006C5B8E /* EateryConverter.swift in Sources */,
+				6F8411FC278DC676006C5B8E /* EateryConverter+AGSGeocodeResult.swift in Sources */,
 				6FCC5BDC28C8A01800E29CC6 /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

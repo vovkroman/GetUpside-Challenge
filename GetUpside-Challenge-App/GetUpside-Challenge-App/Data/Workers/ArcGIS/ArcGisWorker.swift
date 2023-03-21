@@ -1,6 +1,5 @@
 import ArcGIS
 import FutureKit
-//import RealmSwift
 
 enum ArcGis {}
 
@@ -39,7 +38,7 @@ extension ArcGis.Worker: GetEateriesUseCase {
     }
     
     func fetchData(_ coordinate: Coordinates) -> Future<[Eatery]> {
-        let converter = Convertor.EateryConverter()
+        let converter = Convertor.GeocodeEateryConverter()
         return fetch(coordinate)
                .transformed { results in
                    return results.compactMap{ try? converter.convertFromTo(from: $0) }

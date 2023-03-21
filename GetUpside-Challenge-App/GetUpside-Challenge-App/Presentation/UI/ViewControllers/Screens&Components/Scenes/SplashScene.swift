@@ -22,7 +22,7 @@ extension Splash {
         
         private func setup() {
             containerView.parentViewController = self // I'm your father Luke
-            interactor.requestLocation()
+            interactor.onStart()
         }
         
         private func fetchData(by coordinate: Coordinates) {

@@ -13,7 +13,7 @@ extension Main {
         
         // Workers
         let locationWorker: LocationUseCase
-        let apiWorker: GetEateriesUseCase
+        let apiWorker: any GetEateriesUseCase
         
         // Presenters
         let presenter: MainPresenterSupporting
@@ -39,7 +39,7 @@ extension Main {
         
         init(
             _ location: LocationUseCase,
-            _ apiWorker: GetEateriesUseCase,
+            _ apiWorker: any GetEateriesUseCase,
             _ presenter: MainPresenterSupporting,
             _ queue: DispatchQueue,
             _ eateries: [Model]
