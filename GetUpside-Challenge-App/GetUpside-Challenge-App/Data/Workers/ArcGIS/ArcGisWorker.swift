@@ -9,6 +9,10 @@ protocol GetEateriesUseCase: AnyObject {
     func cancelFetching()
 }
 
+protocol EateriesSavable: AnyObject {
+    func save(_ eateries: [Eatery])
+}
+
 extension ArcGis {
     final class Worker {
         
@@ -38,7 +42,7 @@ extension ArcGis.Worker: GetEateriesUseCase {
     }
     
     func fetchData(_ coordinate: Coordinates) -> Future<[Eatery]> {
-        let converter = Convertor.GeocodeEateryConverter()
+        let converter = Convertor.AGSGeocodeResultEateryConverter()
         return fetch(coordinate)
                .transformed { results in
                    return results.compactMap{ try? converter.convertFromTo(from: $0) }

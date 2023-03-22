@@ -1,13 +1,13 @@
 import RealmSwift
 
 class RealmCoordinates: Object {
-    @Persisted var longitude: Double = 0.0
-    @Persisted var latitude: Double = 0.0
+    @Persisted var longitude: Double = .nan
+    @Persisted var latitude: Double = .nan
 }
 
 class RealmEatery: Object {
-    @Persisted(primaryKey: true) var id = 0
+    @Persisted(primaryKey: true) var id: UUID = UUID()
     @Persisted var name: String
     @Persisted var category: String = ""
-    @Persisted var location: RealmCoordinates?
+    @Persisted var coordinates: RealmCoordinates?
 }

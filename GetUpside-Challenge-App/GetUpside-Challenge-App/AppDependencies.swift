@@ -61,7 +61,10 @@ extension AppDependencies: SplashSceneFactoriable {
     func buildSplashScene(_ coordinator: AnyCoordinating<Splash.Event>) -> UIViewController {
         let locationWorker = Location.Worker(locationManager)
         let argisWorker = ArcGis.Worker(AnyFetchRouter())
-        let dbWorker = DB.Worker(databaseManager)
+        let dbWorker = DB.Worker(
+            databaseManager,
+            AnyConverter(Convertor.RealmEateryConverter())
+        )
         let localQueue = DispatchQueue(
             label: "com.getUpside-challenge-splash",
             target: queue
@@ -89,6 +92,10 @@ extension AppDependencies: MainSceneFactoriable {
     func buildMainScene(_ coordinator: AnyCoordinating<Main.Event>, _ entities: [Eatery]) -> UIViewController {
         let locationWorker = Location.Worker(locationManager)
         let argisWorker = ArcGis.Worker(AnyFetchRouter())
+        let dbWorker = DB.Worker(
+            databaseManager,
+            AnyConverter(Convertor.RealmEateryConverter())
+        )
         let localQueue = DispatchQueue(
             label: "com.getUpside-challenge-main",
             target: queue
@@ -98,6 +105,7 @@ extension AppDependencies: MainSceneFactoriable {
         let interactor = Main.InteractorImpl(
             locationWorker,
             argisWorker,
+            dbWorker,
             presenter,
             localQueue,
             entities

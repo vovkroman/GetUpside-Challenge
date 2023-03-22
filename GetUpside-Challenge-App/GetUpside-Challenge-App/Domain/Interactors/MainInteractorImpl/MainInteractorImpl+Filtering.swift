@@ -23,6 +23,7 @@ extension Main.InteractorImpl {
             case .success(let coordinates):
                 createAndApply(id, coordinates)
             case .failure(let error):
+                /// handle error accordanly (might be request autorization) or redicrect
                 break
             }
         }

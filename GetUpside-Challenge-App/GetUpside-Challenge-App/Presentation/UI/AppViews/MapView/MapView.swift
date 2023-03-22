@@ -15,7 +15,7 @@ class MapView: GMSMapView, NibReusable {
     }
     
     // MARK: - Configuration methods
-
+    
     func onDidLayoutSubviews() {
         bringSubviewToFront(touchView)
     }
@@ -28,12 +28,26 @@ class MapView: GMSMapView, NibReusable {
         selectedMarker?.deselect()
     }
     
+    func applySettings(
+        _ isMyLocation: Bool = true,
+        _ isMyLocationButton: Bool = true,
+        _ isCompassButton: Bool = true) {
+        isMyLocationEnabled = isMyLocation
+        settings.myLocationButton = isMyLocationButton
+        settings.compassButton = isCompassButton
+    }
+    
     func applyStyle() {
         applyMapStyle()
     }
     
-    func setup() {
-        isMyLocationEnabled = true
+    func centerToMyLocation(_ zoom: Float = 14.0) {
+        guard let location = myLocation else { return }
+        camera = GMSCameraPosition(
+            latitude: location.coordinate.latitude,
+            longitude: location.coordinate.longitude,
+            zoom: zoom
+        )
     }
 }
 
@@ -47,4 +61,3 @@ private extension MapView {
         }
     }
 }
-

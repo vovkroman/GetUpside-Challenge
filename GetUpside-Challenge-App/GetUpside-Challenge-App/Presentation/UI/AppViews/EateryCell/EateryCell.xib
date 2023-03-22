@@ -18,14 +18,14 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BQz-Ko-zcF" customClass="MonochromeLabel" customModule="UI">
-                        <rect key="frame" x="8" y="8" width="66.5" height="59"/>
+                        <rect key="frame" x="8" y="8" width="66.5" height="83"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="caffee" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f6G-YL-BwQ" customClass="PillLabel" customModule="GetUpside_Challenge_App" customModuleProvider="target">
-                        <rect key="frame" x="8" y="75" width="40.5" height="17"/>
+                        <rect key="frame" x="8" y="99" width="40.5" height="17"/>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -36,26 +36,16 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Label " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rWd-vQ-bai">
-                        <rect key="frame" x="8" y="100" width="36.5" height="16"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="rWd-vQ-bai" firstAttribute="top" secondItem="f6G-YL-BwQ" secondAttribute="bottom" constant="8" id="21J-YV-4Gm"/>
                     <constraint firstItem="BQz-Ko-zcF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="Huw-Lf-rQK"/>
                     <constraint firstItem="f6G-YL-BwQ" firstAttribute="top" secondItem="BQz-Ko-zcF" secondAttribute="bottom" constant="8" id="Ina-sJ-dNj"/>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="BQz-Ko-zcF" secondAttribute="trailing" constant="8" id="IvM-XS-WVh"/>
                     <constraint firstItem="f6G-YL-BwQ" firstAttribute="leading" secondItem="BQz-Ko-zcF" secondAttribute="leading" id="K3b-wt-5Jp"/>
-                    <constraint firstItem="rWd-vQ-bai" firstAttribute="leading" secondItem="f6G-YL-BwQ" secondAttribute="leading" id="SMj-BB-A00"/>
-                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="rWd-vQ-bai" secondAttribute="trailing" constant="8" id="glf-Ep-Z3N"/>
+                    <constraint firstAttribute="bottom" secondItem="f6G-YL-BwQ" secondAttribute="bottom" constant="8" id="goO-rr-Mdd"/>
                     <constraint firstItem="BQz-Ko-zcF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="vQy-hF-h4c"/>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="f6G-YL-BwQ" secondAttribute="trailing" constant="8" id="xHX-Rs-C9Z"/>
-                    <constraint firstAttribute="bottom" secondItem="rWd-vQ-bai" secondAttribute="bottom" constant="8" id="xhe-HQ-sDu"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

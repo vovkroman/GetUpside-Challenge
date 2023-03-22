@@ -19,7 +19,8 @@
 		6F0BEAB928D8947C00C1788F /* FilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F0BEAB728D8947C00C1788F /* FilterCell.xib */; };
 		6F0BEABB28D8A76500C1788F /* FilterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0BEABA28D8A76500C1788F /* FilterViewModel.swift */; };
 		6F1C734F29C9C7E500A735A8 /* Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1C734E29C9C7E500A735A8 /* Realm.swift */; };
-		6F1C735129C9CC8600A735A8 /* EateryConverter+RealmEatery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1C735029C9CC8600A735A8 /* EateryConverter+RealmEatery.swift */; };
+		6F1C735129C9CC8600A735A8 /* RealmEateryConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1C735029C9CC8600A735A8 /* RealmEateryConverter.swift */; };
+		6F1C735929CA131400A735A8 /* DispatchQueue+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1C735829CA131400A735A8 /* DispatchQueue+Extension.swift */; };
 		6F1DFD28299D41B000E3F30D /* FilterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F1DFD27299D41B000E3F30D /* FilterKit.framework */; };
 		6F1DFD29299D41B000E3F30D /* FilterKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6F1DFD27299D41B000E3F30D /* FilterKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6F2B0E5D299D5BB500AFA2CB /* MainInteractorImpl+Filtering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2B0E5C299D5BB500AFA2CB /* MainInteractorImpl+Filtering.swift */; };
@@ -62,7 +63,7 @@
 		6F6B7A142734567A00B46087 /* ServiceSetupers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F6B7A132734567A00B46087 /* ServiceSetupers.swift */; };
 		6F7633D6277235CD005BB743 /* UIApplication+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7633D5277235CD005BB743 /* UIApplication+Extensions.swift */; };
 		6F7F869529A7DB620096F618 /* SplashInteractorImpl+StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7F869429A7DB620096F618 /* SplashInteractorImpl+StateMachine.swift */; };
-		6F8411FC278DC676006C5B8E /* EateryConverter+AGSGeocodeResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8411FB278DC676006C5B8E /* EateryConverter+AGSGeocodeResult.swift */; };
+		6F8411FC278DC676006C5B8E /* AGSGeocodeResultEateryConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8411FB278DC676006C5B8E /* AGSGeocodeResultEateryConverter.swift */; };
 		6F8411FE278DD043006C5B8E /* AnyConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8411FD278DD043006C5B8E /* AnyConverter.swift */; };
 		6F84169429B62DD000514C18 /* Shape+Drawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F84169029B62DCF00514C18 /* Shape+Drawing.swift */; };
 		6F84169529B62DD000514C18 /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F84169129B62DCF00514C18 /* Shape.swift */; };
@@ -167,7 +168,8 @@
 		6F0BEAB728D8947C00C1788F /* FilterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterCell.xib; sourceTree = "<group>"; };
 		6F0BEABA28D8A76500C1788F /* FilterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewModel.swift; sourceTree = "<group>"; };
 		6F1C734E29C9C7E500A735A8 /* Realm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Realm.swift; sourceTree = "<group>"; };
-		6F1C735029C9CC8600A735A8 /* EateryConverter+RealmEatery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EateryConverter+RealmEatery.swift"; sourceTree = "<group>"; };
+		6F1C735029C9CC8600A735A8 /* RealmEateryConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmEateryConverter.swift; sourceTree = "<group>"; };
+		6F1C735829CA131400A735A8 /* DispatchQueue+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Extension.swift"; sourceTree = "<group>"; };
 		6F1DFD27299D41B000E3F30D /* FilterKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FilterKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F2B0E5C299D5BB500AFA2CB /* MainInteractorImpl+Filtering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainInteractorImpl+Filtering.swift"; sourceTree = "<group>"; };
 		6F2B0E5E299D5C6C00AFA2CB /* MainInteractorImpl+MainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainInteractorImpl+MainUseCase.swift"; sourceTree = "<group>"; };
@@ -212,7 +214,7 @@
 		6F6B7A132734567A00B46087 /* ServiceSetupers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceSetupers.swift; sourceTree = "<group>"; };
 		6F7633D5277235CD005BB743 /* UIApplication+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extensions.swift"; sourceTree = "<group>"; };
 		6F7F869429A7DB620096F618 /* SplashInteractorImpl+StateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SplashInteractorImpl+StateMachine.swift"; sourceTree = "<group>"; };
-		6F8411FB278DC676006C5B8E /* EateryConverter+AGSGeocodeResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EateryConverter+AGSGeocodeResult.swift"; sourceTree = "<group>"; };
+		6F8411FB278DC676006C5B8E /* AGSGeocodeResultEateryConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AGSGeocodeResultEateryConverter.swift; sourceTree = "<group>"; };
 		6F8411FD278DD043006C5B8E /* AnyConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyConverter.swift; sourceTree = "<group>"; };
 		6F84169029B62DCF00514C18 /* Shape+Drawing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Shape+Drawing.swift"; sourceTree = "<group>"; };
 		6F84169129B62DCF00514C18 /* Shape.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shape.swift; sourceTree = "<group>"; };
@@ -539,8 +541,8 @@
 			children = (
 				6F414D83278DA67A00D0EA28 /* Convertable.swift */,
 				6F8411FD278DD043006C5B8E /* AnyConverter.swift */,
-				6F8411FB278DC676006C5B8E /* EateryConverter+AGSGeocodeResult.swift */,
-				6F1C735029C9CC8600A735A8 /* EateryConverter+RealmEatery.swift */,
+				6F8411FB278DC676006C5B8E /* AGSGeocodeResultEateryConverter.swift */,
+				6F1C735029C9CC8600A735A8 /* RealmEateryConverter.swift */,
 				6FB8F1DC29AFBAA9008EC37D /* EateryViewModelConverter.swift */,
 				6FB8F1DE29AFBBE9008EC37D /* FiltersViewModelConverter.swift */,
 			);
@@ -662,7 +664,6 @@
 			isa = PBXGroup;
 			children = (
 				6F8C9D1E26B02BA6000D5DA0 /* LocationWorker.swift */,
-				6F8C9D2226B0341A000D5DA0 /* Location+Extensions.swift */,
 			);
 			path = Location;
 			sourceTree = "<group>";
@@ -670,10 +671,12 @@
 		6FA1016626B324A10052D939 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				6F8C9D2226B0341A000D5DA0 /* Location+Extensions.swift */,
 				6F8C9D2726B05CE7000D5DA0 /* Floating+Extensions.swift */,
 				6FA1016726B324C80052D939 /* Optional+Extensions.swift */,
 				6F7633D5277235CD005BB743 /* UIApplication+Extensions.swift */,
 				6FB06C7828D22FB200955644 /* GMSMarker+Extensions.swift */,
+				6F1C735829CA131400A735A8 /* DispatchQueue+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1100,7 +1103,7 @@
 				6F8C9D1F26B02BA6000D5DA0 /* LocationWorker.swift in Sources */,
 				6F7F869529A7DB620096F618 /* SplashInteractorImpl+StateMachine.swift in Sources */,
 				6FF277E82773777700D4FFE0 /* SplashViewModel.swift in Sources */,
-				6F1C735129C9CC8600A735A8 /* EateryConverter+RealmEatery.swift in Sources */,
+				6F1C735129C9CC8600A735A8 /* RealmEateryConverter.swift in Sources */,
 				6FC044C429B5E5FD0057BA1E /* PillLabel.swift in Sources */,
 				6F3EEA4E26A05E9D00821E41 /* Interactorable.swift in Sources */,
 				6F56108E26B17B6D002182BA /* SplashInteractorImpl.swift in Sources */,
@@ -1136,6 +1139,7 @@
 				6F3EEA2E26A04EB000821E41 /* SplashView.swift in Sources */,
 				6F67656429C0E3E400CF6ACE /* Filter.swift in Sources */,
 				6FC044C729B5F0C20057BA1E /* AnyCoordinating.swift in Sources */,
+				6F1C735929CA131400A735A8 /* DispatchQueue+Extension.swift in Sources */,
 				6FB06C7928D22FB200955644 /* GMSMarker+Extensions.swift in Sources */,
 				6F414D84278DA67A00D0EA28 /* Convertable.swift in Sources */,
 				6F6B7A142734567A00B46087 /* ServiceSetupers.swift in Sources */,
@@ -1162,7 +1166,7 @@
 				6FA32B6B26B6F03600275B48 /* SplashPresenter.swift in Sources */,
 				6FC847CB28CA5C7800301F65 /* ListComponent.swift in Sources */,
 				6FB6CE962731C0EE0011EB5B /* Configuration.swift in Sources */,
-				6F8411FC278DC676006C5B8E /* EateryConverter+AGSGeocodeResult.swift in Sources */,
+				6F8411FC278DC676006C5B8E /* AGSGeocodeResultEateryConverter.swift in Sources */,
 				6FCC5BDC28C8A01800E29CC6 /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

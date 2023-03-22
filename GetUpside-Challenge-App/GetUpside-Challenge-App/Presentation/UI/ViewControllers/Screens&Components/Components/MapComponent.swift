@@ -42,9 +42,10 @@ extension MapComponent {
     }
     
     private func onLoaded() {
-        contentView.setup()
         contentView.delegate = self
         contentView.applyStyle()
+        contentView.applySettings()
+        contentView.centerToMyLocation()
     }
 }
 

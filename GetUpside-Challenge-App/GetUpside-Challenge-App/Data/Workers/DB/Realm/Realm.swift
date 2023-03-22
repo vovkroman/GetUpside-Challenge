@@ -1,90 +1,52 @@
 import RealmSwift
-import FutureKit
 
 enum RealmSpace {}
 
-enum RealmError: Error {
-    case empty
-    case other(String)
+struct RealmError: Error {
+    
+    let context: String
+    
+    init(_ context: String) {
+        self.context = context
+    }
 }
 
 extension RealmSpace {
     
     class Manager {
         
-        private let queue: DispatchQueue
+        let queue: DispatchQueue
         
         private lazy var core: Realm = {
             return try! Realm(queue: queue)
         }()
         
-        func save<O: Object>(_ object: O) -> Future<Bool> {
-            let promise = Promise<Bool>()
-            queue.async { [weak self] in
-                do {
-                    try self?.write(object)
-                    promise.resolve(with: true)
-                } catch let error {
-                    promise.reject(with: error)
-                }
+        func write<O: Object>(_ object: O) throws {
+            try core.write {
+                core.add(object)
             }
-            return promise
         }
         
-        func save<O: Object, S: Collection>(_ objects: S) -> Future<Bool> where S.Element == O {
-            let promise = Promise<Bool>()
-            queue.async { [weak self] in
-                do {
-                    try self?.write(objects)
-                    promise.resolve(with: true)
-                } catch let error {
-                    promise.reject(with: error)
-                }
+        func write<S: Collection>(_ objects: S) throws where S.Element: Object {
+            try core.write {
+                core.add(objects)
             }
-            return promise
         }
         
-        func request<O: Object>(aClass: O.Type) -> Future<Results<O>> {
-            let promise = Promise<Results<O>>()
-            queue.async { [weak self] in
-                do {
-                    guard let objects = try self?.read(aClass: O.self) else {
-                        throw RealmError.empty
-                    }
-                    promise.resolve(with: objects)
-                } catch let error {
-                    promise.reject(with: error)
-                }
+        func readAll<O: Object>(aClass: O.Type) throws -> Results<O> {
+            let objects = core.objects(aClass)
+            return objects
+        }
+        
+        func removeAll<O: Object>(aClass: O.Type) throws {
+            let objects = try readAll(aClass: aClass)
+            try core.write {
+                core.delete(objects)
             }
-            return promise
         }
         
         init(_ queue: DispatchQueue) {
             self.queue = queue
         }
     }
-}
-
-private extension RealmSpace.Manager {
-    
-    func write<O: Object>(_ object: O) throws {
-        try core.write {
-            core.add(object)
-        }
-    }
-    
-    func write<O: Object, S: Collection>(_ objects: S) throws where S.Element == O {
-        try core.write {
-            core.add(objects)
-        }
-    }
-    
-    func read<O: Object>(aClass: O.Type) throws -> Results<O> {
-        if core.isEmpty {
-            throw RealmError.empty
-        }
-        let objects = core.objects(aClass)
-        return objects
-    }
-    
 }

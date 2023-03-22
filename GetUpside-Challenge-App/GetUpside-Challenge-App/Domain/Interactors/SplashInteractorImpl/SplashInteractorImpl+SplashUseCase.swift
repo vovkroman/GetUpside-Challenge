@@ -6,10 +6,12 @@ extension Splash.InteractorImpl: SplashUseCase {
         loadingDidStart()
         dbWorker.fetchData(Coordinates()).observe { [weak self] result in
             switch result {
-            case .success(let items):
+            case .success(let items) where !items.isEmpty:
                 self?.coordinator?.cacthTheEvent(items)
-            case .failure(_):
+            case .success(_):
                 self?.requestLocation()
+            case .failure(let error):
+                self?.processTheError(.other(error))
             }
         }
     }

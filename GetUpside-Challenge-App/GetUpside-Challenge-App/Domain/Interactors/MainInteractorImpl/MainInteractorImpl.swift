@@ -13,13 +13,17 @@ extension Main {
         
         // Workers
         let locationWorker: LocationUseCase
-        let apiWorker: any GetEateriesUseCase
+        let apiWorker: GetEateriesUseCase
+        let dbWorker: EateriesSavable
         
         // Presenters
         let presenter: MainPresenterSupporting
         
         var eateries: Eateries
         var filters: Filters = []
+        
+        // App Observers
+        var token: Any?
         
         var executor: FilterExecutor<String, Eatery> = FilterExecutor()
         
@@ -39,13 +43,15 @@ extension Main {
         
         init(
             _ location: LocationUseCase,
-            _ apiWorker: any GetEateriesUseCase,
+            _ apiWorker: GetEateriesUseCase,
+            _ dbWorker: EateriesSavable,
             _ presenter: MainPresenterSupporting,
             _ queue: DispatchQueue,
             _ eateries: [Model]
         ) {
             self.apiWorker = apiWorker
             self.locationWorker = location
+            self.dbWorker = dbWorker
             self.presenter = presenter
             self.queue = queue
             self.eateries = Set(eateries)

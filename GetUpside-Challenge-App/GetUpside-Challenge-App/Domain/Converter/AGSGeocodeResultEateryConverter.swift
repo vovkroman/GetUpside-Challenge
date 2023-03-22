@@ -3,7 +3,7 @@ import ArcGIS
 
 extension Convertor {
     
-    struct GeocodeEateryConverter: Convertable {
+    struct AGSGeocodeResultEateryConverter: Convertable {
         
         private enum Keys {
             static let type = "Type"

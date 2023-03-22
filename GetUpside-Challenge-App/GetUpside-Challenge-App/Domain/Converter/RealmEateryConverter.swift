@@ -3,11 +3,11 @@ import RealmSwift
 extension Convertor {
     
     struct RealmEateryConverter: Convertable {
-        typealias From = Results<RealmEatery>
+        typealias From = Array<RealmEatery>
         typealias To = [Eatery]
         typealias Error = Convertor.Error
         
-        func convertFromTo(from: Results<RealmEatery>) throws -> [Eatery] {
+        func convertFromTo(from: Array<RealmEatery>) throws -> [Eatery] {
             var eateries: [Eatery] = []
             for realm in from {
                 guard let item = try? convertFromTo(from: realm) else { continue }
@@ -16,14 +16,26 @@ extension Convertor {
             return eateries
         }
         
-        func convertToFrom(from: [Eatery]) throws -> Results<RealmEatery> {
-            // no need convert from Eatery.self to AGSGeocodeResult.self
-            throw Error("Could't convert item from \([Eatery].self) to \(Results<RealmEatery>.self)")
+        func convertToFrom(from: [Eatery]) throws -> Array<RealmEatery> {
+            return try from.map(convertFromTo)
         }
     }
 }
 
 private extension Convertor.RealmEateryConverter {
+    
+    func convertFromTo(from: Eatery) throws -> RealmEatery {
+        let realmEatery = RealmEatery()
+        realmEatery.name = from.name
+        realmEatery.category = from.category.rawValue
+        
+        let coordinates = RealmCoordinates()
+        coordinates.longitude = from.coordinates.longitude
+        coordinates.latitude = from.coordinates.latitude
+        realmEatery.coordinates = coordinates
+        return realmEatery
+    }
+    
     func convertFromTo(from: RealmEatery) throws -> Eatery {
         var category: Eatery.Category = .default
         if !from.category.isEmpty {
@@ -34,15 +46,18 @@ private extension Convertor.RealmEateryConverter {
             name = from.name
         }
         
-        guard let location = from.location else {
+        guard let coordinates = from.coordinates,
+              !coordinates.longitude.isNaN,
+              !coordinates.latitude.isNaN
+        else {
             throw Error("Location for \(Eatery.self) might not be nil")
         }
         
         return Eatery(
             category: category,
             coordinates: Coordinates(
-                latitude: location.latitude,
-                longitude: location.longitude
+                latitude: coordinates.latitude,
+                longitude: coordinates.longitude
             ),
             name: name,
             payload: nil
