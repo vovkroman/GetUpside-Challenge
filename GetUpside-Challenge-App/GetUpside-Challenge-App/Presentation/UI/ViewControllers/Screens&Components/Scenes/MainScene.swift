@@ -3,6 +3,7 @@ import UI
 protocol Component: UIViewController {
     func onLoading()
     func onDisplay<ViewModel: Main.ViewModelable>(_ viewModels: [ViewModel])
+    func onLocationDidChange(_ coordinates: Coordinates)
 }
 
 extension Main {
@@ -30,7 +31,7 @@ extension Main {
             contentView.filterView.parentViewController = self
             contentView.filterView.childViewController = filter
             
-            interactor.onInitialLoaded()
+            interactor.onStart()
         }
         
         override func viewDidLayoutSubviews() {
@@ -65,6 +66,12 @@ extension Main {
 }
 
 extension Main.Scene: MainPresentable {
+    
+    func onLocationDidChange(_ coordinates: Coordinates) {
+        for overlay in components {
+            overlay.onLocationDidChange(coordinates)
+        }
+    }
     
     func onLoading() {
         for overlay in components {

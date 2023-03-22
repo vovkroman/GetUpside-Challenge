@@ -8,6 +8,7 @@ protocol MainPresentable: AnyObject {
     func onLoading()
     func onFilterChanged(_ viewModel: Filter.ViewModel)
     func onDisplay(_ viewModels: [Main.ViewModel])
+    func onLocationDidChange(_ coordinates: Coordinates)
 }
 
 extension Main {

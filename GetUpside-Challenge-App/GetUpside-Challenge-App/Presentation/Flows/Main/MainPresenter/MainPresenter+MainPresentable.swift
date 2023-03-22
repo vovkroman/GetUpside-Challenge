@@ -2,6 +2,11 @@ import Foundation
 
 extension Main.Presenter: MainPresenterSupporting {
     
+    func onChangeLocation(_ coordinates: Coordinates) {
+        view?.onLocationDidChange(coordinates)
+    }
+    
+    
     func onDataDidLoad(_ response: Main.Response, _ isInitial: Bool) {
         let eateries = response.eateries
         if !eateries.isEmpty {

@@ -41,11 +41,10 @@ class MapView: GMSMapView, NibReusable {
         applyMapStyle()
     }
     
-    func centerToMyLocation(_ zoom: Float = 14.0) {
-        guard let location = myLocation else { return }
+    func centerToLocation(_ coordinates: Coordinates, _ zoom: Float = 8.0) {
         camera = GMSCameraPosition(
-            latitude: location.coordinate.latitude,
-            longitude: location.coordinate.longitude,
+            latitude: coordinates.latitude,
+            longitude: coordinates.longitude,
             zoom: zoom
         )
     }

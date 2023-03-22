@@ -45,7 +45,6 @@ extension MapComponent {
         contentView.delegate = self
         contentView.applyStyle()
         contentView.applySettings()
-        contentView.centerToMyLocation()
     }
 }
 
@@ -79,5 +78,9 @@ extension MapComponent: Component {
             clusterManager.add(marker)
         }
         clusterManager.cluster()
+    }
+    
+    func onLocationDidChange(_ coordinates: Coordinates) {
+        contentView.centerToLocation(coordinates)
     }
 }

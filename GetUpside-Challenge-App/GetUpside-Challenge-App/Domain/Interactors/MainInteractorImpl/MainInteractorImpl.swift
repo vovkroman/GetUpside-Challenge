@@ -1,7 +1,9 @@
 import FilterKit
 
 protocol MainUseCase: DataFetching, LocationSupporting {}
-protocol MainPresenterSupporting {}
+protocol MainPresenterSupporting {
+    func onChangeLocation(_ coordinates: Coordinates)
+}
 
 extension Main {
     

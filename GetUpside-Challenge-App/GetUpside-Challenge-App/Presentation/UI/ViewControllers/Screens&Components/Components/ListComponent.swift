@@ -47,6 +47,10 @@ extension ListComponent: Component {
         self.viewModels = viewModels
         tableView.reloadData()
     }
+    
+    func onLocationDidChange(_ coordinates: Coordinates) {
+        ///
+    }
 }
 
 private extension ListComponent {

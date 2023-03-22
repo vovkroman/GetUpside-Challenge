@@ -2,6 +2,11 @@ import FutureKit
 
 extension Main.InteractorImpl: MainUseCase {
     
+    func onStart() {
+        addObserves()
+        onInitialLoaded()
+    }
+    
     func requestLocation() {
         // Noting to do
     }
@@ -16,6 +21,11 @@ extension Main.InteractorImpl: MainUseCase {
                 break
             }
         }
+    }
+    
+    func onStoreLast(_ k: Int = 20, _ eateries: [Eatery]) {
+        let count = eateries.count
+        dbWorker.save(Array(eateries[max(0, count - k)..<count]))
     }
 }
 
@@ -47,6 +57,7 @@ private extension Main.InteractorImpl {
             newFilterIds.append(Filter.Model(filterId, index))
             index += 1
         }
+        onStoreLast(20, newEateries)
         onInitialLoadingDidFinish(newEateries, newFilterIds)
     }
     
@@ -66,6 +77,8 @@ private extension Main.InteractorImpl {
             newFilterIds.append(Filter.Model(filterId, idx))
             idx += 1
         }
-        onLoadDidFinish(executor.filter(eateries), newFilterIds)
+        let items = executor.filter(eateries)
+        onStoreLast(20, items)
+        onLoadDidFinish(items, newFilterIds)
     }
 }
