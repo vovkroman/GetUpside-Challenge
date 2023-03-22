@@ -2,14 +2,14 @@ import UI
 import GoogleMaps
 import GoogleMapsUtils
 
-protocol LocatingDelegate: AnyObject {
-    func onLocatingDidChage(_ component: UIViewController, _ coordinate: Coordinates)
+protocol MapActionResolverDelegate: AnyObject {
+    func onDidAction(_ component: UIViewController, _ coordinate: Coordinates)
 }
 
 final class MapComponent: BaseComponent<MapView> {
     
     var clusterManager: ClusterManagerSupporting!
-    weak var delegate: LocatingDelegate?
+    weak var resolver: MapActionResolverDelegate?
         
     // MARK: - Life Cycle
     
@@ -52,7 +52,7 @@ extension MapComponent: GMSMapViewDelegate {
     func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
         let touchPoint = mapView.projection.point(for: coordinate)
         contentView.didTouch(touchPoint)
-        delegate?.onLocatingDidChage(self, coordinate)
+        resolver?.onDidAction(self, coordinate)
     }
 }
 

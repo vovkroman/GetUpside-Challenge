@@ -11,6 +11,9 @@ extension DB {
         
         private let manager: RealmSpace.Manager
         private let converter: Converter
+        
+        // Realm core object is running in its own queue
+        // Worker should resolve all the cases to run
         private var queue: DispatchQueue {
             return manager.queue
         }

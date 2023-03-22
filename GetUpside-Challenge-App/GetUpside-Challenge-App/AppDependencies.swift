@@ -122,7 +122,7 @@ extension AppDependencies: MainSceneFactoriable {
             [mapComponent, listComponent],
             filterComponent
         )
-        mapComponent.delegate = scene
+        mapComponent.resolver = scene
         filterComponent.delegate = scene
         
         presenter.view = scene

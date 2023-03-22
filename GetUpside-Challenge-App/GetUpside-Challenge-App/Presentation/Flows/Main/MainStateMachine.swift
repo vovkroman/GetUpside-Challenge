@@ -52,7 +52,14 @@ extension Main.StateMachine.State: Equatable {
         lhs: Main.StateMachine.State,
         rhs: Main.StateMachine.State
     ) -> Bool {
-        return false
+        switch (lhs, rhs) {
+        case (.idle, .idle),
+            (.loading, .loading),
+            (.error, .error):
+            return true
+        default:
+            return false
+        }
     }
 }
 

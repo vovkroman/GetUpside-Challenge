@@ -116,9 +116,9 @@ extension Main.Scene: SelectionFilterDelegate {
     }
 }
 
-extension Main.Scene: LocatingDelegate {
+extension Main.Scene: MapActionResolverDelegate {
     
-    func onLocatingDidChage(_ component: UIViewController, _ coordinate: Coordinates) {
+    func onDidAction(_ component: UIViewController, _ coordinate: Coordinates) {
         interactor.fetchingData(coordinate)
     }
 }
