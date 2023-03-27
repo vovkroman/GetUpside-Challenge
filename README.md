@@ -47,10 +47,10 @@ The project contains separated modules/frameworks + application (listed below):
 FutureKit is analog Future/Promise, provided by [Combine](https://developer.apple.com/documentation/combine) with advantage that the framework is available in iOS 10+, whereas Future/Promises available starting with iOS 13.
 
 - [x] **ReusableKit** - framework which contains generic routines to reuse UIKit/Cocoa elements. Currently supports `UITableView` and `UICollectionView`.
-- [x] **UI** - framework which provided some featured UI elements (<sub><sup>Probably, some components are going to be taken out into separated distributed pakage to reuse in other project experiences</sup></sub>).
+- [x] **UI** - framework which provided some featured UI elements (Probably, some components are going to be taken out into separated distributed pakage to reuse in other project experiences).
 - [x] **FilterKit** - framework contains unified routines for filtering elements.
 
-<sub><sup>The frameworks have been put into a separates modules so that they can be reused in other projects (if necessary, they are assembled into a static/dynamic frameworks).</sup></sub>
+<sub>The frameworks have been put into a separates modules so that they can be reused in other projects (if necessary, they are assembled into a static/dynamic frameworks).</sup>
 
 Also **GetUpside-Challenge** is using 3rd party frameworks including [ArcGIS Runtime SDK for iOS](https://developers.arcgis.com/ios/), and [GoogleMaps](https://developers.google.com/maps/documentation/ios-sdk/overview).
 
@@ -87,7 +87,7 @@ The screens call the interactor, forming a request, and the interactor runs the 
 
 Described above might be vizualzied with following graph.
 <p align="center">
-    <img src="Demo/Clean_Architecture.gif">
+    <img src="Demo/Clean_Architecture.png">
 </p>
 
 In addition, the application uses a coordinator pattern. It is used to handle various navigation streams. The interactor keeps the coordinator as a delegate and notifies it via events.
