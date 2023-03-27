@@ -595,6 +595,8 @@
 		6F56108B26B16B12002182BA /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				6FB003B42728189E0078EF14 /* Entities */,
+				6FB8F1D729AF9803008EC37D /* Response */,
 				6F414D82278DA62C00D0EA28 /* Converter */,
 				6F3EEA4C26A05E7B00821E41 /* Interactors */,
 			);
@@ -604,9 +606,6 @@
 		6F56108C26B16B23002182BA /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				6FB8F1D729AF9803008EC37D /* Response */,
-				6FB6CE972731C17C0011EB5B /* ApplicationConfig */,
-				6FB003B42728189E0078EF14 /* Entities */,
 				6F0B3DE826AF1DB200A01ABF /* Workers */,
 			);
 			path = Data;
@@ -782,6 +781,7 @@
 		6FB6CE932731BCA90011EB5B /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
+				6FB6CE972731C17C0011EB5B /* ApplicationConfig */,
 				6F6B7A122734564E00B46087 /* Services */,
 				6FB6CE942731BD070011EB5B /* Configuration.xcconfig */,
 				6FB6CE952731C0EE0011EB5B /* Configuration.swift */,

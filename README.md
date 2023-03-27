@@ -2,7 +2,7 @@
 
 ### Description:
 
-GetUpside-Challenge is a 2-screen POC to explore Clean Architecture + Coordinator, in conjunction with the State Machine pattern.
+GetUpside-Challenge is a 2-screen POC to explore Clean Architecture + Coordinator, in conjunction with the State Machine and DI Container pattern.
 
 In scope of POC following user story has been implemented:
 
@@ -16,48 +16,68 @@ Implement an iOS application using Swift, which will show nearby food places as 
  - ✔️ fetching places should happen only when all map interactions stopped (zoom, pan or camera movement). All fetched places have to be visible on map after search;
  - ✔️ completed test assignment should be uploaded to GitHub and only link to it provided as a final solution. Project needs to have instructions for launching the app in Xcode;
 
-Bonus:
-- ✔️ Splash screen has been implemented;
+In additional:
+- ✔️ Splash screen;
+- ✔️ Clustering;
+- ✔️ Filtering by category and by near user location (20 km);
 
 ### How to compile and run project:
 
 - Since app used 3rd part framework, distributed cocoapods. Install cocoapods in regular way:
-    - Change the working directory (currently **GetUpsideChallenge**);
+    - Change the working directory (currently **GetUpside-Challenge**);
     - Then, run the following command:
         ```
         $ pod install
         ``` 
-- Open GetUpsideChallenge.workspace;
+- Open GetUpside-Challenge.workspace;
 - Build and run the app;
 
 ### Structure of project:
 
-The project contains separated modules/frameworks + application (descriptions of each of them are listed below):
+The project contains separated modules/frameworks + application (listed below):
 
 - [x] **GetUpside-Challenge** - iOS target which aggregates all frameworks listed below.
 - [x] **FutureKit** - framework which provides an API for performing nonblocking asynchronous requests and combinator interfaces for serializing the processing of requests, error recovery and filtering. In most iOS libraries asynchronous interfaces are supported through either delegate-protocol pattern or with a callback. Even simple implementations of these interfaces can lead to business logic distributed over many files or deeply nested callbacks that can be hard to follow. **FutureKit** provides a very simple API to get rid of callback hell (inspired by [www.swiftbysundell.com](https://www.swiftbysundell.com/articles/under-the-hood-of-futures-and-promises-in-swift/)).
 
-**FutureKit** is analog Future/Promises, provided by combine with advantage that the framework is available in iOS 10+, whereas Future/Promises available starting with iOS 13.
+**FutureKit** is analog Future/Promise, provided by combine with advantage that the framework is available in iOS 10+, whereas Future/Promises available starting with iOS 13.
 
 - [x] **ReusableKit** - framework which contains generic routines to reuse UIKit/Cocoa elements. Currently supports `UITableView` and `UICollectionView`.
 - [x] **UI** - framework which provided some featured UI elements.
-- [x] **FilterKit** - framework provided unified routines for filtering elements.
+- [x] **FilterKit** - framework contains unified routines for filtering elements.
+
+The frameworks have been put into a separates modules so that they can be reused in other projects (if necessary, they are assembled into a static/dynamic frameworks).
 
 Also **GetUpside-Challenge** is using 3rd party frameworks including [ArcGIS Runtime SDK for iOS](https://developers.arcgis.com/ios/), and [GoogleMaps](https://developers.google.com/maps/documentation/ios-sdk/overview).
 
 ### Architectural approach:
 
-Project is following MVVM+C pattern:
-- *ViewController*/*UIView* is responsible for rendering, and passes user actions to *ViewModel* (knows about *ViewModel*);
-- *ViewModel* knows about all services/providers and implement interactions with them (in the current case, this is fetching data) + *viewModel* is mapping fetched items into presentation Nodes.
-- *Presentation node* is a wrapper around *Model* (Entity), it's implementing logic related to specific UI components populating, depends on data.
-- *Model* = Entity;
-- *Coordinator* is responsible for navigation in the scope of specific flow (one or several controllers)(might implement transition animation logic between specific screens);
+As it's been mentioned **GetUpside-Challenge** is following [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) pattern (VIP) (*by Robert C. Martin (Uncle Bob)*).
+
+Entire project classes might be devided into 3 layers: **Data**, **Domain**, and **Presentation** layers.
+**Data** layer components:
+
+- Data Entities (e.x.: *RealmEetery*, *AGSGeocodeResult*);
+- Data Services (e.x.: *Realm.Manager*); 
+
+**Domain** layer components:
+
+- Domain Entities (e.x.: *Eatery*);
+- Wrokers (e.x.: *ArcGisWorker*, *DBWorker* (worker which dealing with Realm DB), *LocationWorker*));
+- Interactors (e.x.: *Splash.InteractorImpl*, *Main.InteractorImpl*);
+
+**Presenation** layer components:
+- Presenters (e.x.: )
+- View Models (e.x.: *Main.ViewModel*, *Splash.ViewModel*);
+
+From the bottom direction:
+
+Every service operates its own data entity.
+The worker keeps the reference to service instance and handles all the API requests and responses to this data service. It implements its own specific "use case" (e.x.:. *GetEateryUseCase*) e.g. specific business scenarios. Also it might convert data from data entities to domain entities.
+Interactor observes callbacks from workers, and depends on the received data changes states in State Machine accordantly (used to handle difficult scenarios). Presenter subscribe to states change and, prepares data to display, packing it into ViewModel instances and notify views (Screens) accordantly. Every screen "knows" how to display its specific ViewModel.
+
+From the opposite direction:
+The screens call the interactor, forming a request, and the interactor runs the specific scenario described.
 
 ### Supporting platforms:
 
 - iOS 12.0+;
-
-### TODO:
-
-- Investigate how to set *searchArea* in **AGSGeocodeParameters**;
