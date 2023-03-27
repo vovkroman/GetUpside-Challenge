@@ -90,8 +90,8 @@ Described above might be vizualzied with following graph.
     <img src="Demo/Clean_Architecture.png">
 </p>
 
-In addition, the application uses a coordinator pattern. It is used to handle various navigation streams. The interactor keeps the coordinator as a delegate and notifies it via events.
-[Coordinator](https://medium.com/@mahmoudbasuni90/coordinator-pattern-in-swift-c38b40e73ea8) contains a reference to [Dependency Injection](http://fabien.potencier.org/do-you-need-a-dependency-injection-container.html) container (DI Container). Essetioally, it keeps references to global application services (such as URLSession, LocationManager, etc), and also DI "knows" rules instantiate scenes. These "rules" also instantiate interactors and pass them to initialzer of the scene (Dependancy injection). Thus, every instance might be mocked or stubbed during unit testing.  
+In addition, the application uses a coordinator pattern. It is used to handle various navigation threads. The interactor keeps the coordinator as a delegate and notifies it through events.
+[Coordinator](https://medium.com/@mahmoudbasuni90/coordinator-pattern-in-swift-c38b40e73ea8) contains a reference to the [Dependency Injection](http://fabien.potencier.org/do-you-need-a-dependency-injection-container.html) container (DI Container). It essentially stores references to global application services (such as URLSession, LocationManager, etc.), and the DI "knows" the scene instantiation rules. These "rules" also instantiate interactors and pass them to the scene initializer as parameter (Initializer injection). Thus, each instance can be easily mocked/stubbed during unit testing.   
 
 
 ### Supporting platforms:
