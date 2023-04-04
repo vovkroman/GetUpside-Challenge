@@ -1,8 +1,3 @@
-![Swift Version][swift-image]
-![Platform][ios-image]
-![License][license-image]
-![Xcode][xcode-image]
-
 # GetUpside-Challenge
 
 ### Description:
