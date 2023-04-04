@@ -83,16 +83,16 @@ Interactor observes callbacks from workers and, depending on the data received, 
 Within a single scene, there is one interactor - the presenter. The Interceptor-Presenter-View relationship is referred to in various sources as the VIP cycle.
 
 From the opposite direction:
+
 The screens call the interactor, forming a request, and the interactor runs the specific scenario described.
 
-Described above might be vizualzied with following graph.
+Described above might be visualized with following graph.
 <p align="center">
     <img src="Demo/Clean_Architecture.png">
 </p>
 
-In addition, the application uses a coordinator pattern. It is used to handle various navigation threads. The interactor keeps the coordinator as a delegate and notifies it through events.
-[Coordinator](https://medium.com/@mahmoudbasuni90/coordinator-pattern-in-swift-c38b40e73ea8) contains a reference to the [Dependency Injection](http://fabien.potencier.org/do-you-need-a-dependency-injection-container.html) container (DI Container). It essentially stores references to global application services (such as URLSession, LocationManager, etc.), and the DI "knows" the scene instantiation rules. These "rules" also instantiate interactors and pass them to the scene initializer as parameter (Initializer injection). Thus, each instance can be easily mocked/stubbed during unit testing.   
-
+In addition, the application uses a [Coordinator](https://medium.com/@mahmoudbasuni90/coordinator-pattern-in-swift-c38b40e73ea8) pattern. It is used to handle various navigation threads. The interactor keeps the coordinator as a delegate and notifies it through events.
+Coordinator contains a reference to the [Dependency Injection Container](http://fabien.potencier.org/do-you-need-a-dependency-injection-container.html) (DI Container). It essentially stores references to global application services (such as URLSession, LocationManager, Realm etc.), and DI "knows" the scene instantiation rules. These "rules" also instantiate interactors and pass them to the scene initializer as parameter (Initializer injection). Thus, each instance can be easily mocked/stubbed during unit testing.
 
 ### Supporting platforms:
 

@@ -151,7 +151,11 @@ extension AppDependencies {
         let algorithm = Cluster.Algorithm()
         let renderer = Cluster.Renderer(
             mapView: mapView,
-            clusterIconGenerator: iconGenerator
+            clusterIconGenerator: iconGenerator,
+            clusterSizeResolver: Cluster.SizeResolver(
+                cluster.zoomValues,
+                cluster.clusterSize
+            )
         )
         
         let clusterManager = Cluster.Manager(
