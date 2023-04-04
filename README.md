@@ -26,6 +26,13 @@ In additional:
 - ✔️ Clustering;
 - ✔️ Filtering by category and by near user location (20 km);
 
+### Demo
+
+Given below a demo of some features which have been implemented in scope of project experience. 
+<p align="center">
+    <img src="Demo/main_flow.gif">
+</p>
+
 ### How to compile and run project:
 
 - Since app used 3rd part frameworks, distributed via cocoapods. Install cocoapods in regular way:

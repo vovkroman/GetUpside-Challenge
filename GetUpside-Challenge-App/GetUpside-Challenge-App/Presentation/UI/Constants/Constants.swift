@@ -41,8 +41,8 @@ enum Constant {
             ImageRenderer.render(MapRenderRequest.cluster(diameter: 210))
         ]
         // define
-        static let clusterSize: [Int] = [10, 9, 8, 7, 6, 2, 1]
-        static let zoomValues: [Float] = [1.0, 2.0, 3.0, 4.0, 6.0, 7.0, 14.0]
+        static let clusterSize: [Int] = [10, 9, 8, 7, 6, 3, 2]
+        static let zoomValues: [Float] = [3.0, 4.0, 6.0, 10.0, 12.0, 14.0, 15.0]
         static let clusterBuckets: [NSNumber] = [10, 30, 50, 70, 90, 130]
         static let pinSize: CGSize = CGSize(width: 35.0, height: 50.0)
     }

@@ -52,7 +52,7 @@ private extension Convertor.FiltersViewModelConverter {
             
             builder.attributedString = attributedString
             builder.type = type
-            builder.size = CGSize(rect.width + padding.dx, rect.height + padding.dy)
+            builder.size = CGSize(rect.width + 2 * padding.dx, rect.height + 2 * padding.dy)
         }
     }
     
@@ -68,7 +68,7 @@ private extension Convertor.FiltersViewModelConverter {
             let rect = attributedString.boundingRect(with: size, options: [], context: nil)
             
             builder.attributedString = attributedString
-            builder.size = CGSize(rect.width + padding.dx, rect.height + padding.dy)
+            builder.size = CGSize(rect.width + padding.dx, rect.height + 2 * padding.dy)
         }
     }
 }

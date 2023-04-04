@@ -14,8 +14,8 @@
             <rect key="frame" x="0.0" y="0.0" width="133" height="50"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
-                <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ygn-u3-1QK" customClass="PillLabel" customModule="GetUpside_Challenge_App" customModuleProvider="target">
-                    <rect key="frame" x="8" y="8" width="117" height="34"/>
+                <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ygn-u3-1QK" customClass="PillLabel" customModule="GetUpside_Challenge_App" customModuleProvider="target">
+                    <rect key="frame" x="8" y="0.0" width="125" height="50"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                     <nil key="textColor"/>
@@ -25,9 +25,9 @@
             <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="VXr-Tz-HHm" firstAttribute="bottom" secondItem="Ygn-u3-1QK" secondAttribute="bottom" constant="8" id="7dl-l8-WjO"/>
-                <constraint firstAttribute="trailing" secondItem="Ygn-u3-1QK" secondAttribute="trailing" constant="8" id="PrN-hG-naT"/>
-                <constraint firstItem="Ygn-u3-1QK" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" constant="8" id="e8b-qX-CwQ"/>
+                <constraint firstItem="VXr-Tz-HHm" firstAttribute="bottom" secondItem="Ygn-u3-1QK" secondAttribute="bottom" id="7dl-l8-WjO"/>
+                <constraint firstAttribute="trailing" secondItem="Ygn-u3-1QK" secondAttribute="trailing" id="PrN-hG-naT"/>
+                <constraint firstItem="Ygn-u3-1QK" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" id="e8b-qX-CwQ"/>
                 <constraint firstItem="Ygn-u3-1QK" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="8" id="poS-6d-d2g"/>
             </constraints>
             <connections>
