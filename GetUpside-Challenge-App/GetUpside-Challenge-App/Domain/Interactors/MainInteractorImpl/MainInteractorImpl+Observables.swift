@@ -1,7 +1,8 @@
-import Foundation
+import UIKit
 
 extension Main.InteractorImpl {
-    func addObserves() {
+    func addObservers() {
+        observerDidEnterBackground()
         observeLocationChange()
     }
 }
@@ -17,5 +18,12 @@ private extension Main.InteractorImpl {
                 break
             }
         }
+    }
+    
+    func observerDidEnterBackground() {
+        token = NotificationCenter.default.observe(
+            name: UIApplication.willResignActiveNotification,
+            object: nil,
+            queue: .main) { [weak self] _ in self?.onSave() }
     }
 }

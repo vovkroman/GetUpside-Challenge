@@ -6,7 +6,6 @@ extension Main.Presenter: MainPresenterSupporting {
         view?.onLocationDidChange(coordinates)
     }
     
-    
     func onDataDidLoad(_ response: Main.Response, _ isInitial: Bool) {
         let eateries = response.eateries
         if !eateries.isEmpty {

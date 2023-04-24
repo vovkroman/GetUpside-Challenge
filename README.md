@@ -20,6 +20,7 @@ In additional:
 - ✔️ Splash screen;
 - ✔️ Clustering;
 - ✔️ Filtering by category and by near user location (20 km);
+- ✔️ Visualizing touch on screen;
 
 ### Demo
 

@@ -1,6 +1,6 @@
 import FilterKit
 
-protocol MainUseCase: DataFetching, LocationSupporting {}
+protocol MainUseCase: DataFetching, LocationSupporting, DataSaving {}
 protocol MainPresenterSupporting {
     func onChangeLocation(_ coordinates: Coordinates)
 }
@@ -10,6 +10,7 @@ extension Main {
     typealias Model = Eatery
     typealias Eateries = Set<Model>
     typealias Filters = Set<String>
+    typealias EateryAccmulator = Accmulator<Model>
     
     final class InteractorImpl {
         
@@ -23,6 +24,12 @@ extension Main {
         
         var eateries: Eateries
         var filters: Filters = []
+        
+        // accumulate eatery items for further persistence into local DB
+        lazy var eateryAccumulator: EateryAccmulator = {
+            let capacity = Constant.Main.accumulatorCapacity
+            return EateryAccmulator(capacity)
+        }()
         
         // App Observers
         var token: Any?
@@ -57,6 +64,7 @@ extension Main {
             self.presenter = presenter
             self.queue = queue
             self.eateries = Set(eateries)
+            addObservers()
         }
     }
 }

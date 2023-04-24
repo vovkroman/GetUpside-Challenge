@@ -47,6 +47,10 @@ enum Constant {
         static let pinSize: CGSize = CGSize(width: 35.0, height: 50.0)
     }
     
+    enum Main {
+        static let accumulatorCapacity: Int = 20
+    }
+    
     enum Filter {
         static let height: CGFloat = 70.0
         static let padding: (dx: CGFloat, dy: CGFloat) = (dx: 16.0, dy: 4.0)

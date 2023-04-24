@@ -21,7 +21,7 @@
 		6F1C734F29C9C7E500A735A8 /* Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1C734E29C9C7E500A735A8 /* Realm.swift */; };
 		6F1C735129C9CC8600A735A8 /* RealmEateryConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1C735029C9CC8600A735A8 /* RealmEateryConverter.swift */; };
 		6F1C735929CA131400A735A8 /* DispatchQueue+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1C735829CA131400A735A8 /* DispatchQueue+Extension.swift */; };
-		6F1D525C29CB75E1000CE3F7 /* MainInteractorImpl+Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1D525B29CB75E1000CE3F7 /* MainInteractorImpl+Observable.swift */; };
+		6F1D525C29CB75E1000CE3F7 /* MainInteractorImpl+Observables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F1D525B29CB75E1000CE3F7 /* MainInteractorImpl+Observables.swift */; };
 		6F1DFD28299D41B000E3F30D /* FilterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F1DFD27299D41B000E3F30D /* FilterKit.framework */; };
 		6F1DFD29299D41B000E3F30D /* FilterKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6F1DFD27299D41B000E3F30D /* FilterKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6F2B0E5D299D5BB500AFA2CB /* MainInteractorImpl+Filtering.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F2B0E5C299D5BB500AFA2CB /* MainInteractorImpl+Filtering.swift */; };
@@ -113,6 +113,9 @@
 		6FC847C928CA067700301F65 /* MapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FC847C828CA067700301F65 /* MapView.xib */; };
 		6FC847CB28CA5C7800301F65 /* ListComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC847CA28CA5C7800301F65 /* ListComponent.swift */; };
 		6FCC5BDC28C8A01800E29CC6 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FCC5BDB28C8A01800E29CC6 /* MainViewModel.swift */; };
+		6FD7643029F6D3CF0000482D /* RingBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD7642F29F6D3CF0000482D /* RingBuffer.swift */; };
+		6FD7643229F6D4270000482D /* Accmulator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD7643129F6D4270000482D /* Accmulator.swift */; };
+		6FD7643C29F6E1E00000482D /* NotificationCenter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD7643B29F6E1E00000482D /* NotificationCenter+Extensions.swift */; };
 		6FD8F83929C8F062003D6789 /* DBWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD8F83829C8F062003D6789 /* DBWorker.swift */; };
 		6FD8F83B29C8FEF7003D6789 /* RealmEatery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FD8F83A29C8FEF7003D6789 /* RealmEatery.swift */; };
 		6FDAA9E629BF764B002D5E5F /* EaterySpecs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDAA9E529BF764B002D5E5F /* EaterySpecs.swift */; };
@@ -171,7 +174,7 @@
 		6F1C734E29C9C7E500A735A8 /* Realm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Realm.swift; sourceTree = "<group>"; };
 		6F1C735029C9CC8600A735A8 /* RealmEateryConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmEateryConverter.swift; sourceTree = "<group>"; };
 		6F1C735829CA131400A735A8 /* DispatchQueue+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Extension.swift"; sourceTree = "<group>"; };
-		6F1D525B29CB75E1000CE3F7 /* MainInteractorImpl+Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainInteractorImpl+Observable.swift"; sourceTree = "<group>"; };
+		6F1D525B29CB75E1000CE3F7 /* MainInteractorImpl+Observables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainInteractorImpl+Observables.swift"; sourceTree = "<group>"; };
 		6F1DFD27299D41B000E3F30D /* FilterKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FilterKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F2B0E5C299D5BB500AFA2CB /* MainInteractorImpl+Filtering.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainInteractorImpl+Filtering.swift"; sourceTree = "<group>"; };
 		6F2B0E5E299D5C6C00AFA2CB /* MainInteractorImpl+MainUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainInteractorImpl+MainUseCase.swift"; sourceTree = "<group>"; };
@@ -266,6 +269,9 @@
 		6FC847C828CA067700301F65 /* MapView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapView.xib; sourceTree = "<group>"; };
 		6FC847CA28CA5C7800301F65 /* ListComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListComponent.swift; sourceTree = "<group>"; };
 		6FCC5BDB28C8A01800E29CC6 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		6FD7642F29F6D3CF0000482D /* RingBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RingBuffer.swift; sourceTree = "<group>"; };
+		6FD7643129F6D4270000482D /* Accmulator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accmulator.swift; sourceTree = "<group>"; };
+		6FD7643B29F6E1E00000482D /* NotificationCenter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationCenter+Extensions.swift"; sourceTree = "<group>"; };
 		6FD8F83829C8F062003D6789 /* DBWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBWorker.swift; sourceTree = "<group>"; };
 		6FD8F83A29C8FEF7003D6789 /* RealmEatery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmEatery.swift; sourceTree = "<group>"; };
 		6FDAA9E529BF764B002D5E5F /* EaterySpecs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EaterySpecs.swift; sourceTree = "<group>"; };
@@ -573,6 +579,7 @@
 		6F56108726B15FDC002182BA /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				6FD7642E29F6D3BB0000482D /* Accumulator */,
 				6F84168F29B62DBC00514C18 /* ImageBuilder */,
 				6FA1016626B324A10052D939 /* Extensions */,
 				6F3EEA4A26A0510600821E41 /* Globals.swift */,
@@ -678,6 +685,7 @@
 				6F7633D5277235CD005BB743 /* UIApplication+Extensions.swift */,
 				6FB06C7828D22FB200955644 /* GMSMarker+Extensions.swift */,
 				6F1C735829CA131400A735A8 /* DispatchQueue+Extension.swift */,
+				6FD7643B29F6E1E00000482D /* NotificationCenter+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -736,7 +744,7 @@
 				6F2B0E5E299D5C6C00AFA2CB /* MainInteractorImpl+MainUseCase.swift */,
 				6F2B0E5C299D5BB500AFA2CB /* MainInteractorImpl+Filtering.swift */,
 				6FAE415B29B9053D00D27534 /* MainInteractorImpl+StateMachine.swift */,
-				6F1D525B29CB75E1000CE3F7 /* MainInteractorImpl+Observable.swift */,
+				6F1D525B29CB75E1000CE3F7 /* MainInteractorImpl+Observables.swift */,
 			);
 			path = MainInteractorImpl;
 			sourceTree = "<group>";
@@ -863,6 +871,15 @@
 				6FC44118272FFF4400C54028 /* ErrorView.xib */,
 			);
 			path = ErrorView;
+			sourceTree = "<group>";
+		};
+		6FD7642E29F6D3BB0000482D /* Accumulator */ = {
+			isa = PBXGroup;
+			children = (
+				6FD7643129F6D4270000482D /* Accmulator.swift */,
+				6FD7642F29F6D3CF0000482D /* RingBuffer.swift */,
+			);
+			path = Accumulator;
 			sourceTree = "<group>";
 		};
 		6FD8F83729C8F03D003D6789 /* DB */ = {
@@ -1092,7 +1109,7 @@
 				6F3EE9EF26A047B800821E41 /* SplashCoordinator.swift in Sources */,
 				6FC2864728CF7E6B00677DBB /* EateryCell.swift in Sources */,
 				6F56108926B16236002182BA /* NSAttributedStringBuilder.swift in Sources */,
-				6F1D525C29CB75E1000CE3F7 /* MainInteractorImpl+Observable.swift in Sources */,
+				6F1D525C29CB75E1000CE3F7 /* MainInteractorImpl+Observables.swift in Sources */,
 				6FA1016A26B327340052D939 /* AnyOf.swift in Sources */,
 				6FB7C1672739CBFD00F0D8AE /* ErrorComponent.swift in Sources */,
 				6FF71AA229AD10EB0089BADB /* MainPresenter+MainPresentable.swift in Sources */,
@@ -1108,6 +1125,7 @@
 				6F7F869529A7DB620096F618 /* SplashInteractorImpl+StateMachine.swift in Sources */,
 				6FF277E82773777700D4FFE0 /* SplashViewModel.swift in Sources */,
 				6F1C735129C9CC8600A735A8 /* RealmEateryConverter.swift in Sources */,
+				6FD7643229F6D4270000482D /* Accmulator.swift in Sources */,
 				6FC044C429B5E5FD0057BA1E /* PillLabel.swift in Sources */,
 				6F3EEA4E26A05E9D00821E41 /* Interactorable.swift in Sources */,
 				6F56108E26B17B6D002182BA /* SplashInteractorImpl.swift in Sources */,
@@ -1127,9 +1145,11 @@
 				6FC44117272FFEBF00C54028 /* ErrorView.swift in Sources */,
 				6F2B0E5D299D5BB500AFA2CB /* MainInteractorImpl+Filtering.swift in Sources */,
 				6FC096F027294FAD0044C1D5 /* ScreenFactoring.swift in Sources */,
+				6FD7643029F6D3CF0000482D /* RingBuffer.swift in Sources */,
 				6FB003B727281AA90078EF14 /* Eatery.swift in Sources */,
 				6FB41DE0273ECA7200E226A2 /* MainView.swift in Sources */,
 				6FB8F1DF29AFBBE9008EC37D /* FiltersViewModelConverter.swift in Sources */,
+				6FD7643C29F6E1E00000482D /* NotificationCenter+Extensions.swift in Sources */,
 				6FC044C529B5E6340057BA1E /* IconView.swift in Sources */,
 				6F84169429B62DD000514C18 /* Shape+Drawing.swift in Sources */,
 				6F3EEA1426A04D9500821E41 /* AppDependencies.swift in Sources */,

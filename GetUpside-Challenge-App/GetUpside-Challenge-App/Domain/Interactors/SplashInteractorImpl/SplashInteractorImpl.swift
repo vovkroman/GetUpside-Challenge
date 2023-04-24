@@ -8,6 +8,10 @@ protocol DataFetching: AnyObject {
     func fetchingData(_ coordinate: Coordinates)
 }
 
+protocol DataSaving: AnyObject {
+    func onSave()
+}
+
 protocol SplashUseCase: LocationSupporting, DataFetching {}
 
 extension Splash {
